@@ -21,17 +21,37 @@
 💰 前端训练营总奖池超过20000元RMB
 
 ## ⭐ 学习大纲 ⭐
-
-### 一、React框架介绍和优势
-#### 1.1 React基础知识
-- 组件化开发
-- 状态管理
-- 路由
-#### 1.2 React生态库
+<details>
+    <summary>
+        <h3>一、React框架介绍和优势</h3>      
+    </summary>
+<details>
+    <summary>
+        <h4>1.1 React基础知识</h4>
+    </summary>
+    
+- 组件化开发   
+- 状态管理   
+- 路由   
+</details>
+<details>
+    <summary>
+        <h4>1.2 React生态库</h4>
+    </summary>
+    
 - Redux
 - React-Router
-### 二、Web3技术基础入门
-#### 2.1 区块链基础
+</details>
+</details>
+<details>
+    <summary>
+        <h3>二、Web3技术基础入门</h3>
+    </summary>
+<details>
+    <summary>
+        <h4>2.1 区块链基础</h4>
+    </summary>
+    
 - 区块链的概念
 - 区块链的模型
 - 区块链的网络
@@ -40,30 +60,63 @@
 - 智能合约
 - 常见的公链
 - 二层网络
+</details>
+
 #### 2.2 模型演示
 - 掌握钱包的使用
 #### 2.3 如何安全在区块链世界冲浪
-### 三、智能合约快速入门
+</details>
+
+<details>
+    <summary>
+        <h3>三、智能合约快速入门</h3>
+    </summary>
+    
 #### 3.1 Solidity基础和核心概念
 #### 3.2 Remix IDE: 智能合约生命周期
 #### 3.3 ERC 规范 & OpenZeppelin
 #### 3.4 使用 Foundry 构建一个 ERC20 Exchange
-### 四、Web3前端框架和合约关系
-#### 4.1 前端发展史
+
+</details>
+<details>
+    <summary>
+        <h3>四、Web3前端框架和合约关系</h3>
+    </summary>
+<details>
+    <summary>
+        <h4>4.1 前端发展史</h4>
+    </summary>
+    
 - 古老的MVC模式
 - ajax与jQuery的出现
 - 现代框架和发展趋势
-#### 4.2 关于React
+
+</details>
+<details>
+    <summary>
+        <h4>4.2 关于React</h4>
+    </summary>
+    
 - React概述
 - React的优点和缺点
 - React趣谈
-#### 4.3 React的概念和特性
+</detials>
+<details>
+    <summary>
+        <h4>4.3 React的概念和特性</h4>
+    </summary>
+    
 - 单向数据流
 - 虚拟DOM
 - JSX
 - HOOK
+</details>
+</details>
+
 #### 4.4 React学习路径
 #### 4.5 React In Web3
+</details>
+
 ## ⭐ 项目实战 ⭐
 ### 一、轻松开发DApp前端项目
 #### 开发一个简单的dapp
