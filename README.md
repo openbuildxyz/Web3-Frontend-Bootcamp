@@ -116,15 +116,27 @@
 #### 4.4 React学习路径
 #### 4.5 React In Web3
 </details>
-
-## ⭐ 项目实战 ⭐
-### 一、轻松开发DApp前端项目
+<details>
+    <summary>
+        <h3>五、实战项目一：轻松开发DApp前端项目</h3>
+    </summary>
+    
 #### 开发一个简单的dapp
 - 钱包连接
 - 前端与合约的交互
-### 二、Uniswap实战
+</details>
+<details>
+    <summary>
+        <h3>六、实战项目二：Uniswap实战</h3>
+    </summary>
+    
 #### 使用Uniswap sdk制作一个与Uniswap交互的前端app
 - AMM机制的原理
 - Uniswap的介绍
 - 在React中搭建一个Uniswap V2 APP​
-### 三、进阶实战：探索EVM++
+</details>
+<details>
+    <summary>
+        <h3>七、进阶实战：探索EVM++</h3>
+    </summary>
+</details>
