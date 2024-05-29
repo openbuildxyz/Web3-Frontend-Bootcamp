@@ -50,12 +50,12 @@
 
 | 任务                                         | 名称         | 奖励金额      | 说明                     |
 |:-------------------------------------------|------------|:----------:|:-----------------------|
-| [task 1](task/01.hello_web3.md)            | hello web3 |    ￥20     | 完成第一个合约部署上链            |
-| [task 2](task/02.web3_token.md)            | web3 token |    ￥20     | 完成Token协议学习，并发布两个Token上链 |
-| [task 3](task/03.web3_nft.md)              | web3 nft   |    ￥20     | 完成NFT的学习，并发布NFT上链      |
-| [task 4](task/04.web3_game.md)             | web3 game  |    ￥20     | 完成链上游戏学习，并上链交互         |
-| [task 5](task/05.web3_swap.md)             | web3 swap  |    ￥20     | 完成Swap学习，并上链交互         |
-| [task 6](task/06.SDK_PTB_NAVI.md)          | sdk ptb    | ￥20（NAVX）  | 完成SDK学习，并用SDK完成链上交互    |
+| [task 1](task/01.hello_web3.md)            | hello web3 |    ￥18     | 完成第一个合约部署上链            |
+| [task 2](task/02.web3_token.md)            | web3 token |    ￥18     | 完成Token协议学习，并发布两个Token上链 |
+| [task 3](task/03.web3_nft.md)              | web3 nft   |    ￥28     | 完成NFT的学习，并发布NFT上链      |
+| [task 4](task/04.web3_game.md)             | web3 game  |    ￥28     | 完成链上游戏学习，并上链交互         |
+| [task 5](task/05.web3_swap.md)             | web3 swap  |    ￥38     | 完成Swap学习，并上链交互         |
+| [task 6](task/06.SDK_PTB_NAVI.md)          | sdk ptb    |    ￥38     | 完成SDK学习，并用SDK完成链上交互    |
 
 ## 学习资料
 
