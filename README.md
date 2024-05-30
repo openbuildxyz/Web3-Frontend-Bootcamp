@@ -76,11 +76,11 @@
 | [task 6](task/06.SDK_PTB_NAVI.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
 | [task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
 
-## 学习资料
+## 预习资料
 
-### 书籍
+### 预习资料
 
-| 书名                  | 中文                                   |                          英文                          |                           配套视频                            |
+| 文档                  | 中文                                   |                          英文                          |                           配套视频                            |
 |:--------------------|--------------------------------------|:----------------------------------------------------:|:---------------------------------------------------------:|
 | Web3 导论             | [中文](https://intro-zh.web3-book.com/) | [Web3 Intro Course](https://intro.web3-book.com/) |     [bilibili](https://www.bilibili.com/video/BV1RY411v7YU)  [Youtube](https://www.youtube.com/watch?v=lZHjmo2ngu0)                          |
 | Web3 Book            | [中文](https://web3-book.com)           |                                                      |  |
@@ -88,12 +88,6 @@
 | Web3 Handbook           |    [中文](https://web3-handbook.com/cn/)      |           [英文](https://web3-handbook.com/)            |                                                   |
 | Let's Web3      |                            |                    [let's web3](https://letsweb3.com/)                    |                                                     |
 
-### 文档
 
-- [官方文档](https://docs.web3.io/)
-
-### 代码库
-
-- [Web3](https://github.com/Web3Foundation/web3)
 
 
