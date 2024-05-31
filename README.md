@@ -68,12 +68,12 @@
 
 | 任务                                         | 名称         | 奖励金额      | 说明                     |
 |:-------------------------------------------|------------|:----------:|:-----------------------|
-| [task 1](task/01.hello_web3.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
-| [task 2](task/02.web3_token.md)            | Connect Wallet |    ￥18     | 为开发的待办事项应用添加一个钱包登录功能 |
-| [task 3](task/03.web3_nft.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
-| [task 4](task/04.web3_game.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
-| [task 5](task/05.web3_swap.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
-| [task 6](task/06.SDK_PTB_NAVI.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
+| [task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
+| [task 2](task/02_Connect_Wallet.md)            | Connect Wallet |    ￥18     | 为开发的待办事项应用添加一个钱包登录功能 |
+| [task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
+| [task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
+| [task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
+| [task 6](task/06_ Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
 | [task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
 
 ## 预习资料
