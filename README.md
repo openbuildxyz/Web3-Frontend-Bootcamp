@@ -69,7 +69,7 @@
 | 任务                                         | 名称         | 奖励金额      | 说明                     |
 |:-------------------------------------------|------------|:----------:|:-----------------------|
 | [task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
-| [task 2](task/02_Connect_Wallet.md)            | Web3 basic |    ￥18     | 区块链基础小测 |
+| [task 2](task/02_Connect_Wallet.md)            | Web3 Basic |    ￥18     | 区块链基础小测 |
 | [task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
 | [task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
 | [task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
