@@ -19,7 +19,6 @@
 
 💰 前端训练营总奖池超过20000元RMB
 
-
 ## ⭐ 学习大纲 ⭐
 
 一、React框架介绍和优势
@@ -36,27 +35,24 @@
 
 七、进阶实战：探索EVM++
 
+## 参与方式
 
-## 如何参与
+1. 进入【Web3 前端训练营招募】[官方链接](https://openbuild.xyz/learn/challenges/2036589711)进行报名
 
-- 复制 `bootcamp` 目录下的 `001` 并且用自己的 `github id` 命名复制的目录
-- 在 `readme.md` 里面填写个人信息 后面的任务模板暂时不管
-- 提交PR
-- 必须加入社区群发出PR 才会被合并
+2. 联系 **sqiuqiu999** 加入微信交流群
 
-### 社区 & 问答
+3. 参考[任务提交](#任务提交)第一项提交 PR，完成报名。
 
-- 联系sqiuqiu999加入微信交流群
+### 任务提交
 
-## 如何完成任务并获取奖励
+1. 复制 `mbmbers` 文件夹中的 `github_id` 文件夹，将新文件夹名称改为自己的github id，填写其中 `readme.md` 的信息，提交 PR ,完成注册报名
 
-- 在自己`github id`目录的 readme.md 对应的任务列表填写完成信息
-- 提交PR 如果只完成 task 1 用 `完成 task 1` 取名 完成多个 用 `完成 task 1 2 3` 等取名
-- 审核任务完成会把奖励打入 `readme.md` 提供的地址
+2. 任务代码必须全部开源公开，每个任务提交一次 PR
 
-## 重要提醒
+3. 审核任务完成会把奖励打入 `readme.md` 提供的地址
 
-- 必须包含作业源代码
+### 重要提醒
+
 - task 1 必须包含自己的`github id` 也就是 hello `github id`
 - task 2 必须是自己 `github id` 开头的Token名字,水龙头的Token是 `github id` + `Faucet`
 - task 3 NFT必须是自己 github 的头像作为图片
@@ -76,9 +72,7 @@
 | [task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
 | [task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
 
-## 预习资料
-
-### 预习资料
+## 参考资料
 
 | 文档                  | 中文                                   |                          英文                          |                           配套视频                            |
 |:--------------------|--------------------------------------|:----------------------------------------------------:|:---------------------------------------------------------:|
@@ -87,7 +81,3 @@
 | Web3 by Example | [中文](https://examples.web3-book.com/) |   [Web3 by Example](https://examples.web3.io/)    |                                                       |
 | Web3 Handbook           |    [中文](https://web3-handbook.com/cn/)      |           [英文](https://web3-handbook.com/)            |                                                   |
 | Let's Web3      |                            |                    [let's web3](https://letsweb3.com/)                    |                                                     |
-
-
-
-
