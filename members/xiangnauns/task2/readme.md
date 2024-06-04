@@ -138,4 +138,4 @@ EVM是以太坊区块链的核心，它提供了一个去中心化、可信和�
 
 安装一个 WEB3 钱包，创建账户后与 [openbuild.xyz](https://openbuild.xyz/profile) 进行绑定，截图后文件命名为 `./bind-wallet.jpg`.
 
-![](./bind-wallet.png)
+![绑定钱包](./bind-wallet.png)
