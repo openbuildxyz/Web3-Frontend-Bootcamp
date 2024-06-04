@@ -21,7 +21,10 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    if (todos.length>0) {
+        // 有值才赋值
     localStorage.setItem('todos', JSON.stringify(todos));
+    }
   }, [todos]);
 
   const addTodo = (todo: Todo) => {
