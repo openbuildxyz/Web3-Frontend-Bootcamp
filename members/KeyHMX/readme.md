@@ -4,7 +4,7 @@
 
 - Github ID:KeyHMX
 
-- Wechat ID: Key_Ho626
+- Wechat ID: Key_H0626
 
 - Openbuild Username:KeyH
 
