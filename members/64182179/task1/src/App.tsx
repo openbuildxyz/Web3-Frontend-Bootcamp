@@ -6,6 +6,11 @@ import type { Todo } from "./components/types";
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  const saveTodos = (todoList: Todo[]) => {
+    setTodos(todoList || []);
+    localStorage.setItem("your_todo", JSON.stringify(todoList));
+  };
+
   const createTodoItems = (value: string) => {
     const timeStamp = +new Date();
     const obj = {
@@ -16,7 +21,7 @@ const App = () => {
 
     const arr = [...todos];
     arr.push(obj);
-    setTodos([...arr] || []);
+    saveTodos([...arr] || []);
   };
 
   const finishTodo = (id: string) => {
@@ -26,12 +31,12 @@ const App = () => {
       }
       return item;
     });
-    setTodos([...newTodo] || []);
+    saveTodos([...newTodo] || []);
   };
 
   const deleteTodo = (id: string) => {
     const newTodo = todos?.filter((item) => item.id !== id);
-    setTodos(newTodo || []);
+    saveTodos(newTodo || []);
   };
 
   useEffect(() => {
@@ -43,12 +48,6 @@ const App = () => {
       localStorage.setItem("your_todo", JSON.stringify(todos));
     }
   }, []);
-
-  useEffect(() => {
-    if (todos?.length > 0) {
-      localStorage.setItem("your_todo", JSON.stringify(todos));
-    }
-  }, [todos]);
 
   return (
     <main

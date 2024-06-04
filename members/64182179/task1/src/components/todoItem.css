@@ -17,5 +17,5 @@
 .todo-item-contain:hover {
   transform: translateY(-4px);
   box-shadow: 12px 12px 12px -12px rgba(0, 0, 0, 0.5);
-  transition: all ease-out 0.2s;
+  transition: all ease-in-out 0.2s;
 }

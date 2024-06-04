@@ -25,8 +25,10 @@ const AddToDo = ({ handleAddItems }: AddToDoProps) => {
         style={{ height: 38, width: "86%", marginRight: 12 }}
       >
         <Input
-          placeholder="please enter somethings"
+          accessKey="n"
+          autoFocus
           onPressEnter={handleSubmit}
+          placeholder="please enter somethings"
         />
       </Form.Item>
       <Button children="記錄代辦" onClick={handleSubmit} />
