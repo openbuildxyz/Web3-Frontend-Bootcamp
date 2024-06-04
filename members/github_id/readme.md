@@ -2,15 +2,15 @@
 
 ## 个人信息
 
-* Github ID:
+* Github ID: ranxi2001
 
-* Wechat ID: birchspace
+* Wechat ID: ranxi_hz
 
-* Openbuild Username: birchrust
+* Openbuild Username: onefly
 
 (首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: 0xdd8f2631d94fb709ea71b2b65f7da8ac745dca7a354d79c26d915de398010260
+* ERC20 钱包地址: 0xed354d56beec96b30ff5d1c21c47330e4a6b9046
 
 ### 个人介绍
 
