@@ -51,7 +51,7 @@
 
 3. 审核任务完成会把奖励打入 `readme.md` 提供的地址
 
-4. [作业提交示例](members/github_id/Beavnvvv)
+4. [任务提交示例](members/github_id/Beavnvvv)
 
 ## 奖励明细 请仔细阅读要求
 
