@@ -45,9 +45,13 @@ const ToDoList: FC = () => {
             <AddToDo setTodoList={setTodoList}/>
             <ul>
                 {/* <ToDoItem/> */}
-                {todoList.map((task, index) => ( 
-                    <ToDoItem key={index} task={task} deleteTask={deleteTask} updateTask={updateTask} /> 
-                ))}
+                {todoList.length > 0 ? (
+                    todoList.map((task, index) => ( 
+                        <ToDoItem key={index} task={task} deleteTask={deleteTask} updateTask={updateTask} /> 
+                    ))
+                ): (
+                    <li className="noTask">No tasks yet :( <br/>Please add some!</li>
+                )}
             </ul>
         </div>
     )
