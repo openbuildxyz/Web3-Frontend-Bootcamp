@@ -51,21 +51,12 @@
 
 3. 审核任务完成会把奖励打入 `readme.md` 提供的地址
 
-### 重要提醒
-
-- task 1 必须包含自己的`github id` 也就是 hello `github id`
-- task 2 必须是自己 `github id` 开头的Token名字,水龙头的Token是 `github id` + `Faucet`
-- task 3 NFT必须是自己 github 的头像作为图片
-- task 4 的game 必须包含自己的 `github id`的元素, 必须包含随机数，必须用task2的 `Faucet Token`
-- task 5 swap 必须是 swap 自己发行的 task2 两个 Token的互换，包名必须是自己的`github id`
-- task 6 必须在一个PTB内完成三步，必须包含当前时间的因子，必须用dapp-kit
-
 ## 奖励明细 请仔细阅读要求
 
 | 任务                                         | 名称         | 奖励金额      | 说明                     |
 |:-------------------------------------------|------------|:----------:|:-----------------------|
 | [task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
-| [task 2](task/02_Connect_Wallet.md)            | Web3 Basic |    ￥18     | 区块链基础小测 |
+| [task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    ￥18     | 区块链基础小测 |
 | [task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
 | [task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
 | [task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
