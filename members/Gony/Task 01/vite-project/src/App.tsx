@@ -11,20 +11,17 @@ interface Todo {
 }
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const savedTodos = JSON.parse(localStorage.getItem('todos') || '[]');
+  const [todos, setTodos] = useState<Todo[]>(savedTodos);
 
   useEffect(() => {
-    const savedTodos = JSON.parse(localStorage.getItem('todos') || '[]');
     if (savedTodos) {
       setTodos(savedTodos);
     }
   }, []);
 
   useEffect(() => {
-    if (todos.length>0) {
-        // 有值才赋值
     localStorage.setItem('todos', JSON.stringify(todos));
-    }
   }, [todos]);
 
   const addTodo = (todo: Todo) => {

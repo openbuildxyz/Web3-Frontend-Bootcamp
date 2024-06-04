@@ -16,5 +16,5 @@
 
 - 前端开发 6+ 年
 - 技术栈 Vue/React.js/Node.js
-- [个人博客](https://gonyjean.github.io/)
+- [Blog](https://gonyjean.github.io/)
 - 很荣幸能与各位一起学习一起进步
