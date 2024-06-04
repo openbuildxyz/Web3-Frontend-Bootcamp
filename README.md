@@ -1,4 +1,4 @@
-<div align="center">
+
     <h1>Web3 Frontend Bootcamp</h1>
     <p>一个具备前端+智能合约能力的开发者就可以完成一个完整的应用开发，因此前端开发者已经成为Web3的主流力量 ，也是所有开发者群体中最容易进入Web3开发的。</p>
 </div>
@@ -74,3 +74,4 @@
 | Web3 by Example | [中文](https://examples.web3-book.com/) |   [Web3 by Example](https://examples.web3.io/)    |                                                       |
 | Web3 Handbook           |    [中文](https://web3-handbook.com/cn/)      |           [英文](https://web3-handbook.com/)            |                                                   |
 | Let's Web3      |                            |                    [let's web3](https://letsweb3.com/)                    |                                                     |
+
