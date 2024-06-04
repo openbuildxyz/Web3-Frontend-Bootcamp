@@ -4,6 +4,6 @@ Github ID:sakurevza
 
 Wechat ID: abc805949518
 
-Openbuild Username: birchrust
+Openbuild Username: 805949518
 
 ERC20 钱包地址: 0xf13837e169e75b252f084773135d5a875b815626
