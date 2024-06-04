@@ -40,7 +40,7 @@ function reducer(state: ListStateInterface, action: listAction): ListStateInterf
     item,
     lists,
   } = action;
-console.info(type, '1231');
+
   if (type === ActionType.ADD_ITEM) {
     const lists = [...state.lists, item];
 
