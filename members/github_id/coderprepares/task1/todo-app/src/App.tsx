@@ -2,15 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ToDoList from './components/ToDoList';
 import AddToDo from './components/AddToDo';
-
-interface Todo {
-  text: string;
-  completed: boolean;
-}
+import {Todo} from './types';
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-
   const [storageLoaded, setStorageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,7 +20,7 @@ const App: React.FC = () => {
     if(storageLoaded) {
       localStorage.setItem('todos', JSON.stringify(todos));
     }
-  }, [todos]);
+  }, [todos, storageLoaded]);
 
   const addTodo = (text: string) => {
     setTodos([...todos, { text, completed: false }]);
