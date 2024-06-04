@@ -104,3 +104,4 @@ EVM是以太坊区块链的核心组件，负责解释和执行智能合约代�
 
 
 ## 操作题
+![bind-wallet](https://github.com/1shino/Web3-Frontend-Bootcamp/assets/161474515/a4dbd85c-5f56-4225-bf6f-94bf19f75edd)
