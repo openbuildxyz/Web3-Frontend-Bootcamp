@@ -1,0 +1,15 @@
+.total-container {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-top: 20px;
+}
+.total-container span {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-left: 20px;
+}
+h3 {
+  padding-left: 10px;
+}

@@ -1,0 +1,21 @@
+.add-container {
+  display: flex;
+  justify-content: space-between;
+}
+.add-container > input {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+.add-container > button {
+  width: 18%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

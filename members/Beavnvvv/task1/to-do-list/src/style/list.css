@@ -1,0 +1,49 @@
+.list-container {
+  height: 308px;
+  overflow: auto;
+}
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: 18px;
+  border-bottom: 1px solid #ccc;
+}
+ul > li > span {
+  flex: 1;
+  margin-right: 50px;
+  position: relative;
+}
+.done > span::after {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  transform: translateY(-50%);
+}
+.del-btn {
+  background-color: #f44336;
+  color: white;
+}
+.done-btn {
+  margin-left: 15px;
+  background-color: #4caf50;
+  color: white;
+}

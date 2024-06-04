@@ -1,0 +1,18 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content {
+  padding: 20px 50px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
