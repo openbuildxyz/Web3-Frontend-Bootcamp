@@ -4,7 +4,7 @@
 
 - Github ID:Chen-Lun-Hao
 - Wechat ID: C2085127827
-- Openbuild Username: birchrust
+- Openbuild Username: Adream
 
 (首次如果没有，学习完毕钱包在填写)
 
