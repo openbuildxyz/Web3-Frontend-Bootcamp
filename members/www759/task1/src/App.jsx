@@ -6,16 +6,19 @@ import ToDoList from './ToDoList'
 import {v4 as uuidv4} from 'uuid';
 
 function App() {
-  const [todoList, setTodoList] = useState([])
+  const [todoList, setTodoList] = useState(() => {
+    try {
+      const todos = JSON.parse(localStorage.getItem('todoList'))
+      return todos || []
+    } catch (error) {
+      console.error(error)
+      return []
+    }
+  })
 
-  // useEffect(() => {
-  //   const storedTodoList = JSON.parse(localStorage.getItem('todoList'))
-  //   if (storedTodoList) setTodoList(storedTodoList)
-  // }, [])
-
-  // useEffect(() => {
-  //   localStorage.setItem('todoList', JSON.stringify(todoList))
-  // }, [todoList])
+  useEffect(() => {
+    localStorage.setItem('todoList', JSON.stringify(todoList))
+  }, [todoList]);
 
   const addTodo = (text) => {
     setTodoList([...todoList, {id: uuidv4(), value: text, completed: false}])
