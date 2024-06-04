@@ -2,16 +2,17 @@
 
 ## 个人信息
 
-* Github ID:
+* Github ID: ccchur
 
-* Wechat ID: birchspace
+* Wechat ID: CCChur
 
-* Openbuild Username: birchrust
+* Openbuild Username: 2452246087
 
 (首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: 0xdd8f2631d94fb709ea71b2b65f7da8ac745dca7a354d79c26d915de398010260
+* ERC20 钱包地址: 0x03Cd314E9e0c7E2be85871Fe58620F0C8DfaA496
 
 ### 个人介绍
 
+大家好！我是前端程序员，一名代码的魔法师，正在踏上Web3的探险之旅。每天与JavaScript、HTML、CSS为伴，如同指挥一场绝妙的交响乐，让页面在屏幕上舞动。现在，我正努力钻研区块链和智能合约，渴望在Web3的浩瀚宇宙中找到属于我的星辰。加入我，一起探索这片数字新大陆，让未来的互联网更加酷炫与自由！🚀💻✨
 
