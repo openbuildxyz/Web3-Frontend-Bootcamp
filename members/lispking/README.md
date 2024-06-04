@@ -2,9 +2,9 @@
 
 ## 个人信息
 
-* Github ID: lisping
+* Github ID: lispking
 
-* Openbuild Username: lisping
+* Openbuild Username: lispking
 
 * ERC20 钱包地址: 0xeaaa7e460d3314de9aa6d8b97745b25fa48334ba
 
