@@ -18,7 +18,7 @@ const AddToDo: FC<{ setTodoList: React.Dispatch<React.SetStateAction<ITask[]>> }
     };
 
     const handleAdd = (): void => {
-        const newTask = {taskName: text};
+        const newTask = {taskName: text, completed: false};
         // setTodoList([...todoList, newTask]);
         setTodoList((prevTodoList) => [...prevTodoList, newTask]);
         setPopup(false);

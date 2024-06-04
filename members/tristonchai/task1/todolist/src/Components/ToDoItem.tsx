@@ -1,13 +1,20 @@
-import React, {FC, useState} from "react";
+import React, {FC, useState, useEffect} from "react";
 import '../index.css';
 import '../App.css';
 
-const ToDoItem: FC<{ task: ITask, deleteTask: (taskName: string) => void }> = ({ task, deleteTask }) => {
+const ToDoItem: FC<{ task: ITask, updateTask: (task: ITask) => void, deleteTask: (taskName: string) => void }> = ({ task, updateTask, deleteTask }) => {
 
-    const [checked, setChecked] = useState<boolean>(false);
+    // const [checked, setChecked] = useState<boolean>(false);
+    const [checked, setChecked] = useState<boolean>(task.completed);
+
+    useEffect(() => {
+        setChecked(task.completed); // Update checked state when task.completed changes
+    }, [task.completed]);
 
     const handleChange = () => {
         setChecked(!checked);
+        updateTask({ ...task, completed: !checked });
+        console.log('checked: ', checked);
     }
 
     const handleDelete = () => {
@@ -16,7 +23,11 @@ const ToDoItem: FC<{ task: ITask, deleteTask: (taskName: string) => void }> = ({
     
     return (
         <li>
-            <input type="checkbox" value={checked} onChange={handleChange}/>
+            {checked ? (
+                <input type="checkbox" value={checked} checked onChange={handleChange}/>
+            ) : (
+                <input type="checkbox" value={checked} onChange={handleChange}/>
+            )}
             {checked ? (
                 <label className="checked">{task.taskName}</label>
             ) : (

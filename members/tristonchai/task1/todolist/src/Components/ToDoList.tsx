@@ -32,13 +32,21 @@ const ToDoList: FC = () => {
         setTodoList(prevTodoList => prevTodoList.filter(task => task.taskName !== taskName));
     };
 
+    const updateTask = (updatedTask: ITask) => {
+        setTodoList(prevTodoList => 
+            prevTodoList.map(task => 
+                task.taskName === updatedTask.taskName ? updatedTask : task
+            )
+        );
+    };
+
     return (
         <div className="todoList">
             <AddToDo setTodoList={setTodoList}/>
             <ul>
                 {/* <ToDoItem/> */}
                 {todoList.map((task, index) => ( 
-                    <ToDoItem key={index} task={task}deleteTask={deleteTask}  /> 
+                    <ToDoItem key={index} task={task} deleteTask={deleteTask} updateTask={updateTask} /> 
                 ))}
             </ul>
         </div>
