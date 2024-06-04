@@ -15,3 +15,4 @@
 
 web3小白
 
+![bind-wallet](https://github.com/skcvan/Web3-Frontend-Bootcamp/assets/149351153/a693e7df-1a43-4ce5-bcc8-e668dedd220b)
