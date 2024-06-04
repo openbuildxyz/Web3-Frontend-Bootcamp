@@ -1,0 +1,85 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app{
+  width: 320px;
+  height: 500px;
+  border: 1px solid #ddd;
+}
+
+.header{
+  padding: 20px 0;
+  font-size: 28px;
+}
+
+.header .todo{
+  margin-right: 5px;
+  color: #333;
+  font-weight: 600;
+}
+
+.header .list{
+  color: #666
+}
+
+.add-todo{
+  display: flex;
+  padding: 0 20px;
+}
+
+.add-todo .add-todo_text{
+  flex: 1;
+  height: 24px;
+  border: 1px solid #ddd;
+}
+
+.add-todo .add-todo_btn{
+  height: 28px;
+  margin-left: 10px;
+  border: 1px solid #ddd;
+  line-height: 14px;
+  font-size: 12px;
+}
+
+.todo-list{
+  padding-bottom: 10px;
+}
+
+.todo-item{
+  display: flex;
+  align-items: center;
+  padding: 10px 20px 0;
+}
+
+.todo-item_show{
+  flex: 1;
+  text-align: left;
+}
+
+.todo-item_checkbox{
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
+.todo-item_text{
+  font-size: 14px;
+}
+
+.todo-item_btn{
+  height: 28px;
+  margin-left: 10px;
+  border: 1px solid #ddd;
+  line-height: 14px;
+  font-size: 12px;
+}
+
+.empty{
+  line-height: 200px;
+  color: #666;
+  font-size: 13px;
+}
+
