@@ -2,15 +2,15 @@
 
 ## 个人信息
 
-* Github ID:
+* Github ID: chanhohn
 
-* Wechat ID: birchspace
+* Wechat ID: ciwei17
 
-* Openbuild Username: birchrust
+* Openbuild Username: hedgehog
 
 (首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: 0xdd8f2631d94fb709ea71b2b65f7da8ac745dca7a354d79c26d915de398010260
+* ERC20 钱包地址: 0x742F1AD3b2C139926Ad5D789fDbf6C4ae2d99EA9
 
 ### 个人介绍
 
