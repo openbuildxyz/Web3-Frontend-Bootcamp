@@ -23,7 +23,9 @@ function App() {
   };
 
   const clearTodos = () => {
-    setTodos([]);
+    if (window.confirm('确定要清空所有待办事项吗？')) {
+      setTodos([]);
+    }
   }
 
   const toggleComplete = (id) => {
@@ -43,7 +45,7 @@ function App() {
         toggleComplete={toggleComplete}
       />
       <button className="button clear-todos" onClick={clearTodos}>
-        清空所有待办事项
+        清空所有待办事项【共 {todos.length} 个】
       </button>
     </div>
   );
