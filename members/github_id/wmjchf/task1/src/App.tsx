@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from "./components/Header";
 import { AddToDO } from "./components/AddToDo";
@@ -8,7 +8,11 @@ import { ToDoList } from "./components/ToDoList";
 import "./App.css";
 
 function App() {
-  const [todos, setToDos] = useState<IToDo[]>([]);
+  const [todos, setToDos] = useState<IToDo[]>(
+    localStorage.getItem("todos")
+      ? JSON.parse(localStorage.getItem("todos") as string)
+      : []
+  );
   // 添加
   const addToDo = (title: string) => {
     const newToDo = {
@@ -41,6 +45,11 @@ function App() {
     });
     setToDos(newToDos);
   };
+  // 缓存
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <div className="h-screen flex flex-col items-center">
       <Context.Provider
