@@ -18,8 +18,10 @@ function App() {
   };
 
   const deleteTodo = (id) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(filteredTodos);
+    if (window.confirm('确定要删除该待办事项吗？')) {
+      const filteredTodos = todos.filter((todo) => todo.id !== id);
+      setTodos(filteredTodos);
+    }
   };
 
   const clearTodos = () => {

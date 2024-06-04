@@ -4,7 +4,11 @@ function ToDoItem({ todo, deleteTodo, toggleComplete }) {
       className={todo.completed ? "completed" : ""}
       onClick={() => toggleComplete(todo.id)}
     >
-      {todo.text} <button onClick={() => deleteTodo(todo.id)}>完成</button>
+      {todo.text}
+      <button onClick={(event) => {
+        event.stopPropagation();
+        deleteTodo(todo.id);
+      }}>删除</button>
     </li>
   );
 }
