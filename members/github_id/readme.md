@@ -2,16 +2,16 @@
 
 ## 个人信息
 
-* Github ID:
+* Github ID:1shino
 
-* Wechat ID: birchspace
+* Wechat ID: 晓事至白
 
-* Openbuild Username: birchrust
+* Openbuild Username: shino
 
 (首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: 0xdd8f2631d94fb709ea71b2b65f7da8ac745dca7a354d79c26d915de398010260
+* ERC20 钱包地址: 0x5F50Cbfe0f869bB24a1CdbA59b1F9Dd5D2cFD652
 
 ### 个人介绍
-
+在校学生，有一定solidity基础
 
