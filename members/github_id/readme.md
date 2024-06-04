@@ -2,16 +2,16 @@
 
 ## 个人信息
 
-* Github ID:
+* Github ID:GINAYY
 
-* Wechat ID: birchspace
+* Wechat ID: cocomi_99555
 
-* Openbuild Username: birchrust
+* Openbuild Username: 2053813984
 
 (首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: 0xdd8f2631d94fb709ea71b2b65f7da8ac745dca7a354d79c26d915de398010260
+* ERC20 钱包地址: 0x6085beaa8112867be5fdc59f4b8282ce0b833602
 
 ### 个人介绍
-
+web3爱好者
 
