@@ -2,16 +2,15 @@
 
 ## 个人信息
 
-* Github ID:
+* Github ID:EderKKK
 
-* Wechat ID: birchspace
+* Wechat ID:k805056419
 
-* Openbuild Username: birchrust
+* Openbuild Username: Eder
 
-(首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: 0xdd8f2631d94fb709ea71b2b65f7da8ac745dca7a354d79c26d915de398010260
 
+* ERC20 钱包地址: 0x2bF2E2eAe8280C2a35B0499B8276844538D45fd1
 ### 个人介绍
 
-
+Web3学习者
