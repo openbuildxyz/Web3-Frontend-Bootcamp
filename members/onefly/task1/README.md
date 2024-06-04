@@ -37,4 +37,4 @@ npm run dev
 
 ### 界面效果演示：
 
-<img src="https://img2023.cnblogs.com/blog/2910984/202406/2910984-20240604150330493-1575863585.png" style="zoom: 45%;" />
+<img src="https://img2023.cnblogs.com/blog/2910984/202406/2910984-20240604153345031-2020522132.png" style="zoom:50%;" />
