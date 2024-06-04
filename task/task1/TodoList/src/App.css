@@ -69,6 +69,11 @@
   font-size: 14px;
 }
 
+.completed .todo-item_text{
+  text-decoration: line-through;
+  font-style: italic;
+}
+
 .todo-item_btn{
   height: 28px;
   margin-left: 10px;
