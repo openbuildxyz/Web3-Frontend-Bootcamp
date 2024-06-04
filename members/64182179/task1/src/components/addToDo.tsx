@@ -17,7 +17,11 @@ const AddToDo = ({ handleAddItems }: AddToDoProps) => {
 
   return (
     <Form
-      style={{ display: "flex", justifyContent: "space-between" }}
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: 18,
+      }}
       form={form}
     >
       <Form.Item
