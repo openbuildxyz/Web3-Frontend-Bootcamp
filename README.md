@@ -68,20 +68,32 @@
 
 | 任务                                         | 名称         | 奖励金额      | 说明                     |
 |:-------------------------------------------|------------|:----------:|:-----------------------|
-| [task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
-| [task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    ￥18     | 区块链基础小测 |
-| [task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
-| [task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
-| [task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
-| [task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
-| [task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
+| [Task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
+| [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    ￥18     | 区块链基础小测 |
+| [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
+| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
+| [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
+| [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
+| [Task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
 
 ## 参考资料
 
-| 文档                  | 中文                                   |                          英文                          |                           配套视频                            |
-|:--------------------|--------------------------------------|:----------------------------------------------------:|:---------------------------------------------------------:|
-| Web3 导论             | [中文](https://intro-zh.web3-book.com/) | [Web3 Intro Course](https://intro.web3-book.com/) |     [bilibili](https://www.bilibili.com/video/BV1RY411v7YU)  [Youtube](https://www.youtube.com/watch?v=lZHjmo2ngu0)                          |
-| Web3 Book            | [中文](https://web3-book.com)           |                                                      |  |
-| Web3 by Example | [中文](https://examples.web3-book.com/) |   [Web3 by Example](https://examples.web3.io/)    |                                                       |
-| Web3 Handbook           |    [中文](https://web3-handbook.com/cn/)      |           [英文](https://web3-handbook.com/)            |                                                   |
-| Let's Web3      |                            |                    [let's web3](https://letsweb3.com/)                    |                                                     |
+### 前端基础
+
+1. [Front End Roadmap](https://roadmap.sh/frontend)
+2. [React Learn](https://react.dev/learn)
+
+### Web3 技术库
+
+1. [WAGMi](https:///wagmi-xyz.vercel.app/)
+2. [web3-react](https://github.com/Uniswap/web3-react)
+
+### 实践参考
+
+1. [Next.js Ethereum 脚手架](https://github.com/ChangoMan/nextjs-ethereum-starter)
+2. [Uniswap](https://github.com/Uniswap/interface)
+
+### 大牛学习心得
+
+1. [Web3 DApp 最佳编程实践指南](https://guoyu.mirror.xyz/RD-xkpoxasAU7x5MIJmiCX4gll3Cs0pAd5iM258S1Ek)
+2. [郭宇的 Web3 技术栈收藏](https://github.com/stars/guo-yu/lists/dapp-best-practice-stack)
