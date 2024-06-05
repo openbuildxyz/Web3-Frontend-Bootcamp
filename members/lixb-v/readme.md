@@ -3,7 +3,6 @@
 ## 个人信息
 
 - Github ID: lixb-v
-- Wechat ID: 17688618461
 - Openbuild Username: Luke
 
 (首次如果没有，学习完毕钱包在填写)
