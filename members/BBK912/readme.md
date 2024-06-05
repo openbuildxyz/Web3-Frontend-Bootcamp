@@ -4,8 +4,6 @@
 
 * Github ID:BBK912
 
-* Wechat ID: zmdqbj
-
 * Openbuild Username: chnqbj
 
 (首次如果没有，学习完毕钱包在填写)
