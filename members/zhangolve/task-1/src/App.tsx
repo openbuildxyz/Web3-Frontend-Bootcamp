@@ -31,7 +31,7 @@ function App() {
         const currentItems = [
           ...items,
           {
-            id: items.length+1,
+            id: +Date.now(),
             text,
             done: false
           }
