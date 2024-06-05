@@ -4,8 +4,6 @@
 
 * Github ID: ourai
 
-* Wechat ID: fxxkol
-
 * Openbuild Username: ourai
 
 * ERC20 钱包地址: 0xb3C88697d659FF8012872967F46c492d12457242
