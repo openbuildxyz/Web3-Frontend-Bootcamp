@@ -18,7 +18,6 @@
 | [💰Bounty](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/bounty)   | Bounty 任务：课堂作业/课堂笔记/社区贡献etc|
 | 💡[I've got an idea!](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/i-ve-got-an-idea)   | 关于一些 Amazing fancy ideas, 用来<br />1. Web3前端共学 <br />2. 组队开发<br />3. 参加黑客松<br />4. 招聘内推<br />5. 自娱自乐🎣<br /> |
 
-
 ### ⭐ 核心亮点 ⭐
 
 🧙‍♂️ OpenBuild技术导师 + 助教团队，小白友好型氛围
@@ -47,9 +46,6 @@
 
 七、进阶实战：探索EVM++
 
-
-
-
 ## 参与方式
 
 1. 进入【Web3 前端训练营招募】[官方链接](https://openbuild.xyz/learn/challenges/2036589711)进行报名
@@ -60,7 +56,7 @@
 
 ### 任务提交
 
-1. 复制 `mbmbers` 文件夹中的 `github_id` 文件夹，将新文件夹名称改为自己的github id，填写其中 `readme.md` 的信息，提交 PR ,完成注册报名
+1. 复制 `members` 文件夹中的 `github_id` 文件夹，将新文件夹名称改为自己的github id，填写其中 `readme.md` 的信息，提交 PR ,完成注册报名
 
 2. 任务代码必须全部开源公开，每个任务提交一次 PR
 
