@@ -1,0 +1,26 @@
+#root {
+ 
+  padding: 2rem;
+  text-align: center;
+  background-color: pink;
+  display: flex;
+  flex-direction:column;
+  align-items:center
+}
+.main{
+  width: 600px;
+  
+}
+.flex{
+  display: flex;
+}
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+.todo-input{
+  margin-right: 20px;
+}
+.check-word{
+  width: calc(100% - 40px)
+}
