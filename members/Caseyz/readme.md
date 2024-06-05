@@ -4,8 +4,6 @@
 
 - Github ID: Caseyz
 
-- Wechat ID: zkx960911
-
 - Openbuild Username: Casey
 
 (首次如果没有，学习完毕钱包在填写)
