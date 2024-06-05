@@ -2,14 +2,14 @@
 
 ## 个人信息
 
-* Github ID: coderprepares
+* Github ID: Secret1007
 
-* Openbuild Username: zhaohong
+* Openbuild Username: Secret
 
 (首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: 0x9CBd3D6A36cf2d45442fD35Dc160c97f658F8B18
+* ERC20 钱包地址: 0xCB6c851076159C49609D2Caaa3A3080A95bf07c0
 
 ### 个人介绍
 
-Web2全栈开发，10年以上经验，目前在学习智能合约开发，希望转型Web3。
+Web2前端开发，3年以上经验，目前在学习web3前端开发，希望转型Web3。
