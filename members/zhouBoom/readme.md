@@ -4,8 +4,6 @@
 
 * Github ID: zhouBoom
 
-* Wechat ID: New_Origin_
-
 * Openbuild Username: zhouzhou
 
 (首次如果没有，学习完毕钱包在填写)
