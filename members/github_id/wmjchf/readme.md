@@ -6,8 +6,6 @@
 
 - Github ID: wmjchf
 
-- Wechat ID: wmj3284304056
-
 - Openbuild Username: wmingjie
 
 - ERC20 钱包地址: 0xAc1a73cf5F3FD0FDF9E719dC13d74F7c612Bd8aB
