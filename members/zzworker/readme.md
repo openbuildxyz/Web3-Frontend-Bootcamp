@@ -4,8 +4,6 @@
 
 * Github ID: zzworker
 
-* Wechat ID: 0-mygod
-
 * Openbuild Username: chauncey
 
 (首次如果没有，学习完毕钱包在填写)
