@@ -4,8 +4,6 @@
 
 * Github ID: bcyangxu
 
-* Wechat ID: bcyangxu
-
 * Openbuild Username: yangxu
 
 * ERC20 钱包地址: 0x9801200fD924e315e112CD61937FD264711C6242
