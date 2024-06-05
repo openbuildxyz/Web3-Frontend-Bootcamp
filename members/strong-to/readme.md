@@ -4,8 +4,6 @@
 
 * Github ID: strong-to / strongWenChu@gmail.com
 
-* Wechat ID: t1432430298
-
 * Openbuild Username: strong tu
 
 (首次如果没有，学习完毕钱包在填写)
