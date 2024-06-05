@@ -4,8 +4,6 @@
 
 * Github ID: knit-zhang 
 
-* Wechat ID: kylezhang052
-
 * Openbuild Username: knit-zhang
 
 * ERC20 钱包地址: 0xB573C1D3026ef1FcF9B3c0448a5f0f2F6F13Bf6e
