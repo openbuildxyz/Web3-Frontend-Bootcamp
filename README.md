@@ -9,6 +9,16 @@
 
 。通过为期4周的系统课程和共同学习机制，帮助更多前端开发者丝滑进入Web3。与此同时，本次训练营将以实战为导向，一步步熟悉和掌握 Web3 前端代码开发。在4周的学习中，学员可以免费参与训练营，并可通过「学习绩点」得到最高 200U 的奖学金激励、Web3行业资源、和行业人脉等。
 
+## [Github Discussion](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions) 使用方法
+
+| Categories         | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| [🍕Materials](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/materials)         | 课外资料/课堂笔记（欢迎贡献）  |
+| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 答疑   |
+| [💰Bounty](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/bounty)   | Bounty 任务：课堂作业/课堂笔记/社区贡献etc|
+| 💡[I've got an idea!](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/i-ve-got-an-idea)   | 关于一些 Amazing fancy ideas, 用来<br />1. Web3前端共学 <br />2. 组队开发<br />3. 参加黑客松<br />4. 招聘内推<br />5. 自娱自乐🎣<br /> |
+
+
 ### ⭐ 核心亮点 ⭐
 
 🧙‍♂️ OpenBuild技术导师 + 助教团队，小白友好型氛围
@@ -38,12 +48,6 @@
 七、进阶实战：探索EVM++
 
 
-<details>
-<summary>Github Discussion / GitHub讨论方式</summary>
-<ul>
-<li><a href='#github-discussion-使用方法'>Github Discussion 使用方式</a></li>
-</ul>
-</details>
 
 
 ## 参与方式
