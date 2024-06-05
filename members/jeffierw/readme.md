@@ -4,8 +4,6 @@
 
 * Github ID: jeffierw
 
-* Wechat ID: YepW-_-
-
 * Openbuild Username: jeffier2015
 
 (首次如果没有，学习完毕钱包在填写)
