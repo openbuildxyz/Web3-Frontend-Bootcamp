@@ -37,6 +37,15 @@
 
 七、进阶实战：探索EVM++
 
+
+<details>
+<summary>Github Discussion / GitHub讨论方式</summary>
+<ul>
+<li><a href='#github-discussion-使用方法'>Github Discussion 使用方式</a></li>
+</ul>
+</details>
+
+
 ## 参与方式
 
 1. 进入【Web3 前端训练营招募】[官方链接](https://openbuild.xyz/learn/challenges/2036589711)进行报名
