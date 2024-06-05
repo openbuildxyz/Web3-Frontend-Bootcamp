@@ -4,8 +4,6 @@
 
 * Github ID: coderprepares
 
-* Wechat ID: l3ob_fishbone
-
 * Openbuild Username: zhaohong
 
 (首次如果没有，学习完毕钱包在填写)
