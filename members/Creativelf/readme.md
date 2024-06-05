@@ -4,8 +4,6 @@
 
 * Github ID: Creativelf
 
-* Wechat ID: dtswwg
-
 * Openbuild Username: Leon
 
 * ERC20 钱包地址: 0x960342fFc8AbE5e86A48401713Ae52f966446dE5
