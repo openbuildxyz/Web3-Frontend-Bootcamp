@@ -4,8 +4,6 @@
 
 * Github ID: Fang-Lansheng
 
-* Wechat ID: lansheng-fang
-
 * Openbuild Username: Lansheng
 
 * ERC20 钱包地址: 0x7705f820aa447f69683FF236A29C918a228Ecfdf
