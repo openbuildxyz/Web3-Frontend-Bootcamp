@@ -9,25 +9,21 @@ import ToDoList from './pages//ToDoList';
 
 
 function App() {
-  const [items, setItems] = useState<{ text: string; completed: boolean }[]>([]);
-
-  // 在组件挂载时从本地存储中恢复待办事项
-  useEffect(() => {
+  // const [items, setItems] = useState<{ text: string; completed: boolean }[]>([]);
+  const [items, setItems] = useState(() => {
     const storedItems = localStorage.getItem('todoItems');
-    if (storedItems) {
-      setItems(JSON.parse(storedItems));
-    }
-  }, []);
+    return storedItems ? JSON.parse(storedItems) : [];
+  });
+
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      localStorage.setItem('todoItems', JSON.stringify(items));
-    }, 1000); // 增加一个延迟以确保在一次更新中只保存一次到本地存储
-
+    localStorage.setItem('todoItems', JSON.stringify(items));
     console.log('App items:', items);
   
-    return () => clearTimeout(timeoutId); // 在组件卸载或下一次更新前清除延迟保存的操作
+    return () => {}; 
   }, [items]);
+
+
 
 
   const handleAdd = (newTodo: { text: string; completed: boolean }) => {
