@@ -4,8 +4,6 @@
 
 * Github ID: anderfib
 
-* Wechat ID: wxid16e59v4b91
-
 * Openbuild Username: czijian
 
 (首次如果没有，学习完毕钱包在填写)
