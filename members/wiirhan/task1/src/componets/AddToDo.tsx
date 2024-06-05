@@ -34,7 +34,7 @@ function AddToDo({ addItem }: { addItem: React.Dispatch<React.SetStateAction<Tod
   }, [])
 
   return (
-    <div className="flex">
+    <div className="todo rounded border-2">
       <input
         id="toggle-all"
         className="toggle-all"
@@ -43,6 +43,7 @@ function AddToDo({ addItem }: { addItem: React.Dispatch<React.SetStateAction<Tod
       />
       <label htmlFor="toggle-all"></label>
       <input
+        className="px-4 grow"
         placeholder="What needs to be done?"
         type="text"
         value={text}
