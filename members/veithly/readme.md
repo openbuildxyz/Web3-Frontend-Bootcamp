@@ -4,11 +4,7 @@
 
 * Github ID: veithly
 
-* Wechat ID: RICKY-SHA0
-
 * Openbuild Username: veithly
-
-(首次如果没有，学习完毕钱包在填写)
 
 * ERC20 钱包地址: 0xfce7d57ffed117ffaa1ec3d4c0b6154e8384cc06
 
