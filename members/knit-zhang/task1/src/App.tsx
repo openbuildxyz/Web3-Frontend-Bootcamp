@@ -12,11 +12,10 @@ function App() {
     return storedTodos ? JSON.parse(storedTodos) : [];
   });
 
-  // 生成下一个id
-  const id = toDo.length + 1;
-
   // 添加 todo
   function handleAdd(text: string) {
+    // 生成下一个id
+    const id = toDo.length + 1;
     setToDo([
       ...toDo,
       {id, text, complete: false}
