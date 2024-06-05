@@ -4,8 +4,6 @@
 
 * Github ID: wureny
 
-* Wechat ID: alexwu_wry
-
 * Openbuild Username: alexwu_wry
 
 * ERC20 钱包地址: wureny.eth
