@@ -38,7 +38,7 @@ function ToDoList() {
         <input value={content} onChange={(e) => setContent(e.target.value)} />
         <AddToDo onClick={addEvent} />
       </div>
-      <div>
+      <div className="todo-list">
         {events.map((event) => (
           <ToDoItem
             key={event.uuid}

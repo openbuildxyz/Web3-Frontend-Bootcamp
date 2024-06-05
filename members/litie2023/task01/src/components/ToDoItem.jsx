@@ -6,7 +6,8 @@ function ToDoItem({ event, delItem, setDone }) {
     <>
       <div className="todo-item">
         <div onClick={() => setDone(event.uuid)} className="item-content">
-          {event.isDone && '✔'} {event.content}
+          {event.content}
+          {event.isDone && ' ✔'}
         </div>
         <div className="item-del" onClick={handleDelItem}>
           Del
