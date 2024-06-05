@@ -6,7 +6,7 @@
 
 * Github ID: sunshanpeng
 * Wechat ID: apeng2024
-* Openbuild Username:
+* Openbuild Username: apeng sun
 
 (首次如果没有，学习完毕钱包在填写)
 
