@@ -3,9 +3,7 @@
 ## 个人信息
 
 * Github ID: K-tang-mkv
-
-* Wechat ID: Gant_fin
-
+  
 * Openbuild Username: Gant
 
 (首次如果没有，学习完毕钱包在填写)
