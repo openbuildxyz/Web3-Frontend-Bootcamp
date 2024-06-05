@@ -4,8 +4,6 @@
 
 * Github ID:
 
-* Wechat ID: bcma2333
-
 * Openbuild Username: bcma2019
 
 (首次如果没有，学习完毕钱包在填写)
