@@ -8,7 +8,9 @@ const AddToDo = ({ addTask }) => {
     };
 
     const handleAddTask = () => {
-        addTask(input);
+        if (input) {
+            addTask(input)
+        }
         setInput("");
     };
 

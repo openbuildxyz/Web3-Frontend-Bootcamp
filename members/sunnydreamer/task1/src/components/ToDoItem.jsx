@@ -5,11 +5,20 @@ import { useState } from 'react';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-const ToDoItem = ({ index, task, deleteTask }) => {
-    const [isChecked, setIsChecked] = useState(false); // Default state is false (unchecked)
+const ToDoItem = ({ index, tasks, task, deleteTask }) => {
+    const [isChecked, setIsChecked] = useState(task.checked);
 
     const handleCheckboxChange = (event) => {
-        setIsChecked(event.target.checked);
+        const updatedChecked = event.target.checked;
+        setIsChecked(updatedChecked);
+
+        const updatedTasks = tasks.map((item, idx) => {
+            if (idx === index) {
+                return { ...item, checked: updatedChecked };
+            }
+            return item;
+        });
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
 
     return (
@@ -26,7 +35,7 @@ const ToDoItem = ({ index, task, deleteTask }) => {
                     }}
                     onChange={handleCheckboxChange}
                 />
-                <p style={{ textDecoration: isChecked ? 'line-through' : 'none' }}>{task}</p>
+                <p style={{ textDecoration: isChecked ? 'line-through' : 'none' }}>{task.name}</p>
 
             </div>
             <div className="toDoItemRight">

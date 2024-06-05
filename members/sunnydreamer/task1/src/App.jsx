@@ -10,18 +10,28 @@ function App() {
 
   const [tasks, setTasks] = useState([])
   const addTask = (task) => {
-    const updatedTasks = [...tasks, task];
+
+    const newTask = {
+      name: task,
+      checked: false // Default to unchecked
+    };
+
+    const updatedTasks = [...tasks, newTask];
     setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   const deleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks])
+    if (localStorage.tasks) {
+      setTasks(JSON.parse(localStorage.tasks));
+    }
+  }, [])
 
 
 
