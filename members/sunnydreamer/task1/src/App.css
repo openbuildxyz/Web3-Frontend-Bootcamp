@@ -1,0 +1,76 @@
+h2 {
+  text-align: center;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.appContainer {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  height: 100%;
+  width: 85%;
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.inputContainer input {
+  width: 15rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 20px 0 0 20px;
+  background-color: rgb(246, 246, 246);
+  padding: 10px 15px;
+  outline: none;
+}
+
+.inputContainer button {
+  background-color: #f44336;
+  color: white;
+  border: 0;
+  border-radius: 0 20px 20px 0;
+  width: 5rem;
+}
+
+.inputContainer button:hover {
+  background-color: darkorange;
+  cursor: pointer;
+}
+.toDoListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 22rem;
+  margin: 2em auto;
+}
+.toDoItemContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(243, 243, 243);
+}
+
+.toDoItemLeft {
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  flex: 1;
+}
+
+.deleteButton {
+  color: rgb(202, 202, 202);
+  margin: 0 8px;
+}
+
+.deleteButton:hover {
+  color: black; /* Change color to black on hover */
+}
