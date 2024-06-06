@@ -82,7 +82,7 @@ h1 {
 
 .todo-item .destroy {
   display: none;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .todo-item .destroy:hover {
