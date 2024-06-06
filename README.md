@@ -56,6 +56,9 @@
 
 ### 任务提交
 
+> 在此之前，需要 `Fork` 本仓库(右上角)，随后将 `Fork` 的仓库 `clone` 至本地，接下来的所有任务请在自己的仓库内完成。  
+> 如果你不熟悉 git 的操作，可以下载一个 [GithubDesktop](https://desktop.github.com/)，使用 GUI 完成任务
+
 1. 复制 `members` 文件夹中的 `github_id` 文件夹，将新文件夹名称改为自己的github id，填写其中 `readme.md` 的信息，提交 PR ,完成注册报名
 
 2. 任务代码必须全部开源公开，每个任务提交一次 PR
@@ -64,6 +67,12 @@
 
 4. [任务提交示例](members/Beavnvvv)
 
+### 任务提交规范
+
+每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
+
+**请按要求提交你的pr，否则可能影响奖励的计算**
+
 ## 奖励明细 请仔细阅读要求
 
 | 任务                                         | 名称         | 奖励金额      | 说明                     |
@@ -71,7 +80,7 @@
 | [Task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
 | [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    ￥18     | 区块链基础小测 |
 | [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
-| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
+| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 使用ethers.js和wagmi与NFTMarket合约交互         |
 | [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
 | [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
 | [Task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
