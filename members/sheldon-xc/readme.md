@@ -4,10 +4,6 @@
 
 * Github ID: sheldon-xc
 
-* Wechat ID:
-
-* Telegram ID:sheldon_xc
-
 * Openbuild Username: sheldon
 
 * ERC20 钱包地址: 0xec19026df3B0351635eD200DAf47443276aDedc8
