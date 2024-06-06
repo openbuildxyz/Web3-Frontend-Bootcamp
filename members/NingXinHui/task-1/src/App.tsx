@@ -11,6 +11,7 @@ interface ToDo {
 }
 
 const App: React.FC = () => {
+
   const [todos, setTodos] = useState<ToDo[]>([]);
 
   // 加载本地存储中的待办事项
@@ -21,18 +22,16 @@ const App: React.FC = () => {
     }
   }, []);
 
-  // 保存待办事项到本地存储
-  useEffect(() => {
-    if (!todos.length) return
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-
   const addTodo = (todo: ToDo) => {
+    const _newTodos = [...todos, todo]
+    handleSetStorage(_newTodos);
     setTodos([...todos, todo]);
   };
 
   const deleteTodo = (index: number) => {
     const newTodos = todos.filter((_, i) => i !== index);
+    const _newTodos = [...newTodos]
+    handleSetStorage(_newTodos);
     setTodos(newTodos);
   };
 
@@ -40,8 +39,13 @@ const App: React.FC = () => {
     const newTodos = todos.map((todo, i) =>
       i === index ? { ...todo, completed: !todo.completed } : todo
     );
+    handleSetStorage(newTodos);
     setTodos(newTodos);
   };
+
+  const handleSetStorage = (todos: ToDo[]) => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
 
   return (
     <div>

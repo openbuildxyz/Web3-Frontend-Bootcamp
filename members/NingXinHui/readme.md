@@ -4,14 +4,12 @@
 
 * Github ID: NingXinHui
 
-* Wechat ID: 18810276939
+* Wechat ID: SuperXinHui2024
 
-* Openbuild Username: 
+* Openbuild Username: tryingnxh
 
 (首次如果没有，学习完毕钱包在填写)
 
 * ERC20 钱包地址: 0x013E3EDFDaa9533d765219b294Ea87e26c9396E6
 
 ### 个人介绍
-
-
