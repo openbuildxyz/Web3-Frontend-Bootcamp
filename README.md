@@ -56,6 +56,9 @@
 
 ### 任务提交
 
+> 在此之前，需要 `Fork` 本仓库(右上角)，随后将 `Fork` 的仓库 `clone` 至本地，接下来的所有任务请在自己的仓库内完成。  
+> 如果你不熟悉 git 的操作，可以下载一个 [GithubDesktop](https://desktop.github.com/)，使用 GUI 完成任务
+
 1. 复制 `members` 文件夹中的 `github_id` 文件夹，将新文件夹名称改为自己的github id，填写其中 `readme.md` 的信息，提交 PR ,完成注册报名
 
 2. 任务代码必须全部开源公开，每个任务提交一次 PR
@@ -63,6 +66,18 @@
 3. 审核任务完成会把奖励打入 `readme.md` 提供的地址
 
 4. [任务提交示例](members/Beavnvvv)
+
+### 任务提交规范
+
+每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
+
+**请不要在一个 `PR` 内提交多个 `task`，报名必须独立为一个 `PR`**
+
+`pr` 的标题必须为 `task[n]: user-name`，例如： `task0: Beavnvvv`
+
+报名的 pr，只允许填写基本信息，并且命名为： `init: [user-name]`，例如： `init: Beavnvvv`
+
+**请按要求提交你的pr，否则可能影响奖励的计算**
 
 ## 奖励明细 请仔细阅读要求
 
