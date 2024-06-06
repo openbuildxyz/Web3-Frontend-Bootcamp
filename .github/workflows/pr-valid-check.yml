@@ -9,7 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: print context
-        run: echo ${{ github.actor }}
+        run: |
+          echo "event.before:" ${{ github.event.before }}
+          echo "event.after:" ${{ github.event.after }}
       - name: Check if all changes are in members folder
         id: check_changes
         run: |
