@@ -10,11 +10,9 @@
 
 ### 运行截图
 
-![alt 截图](E:\AAAAA\gitee\web3\start\lab\Web3-Frontend-Bootcamp\members\gamble369\task1\todolist.gif)
+![alt 截图](.\todolist.gif)
 
-
-
-[截图](./todolist.gif)``
+[截图](./todolist.gif)
 
 ### 项目说明
 
