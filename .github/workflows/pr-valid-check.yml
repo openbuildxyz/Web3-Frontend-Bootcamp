@@ -11,6 +11,12 @@ jobs:
       - name: print context
         run: echo ${{ github.actor }}
       - name: Check if all changes are in members folder
+        id: check_changes
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep -v "^members/${{ github.actor }}"
-          continue-on-error: true
+          invalid_changes=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep "^members/${{ github.actor }}/")
+          if [[ -n $invalid_changes ]]; then
+            echo "Some changes are not in your members folder"
+            exit 1
+          else
+            echo "All changes are in your members folder"
+          fi
