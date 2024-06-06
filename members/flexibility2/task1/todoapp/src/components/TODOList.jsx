@@ -22,13 +22,13 @@ function Item({ item }) {
       </button>
       <div className="todo_items_right">
         <button>
-          <span className="visually_hidden">Edit</span>
+          <span className="visually-hidden">Edit</span>
           <svg>
             <path d="" />
           </svg>
         </button>
         <button>
-          <span className="visually_hidden">Delete</span>
+          <span className="visually-hidden">Delete</span>
           <svg>
             <path d="" />
           </svg>

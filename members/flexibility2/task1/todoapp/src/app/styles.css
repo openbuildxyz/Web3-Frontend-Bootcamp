@@ -1,0 +1,150 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: sans-serif;
+  background-color: #0d0d0d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+button {
+  cursor: pointer;
+}
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.text_large {
+  font-size: 32px;
+}
+
+.text_small {
+  font-size: 24px;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+@media (max-width: 510px) {
+  .wrapper {
+    width: 100%;
+  }
+  header {
+    justify-content: center;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 42px;
+}
+
+.form {
+  align-self: center;
+  width: 97%;
+  max-width: 455px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.form label {
+  width: 90%;
+}
+.form input {
+  background-color: #1f2937;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 11px;
+  padding: 12px;
+}
+
+.form button {
+  width: 10%;
+  height: 50px;
+  border-radius: 11px;
+  background-color: #88ab33;
+  border: none;
+}
+
+.todo_list {
+  align-self: center;
+  width: 97%;
+  max-width: 455px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27px;
+  margin-bottom: 27px;
+  gap: 27px;
+}
+
+.todo_items_left,
+.todo_items_right {
+  display: flex;
+  align-items: center;
+}
+.todo_items_left {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  gap: 12px;
+  font-size: 16px;
+}
+.todo_items_right {
+  gap: 4px;
+}
+.todo_items_right button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+}
+.todo_items_right button svg {
+  fill: #c2b39a;
+}
+
+.todohero_section {
+  border: 1px solid #c2b39a;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-self: center;
+  width: 90%;
+  max-width: 455px;
+  padding: 12px;
+  border-radius: 11px;
+}
+.todohero_section div:last-child {
+  background-color: #88ab33;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
