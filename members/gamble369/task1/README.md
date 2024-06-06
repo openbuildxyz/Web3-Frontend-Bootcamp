@@ -12,6 +12,7 @@
 
 ![alt 截图](.\todolist.gif)
 
+![alt 截图](.\todolist.png)
 [截图](./todolist.gif)
 
 ### 项目说明
