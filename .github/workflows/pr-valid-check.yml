@@ -12,6 +12,10 @@ jobs:
         run: |
           echo "event.before:" ${{ github.event.before }}
           echo "event.after:" ${{ github.event.after }}
+          echo "github.event_name: " ${{ github.event_name }}
+          echo "github.ref: " ${{ github.ref }}
+          echo "github.event.pull_request.head.ref: " ${{ github.event.pull_request.head.ref }}
+          echo "github.event.pull_request.base.ref: " ${{ github.event.pull_request.base.ref }}
       - name: Check if all changes are in members folder
         id: check_changes
         run: |
