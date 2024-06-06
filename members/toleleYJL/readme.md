@@ -6,8 +6,6 @@
 
 * Openbuild Username: tolele666
 
-(首次如果没有，学习完毕钱包在填写)
-
 * ERC20 钱包地址: 0x2ad0b1f759448953da19617fec421672805165fd
 
 ### 个人介绍
