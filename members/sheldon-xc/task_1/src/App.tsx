@@ -67,8 +67,10 @@ function App(props: Props) {
   const localStorageTodoList = localStorage.getItem('toDoList')
   const storedTodoList = localStorageTodoList ? JSON.parse(localStorageTodoList) : [];
   const defaultTodoList = storedTodoList.map((task: ToDoTask) => {
-    task.isEditing = false
-    return task
+    return {
+      ...task,
+      isEditing: false
+    }
   })
   const [toDoList, setToDoList] = useState<ToDoTask[]>(defaultTodoList)
 
