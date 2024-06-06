@@ -75,10 +75,6 @@ function App(props: Props) {
   const [toDoList, setToDoList] = useState<ToDoTask[]>(defaultTodoList)
 
   useEffect(() => {
-    localStorage.getItem('toDoList') && setToDoList(JSON.parse(localStorage.getItem('toDoList') || ''));
-  },[])
-
-  useEffect(() => {
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
   }, [toDoList]);
 
