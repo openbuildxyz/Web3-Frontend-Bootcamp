@@ -2,7 +2,7 @@
 
 ## 个人信息
 
-* Github ID: 64182179
+* Github ID: zhuoqinyue
 
 * Wechat ID: torch_tree
 
