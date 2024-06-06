@@ -10,9 +10,9 @@
 
 ### 运行截图
 
-![alt 截图](.\todolist.gif)
+![alt 截图](https://pic.imgdb.cn/item/666109f95e6d1bfa054afddb.gif)
 
-![alt 截图](.\todolist.png)
+![alt 截图](./todolist.png)
 [截图](./todolist.gif)
 
 ### 项目说明
