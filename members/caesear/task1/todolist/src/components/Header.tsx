@@ -5,7 +5,7 @@ import React from 'react';
 const Header: React.FC = () => {
   return (
     <header>
-      <h1>待办事项</h1>  
+      <h1 className="text-2xl font-bold text-center mb-4">待办事项</h1>  
     </header>
   );
 };

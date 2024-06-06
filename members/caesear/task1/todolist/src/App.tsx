@@ -4,6 +4,7 @@ import Header from './components/Header';
 import ToDoList from './components/ToDoList';
 import AddToDo from './components/AddToDo';
 import { Todo } from './types';
+import './index.css'
 
 // 定义根组件，管理应用状态和逻辑
 const App: React.FC = () => {
@@ -31,10 +32,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <AddToDo addTodo={addTodo} />
-      <ToDoList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+    <div className="container mx-auto mt-10 max-w-lg">
+      <div className="bg-white p-8 rounded-lg shadow-lg">
+        <Header />
+     
+          <AddToDo addTodo={addTodo} />
+          <ToDoList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+     
+      </div>
+     
+     
     </div>
   );
 };

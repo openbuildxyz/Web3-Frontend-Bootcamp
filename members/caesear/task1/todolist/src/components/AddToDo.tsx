@@ -18,14 +18,18 @@ const AddToDo: React.FC<AddToDoProps> = ({ addTodo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex mb-4">
       <input
         type="text"
         value={text}  // 输入框的值
         onChange={(e) => setText(e.target.value)}  // 更新输入框的值
-        placeholder="输入待办事项"  // 输入框的占位符
+        placeholder="输入待办事项" 
+  
+        className="shadow appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       />
-      <button type="submit">添加</button>  
+      <button 
+       className="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-shrink-0"
+      type="submit">添加</button>  
     </form>
   );
 };
