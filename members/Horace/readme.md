@@ -18,4 +18,3 @@
     - React/Typescript
     - Solidity/wagmi/web3.js
 
-
