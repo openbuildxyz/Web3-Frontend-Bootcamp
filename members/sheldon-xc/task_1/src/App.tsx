@@ -67,17 +67,12 @@ function App(props: Props) {
   const localStorageTodoList = localStorage.getItem('toDoList')
   const storedTodoList = localStorageTodoList ? JSON.parse(localStorageTodoList) : [];
   const defaultTodoList = storedTodoList.map((task: ToDoTask) => {
-    // task.isEditing = false
     return {
       ...task,
       isEditing: false
     }
   })
   const [toDoList, setToDoList] = useState<ToDoTask[]>(defaultTodoList)
-
-  useEffect(() => {
-    localStorage.getItem('toDoList') && setToDoList(JSON.parse(localStorage.getItem('toDoList') || ''));
-  },[])
 
   useEffect(() => {
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
