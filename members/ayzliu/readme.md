@@ -2,7 +2,7 @@
 (示例)
 ## 个人信息
 
-* Github ID:azyliu
+* Github ID:ayzliu
 
 * Wechat ID: _ayzayz_063
 
