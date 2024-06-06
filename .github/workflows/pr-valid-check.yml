@@ -1,11 +1,14 @@
 name: pr-valid-check
 on:
   pull_request:
+    
   
 jobs:
   check_pr:
     runs-on: ubuntu-latest
     steps:
+      - name: print context
+        run: echo ${{ github.actor }}
       - name: Check if all changes are in members folder
         run: |
           git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep -v "^members/${{ github.actor }}/"
