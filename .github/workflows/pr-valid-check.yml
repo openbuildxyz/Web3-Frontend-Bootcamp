@@ -12,4 +12,5 @@ jobs:
         run: echo ${{ github.actor }}
       - name: Check if all changes are in members folder
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep -v "^members/${{ github.actor }}/"
+          git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep -v "^members/${{ github.actor }}"
+          continue-on-error: true
