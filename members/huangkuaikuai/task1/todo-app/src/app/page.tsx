@@ -53,6 +53,13 @@ export default function Example() {
     localStorage.setItem('todos', JSON.stringify(newData));
   }
 
+  const handleDelete = (index: number) => {
+    const updatedItems = [...todoList]; 
+    updatedItems.splice(index, 1); 
+    setTodoList(updatedItems); 
+    localStorage.setItem('todos', JSON.stringify(updatedItems));
+  }
+
   return (
     <div className="bg-white min-h-screen">
       <Header />
@@ -79,7 +86,7 @@ export default function Example() {
             </p>
           </div>
           <AddToDo content={content} handleContentChange={handleContentChange} handleAddTodo={handleAddTodo}/>
-          <TodoList data={todoList} handleStatusChange={handleStatusChange} />
+          <TodoList data={todoList} handleStatusChange={handleStatusChange} handleDelete={handleDelete} />
         </div>
         <div
           className="absolute inset-x-0 top-[calc(100%-24rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-48rem)]"
