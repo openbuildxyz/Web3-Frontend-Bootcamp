@@ -5,7 +5,7 @@ import Header from './components/header';
 import type { IToDoItem } from './components/toDoItem';
 import AddToDo from './components/addToDo';
 
-import './App.css'
+import './App.css';
 
 
 
@@ -78,4 +78,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default App;
