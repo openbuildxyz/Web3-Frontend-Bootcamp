@@ -8,7 +8,7 @@
 
 - Openbuild Username: zeroFire
 
-- ERC20 钱包地址: 0x02ab15033c610d8b5a64c1e95e1ad9826fec728db9c8cb03bec0f6db765d6ed9
+- ERC20 钱包地址: 0xA0826f532aE1a59f6a67A32a1a178008958c8f83
 
 ### 个人介绍
 
