@@ -6,7 +6,7 @@
 
 * Openbuild Username:Jasmin
 
-* ERC20 钱包地址: 
+* ERC20 钱包地址: 0xda9949E9CAAE292d2222320853c3d58fDae29755
 (首次如果没有，学习完毕钱包在填写)
 
 ### 个人介绍
