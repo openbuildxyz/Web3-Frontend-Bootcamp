@@ -71,12 +71,6 @@
 
 每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
 
-**请不要在一个 `PR` 内提交多个 `task`，报名必须独立为一个 `PR`**
-
-`pr` 的标题必须为 `task[n]: user-name`，例如： `task0: Beavnvvv`
-
-报名的 pr，只允许填写基本信息，并且命名为： `init: [user-name]`，例如： `init: Beavnvvv`
-
 **请按要求提交你的pr，否则可能影响奖励的计算**
 
 ## 奖励明细 请仔细阅读要求
@@ -86,7 +80,7 @@
 | [Task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
 | [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    ￥18     | 区块链基础小测 |
 | [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
-| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 为NFTMarket创建前端组件         |
+| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 使用ethers.js和wagmi与NFTMarket合约交互         |
 | [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
 | [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
 | [Task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
