@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app {
+  @apply mx-auto max-w-xl p-4;
+}
+
+.todo-item {
+  @apply flex justify-between items-center p-2 border-b border-gray-300;
+}
+
+input[type='text'] {
+  @apply border rounded p-1 mr-2;
+}
+
+button {
+  @apply bg-blue-500 text-white p-2 rounded;
+}
