@@ -2,11 +2,13 @@
 
 ## 个人信息
 
-* GitHub ID:
-* OpenBuild Username:
-* ERC20 钱包地址: (首次如果没有，学习完毕钱包在填写)
+* GitHub ID: zhengbangbo
+* OpenBuild Username: zbbgoforit
+* ERC20 钱包地址: 0x85bb32f656D107e13DD53018EEb1d98c97304609
 
 ### 个人介绍
+
+I am a Web Developer who is new to Web3 technology.
 
 ## 任务提交
 

@@ -2,11 +2,13 @@
 
 ## 个人信息
 
-* GitHub ID:
-* OpenBuild Username:
-* ERC20 钱包地址: (首次如果没有，学习完毕钱包在填写)
+* GitHub ID:0x4E33
+* OpenBuild Username:damoon
+* ERC20 钱包地址:0x063913A7E333a273ec669D77E016C3f4dB31B4D1
 
 ### 个人介绍
+
+`目前在学习智能合约开发和链上数据分析，对Web3技术栈感兴趣`
 
 ## 任务提交
 
