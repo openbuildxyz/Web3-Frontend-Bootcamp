@@ -6,7 +6,7 @@
 
 - Openbuild Username: jessie.chen
 
-- ERC20 钱包地址: 0x2d10161722ddfd68716ae6ea2a341abac23677e3
+- ERC20 钱包地址: 0x74F03eA45f92610FA6A370319bCa688D3c2852A4
 
 ### 个人介绍
 
