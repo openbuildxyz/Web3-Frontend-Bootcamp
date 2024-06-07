@@ -1,0 +1,27 @@
+.todo-item{
+    display: flex;
+    line-height: 40px;
+    padding: 6px 10px;
+    justify-content: space-between;
+}
+.todo-item-btn:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.todo-item-btn{
+    padding-right: 8px;
+}
+.todo-item-status-ing{
+    padding-right: 8px;
+    color: red;
+}
+.todo-item-status-end{
+    padding-right: 8px;
+    color : green;
+}
+.todo-item-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 70%;
+    text-align: left;
+}
