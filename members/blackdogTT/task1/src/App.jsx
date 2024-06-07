@@ -74,7 +74,7 @@ function App() {
 				setCurrentIndex,
 			}}
 		>
-			<div className='w-[600px] mx-auto my-0'>
+			<div className='w-[800px] mx-auto my-0'>
 				<Header></Header>
 				<ToDoList></ToDoList>
 			</div>

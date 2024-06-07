@@ -10,17 +10,39 @@ export default (props) => {
 		const secondPart = arr.slice(index + 1);
 		storeTodoList([...firstPart, ...secondPart]);
 	};
-	const edit = (index) => {
-		setCurrentIndex(index);
+	const edit = (_index) => {
+		setCurrentIndex(_index);
 		modalRef.current.showModal();
+	};
+
+	const onCheckboxClick = (index) => {
+		storeTodoList(
+			todoList.map((item, _index) => {
+				if (index === _index) {
+					item.status = item.status === 1 ? 0 : 1;
+				}
+				return item;
+			})
+		);
 	};
 
 	return (
 		<>
 			<tr>
 				<th>{index + 1}</th>
+				<th className='flex space-x-2 align-middle'>
+					<input
+						onClick={() => {
+							onCheckboxClick(index);
+						}}
+						type='checkbox'
+						checked={item.status === 1}
+						className='checkbox'
+					/>
+					<span>{item.status === 1 ? '已办' : '待办'}</span>
+				</th>
 				<td>
-					<p className='truncate w-[400px]'>{item?.content || ''}</p>
+					<p className='truncate w-[300px]'>{item?.content || ''}</p>
 				</td>
 				<td>
 					<div className='flex justify-center space-x-4'>

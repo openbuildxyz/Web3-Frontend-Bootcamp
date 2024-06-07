@@ -6,11 +6,12 @@ export default () => {
 	const { todoList } = useContext(AppContext);
 	return (
 		<div>
-			<table className='table max-w-[600px]'>
+			<table className='table max-w-[800px]'>
 				{/* head */}
 				<thead>
 					<tr>
 						<th className='w-[50px]'>序号</th>
+						<th className='w-[150px]'>状态</th>
 						<th>内容</th>
 						<th className='w-[200px]'>操作</th>
 					</tr>
