@@ -16,6 +16,7 @@ jobs:
           echo "github.ref: " ${{ github.ref }}
           echo "github.event.pull_request.head.ref: " ${{ github.event.pull_request.head.ref }}
           echo "github.event.pull_request.base.ref: " ${{ github.event.pull_request.base.ref }}
+          echo "github.event.pull_request.changes: " ${{ github.event.pull_request.changes }}
       - name: Check if all changes are in members folder
         id: check_changes
         run: |
