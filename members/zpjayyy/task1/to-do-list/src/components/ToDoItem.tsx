@@ -8,8 +8,8 @@ export default function ToDoItem({
   onDelete: (index: number) => void;
 }) {
   return (
-    <div className="todo-item">
-      <p>{todo}</p>
+    <div className="flex items-center border-2 border-gray-200 mb-1">
+      <p className="flex-1">{todo}</p>
       <button
         onClick={() => {
           onDelete(index);

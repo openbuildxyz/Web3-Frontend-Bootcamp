@@ -29,11 +29,11 @@ function App() {
   }, [todos]);
 
   return (
-    <>
+    <div className="flex-col">
       <Header />
       <AddToDo onAddTodo={onAddTodo} />
       <ToDoList todos={todos} onDeleteTodo={onDeleteTodo} />
-    </>
+    </div>
   );
 }
 

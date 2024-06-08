@@ -10,8 +10,10 @@ export default function AddToDo({
     <div>
       <form>
         <input
+          className="m-2 h-10 border-2 border-gray-200"
           type="text"
           value={value}
+          placeholder="Add a new todo"
           onChange={(e) => setValue(e.target.value)}
         />
         <button
@@ -21,7 +23,7 @@ export default function AddToDo({
             setValue("");
           }}
         >
-          Add todo
+          Add Todo
         </button>
       </form>
     </div>
