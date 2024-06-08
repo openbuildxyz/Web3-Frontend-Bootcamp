@@ -18,12 +18,10 @@ const AddTodo: React.FC<AddTodoProps> = ({ addTodo }) => {
   };
 
   return (
-    <>
-      <div className='flex gap-2 mx-auto w-1/3'>
-        <Input className='w-full' ref={inputRef} />
-        <Button onClick={handleAddTodo}>添加</Button>
-      </div>
-    </>
+    <div className='flex gap-2 mx-auto w-1/3'>
+      <Input className='w-full' ref={inputRef} />
+      <Button onClick={handleAddTodo}>添加</Button>
+    </div>
   );
 };
 

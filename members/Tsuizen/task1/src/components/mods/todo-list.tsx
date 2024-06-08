@@ -15,7 +15,6 @@ const TodoList: React.FC<TodoListProps> = ({
 }) => {
   return (
     <div className='flex justify-start flex-col w-1/3'>
-      
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}

@@ -11,9 +11,12 @@ import Header from './components/mods/header';
 function App() {
   const [todos, setTodos] = useState<Todo[]>(() => {
     try {
-      return localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')!) : []
-    } catch (err) {
-      return []
+      return localStorage.getItem('todos')
+        ? JSON.parse(localStorage.getItem('todos')!)
+        : [];
+    } catch (error) {
+      console.error(error);
+      return [];
     }
   });
 
@@ -21,7 +24,7 @@ function App() {
     try {
       localStorage.setItem('todos', JSON.stringify(todos));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, [todos]);
 
@@ -43,17 +46,15 @@ function App() {
   };
 
   return (
-    <>
-      <div className='container h-screen w-screen flex items-center justify-center flex-col gap-4'>
-        <Header title='Todo-list' />
-        <AddTodo addTodo={addTodo} />
-        <TodoList
-          todos={todos}
-          toggleStatus={toggleStatus}
-          deleteTodo={deleteTodo}
-        />
-      </div>
-    </>
+    <div className='container h-screen w-screen flex items-center justify-center flex-col gap-4'>
+      <Header title='Todo-list' />
+      <AddTodo addTodo={addTodo} />
+      <TodoList
+        todos={todos}
+        toggleStatus={toggleStatus}
+        deleteTodo={deleteTodo}
+      />
+    </div>
   );
 }
 
