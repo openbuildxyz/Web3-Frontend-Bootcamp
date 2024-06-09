@@ -1,5 +1,6 @@
 # 开发一个待办事项应用
 [---> 预览地址](https://web3-frontend-bootcamp-gamma.vercel.app/)
+![预览](public/20240607195556.png)
 ## 任务目标
 
 - 掌握 React 组件化开发：通过构建多个组件，理解组件的创建和复用。
