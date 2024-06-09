@@ -2,11 +2,11 @@
 (示例)
 ## 个人信息
 
-* Github ID:
+* Github ID:xiaodingmao
 
-* Wechat ID: birchspace
+* Wechat ID: 18682253137
 
-* Openbuild Username: birchrust
+* Openbuild Username: 1411258142
 
 (首次如果没有，学习完毕钱包在填写)
 
