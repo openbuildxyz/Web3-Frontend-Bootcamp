@@ -5,7 +5,7 @@ function TODOList({ todos, setTodos }) {
     <ol className="todo_list">
       {todos && todos.length > 0 ? (
         todos.map((item, index) => (
-          <Item key={index} item={item} setTodos={setTodos} />
+          <Item key={index} item={item} todos={todos} setTodos={setTodos} />
         ))
       ) : (
         <p>Seems lonely in here, what are you up to?</p>
@@ -15,7 +15,7 @@ function TODOList({ todos, setTodos }) {
 }
 export default TODOList;
 
-function Item({ item, setTodos }) {
+function Item({ item, todos, setTodos }) {
   const completeTodo = () => {
     setTodos((prevTools) =>
       prevTools.map((todo) =>
@@ -24,6 +24,8 @@ function Item({ item, setTodos }) {
           : todo
       )
     );
+    const updateTodoList = JSON.stringify(todos);
+    localStorage.setItem("todos", updateTodoList);
   };
 
   const [editing, setEditing] = React.useState(false);
@@ -33,9 +35,13 @@ function Item({ item, setTodos }) {
   };
   const handleInputBlur = () => {
     setEditing(false);
+    const updateTodoList = JSON.stringify(todos);
+    localStorage.setItem("todos", updateTodoList);
   };
   const handleInpuSubmit = (event) => {
     event.preventDefault();
+    const updateTodoList = JSON.stringify(todos);
+    localStorage.setItem("todos", updateTodoList);
     setEditing(false);
   };
   React.useEffect(() => {
@@ -53,6 +59,13 @@ function Item({ item, setTodos }) {
         todo.id === item.id ? { ...todo, title: event.target.value } : todo
       )
     );
+  };
+  const handleDelete = () => {
+    setTodos((prevTools) => prevTools.filter((todo) => todo.id !== item.id));
+    const updateTodoList = JSON.stringify(
+      todos.filter((todo) => todo.id !== item.id)
+    );
+    localStorage.setItem("todos", updateTodoList);
   };
   return (
     <li id={item?.id} className="todo_item" onClick={completeTodo}>
@@ -114,7 +127,7 @@ function Item({ item, setTodos }) {
                 />
               </svg>
             </button>
-            <button>
+            <button onClick={handleDelete}>
               <span className="visually-hidden">Delete</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
