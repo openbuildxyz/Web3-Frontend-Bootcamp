@@ -14,8 +14,4 @@
 
 一年经验，上个月刚推出个人 NFT 项目（BSC 链）：MAS Awareness (https://mas-awareness.top)；
 
-2024 年 6 月将推出另一个 NFT 项目。
-
-## 作业
-
-https://github.com/linghuccc/openbuild-frontend
+2024 年 6 月将推出第二个 NFT 项目。
