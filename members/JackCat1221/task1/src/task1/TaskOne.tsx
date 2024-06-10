@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 interface Todo {
   title: string;
   time: string;
+  statusText: string;
   description: string;
 }
 
@@ -31,12 +32,18 @@ const TaskOne = () => {
 
   useEffect(() => {
     const listStr = JSON.stringify(list);
-    console.log(list, listStr);
     localStorage.setItem("list", listStr);
   }, [list]);
 
   const ToDoItem = ({ data, index }: { data: Todo; index: number }) => {
     const [openConfirm, setOpenConfirm] = useState(false);
+
+    const handleChangeStatus = () => {
+      const newList = JSON.parse(JSON.stringify(list));
+      newList[index].statusText =
+        newList[index].statusText == "DONE" ? "TODO" : "DONE";
+      setList(newList);
+    };
 
     const handleDelete = () => {
       setOpenConfirm(true);
@@ -63,9 +70,13 @@ const TaskOne = () => {
         <span>{data.title}</span>
         <span>{data.description}</span>
         <span>{data.time}</span>
-        <Button onClick={handleDelete} color="error">
-          Delete
-        </Button>
+
+        <div>
+          <Button onClick={handleChangeStatus}>{data.statusText}</Button>
+          <Button onClick={handleDelete} color="error">
+            Delete
+          </Button>
+        </div>
 
         <Dialog
           open={openConfirm}
@@ -91,7 +102,7 @@ const TaskOne = () => {
     return (
       <ul>
         {list.map((item: Todo, index: number) => (
-          <ToDoItem data={item} index={index} />
+          <ToDoItem data={item} key={item.time} index={index} />
         ))}
       </ul>
     );
@@ -116,6 +127,7 @@ const TaskOne = () => {
             const formData = new FormData(event.currentTarget);
             const formJson = Object.fromEntries((formData as any).entries());
             formJson.time = new Date().toLocaleString();
+            formJson.statusText = "DONE";
             setList([...list, formJson as Todo]);
             handleClose();
           },
