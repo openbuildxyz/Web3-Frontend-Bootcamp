@@ -78,7 +78,7 @@
 
 每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
 
-**⚠️⚠️⚠️ 请按要求提交你的pr，否则可能影响奖励的计算**
+**⚠️⚠️⚠️ 不符合规范的会加上「[invalid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Aopen+is%3Apr+label%3Ainvalid)」标签，请按要求提交你的 PR，否则可能影响奖励的计算！**
 
 #### PR 命名
 
