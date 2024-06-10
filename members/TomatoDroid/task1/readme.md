@@ -1,3 +1,3 @@
-https://github.com/TomatoDroid/todo_list
+## todo-list
 
-![alt text](image.png)
+https://github.com/TomatoDroid/todo_list
