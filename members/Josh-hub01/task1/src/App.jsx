@@ -7,11 +7,7 @@ import AddTodo from "./components/AddTodo";
 
 function App() {
   const [todos, setTodos] = useState(localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : []);
-
-  const updateTodoList = (title) => {
-    setTodos([...todos, { title, id: uuidv4(), status: 0 }]);
-  };
-
+  
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
