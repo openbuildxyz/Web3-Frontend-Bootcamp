@@ -22,3 +22,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 ._*
+
+# Ignore foundry build artifacts
+out/
+cache/
+lib/
