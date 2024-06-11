@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Header } from './components/Header'
 import { ToDoList } from './components/ToDoList'
 import { AddToDo } from './components/AddToDo'
@@ -10,7 +10,11 @@ export type TodoItem = {
 }
 
 function App() {
-  const [list, setList] = useState<TodoItem[]>([{ id: Date.now(), title: 'Task 1', done: false }])
+  const [list, setList] = useState<TodoItem[]>(JSON.parse(localStorage.getItem('TODO_LIST') || 'null') || [{ id: Date.now(), title: 'Task 1', done: false }])
+
+  useEffect(() => {
+    localStorage.setItem('TODO_LIST', JSON.stringify(list))
+  }, [list])
   const toggleDone = (id: number) => {
     setList(
       list.map(item => {
@@ -31,7 +35,7 @@ function App() {
   }
 
   return (
-    <div className='mx-auto mt-20'>
+    <div className="mx-auto mt-20">
       <Header></Header>
       <ToDoList list={list} toggleDone={toggleDone} deleteItem={deleteItem} />
       <AddToDo addTodo={addTodo} />
