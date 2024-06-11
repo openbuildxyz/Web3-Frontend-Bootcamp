@@ -3,3 +3,8 @@ export interface TodoItemType {
   text: string
   finish?: boolean
 }
+
+export interface TodoListDispatch {
+  todoList: TodoItemType[]
+  onSetList: (todoList: TodoItemType[]) => void
+}

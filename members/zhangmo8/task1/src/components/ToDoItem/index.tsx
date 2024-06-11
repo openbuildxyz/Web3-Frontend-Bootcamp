@@ -1,20 +1,15 @@
-import { useAtom } from "jotai";
-
-import { todoListAtom } from "~/store";
-import { TodoItemType } from "~/types";
+import { TodoItemType, TodoListDispatch } from "~/types";
 
 import type { MouseEvent } from "react";
 
-const ToDoItem = ({ uuid, text, finish }: TodoItemType) => {
-  const [todoList, setTodoList] = useAtom(todoListAtom)
-
+const ToDoItem = ({ uuid, text, finish, todoList, onSetList }: TodoItemType & TodoListDispatch) => {
   const onChangeStatus = () => {
     const _todoList = [...todoList]
     const item = _todoList.find((item) => item.uuid === uuid) as TodoItemType
 
     item.finish = item.finish === undefined ? true : !item?.finish 
 
-    setTodoList(_todoList)
+    onSetList(_todoList)
   }
 
   const onRemoveTodo = (e: MouseEvent<HTMLButtonElement>) => {
@@ -25,7 +20,7 @@ const ToDoItem = ({ uuid, text, finish }: TodoItemType) => {
 
     _todoList.splice(index, 1)
     
-    setTodoList(_todoList)
+    onSetList(_todoList)
   }
 
   return (

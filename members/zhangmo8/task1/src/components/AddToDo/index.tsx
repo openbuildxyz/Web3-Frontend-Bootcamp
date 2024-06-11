@@ -1,11 +1,9 @@
-import { useAtom } from "jotai";
 import { useRef } from "react";
 
-import { todoListAtom } from "~/store";
+import { TodoListDispatch } from "~/types";
 
-const AddToDo = () => {
-  const [todoList, setTodoList] = useAtom(todoListAtom)
 
+const AddToDo = ({todoList, onSetList}: TodoListDispatch) => {
   const todoRef = useRef<HTMLInputElement>(null)
 
   const onAddTodo = () => {
@@ -16,7 +14,7 @@ const AddToDo = () => {
         text: todoRef?.current?.value || '',
         finish: false
       })
-      setTodoList(_todoList)
+      onSetList(_todoList)
       todoRef.current.value = ''
     } else {
       alert('Please input todo')
