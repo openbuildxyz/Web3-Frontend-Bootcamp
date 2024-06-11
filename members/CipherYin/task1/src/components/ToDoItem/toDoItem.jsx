@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import "./toDoItem.less"
 import { Checkbox,Tooltip,Button } from 'antd';
 
 function ToDoItem(props) {
     // eslint-disable-next-line react/prop-types
-    const {item,removeTodo} = props;
-    const [check,setCheck] = useState(false)
+    const {item,removeTodo,addHadCompleted} = props;
     const onChange = (e) => {
-        setCheck(e.target.checked)
+        addHadCompleted(item.id)
         console.log(`checked = ${e.target.checked}`);
+
       };
       const removeTodoItem=()=>[
         // eslint-disable-next-line react/prop-types
@@ -18,11 +17,11 @@ function ToDoItem(props) {
       
   return (
     
-       <div className={`item_container  ${check ? 'checked' : 'unchecked'}`}>
-           <Checkbox onChange={onChange} className="check_box"/>
+       <div className={`item_container  ${item.completed ? 'checked' : 'unchecked'}`}>
+           <Checkbox onChange={onChange} className="check_box" checked={item.completed}/>
            <div className="item_text_box">
-                <Tooltip title={check ? '已完成' : '未完成'}>
-                        <span className={`item_text ${check ? 'checked' : 'unchecked'}`}>{item.text}</span>
+                <Tooltip title={item.completed ? '已完成' : '未完成'}>
+                        <span className={`item_text ${item.completed ? 'checked' : 'unchecked'}`}>{item.text}</span>
                 </Tooltip>
            </div> 
             <Button type="primary" className="item_deleted" onClick={removeTodoItem}>x</Button>
