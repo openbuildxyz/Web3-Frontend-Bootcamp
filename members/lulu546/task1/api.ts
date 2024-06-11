@@ -1,39 +1,43 @@
 import { ITask } from "./types/tasks";
 
-const baseUrl = "http://localhost:12300"
+const LOCAL_STORAGE_KEY = "tasks";
+
+const getTasksFromStorage = (): ITask[] => {
+  if (typeof window === "undefined") return []; // 服务器端不做任何操作
+  const tasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+  return tasks ? JSON.parse(tasks) : [];
+};
+
+const saveTasksToStorage = (tasks: ITask[]) => {
+  if (typeof window === "undefined") return; // 服务器端不做任何操作
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+};
 
 export const getAllTodos = async (): Promise<ITask[]> => {
-  const res = await fetch(`${baseUrl}/tasks`, { cache: "no-store" });
-  const todos = await res.json();
-  return todos;
+  return getTasksFromStorage();
 };
 
 export const addTodo = async (todo: ITask): Promise<ITask> => {
-  const res = await fetch(`${baseUrl}/tasks`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(todo)
-  });
-  const newTodo = await res.json();
-  return newTodo;
-}
+  const tasks = getTasksFromStorage();
+  console.log('1111', tasks, todo)
+  tasks.push(todo);
+  saveTasksToStorage(tasks);
+  console.log('2222', getTasksFromStorage())
+  return todo;
+};
 
 export const editTodo = async (todo: ITask): Promise<ITask> => {
-  const res = await fetch(`${baseUrl}/tasks/${todo.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(todo)
-  });
-  const updatedTodo = await res.json();
-  return updatedTodo;
-}
+  const tasks = getTasksFromStorage();
+  const index = tasks.findIndex(t => t.id === todo.id);
+  if (index !== -1) {
+    tasks[index] = todo;
+    saveTasksToStorage(tasks);
+  }
+  return todo;
+};
 
 export const deleteTodo = async (id: string): Promise<void> => {
-  await fetch(`${baseUrl}/tasks/${id}`, {
-    method: "DELETE"
-  });
-}
+  let tasks = getTasksFromStorage();
+  tasks = tasks.filter(task => task.id !== id);
+  saveTasksToStorage(tasks);
+};
