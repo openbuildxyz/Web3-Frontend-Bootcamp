@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import { useState, useEffect } from 'react';
+import TodoList from './ToDoList';
+import AddTodo from './AddToDo';
+import Header from './Header';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/components/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Todo {
+  id: number;
+  text: string;
+  isCompleted: boolean;
 }
 
-export default App
+function App() {
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    return localStorage.getItem('todos')
+      ? JSON.parse(localStorage.getItem('todos')!) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const handleAddTodo = (text: string) => {
+    const newTodo = {
+      id: todos.length + 1,
+      text,
+      isCompleted: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
+
+  const handleToggleTodo = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      )
+    );
+  };
+
+  const handleDeleteTodo = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  return (
+    <div className='app-container'>
+      <div className="app-content">
+        <Header />
+        <AddTodo onAdd={handleAddTodo} />
+        <TodoList
+          todos={todos}
+          onToggleTodo={handleToggleTodo}
+          onDeleteTodo={handleDeleteTodo}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default App;
