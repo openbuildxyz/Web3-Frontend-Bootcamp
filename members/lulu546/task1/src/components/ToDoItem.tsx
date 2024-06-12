@@ -34,12 +34,12 @@ const ToDoItem: React.FC<TaskProps> = ({ task }) => {
     triggerRefresh();
   }
   
-  const handleCompleteTodo = async (task:ITask) => {
+  const handleCompleteTodo = async (task:ITask,isMarkers:boolean) => {
     console.log(task,'1211')
     await editTodo({
       id: task.id,
       text: task.text,
-      isCompleted: true,
+      isCompleted: isMarkers,
     });
     setCompleteModalOpen(false);
     triggerRefresh();
@@ -59,17 +59,22 @@ const ToDoItem: React.FC<TaskProps> = ({ task }) => {
           <Modal modalOpen={completeModalOpen} setModalOpen={setCompleteModalOpen}>
             <h3 className="font-bold text-lg">完成任务</h3>
             <div className="flex flex-col justify-between modal-action">
-              <h4 className="text-lg text-left">你想将这个任务标记为完成吗？</h4>
+              <h4 className="text-lg text-left">你想将这个任务标记为？</h4>
               <div className="flex self-end gap-2">
+                <button
+                    className="btn btn-success text-white mt-5"
+                    onClick={() => handleCompleteTodo(task,true)}>
+                  已完成
+                </button>
+                <button
+                    className="btn   mt-5"
+                    onClick={() => handleCompleteTodo(task,false)}>
+                  未完成
+                </button>
                 <button
                     className="btn btn-primary text-white mt-5"
                     onClick={() => setCompleteModalOpen(false)}>
-                  不要
-                </button>
-                <button
-                    className="btn btn-success text-white mt-5"
-                    onClick={() => handleCompleteTodo(task)}>
-                  标记
+                  取消标记
                 </button>
               </div>
             </div>
