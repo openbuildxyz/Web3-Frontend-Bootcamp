@@ -21,9 +21,9 @@ const TodoItem: React.FC<{
     isDelete(id);
   };
   return (
-    <li>
+    <li style={{ textAlign: "left" }}>
       <input type="checkbox" checked={completed} onChange={handleTodoClick} />
-      {`${id}:${task}`}
+      {`${task}`}
       <button onClick={handleDelete}>删除</button>
     </li>
   );
