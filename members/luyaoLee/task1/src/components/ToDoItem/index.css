@@ -1,0 +1,20 @@
+.task-input {
+  width: 300px;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.task-item.done {
+  background-color: rgb(228, 228, 228);
+}
+
+.task-item.done .task-text {
+  text-decoration: line-through;
+}
