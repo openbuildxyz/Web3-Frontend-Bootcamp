@@ -1,0 +1,125 @@
+/* App.css */
+
+/* 重置浏览器默认的外边距和内边距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* 设置默认字体和背景 */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* 确保 body 和 html 占满整个视口高度 */
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 应用容器样式 */
+  .App {
+    flex: 1; /* 占满可用空间 */
+    max-width: 1200px; /* 限制最大宽度 */
+    margin: auto; /* 水平居中 */
+    padding: 20px; /* 内边距 */
+    background: white; /* 背景色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微的阴影 */
+    border-radius: 8px; /* 边框圆角 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .Header {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  /* 待办事项添加区域样式 */
+  .AddToDo {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .AddToDo input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 5px;
+    flex: 1;
+  }
+  
+  .AddToDo button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #5cb85c;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  /* 待办事项列表样式 */
+  .ToDoList {
+    width: 100%;
+    max-width: 600px; /* 限制列表最大宽度 */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  li:hover {
+    background-color: #e9e9e9;
+  }
+  
+  /* 待办事项操作按钮样式 */
+  li button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d9534f;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* 切换完成状态的按钮样式 */
+  .ToggleCompleted {
+    background-color: #5cb85c;
+  }
+  
+  /* 为已完成的待办事项添加样式 */
+  li span.completed {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .App {
+      padding: 10px;
+    }
+  }
