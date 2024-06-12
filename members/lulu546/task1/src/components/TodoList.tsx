@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
-import Task from "./Task";
+import ToDoItem from "./ToDoItem";
 import useTaskStore from '../store/index';
 
-const TodoList: React.FC = () => {
+const ToDoList: React.FC = () => {
   const tasks = useTaskStore(state => state.tasks);
   const refreshFlag = useTaskStore(state => state.refreshFlag);
   const getAllTodos = useTaskStore(state => state.getAllTodos);
   
   useEffect(() => {
     getAllTodos();
+    
   }, [refreshFlag, getAllTodos]);
   
   return (
@@ -22,7 +23,7 @@ const TodoList: React.FC = () => {
           </thead>
           <tbody>
           {tasks.map(task => (
-              <Task key={task.id} task={task} />
+              <ToDoItem key={task.id} task={task} />
           ))}
           </tbody>
         </table>
@@ -30,4 +31,4 @@ const TodoList: React.FC = () => {
   );
 };
 
-export default TodoList;
+export default ToDoList;

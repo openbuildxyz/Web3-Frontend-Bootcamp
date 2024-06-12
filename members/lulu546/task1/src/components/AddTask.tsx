@@ -16,6 +16,7 @@ const AddTask: React.FC = () => {
     await addTodo({
       id: uuidv4(),
       text: newTaskValue,
+      isCompleted: false,
     });
     triggerRefresh();
     setNewTaskValue("");
