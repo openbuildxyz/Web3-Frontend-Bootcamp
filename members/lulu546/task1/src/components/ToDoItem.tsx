@@ -67,15 +67,11 @@ const ToDoItem: React.FC<TaskProps> = ({ task }) => {
                   已完成
                 </button>
                 <button
-                    className="btn   mt-5"
+                    className="btn btn-primary  mt-5"
                     onClick={() => handleCompleteTodo(task,false)}>
                   未完成
                 </button>
-                <button
-                    className="btn btn-primary text-white mt-5"
-                    onClick={() => setCompleteModalOpen(false)}>
-                  取消标记
-                </button>
+             
               </div>
             </div>
           </Modal>
