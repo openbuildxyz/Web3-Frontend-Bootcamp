@@ -11,17 +11,34 @@ import Header from './components/Header'
 
 
 function App() {
-  const [todos,setTodos] = useState([
-    {id: 1, text: '健身', isDone: true},
-    {id: 2, text: '吃饭', isDone: false}
-  ])
+  const [todos,setTodos] = useState([])
   
   const STORAGE_ID = 'task1-todolist';
   
   const saveToLocal = (todos) => {
-    window.localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
-    console.info('===saved===', todos);
+    if(todos.length > 0){
+      window.localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+      console.info('===saved===', todos);
+    }
   }
+
+  const readFromLocal = () => {
+    const data = window.localStorage.getItem(STORAGE_ID);
+    if (data) {
+      try {
+        return JSON.parse(data);
+      } catch (error) {
+        console.error('Error parsing local storage data:', error);
+      }
+    }
+    return [];
+  }
+
+  useEffect(() => {
+    const todoData = readFromLocal()
+    console.log("===Read From LocalStorage===")
+    setTodos(todoData)
+  }, []);
 
   useEffect(() => {
     saveToLocal(todos);
