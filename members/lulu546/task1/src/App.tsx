@@ -1,6 +1,6 @@
 
 import AddTask from "./components/AddTask";
-import ToDoList from "./components/ToDoList";
+import ToDoList from "./components/TodoList";
 import Header from "./components/Header"
 function App() {
   return (
