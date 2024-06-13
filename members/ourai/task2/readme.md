@@ -39,7 +39,7 @@
 
 ## [多选题] 以下哪些是以太坊的二层扩容方案？
 
-- [x] Lightning Network（闪电网络）
+- [ ] Lightning Network（闪电网络）
 - [x] Optimsitic Rollup
 - [x] Zk Rollup
 
