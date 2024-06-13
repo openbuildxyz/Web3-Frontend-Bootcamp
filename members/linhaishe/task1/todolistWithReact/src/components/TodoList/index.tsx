@@ -7,25 +7,41 @@ import { generateID, sortList } from '../../utils';
 
 import './index.scss';
 
+const initialTasks: IList[] = [
+  { id: 1, taskName: 'linhaishe text1', isCompleted: false },
+  { id: 2, taskName: 'linhaishe text2', isCompleted: false },
+  { id: 3, taskName: 'linhaishe text3', isCompleted: true },
+  { id: 4, taskName: 'linhaishe text4', isCompleted: false },
+  { id: 5, taskName: 'linhaishe text5', isCompleted: false },
+  { id: 6, taskName: 'linhaishe text6', isCompleted: false },
+].sort(sortList);
+
+const getStoredTasks = (): IList[] => {
+  const storedTasks = localStorage.getItem('tasks');
+  if (storedTasks) {
+    try {
+      const parsedTasks = JSON.parse(storedTasks);
+      if (Array.isArray(parsedTasks) && parsedTasks.length > 0) {
+        return parsedTasks;
+      } else {
+        console.error('Stored tasks is not an array');
+      }
+    } catch (error) {
+      console.error('Error parsing stored tasks:', error);
+    }
+  }
+  return initialTasks;
+};
+
 function TodoList() {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const [newTask, setNewTask] = useState('');
-  const [todoList, setTodoList] = useState<IList[]>(
-    [
-      { id: 1, taskName: 'linhaishe text1', isCompleted: false },
-      { id: 2, taskName: 'linhaishe text2', isCompleted: false },
-      { id: 3, taskName: 'linhaishe text3', isCompleted: true },
-      { id: 4, taskName: 'linhaishe text4', isCompleted: false },
-      { id: 5, taskName: 'linhaishe text5', isCompleted: false },
-      { id: 6, taskName: 'linhaishe text6', isCompleted: false },
-    ].sort(sortList)
-  );
+  const [todoList, setTodoList] = useState<IList[]>(getStoredTasks);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setNewTask(e.target.value);
-    console.log(newTask);
   };
 
   const handleDelete = (id: number | string) => {
@@ -81,6 +97,11 @@ function TodoList() {
       inputRef?.current?.removeEventListener('keydown', listener);
     };
   }, []);
+
+  useEffect(() => {
+    // 将任务列表保存到本地存储
+    localStorage.setItem('tasks', JSON.stringify(todoList));
+  }, [todoList]);
 
   return (
     <div className='todolist'>
