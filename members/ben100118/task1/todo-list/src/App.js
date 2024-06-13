@@ -11,15 +11,16 @@ import Header from './components/Header'
 
 
 function App() {
-  const [todos,setTodos] = useState([])
+  const [todos,setTodos] = useState(() => {
+    const savedTodos = JSON.parse(localStorage.getItem('task1-todolist')) || [];
+    return savedTodos;
+  })
   
   const STORAGE_ID = 'task1-todolist';
   
   const saveToLocal = (todos) => {
-    if(todos.length > 0){
-      window.localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
-      console.info('===saved===', todos);
-    }
+    window.localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+    console.info('===saved===', todos);
   }
 
   const readFromLocal = () => {
@@ -34,11 +35,11 @@ function App() {
     return [];
   }
 
-  useEffect(() => {
-    const todoData = readFromLocal()
-    console.log("===Read From LocalStorage===")
-    setTodos(todoData)
-  }, []);
+  // useEffect(() => {
+  //   const todoData = readFromLocal()
+  //   console.log("===Read From LocalStorage===")
+  //   setTodos(todoData)
+  // }, []);
 
   useEffect(() => {
     saveToLocal(todos);
@@ -46,9 +47,6 @@ function App() {
   
   const addTodo = (todo) => {
     setTodos((prevTodos) => [todo, ...prevTodos]);
-    todos.map((todo) => {
-      console.log(todo)
-    })
   }
 
   const changeDone = (id) => {
