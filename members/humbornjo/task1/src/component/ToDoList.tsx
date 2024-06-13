@@ -1,12 +1,12 @@
-import { Todos } from '../model/todo.ts'
+import { Todo } from '../model/todo.ts'
 import ToDoItem from './ToDoItem.tsx'
 
 
-export default function ToDoList({ todos, onDel }: { todos: Todos, onDel: (id: number) => void }) {
+export default function ToDoList({ todos, onAction }: { todos: Todo[], onAction: (action: string, todo: Todo) => void }) {
   return (
     <div className="todo-list">
       {todos.map(todo => (
-        <ToDoItem key={todo.id} todo={todo} onDel={onDel} />
+        <ToDoItem key={todo.id} data={todo} onAction={onAction} />
       ))}
     </div>
   );

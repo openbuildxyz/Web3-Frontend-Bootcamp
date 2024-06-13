@@ -1,31 +1,31 @@
-import { useState } from 'react';
 import { Todo } from '../model/todo.ts'
 
-export default function ToDoItme({ todo, onDel }: { todo: Todo, onDel: (id: number) => void }) {
-  const [done, setDone] = useState(false)
-
+export default function ToDoItem({ data, onAction }: { data: Todo, onAction: (action: string, todo: Todo) => void }) {
   const handleDelete = () => {
-    onDel(todo.id)
+    onAction("del", data)
+  }
+
+  const handleState = () => {
+    data.state = data.state === 1 ? 0 : 1
+    onAction("state", data)
   }
 
   return (
     <div className="todo-item">
-      <h2 className="todo-title">{todo.title}</h2>
-      <p className={`todo-description ${!todo.description ? 'placeholder' : ''}`}>
-        {todo.description || "No description provided"}
+      <h2 className="todo-title">{data.title}</h2>
+      <p className={`todo-description ${!data.description ? 'placeholder' : ''}`}>
+        {data.description || "No description provided"}
       </p>
-      <button onClick={() => {
-        setDone(!done)
-      }} style={{ backgroundColor: done ? "#acd793" : "#ff9eaa" }}>{done ? "done" : "pending"}</button>
+      <button onClick={handleState} style={{ backgroundColor: data.state ? "#acd793" : "#ff9eaa" }}>{data.state ? "done" : "pending"}</button>
       <button onClick={handleDelete} style={{ backgroundColor: "#eee" }}>delete</button>
       <div className="todo-timestamps">
         <p className="todo-create-time">
-          <strong>created:</strong> {todo.create_time.toLocaleString()}
+          <strong>created:</strong> {data.create_time.toLocaleString()}
         </p>
         <p className="todo-update-time">
-          <strong>updated:</strong> {todo.update_time.toLocaleString()}
+          <strong>updated:</strong> {data.update_time.toLocaleString()}
         </p>
       </div>
-    </div>
+    </div >
   );
 }

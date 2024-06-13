@@ -28,6 +28,7 @@ function App() {
     const newTodo: Todo = {
       id: todos.length + 1 + getUnixTime(),
       title,
+      state: 0,
       description,
       create_time: new Date(),
       update_time: new Date(),
@@ -35,15 +36,24 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
-  const handleDelTodo = (id: number) => {
-    const newTodos = todos.filter(item => item.id !== id)
+  const handleAction = (action: string, todo: Todo) => {
+    let newTodos: Todo[] = todos;
+    switch (action) {
+      case "del":
+        newTodos = todos.filter(item => item.id !== todo.id)
+        break
+      case "state":
+        todos[todos.findIndex(item => item.id === todo.id)] = todo
+        newTodos = todos
+    }
+
     setTodos([...newTodos]);
   }
 
   return (
     <>
       <Header />
-      <ToDoList todos={todos} onDel={handleDelTodo} />
+      <ToDoList todos={todos} onAction={handleAction} />
       <AddToDo onAdd={handleAddTodo} />
     </>
   )
