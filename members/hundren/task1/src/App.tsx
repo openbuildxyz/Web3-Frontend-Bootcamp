@@ -7,7 +7,10 @@ import AddToDo from './AddToDo'
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(() => {
+      const localData = localStorage.getItem('todos');
+      return localData ? JSON.parse(localData) : [];
+  });
   const [newTodo, setNewTodo] = useState('');
 
   useEffect(() => {
