@@ -9,7 +9,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.4",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "hardhat": "^2.22.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.5"
   }
 }
