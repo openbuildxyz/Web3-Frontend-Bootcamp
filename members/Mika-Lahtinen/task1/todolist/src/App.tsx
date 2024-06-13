@@ -22,7 +22,15 @@ import TodoList from './components/TodoList'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<string[]>(()=>
+  {
+    const saved = localStorage.getItem("todos");
+    if (saved){
+      return JSON.parse(saved);
+    }
+    return [];
+  }
+  );
   const [newTodo, setNewTodo] = useState<string>('')
 
   const addTodo = () => {
@@ -43,13 +51,6 @@ function App() {
     newTodos[index].completed = !newTodos[index].completed
     setTodos(newTodos)
   }
-
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem('todos'))
-    if(storedTodos){
-      setTodos(storedTodos)
-    }
-  }, [])
 
   useEffect(()=>{
     localStorage.setItem('todos',JSON.stringify(todos))
