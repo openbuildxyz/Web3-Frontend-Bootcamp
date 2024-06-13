@@ -78,7 +78,7 @@
 
 每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
 
-**⚠️⚠️⚠️ 请按要求提交你的pr，否则可能影响奖励的计算**
+**⚠️⚠️⚠️ 不符合规范的会加上「[invalid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Aopen+is%3Apr+label%3Ainvalid)」标签，请按要求提交你的 PR，否则可能影响奖励的计算！**
 
 #### PR 命名
 
@@ -86,7 +86,7 @@
 
 提交 task 的 PR，命名为 `task[n]: user-name`，例如： `task0: Beavnvvv`
 
-需要编写网页的 `task`，请上传效果截图。
+需要编写网页的 `task`，请在描述中上传效果截图。
 
 **请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！<br>请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！<br>请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！**
 
