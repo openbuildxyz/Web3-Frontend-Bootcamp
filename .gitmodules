@@ -1,0 +1,3 @@
+[submodule "members/zpjayyy/task3/my-contract/lib/forge-std"]
+	path = members/zpjayyy/task3/my-contract/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
