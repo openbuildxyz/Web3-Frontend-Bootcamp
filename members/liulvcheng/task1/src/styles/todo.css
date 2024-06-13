@@ -1,0 +1,43 @@
+h3 {
+  background-color: rgba(220, 220, 220, 0.265);
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+ul {
+  border: 1px dashed rgba(220, 220, 220);
+  border-radius: 4px;
+  padding: 10px 0 10px 40px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+.hidden {
+  visibility: hidden;
+}
+.add-todo {
+  border: 1px dashed rgba(220, 220, 220);
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+.del-todo {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.2em 0.4em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  transition: border-color 0.25s;
+}
+.del-btn:hover {
+  border-color: #e10f0f;
+}
