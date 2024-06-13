@@ -48,7 +48,9 @@ export default function ToDoList(props: {
             style={{ marginRight: "8px" }}
           />
           <Switch
-          checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />}
+          checkedChildren={<CheckOutlined />}
+           unCheckedChildren={<CloseOutlined />}
+           defaultValue={item.isDone}
             style={{ marginRight: "8px" }}
             onClick={(checked: boolean) => handleCheck(checked, index)}
             />

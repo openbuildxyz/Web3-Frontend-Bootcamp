@@ -11,19 +11,6 @@ type itemTask = {
 
 function App() {
   const [toDoList, setToDoList] = useState(localStorage.getItem("toDoList") ? JSON.parse(localStorage.getItem("toDoList") as string) : []);
-  // useEffect(() => {
-  //   const storedList = localStorage.getItem("toDoList");
-  //   if (storedList) {
-  //     try {
-  //       const parsedList = JSON.parse(storedList);
-  //       setToDoList(parsedList);
-  //       console.log("parsedList", parsedList);
-  //     } catch (error) {
-  //       console.error("Error parsing stored tasks:", error);
-  //     }
-  //   }
-  // }, []);
-
   useEffect(() => {
     localStorage.setItem("toDoList", JSON.stringify(toDoList));
   }, [toDoList]);
