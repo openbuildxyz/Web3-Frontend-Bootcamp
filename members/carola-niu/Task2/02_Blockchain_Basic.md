@@ -20,8 +20,8 @@
 
 ## [单选题] 下列说法正确的是
 
-- [x] 一个私钥对应一个地址
-- [ ] 一个私钥对应多个地址
+- [] 一个私钥对应一个地址
+- [x] 一个私钥对应多个地址
 - [ ] 多个私钥对应一个地址
 - [ ] 多个私钥对应多个地址
 
@@ -67,7 +67,7 @@ A smart contract is a set of functions that can be called by other users or cont
 They can be used to execute functions, send ether or store data.
 Each smart contract is an account holding object.
 Once deployed a smart contract, it can be publicly accessible by anyone on the network and cannot
-be patched.
+be patched. 
 ```
 
 
