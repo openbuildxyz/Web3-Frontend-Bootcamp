@@ -1,10 +1,10 @@
 import './App.css'
+import Todo from './Todo'
 
 function App() {
   return (
     <>
-      <h1>TODO list</h1>
-      <div>Under Construction</div>
+      <Todo />
     </>
   )
 }
