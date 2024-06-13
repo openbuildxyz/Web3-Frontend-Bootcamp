@@ -1,0 +1,11 @@
+html {
+    background-color: #FFFCF2;
+}
+
+#root {
+    background-color: #FFFCF2;
+}
+
+a:hover {
+    opacity: 60%;
+}
