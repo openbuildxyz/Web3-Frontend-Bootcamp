@@ -4,8 +4,6 @@
 
 * Github ID: DeJeune
 
-* Wechat ID: jeunefrancesco
-
 * Openbuild Username: jeune
 
 (首次如果没有，学习完毕钱包在填写)
@@ -14,4 +12,8 @@
 
 ### 个人介绍
 
+之前接触过Vue，希望学习Web3
 
+### 任务提交
+
+[task1](https://github.com/DeJeune/react-to-do-app)
