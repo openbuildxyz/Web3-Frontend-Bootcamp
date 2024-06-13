@@ -1,28 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './index.scss';
+import React, { useState, useRef, useEffect, ChangeEvent } from 'react';
 import Header from '../Header';
 import AddTodo from '../AddTodo';
 import TodoItem from '../TodoItem';
+import { IList } from '../../type';
+import { generateID, sortList } from '../../utils';
+
+import './index.scss';
 
 function TodoList() {
-  const generateID = () => {
-    let result = '';
-    const input_length = 5;
-    const chars =
-      '[@678^#(ABC,F3qr.sIJKN_+}{:OPQRghi)jDEklm:~noGH=2pL*$Mtuvwx<STU1>5VW`XYZa4bcd&efyz09]';
-    for (let i = 0; i < input_length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-  };
-  const sortList = (a: any, b: any) => {
-    return a.isCompleted > b.isCompleted
-      ? 1
-      : b.isCompleted > a.isCompleted
-      ? -1
-      : 0;
-  };
-  const [todoList, setTodoList] = useState(
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const btnRef = useRef<HTMLButtonElement | null>(null);
+  const [newTask, setNewTask] = useState('');
+  const [todoList, setTodoList] = useState<IList[]>(
     [
       { id: 1, taskName: 'linhaishe text1', isCompleted: false },
       { id: 2, taskName: 'linhaishe text2', isCompleted: false },
@@ -32,59 +21,43 @@ function TodoList() {
       { id: 6, taskName: 'linhaishe text6', isCompleted: false },
     ].sort(sortList)
   );
-  const [newTask, setNewTask] = useState('');
 
-  const inputRef = useRef(null);
-  const btnRef = useRef(null);
-
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setNewTask(e.target.value);
     console.log(newTask);
   };
-  useEffect(() => {
-    const listener = (event: any) => {
-      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-        // btnRef?.current?.click();
-      }
-    };
-    // inputRef?.current?.addEventListener('keydown', listener);
-    return () => {
-      // inputRef?.current?.removeEventListener('keydown', listener);
-    };
-  }, []);
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: number | string) => {
     setTodoList(todoList.filter((list) => list.id !== id));
   };
 
-  const handleEdit = (content: any) => {
-    setNewTask(content.taskName);
-    // inputRef.current.value = content.taskName;
-    // inputRef.current.focus();
-
-    setTodoList(todoList.filter((list) => list.id !== content.id));
-  };
-  const handleDone = (status: any) => {
+  const handleDone = (status: IList) => {
     status.isCompleted = true;
     setTodoList([...todoList.sort(sortList)]);
   };
+
   const addTask = () => {
-    // if (inputRef.current.value !== '') {
-    //   const task = {
-    //     id: todoList.length === 0 ? 1 : generateID(),
-    //     taskName: newTask,
-    //     isCompleted: false,
-    //   };
-    //   setTodoList([...todoList, task].sort(sortList));
-    //   setNewTask('');
-    //   inputRef.current.value = '';
-    //   inputRef.current.focus();
-    // } else {
-    //   alert(customeAlert());
-    // }
+    if (!inputRef?.current) {
+      return;
+    }
+
+    if (inputRef.current.value !== '') {
+      const task = {
+        id: todoList.length === 0 ? 1 : generateID(),
+        taskName: newTask,
+        isCompleted: false,
+      };
+      setTodoList([...todoList, task].sort(sortList));
+      setNewTask('');
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    } else {
+      alert(customAlert());
+    }
   };
-  const customeAlert = () => {
+
+  const customAlert = () => {
     const alertMsgs = [
       'Please type in something',
       "input can't be empty",
@@ -97,10 +70,27 @@ function TodoList() {
     return randomMsg;
   };
 
+  useEffect(() => {
+    const listener = (event: any) => {
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        btnRef?.current?.click();
+      }
+    };
+    inputRef?.current?.addEventListener('keydown', listener);
+    return () => {
+      inputRef?.current?.removeEventListener('keydown', listener);
+    };
+  }, []);
+
   return (
     <div className='todolist'>
       <Header />
-      <AddTodo />
+      <AddTodo
+        inputRef={inputRef}
+        handleChange={handleChange}
+        btnRef={btnRef}
+        addTask={addTask}
+      />
       <div className='lists'>
         {todoList.map((list, id) => (
           <TodoItem
@@ -108,7 +98,6 @@ function TodoList() {
             id={id}
             handleDone={handleDone}
             handleDelete={handleDelete}
-            handleEdit={handleEdit}
           />
         ))}
       </div>
