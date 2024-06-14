@@ -8,43 +8,30 @@ import AddToDo from "./components/AddToDo";
 
 import Header from "./components/Header";
 
+function loadTasks() {
+  const jsonText = localStorage.getItem("tasksJson");
+  console.log("11:", jsonText);
+  const savedTasks = JSON.parse(jsonText);
+  console.log("22:", savedTasks);
+  if (savedTasks) {
+    console.log("22cc:", savedTasks);
+    return savedTasks;
+  } else {
+    return [];
+  }
+}
+
 function App() {
-  const [tasks, setTasks] = useState([]);
-  var loading = false;
-  useEffect(() => {
-    loading = true;
+  const [tasks, setTasks] = useState(loadTasks());
 
-    const jsonText = localStorage.getItem("tasks");
-    console.log("11:", jsonText);
-    const savedTasks = JSON.parse(jsonText);
-    console.log("22:", savedTasks);
-    if (savedTasks) {
-      const myTasks = [];
-      savedTasks.forEach((element) => {
-        const newTask = {
-          id: element.id,
-          name: element.name,
-          completed: element.completed,
-        };
-        myTasks.push(newTask);
-      });
-
-      setTasks(myTasks);
-      console.log("22aa:", myTasks);
-      console.log("22bb:", tasks);
-      console.log("22cc:", savedTasks);
-    }
-
-    loading = false;
-  }, []);
+  //   useEffect(() => {
+  //     //
+  //   }, []);
 
   useEffect(() => {
-    if (!loading) {
-      console.log("33aa:", tasks);
-      const jsonText = JSON.stringify(tasks);
-      console.log("33:", jsonText);
-      localStorage.setItem("tasks", jsonText);
-    }
+    const jsonText = JSON.stringify(tasks);
+    console.log("33:", jsonText);
+    localStorage.setItem("tasksJson", jsonText);
   }, [tasks]);
   //   const taskList = ToDoList;
   //   const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
