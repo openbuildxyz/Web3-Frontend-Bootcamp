@@ -19,11 +19,11 @@ function TodoItem({ item, todos, setTodos }: TodoItemProps) {
           : todo
       )
     );
-
-    // Update localStorage after marking todo as completed
-    const updatedTodos = JSON.stringify(todos);
-    localStorage.setItem("todos", updatedTodos);
   };
+  useEffect(() => {
+    // Update localStorage after marking todo as completed
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const handleEdit = () => {
     setEditing(true);
