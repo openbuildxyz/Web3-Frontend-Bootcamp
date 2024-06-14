@@ -1,0 +1,23 @@
+
+input {
+    width: 50%;
+    height: 30px;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+
+input::placeholder {
+    color: #888;
+    opacity: 1;
+}
