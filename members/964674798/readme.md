@@ -2,7 +2,7 @@
 
 ## 个人信息
 
-* Github ID: Tom
+* Github ID: 964674798
 
 * Wechat ID: dxg_wyygpy
 
