@@ -1,14 +1,9 @@
 "use client";
 
-import { useAccount, WagmiProvider } from "wagmi";
-import { config } from "@/config/config";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useAccount } from "wagmi";
 import Account from "@/components/Account";
 import ReadTokenContract from "@/components/ReadTokenContract";
 import WalletOptions from "@/components/WalletOptions";
-
-
-const queryClient = new QueryClient();
 
 function ConnectWallet() {
   const { isConnected } = useAccount();
@@ -20,11 +15,9 @@ function ConnectWallet() {
 
 export default function Home() {
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <ConnectWallet />
-        <ReadTokenContract />
-      </QueryClientProvider>
-    </WagmiProvider>
+    <main>
+      <ConnectWallet />
+      <ReadTokenContract />
+    </main>
   );
 }
