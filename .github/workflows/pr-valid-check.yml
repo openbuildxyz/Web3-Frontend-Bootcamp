@@ -1,0 +1,29 @@
+name: pr-valid-check
+on:
+  pull_request:
+    types: [opened]
+  
+jobs:
+  check_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: print context
+        run: |
+          echo "event.before:" ${{ github.event.before }}
+          echo "event.after:" ${{ github.event.after }}
+          echo "github.event_name: " ${{ github.event_name }}
+          echo "github.ref: " ${{ github.ref }}
+          echo "github.event.pull_request.head.ref: " ${{ github.event.pull_request.head.ref }}
+          echo "github.event.pull_request.base.ref: " ${{ github.event.pull_request.base.ref }}
+          echo "github.event.pull_request.changes: " ${{ github.event.pull_request.changes }}
+      - name: Check if all changes are in members folder
+        id: check_changes
+        run: |
+          invalid_changes=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep "^members/${{ github.actor }}/")
+          if [[ -n $invalid_changes ]]; then
+            echo "Some changes are not in your members folder"
+            exit 1
+          else
+            echo "All changes are in your members folder"
+          fi
