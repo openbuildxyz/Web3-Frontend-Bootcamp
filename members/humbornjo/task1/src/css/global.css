@@ -1,0 +1,36 @@
+button {
+  margin: 0 3px;
+}
+
+.todo-list {
+  display: flex;
+}
+
+.todo-item {
+  gap: 16px;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px 5px;
+  border-radius: 8px;
+}
+
+.todo-description {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.todo-description.placeholder {
+  font-style: italic;
+  color: #aaa;
+}
+
+.todo-timestamps {
+  font-size: 14px;
+  color: #777;
+}
+
+.todo-create-time,
+.todo-update-time {
+  margin: 4px 0;
+}
