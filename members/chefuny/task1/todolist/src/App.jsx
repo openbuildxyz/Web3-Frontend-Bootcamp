@@ -17,9 +17,9 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (todos.length > 0) {
+    // if (todos.length > 0) {
       localStorage.setItem('todos', JSON.stringify(todos));
-    }
+    // }
   }, [todos]);
 
   const addTodo = (todo) => {
