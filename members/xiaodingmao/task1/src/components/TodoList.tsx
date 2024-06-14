@@ -1,4 +1,4 @@
-import { Todo } from '../App'
+import React, { Todo } from '../App'
 import TodoItem from './TodoItem'
 interface Props {
     todos: Todo[]

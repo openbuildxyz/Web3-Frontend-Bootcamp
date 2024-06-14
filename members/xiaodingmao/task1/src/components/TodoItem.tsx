@@ -1,4 +1,4 @@
-import { Todo } from '../App'
+import React, { Todo } from '../App'
 
 interface Props {
     index: number
@@ -13,7 +13,7 @@ export default function TodoItem({ index, todo, toggleTodo, deleteTodo }: Props)
             <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</span>
             <button onClick={() => {
                 deleteTodo(index)
-            }}>delete</button>
+            }}>X</button>
         </li>
     )
 

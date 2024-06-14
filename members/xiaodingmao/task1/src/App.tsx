@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import Header from './components/header'
 import AddToDo from './components/AddTodo'
@@ -11,14 +11,12 @@ export interface Todo {
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   useEffect(() => {
-    // debugger
     const storedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[]; // 将结果转换为 Todo[] 类型
     setTodos(storedTodos);
     console.log(localStorage.getItem('todos'), todos)
   }, [])
 
   useEffect(() => {
-    console.log('tpfod', todos)
     todos.length > 0 && localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
   function addTodo(text: string) {
