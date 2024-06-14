@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './app.css';
 import Header from './header';
 import AddTodo from './add-todo';
@@ -8,10 +8,19 @@ const App = () => {
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
-      return JSON.parse(savedTodos);
+      try {
+        return JSON.parse(savedTodos);
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
     }
     return [];
   });
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (todo: Todo) => {
     setTodos([...todos, todo]);
