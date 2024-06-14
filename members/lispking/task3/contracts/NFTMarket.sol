@@ -7,11 +7,13 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 contract NFTMarket is ReentrancyGuard {
     struct Listing {
+        address nftAddress;
+        uint256 tokenId;
         address seller;
         uint256 price;
     }
 
-    mapping(address => mapping(uint256 => Listing)) public listings;
+    Listing[] public allListings;
     IERC20 public paymentToken;
 
     event NFTListed(
@@ -32,6 +34,10 @@ contract NFTMarket is ReentrancyGuard {
         paymentToken = IERC20(_paymentToken);
     }
 
+    function getAllListings() external view returns (Listing[] memory) {
+        return allListings;
+    }
+
     function listItem(
         address _nftAddress,
         uint256 _tokenId,
@@ -41,30 +47,31 @@ contract NFTMarket is ReentrancyGuard {
         require(nft.ownerOf(_tokenId) == msg.sender, "Not the owner");
         require(nft.isApprovedForAll(msg.sender, address(this)), "No approval");
 
-        listings[_nftAddress][_tokenId] = Listing({
+        Listing memory listing = Listing({
+            nftAddress: _nftAddress,
+            tokenId: _tokenId,
             seller: msg.sender,
             price: _price
         });
+        allListings.push(listing);
 
         emit NFTListed(_nftAddress, _tokenId, msg.sender, _price);
     }
 
-    function buyItem(
-        address _nftAddress,
-        uint256 _tokenId
-    ) external nonReentrant {
-        Listing memory item = listings[_nftAddress][_tokenId];
+    function buyItem(uint256 _index) external nonReentrant {
+        Listing memory item = allListings[_index];
         require(item.seller != address(0), "Not listed");
 
         paymentToken.transferFrom(msg.sender, item.seller, item.price);
-        IERC721(_nftAddress).safeTransferFrom(
+        IERC721(item.nftAddress).safeTransferFrom(
             item.seller,
             msg.sender,
-            _tokenId
+            item.tokenId
         );
 
-        delete listings[_nftAddress][_tokenId];
+        allListings[_index] = allListings[allListings.length - 1];
+        allListings.pop();
 
-        emit NFTBought(_nftAddress, _tokenId, msg.sender, item.price);
+        emit NFTBought(item.nftAddress, item.tokenId, msg.sender, item.price);
     }
 }

@@ -1,5 +1,6 @@
 import { Contract, Signer } from 'ethers';
 import { artifacts, ethers } from 'hardhat';
+import { nftAddress, nftMarketAddress } from './config';
 
 export async function loadContract(contractName: string, contractAddr: string, deployer: Signer): Promise<Contract> {
     const artifact = await artifacts.readArtifact(contractName);
@@ -8,9 +9,6 @@ export async function loadContract(contractName: string, contractAddr: string, d
 
 async function main() {
     const [ deployer ] = await ethers.getSigners();
-
-    const nftAddress = '0xa8D2eA36493a8FF91B55568ce9c7C4483b34eaBB';
-    const nftMarketAddress = '0x5bF1162bCE6c8AC6827099CAB76F0C81D6bc5c6D';
 
     const myNFT = await loadContract('MyNFT', nftAddress, deployer);
     const nftMarket = await loadContract('NFTMarket', nftMarketAddress, deployer);
