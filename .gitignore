@@ -22,3 +22,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 ._*
+
+# pnpm
+pnpm-lock.yaml
