@@ -8,7 +8,8 @@
     "buyNFT": "npx hardhat run scripts/buyNFT.ts --network ${NETWORK}",
     "mintNFT": "npx hardhat run scripts/mintNFT.ts --network ${NETWORK}",
     "sellNFT": "npx hardhat run scripts/sellNFT.ts --network ${NETWORK}",
-    "listNFT": "npx hardhat run scripts/listNFT.ts --network ${NETWORK}"
+    "listNFT": "npx hardhat run scripts/listNFT.ts --network ${NETWORK}",
+    "nextNFTId": "npx hardhat run scripts/nextNFTId.ts --network ${NETWORK}"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.5",

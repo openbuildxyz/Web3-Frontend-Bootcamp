@@ -30,8 +30,8 @@ NETWORK=sepolia yarn deploy
 ```
 
 
-- Contract MyToken deployed successfully: [0xe60fA1906D5933b02aF5a6E8e48a532B33e4d6CF](https://sepolia.etherscan.io/address/0xe60fA1906D5933b02aF5a6E8e48a532B33e4d6CF)
-- Contract MyNFT deployed successfully: [0x6D9B714Cb84a028930faC58533a8b9D2aB1b37C0](https://sepolia.etherscan.io/address/0x6D9B714Cb84a028930faC58533a8b9D2aB1b37C0)
-- Contract NFTMarket deployed successfully: [0x8BCf073bbcc9A3129ba0ad9e83cbbc67cb8a5b0e](https://sepolia.etherscan.io/address/0x8BCf073bbcc9A3129ba0ad9e83cbbc67cb8a5b0e)
-- 购买NFT的交易哈希: [0x10a4d5fb9991475760c397d524343caa3967d4e06a70ff02cb68c1474aae9d16](https://sepolia.etherscan.io/tx/0x10a4d5fb9991475760c397d524343caa3967d4e06a70ff02cb68c1474aae9d16)
+- Contract MyToken deployed successfully: [0xE69DCaE5A6cA1DCE3beBfd5264a83436951c6F43](https://sepolia.etherscan.io/address/0xE69DCaE5A6cA1DCE3beBfd5264a83436951c6F43)
+- Contract MyNFT deployed successfully: [0xdD65F5D3a5AEE68769267a5663CCcD213b45ABaA](https://sepolia.etherscan.io/address/0xdD65F5D3a5AEE68769267a5663CCcD213b45ABaA)
+- Contract NFTMarket deployed successfully: [0x2eAE552E27435D5f395248ba3002930B5D29d5E9](https://sepolia.etherscan.io/address/0x2eAE552E27435D5f395248ba3002930B5D29d5E9)
+- 购买NFT的交易哈希: [0x9fbdfd635c80d7178a2ccb5582d7e1a107ca00dd27ecf38a3a186591653ee8bb](https://sepolia.etherscan.io/tx/0x9fbdfd635c80d7178a2ccb5582d7e1a107ca00dd27ecf38a3a186591653ee8bb)
 
