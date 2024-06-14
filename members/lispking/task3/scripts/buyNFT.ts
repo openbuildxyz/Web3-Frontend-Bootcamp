@@ -9,9 +9,9 @@ export async function loadContract(contractName: string, contractAddr: string, d
 async function main() {
     const [ deployer ] = await ethers.getSigners();
 
-    const tokenAddress = '0xe60fA1906D5933b02aF5a6E8e48a532B33e4d6CF';
-    const nftAddress = '0x6D9B714Cb84a028930faC58533a8b9D2aB1b37C0';
-    const nftMarketAddress = '0x8BCf073bbcc9A3129ba0ad9e83cbbc67cb8a5b0e';
+    const tokenAddress = '0x5888b3184e71F62d90ff2a223dc3ca5f7eBdBE90';
+    const nftAddress = '0xa8D2eA36493a8FF91B55568ce9c7C4483b34eaBB';
+    const nftMarketAddress = '0x5bF1162bCE6c8AC6827099CAB76F0C81D6bc5c6D';
 
     const myToken = await loadContract('MyToken', tokenAddress, deployer);
     const nftMarket = await loadContract('NFTMarket', nftMarketAddress, deployer);

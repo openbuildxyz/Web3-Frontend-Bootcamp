@@ -9,11 +9,13 @@ export async function loadContract(contractName: string, contractAddr: string, d
 async function main() {
     const [ deployer ] = await ethers.getSigners();
 
-    const nftAddress = '0x6D9B714Cb84a028930faC58533a8b9D2aB1b37C0';
+    const nftAddress = '0xa8D2eA36493a8FF91B55568ce9c7C4483b34eaBB';
     const nft = await loadContract('MyNFT', nftAddress, deployer);
+    const connectedNFT = nft.connect(deployer);
 
     try {
-        await nft.connect(deployer).mintNFT(deployer.address, "https://hardhat.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhardhat-logo.5c5f687b.svg&w=384&q=75");
+        console.log('nextTokenId:', await connectedNFT.nextTokenId());
+        await connectedNFT.mintNFT(deployer.address, "https://hardhat.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhardhat-logo.5c5f687b.svg&w=384&q=75");
     } catch (err) {
         console.log(err);
     }
