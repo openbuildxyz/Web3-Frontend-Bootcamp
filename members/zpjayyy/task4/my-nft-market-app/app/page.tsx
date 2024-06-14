@@ -1,14 +1,12 @@
 "use client";
 
 import { useAccount, WagmiProvider } from "wagmi";
-import { config } from "@/app/config";
+import { config } from "@/config/config";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import dynamic from "next/dynamic";
 import Account from "@/components/Account";
+import ReadTokenContract from "@/components/ReadTokenContract";
+import WalletOptions from "@/components/WalletOptions";
 
-const WalletOptions = dynamic(() => import("@/components/WalletOptions"), {
-  ssr: false,
-});
 
 const queryClient = new QueryClient();
 
@@ -25,6 +23,7 @@ export default function Home() {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <ConnectWallet />
+        <ReadTokenContract />
       </QueryClientProvider>
     </WagmiProvider>
   );
