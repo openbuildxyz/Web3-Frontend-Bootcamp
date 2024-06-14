@@ -1,8 +1,8 @@
-# React框架介绍和优势
+# React 框架介绍和优势
 
 ## 安装 Node.js 和 npm
 
-- Node.js官网：<https://nodejs.org/en> 下载LTS（长期支持）版本
+- Node.js 官网：<https://nodejs.org/en> 下载 LTS（长期支持）版本
 - 通过以下命令检查 Node.js 和 npm 是否安装成功：
 
 ```sh
@@ -12,7 +12,7 @@ npm -v
 
 ## 创建一个新的 React 应用
 
-- 通过以下命令搭建一个Vite项目
+- 通过以下命令搭建一个 Vite 项目
 
 ```sh
 npm create vite@latest
