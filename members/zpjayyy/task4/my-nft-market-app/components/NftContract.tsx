@@ -1,6 +1,8 @@
 import { useAccount, useWriteContract } from "wagmi";
 import { nftContractConfig } from "@/config/nftContractConfig";
 import { FormEvent } from "react";
+import {Button} from "@nextui-org/button";
+import {Input} from "@nextui-org/input";
 
 export default function NftContract() {
   return (
@@ -27,7 +29,7 @@ function Mint() {
 
   return (
     <div>
-      <button className="border-2 border-gray-200" onClick={mintClick}>mint</button>
+      <Button className="border-2 border-gray-200" onClick={mintClick}>mint</Button>
       {hash && <div>transaction hash: {hash}</div>}
     </div>
   );
@@ -48,10 +50,10 @@ function Approve() {
   }
 
   return (
-    <div>
+    <div className="w-1/3 m-4">
       <form onSubmit={submit}>
-        <input title="tokenId" name="tokenId" required placeholder="1234" />
-        <button type="submit">Approve</button>
+        <Input label="tokenId" name="tokenId" isRequired placeholder="1234" />
+        <Button type="submit">Approve</Button>
         {hash && <div>transaction hash: {hash}</div>}
       </form>
     </div>

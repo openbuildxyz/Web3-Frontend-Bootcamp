@@ -1,6 +1,8 @@
 import { useWriteContract } from "wagmi";
 import { FormEvent } from "react";
 import { nftMarketContractConfig } from "@/config/nftMarketContractConfig";
+import {Input} from "@nextui-org/input";
+import {Button} from "@nextui-org/button";
 
 export default function NftMarketContract() {
   return (
@@ -31,11 +33,11 @@ function List() {
   }
 
   return (
-    <div>
+    <div className="w-1/3 m-4">
       <form onSubmit={submit}>
-        <input type="number" name="tokenId" placeholder="tokenId" required />
-        <input type="number" name="price" placeholder="price" required />
-        <button type="submit">List</button>
+        <Input type="number" name="tokenId" placeholder="tokenId" required />
+        <Input type="number" name="price" placeholder="price" required />
+        <Button type="submit">List</Button>
         {hash && <div>transaction hash: {hash}</div>}
       </form>
     </div>
@@ -57,10 +59,10 @@ function Purchase() {
   }
 
   return (
-    <div>
+    <div className="w-1/3 m-4">
       <form onSubmit={submit}>
-        <input type="number" name="tokenId" placeholder="tokenId" required />
-        <button type="submit">Purchase</button>
+        <Input type="number" name="tokenId" placeholder="tokenId" required />
+        <Button type="submit">Purchase</Button>
         {hash && <div>transaction hash: {hash}</div>}
         {error && <div>Error: {error.message}</div>}
       </form>

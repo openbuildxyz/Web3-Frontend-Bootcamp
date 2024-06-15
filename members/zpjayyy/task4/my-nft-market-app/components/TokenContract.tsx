@@ -1,6 +1,9 @@
 import { useAccount, useReadContracts, useWriteContract } from "wagmi";
 import { tokenContractConfig } from "@/config/tokenContractConfig";
 import { FormEvent } from "react";
+import {Card} from "@nextui-org/card";
+import {Button} from "@nextui-org/button";
+import {Input} from "@nextui-org/input";
 
 export default function TokenContract() {
   const { address } = useAccount();
@@ -34,12 +37,12 @@ export default function TokenContract() {
   }
 
   return (
-    <div>
+    <Card className="bg-gray-200 flex flex-col w-1/3 gap-3 m-4">
       <div>balance: {balanceOf?.result?.toString()}</div>
       <div>name: {name?.result?.toString()}</div>
       <div>totalSupply: {totalSupply?.result?.toString()}</div>
       <Approve />
-    </div>
+    </Card>
   );
 }
 
@@ -60,8 +63,8 @@ function Approve() {
   return (
     <div>
       <form onSubmit={submit}>
-        <input type="number" name="amount" placeholder="amount" required />
-        <button type="submit">Approve</button>
+        <Input type="number" label="amount" name="amount" placeholder="amount" isRequired />
+        <Button className="bg-blue-400" type="submit">Approve</Button>
         {hash && <div>transaction hash: {hash}</div>}
         {error && <div>Error: {error.message}</div>}
       </form>
