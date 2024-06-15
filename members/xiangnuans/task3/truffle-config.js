@@ -41,10 +41,11 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-const dotenvConfig = require('dotenv')
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-dotenvConfig({ path: resolve(__dirname, './.env') });
+
+
+require('dotenv').config();
 const { MNEMONIC, PROJECT_ID } = process.env;
 
 

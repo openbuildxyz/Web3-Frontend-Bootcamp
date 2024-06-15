@@ -2,5 +2,8 @@
 	"dependencies": {
 		"@openzeppelin/contracts": "^5.0.2",
 		"@truffle/hdwallet-provider": "^2.1.15"
+	},
+	"devDependencies": {
+		"dotenv": "^16.4.5"
 	}
 }
