@@ -14,7 +14,7 @@
 | Categories         | Description                                                  |
 | ------------------ | ------------------------------------------------------------ |
 | [🍕Materials](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/materials)         | 课外资料/课堂笔记（欢迎贡献）  |
-| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 答疑   |
+| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 知识答疑   |
 | [💰Bounty](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/bounty)   | Bounty 任务：课堂作业/课堂笔记/社区贡献etc|
 | 💡[I've got an idea!](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/i-ve-got-an-idea)   | 关于一些 Amazing fancy ideas, 用来<br />1. Web3前端共学 <br />2. 组队开发<br />3. 参加黑客松<br />4. 招聘内推<br />5. 自娱自乐🎣<br /> |
 
