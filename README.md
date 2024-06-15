@@ -56,6 +56,8 @@
 
 ### 任务提交
 
+除了下面的文字说明，也可看视频《[OpenBuild Web3 前端训练营作业提交演示](https://www.bilibili.com/video/BV11gVxeuE7Y)》。
+
 #### 前置操作
 
 先点击页面顶部右上角的「Fork」在自己空间中创建备份，随后将备份仓库 `git clone` 至本地，接下来的所有操作请在自己的仓库内完成。 
