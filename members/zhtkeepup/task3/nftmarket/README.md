@@ -8,7 +8,7 @@
 
 #### 提交全部合约文件（ERC20、ERC721、NFTMarket）
 
-1. 合约文件位于: zhtkeepup/task3/nftmarket/src/
+1. 合约文件位于: [zhtkeepup/task3/nftmarket/src/](https://github.com/zhtkeepup/Web3-Frontend-Bootcamp/tree/task3/members/zhtkeepup/task3/nftmarket/src)
 
 #### 提交上架 NFT、购买 NFT 的交易哈希
 
