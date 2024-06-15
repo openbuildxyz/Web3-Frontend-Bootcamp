@@ -8,7 +8,7 @@ const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
 
 const config: HardhatUserConfig = {
   solidity: "0.8.24",
-  defaultNetwork: "hardhat",
+  defaultNetwork: "local",
   networks: {
     hardhat: {
     },
