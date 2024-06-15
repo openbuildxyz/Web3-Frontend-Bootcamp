@@ -10,6 +10,7 @@ interface ToDoListProps {
 }
 
 const ToDoList: React.FC<ToDoListProps> = ({ todos, onDelete, onToggleComplete }) => {
+  
   return (
     <ul>
       {todos.map((todo) => (

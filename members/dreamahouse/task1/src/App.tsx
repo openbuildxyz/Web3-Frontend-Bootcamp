@@ -12,9 +12,12 @@ const App = () => {
       const storedTodos = localStorage.getItem('todos');
       setTodos(storedTodos?JSON.parse(storedTodos):[])
       
+      
     };
     loadTodos();
   },[]);
+ 
+  
   useEffect(() => {
     if(todos.length){
       localStorage.setItem('todos', JSON.stringify(todos));
@@ -30,12 +33,15 @@ const App = () => {
       text,
       isCompleted: false,
     };
-    setTodos([...todos, newTodo]);
+    
+    setTodos([...todos,newTodo]);
     
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    const newTodos = todos.filter(todo => todo.id !== id);
+    setTodos(newTodos); 
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
   const toggleComplete = (id: number) => {
