@@ -2,9 +2,10 @@
 
 import { useAccount } from "wagmi";
 import Account from "@/components/Account";
-import ReadTokenContract from "@/components/ReadTokenContract";
+import TokenContract from "@/components/TokenContract";
 import WalletOptions from "@/components/WalletOptions";
-import WriteNftContract from "@/components/WriteNftContract";
+import NftContract from "@/components/NftContract";
+import NftMarketContract from "@/components/NftMarketContract";
 
 function ConnectWallet() {
   const { isConnected } = useAccount();
@@ -18,8 +19,9 @@ export default function Home() {
   return (
     <main>
       <ConnectWallet />
-      <ReadTokenContract />
-      <WriteNftContract />
+      <TokenContract />
+      <NftContract />
+      <NftMarketContract />
     </main>
   );
 }

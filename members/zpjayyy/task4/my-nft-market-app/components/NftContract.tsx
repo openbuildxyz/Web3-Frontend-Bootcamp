@@ -2,7 +2,7 @@ import { useAccount, useEnsName, useWriteContract } from "wagmi";
 import { nftContractConfig } from "@/config/nftContractConfig";
 import { FormEvent } from "react";
 
-export default function WriteNftContract() {
+export default function NftContract() {
   return (
     <div>
       <Mint />
