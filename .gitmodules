@@ -1,0 +1,6 @@
+[submodule "members/zhtkeepup/task3/nftmarket/lib/forge-std"]
+	path = members/zhtkeepup/task3/nftmarket/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "members/zhtkeepup/task3/nftmarket/lib/openzeppelin-contracts"]
+	path = members/zhtkeepup/task3/nftmarket/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
