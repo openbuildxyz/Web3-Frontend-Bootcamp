@@ -7,15 +7,6 @@ import { generateID, sortList } from '../../utils';
 
 import './index.scss';
 
-const initialTasks: IList[] = [
-  { id: 1, taskName: 'linhaishe text1', isCompleted: false },
-  { id: 2, taskName: 'linhaishe text2', isCompleted: false },
-  { id: 3, taskName: 'linhaishe text3', isCompleted: true },
-  { id: 4, taskName: 'linhaishe text4', isCompleted: false },
-  { id: 5, taskName: 'linhaishe text5', isCompleted: false },
-  { id: 6, taskName: 'linhaishe text6', isCompleted: false },
-].sort(sortList);
-
 const getStoredTasks = (): IList[] => {
   const storedTasks = localStorage.getItem('tasks');
   if (storedTasks) {
@@ -30,7 +21,7 @@ const getStoredTasks = (): IList[] => {
       console.error('Error parsing stored tasks:', error);
     }
   }
-  return initialTasks;
+  return [];
 };
 
 function TodoList() {
@@ -46,6 +37,11 @@ function TodoList() {
 
   const handleDelete = (id: number | string) => {
     setTodoList(todoList.filter((list) => list.id !== id));
+  };
+
+  const handleRevert = (status: IList) => {
+    status.isCompleted = false;
+    setTodoList([...todoList.sort(sortList)]);
   };
 
   const handleDone = (status: IList) => {
@@ -119,6 +115,7 @@ function TodoList() {
             id={id}
             handleDone={handleDone}
             handleDelete={handleDelete}
+            handleRevert={handleRevert}
           />
         ))}
       </div>
