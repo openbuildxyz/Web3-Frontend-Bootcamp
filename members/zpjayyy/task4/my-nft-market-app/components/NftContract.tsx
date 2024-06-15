@@ -1,4 +1,4 @@
-import { useAccount, useEnsName, useWriteContract } from "wagmi";
+import { useAccount, useWriteContract } from "wagmi";
 import { nftContractConfig } from "@/config/nftContractConfig";
 import { FormEvent } from "react";
 

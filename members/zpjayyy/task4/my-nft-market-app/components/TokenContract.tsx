@@ -1,7 +1,6 @@
 import { useAccount, useReadContracts, useWriteContract } from "wagmi";
 import { tokenContractConfig } from "@/config/tokenContractConfig";
 import { FormEvent } from "react";
-import { nftMarketContractConfig } from "@/config/nftMarketContractConfig";
 
 export default function TokenContract() {
   const { address } = useAccount();
