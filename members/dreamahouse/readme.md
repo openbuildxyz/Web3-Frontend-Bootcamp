@@ -3,7 +3,7 @@
 ## 个人信息
 
 * GitHub ID: dreamahouse
-* OpenBuild Username: Ruby He
+* OpenBuild Username: Hazel
 * ERC20 钱包地址: 0xcB26196930F24a6847a58dBf5d80C6254d8De620
 
 ### 个人介绍
