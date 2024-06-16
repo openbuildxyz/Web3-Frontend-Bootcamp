@@ -1,0 +1,28 @@
+.todoItem-main{
+    align-items: center;
+    display: flex;
+    padding: 20px 0px;
+}
+.todoItem-checkbox {
+    width: 40px;
+}
+.todoItem-content {
+    flex: 1;
+    margin: 0px 10px;
+}
+.todoItem-btn {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
+}
+.todoItem-btn span {
+    cursor: pointer;
+}
+
+.todo-done {
+    text-decoration:line-through;
+    color: #7c7c7c;
+}
