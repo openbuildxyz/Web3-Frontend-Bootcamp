@@ -14,11 +14,6 @@ const App = () => {
   // 初始待办事项列表（现在是一个 TodoItem 类型的数组）  
   const [toDoList, setToDoList] = useState<TodoItem[]>([]);
 
-  // 保存到本地存储：在组件首次挂载和待办事项列表改变时执行。  
-  useEffect(() => {  
-    localStorage.setItem("toDoList", JSON.stringify(toDoList));  
-  }, [toDoList]);  
-
   // 从本地存储中恢复待办事项。  
   useEffect(() => {  
     try {  
@@ -33,6 +28,11 @@ const App = () => {
       console.error("Error parsing saved to-do list:", error);  
     }  
   }, []);  
+
+  // 保存到本地存储：在组件首次挂载和待办事项列表改变时执行。  
+  useEffect(() => {  
+    localStorage.setItem("toDoList", JSON.stringify(toDoList));  
+  }, [toDoList]);  
 
   // 添加一个新的 todo 项到列表。这里需要生成一个唯一的 id。  
   const addToDo = (todo: string) => {  
