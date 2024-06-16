@@ -2,7 +2,7 @@
 
 ## 个人信息
 
-* GitHub ID: hedgehog
+* GitHub ID: chanhohn
 * OpenBuild Username: hedgehog
 * ERC20 钱包地址: 0x742F1AD3b2C139926Ad5D789fDbf6C4ae2d99EA9
 
