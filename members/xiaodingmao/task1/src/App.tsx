@@ -9,15 +9,17 @@ export interface Todo {
   completed: boolean
 }
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([])
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[]; // 将结果转换为 Todo[] 类型
-    setTodos(storedTodos);
-    console.log(localStorage.getItem('todos'), todos)
-  }, [])
+  const [todos, setTodos] = useState<Todo[]>(()=>{
+    return JSON.parse(localStorage.getItem('todos') || '[]') as Todo[]
+  })
+  // useEffect(() => {
+  //   const storedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[]; // 将结果转换为 Todo[] 类型
+  //   setTodos(storedTodos);
+  //   console.log(localStorage.getItem('todos'), todos)
+  // }, [])
 
   useEffect(() => {
-    todos.length > 0 && localStorage.setItem('todos', JSON.stringify(todos))
+    localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
   function addTodo(text: string) {
     setTodos([...todos, { text, completed: false }])
