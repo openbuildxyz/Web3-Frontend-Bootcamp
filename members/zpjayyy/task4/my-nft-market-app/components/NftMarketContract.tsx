@@ -142,7 +142,7 @@ function ListNft() {
   }
 
   return (
-    <div>
+    <div className="w-1/3">
       <Listbox
         items={orderList}
         aria-label="Dynamic Actions"
@@ -153,7 +153,7 @@ function ListNft() {
       >
         {(item) => (
           <ListboxItem key={item.tokenId.toString()}>
-            <div>
+            <div className="flex flex-col border-2 border-gray-200">
               <p>owner: {item.address}</p>
               <p>price: {item.price.toString()}</p>
               <p>tokenId: {item.tokenId.toString()}</p>
