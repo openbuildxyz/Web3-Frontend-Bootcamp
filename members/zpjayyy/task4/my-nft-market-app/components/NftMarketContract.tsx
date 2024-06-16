@@ -82,7 +82,7 @@ interface Order {
 }
 
 function ListNft() {
-  const { data: hash, error, writeContract } = useWriteContract();
+  const { data, writeContract } = useWriteContract();
 
   const [tokenId, setTokenId] = useState<bigint>();
 
@@ -122,7 +122,7 @@ function ListNft() {
       }
       setOrderList(result);
     };
-    fetchOrderList().then(r => {});
+    fetchOrderList().then(() => {});
   }, []);
 
   async function approve() {
@@ -161,59 +161,6 @@ function ListNft() {
           </ListboxItem>
         )}
       </Listbox>
-    </div>
-  );
-}
-
-function Purchase() {
-  const { data: hash, error, writeContract } = useWriteContract();
-
-  const [tokenId, setTokenId] = useState<bigint>();
-
-  useWatchContractEvent({
-    ...tokenContractConfig,
-    eventName: "Approval",
-    onLogs(logs) {
-      console.log(logs);
-      // approved
-      if (tokenId) {
-        purchase(tokenId).catch((error) => console.log(error));
-      }
-    },
-  });
-
-  async function approve() {
-    writeContract({
-      ...tokenContractConfig,
-      functionName: "approve",
-      args: [nftMarketContractConfig.address, ethers.parseEther("1")],
-    });
-  }
-
-  async function purchase(tokenId: bigint) {
-    writeContract({
-      ...nftMarketContractConfig,
-      functionName: "purchase",
-      args: [nftContractConfig.address, BigInt(tokenId)],
-    });
-  }
-
-  async function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const formDate = new FormData(e.target as HTMLFormElement);
-    const tokenId = BigInt(formDate.get("tokenId") as string);
-    setTokenId(tokenId);
-    await approve();
-  }
-
-  return (
-    <div className="w-1/3 m-4">
-      <form onSubmit={submit}>
-        <Input type="number" name="tokenId" placeholder="tokenId" required />
-        <Button type="submit">Purchase</Button>
-        {hash && <div>transaction hash: {hash}</div>}
-        {error && <div>Error: {error.message}</div>}
-      </form>
     </div>
   );
 }
