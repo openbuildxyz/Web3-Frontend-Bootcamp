@@ -1,9 +1,5 @@
-import {
-  useReadContract,
-  useWatchContractEvent,
-  useWriteContract,
-} from "wagmi";
-import { FormEvent, useState } from "react";
+import { useWatchContractEvent, useWriteContract } from "wagmi";
+import { FormEvent, useEffect, useState } from "react";
 import { nftMarketContractConfig } from "@/config/nftMarketContractConfig";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
@@ -11,6 +7,8 @@ import { nftContractConfig } from "@/config/nftContractConfig";
 import { tokenContractConfig } from "@/config/tokenContractConfig";
 import { ethers } from "ethers";
 import { Listbox, ListboxItem } from "@nextui-org/listbox";
+import { readContract } from "@wagmi/core";
+import { config } from "@/config/config";
 
 export default function NftMarketContract() {
   return (
@@ -88,6 +86,8 @@ function ListNft() {
 
   const [tokenId, setTokenId] = useState<bigint>();
 
+  const [orderList, setOrderList] = useState<Order[]>([]);
+
   useWatchContractEvent({
     ...tokenContractConfig,
     eventName: "Approval",
@@ -100,24 +100,27 @@ function ListNft() {
     },
   });
 
-  let orderList = [];
-  let i = BigInt("0");
-  for (; i < BigInt("10"); i++) {
-    const { data } = useReadContract({
-      ...nftMarketContractConfig,
-      functionName: "orderList",
-      args: [nftContractConfig.address, i],
-    });
-    if (data && data[1] != BigInt("0")) {
-      let [address, price] = data;
-      let order: Order = {
-        address,
-        price,
-        tokenId: i,
-      };
-      orderList.push(order);
-    }
-  }
+  useEffect(() => {
+    const fetchOrderList = async () => {
+      let i = BigInt("0");
+      for (; i < BigInt("10"); i++) {
+        const data = await readContract(config, {
+          ...nftMarketContractConfig,
+          functionName: "orderList",
+          args: [nftContractConfig.address, i],
+        });
+        if (data && data[1] != BigInt("0")) {
+          let [address, price] = data;
+          let order: Order = {
+            address,
+            price,
+            tokenId: i,
+          };
+          orderList?.push(order);
+        }
+      }
+    };
+  }, []);
 
   async function approve() {
     writeContract({
