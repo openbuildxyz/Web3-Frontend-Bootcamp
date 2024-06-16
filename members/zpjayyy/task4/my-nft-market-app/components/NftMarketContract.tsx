@@ -102,6 +102,7 @@ function ListNft() {
 
   useEffect(() => {
     const fetchOrderList = async () => {
+      let result = [];
       let i = BigInt("0");
       for (; i < BigInt("10"); i++) {
         const data = await readContract(config, {
@@ -116,10 +117,12 @@ function ListNft() {
             price,
             tokenId: i,
           };
-          orderList?.push(order);
+          result.push(order);
         }
       }
+      setOrderList(result);
     };
+    fetchOrderList().then(r => {});
   }, []);
 
   async function approve() {
