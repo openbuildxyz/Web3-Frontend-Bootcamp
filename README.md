@@ -14,7 +14,7 @@
 | Categories         | Description                                                  |
 | ------------------ | ------------------------------------------------------------ |
 | [🍕Materials](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/materials)         | 课外资料/课堂笔记（欢迎贡献）  |
-| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 答疑   |
+| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 知识答疑   |
 | [💰Bounty](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/bounty)   | Bounty 任务：课堂作业/课堂笔记/社区贡献etc|
 | 💡[I've got an idea!](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/i-ve-got-an-idea)   | 关于一些 Amazing fancy ideas, 用来<br />1. Web3前端共学 <br />2. 组队开发<br />3. 参加黑客松<br />4. 招聘内推<br />5. 自娱自乐🎣<br /> |
 
@@ -56,6 +56,8 @@
 
 ### 任务提交
 
+除了下面的文字说明，也可看视频《[OpenBuild Web3 前端训练营作业提交演示](https://www.bilibili.com/video/BV11gVxeuE7Y)》。
+
 #### 前置操作
 
 先点击页面顶部右上角的「Fork」在自己空间中创建备份，随后将备份仓库 `git clone` 至本地，接下来的所有操作请在自己的仓库内完成。 
@@ -78,7 +80,7 @@
 
 每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
 
-**⚠️⚠️⚠️ 请按要求提交你的pr，否则可能影响奖励的计算**
+**⚠️⚠️⚠️ 不符合规范的会加上「[invalid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Aopen+is%3Apr+label%3Ainvalid)」标签，请按要求提交你的 PR，否则可能影响奖励的计算！**
 
 #### PR 命名
 
@@ -86,7 +88,7 @@
 
 提交 task 的 PR，命名为 `task[n]: user-name`，例如： `task0: Beavnvvv`
 
-需要编写网页的 `task`，请上传效果截图。
+需要编写网页的 `task`，请在描述中上传效果截图。
 
 **请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！<br>请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！<br>请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！**
 
