@@ -82,7 +82,7 @@ interface Order {
 }
 
 function ListNft() {
-  const { data, writeContract } = useWriteContract();
+  const {writeContract } = useWriteContract();
 
   const [tokenId, setTokenId] = useState<bigint>();
 
