@@ -1,4 +1,8 @@
-import { useWatchContractEvent, useWriteContract } from "wagmi";
+import {
+  useReadContract,
+  useWatchContractEvent,
+  useWriteContract,
+} from "wagmi";
 import { FormEvent, useState } from "react";
 import { nftMarketContractConfig } from "@/config/nftMarketContractConfig";
 import { Input } from "@nextui-org/input";
@@ -6,12 +10,14 @@ import { Button } from "@nextui-org/button";
 import { nftContractConfig } from "@/config/nftContractConfig";
 import { tokenContractConfig } from "@/config/tokenContractConfig";
 import { ethers } from "ethers";
+import { Listbox, ListboxItem } from "@nextui-org/listbox";
 
 export default function NftMarketContract() {
   return (
     <div>
       <List />
-      <Purchase />
+      <ListNft />
+      {/*<Purchase />*/}
     </div>
   );
 }
@@ -67,6 +73,88 @@ function List() {
         <Button type="submit">List</Button>
         {hash && <div>transaction hash: {hash}</div>}
       </form>
+    </div>
+  );
+}
+
+interface Order {
+  address: string;
+  price: bigint;
+  tokenId: bigint;
+}
+
+function ListNft() {
+  const { data: hash, error, writeContract } = useWriteContract();
+
+  const [tokenId, setTokenId] = useState<bigint>();
+
+  useWatchContractEvent({
+    ...tokenContractConfig,
+    eventName: "Approval",
+    onLogs(logs) {
+      console.log(logs);
+      // approved
+      if (tokenId) {
+        purchase(tokenId).catch((error) => console.log(error));
+      }
+    },
+  });
+
+  let orderList = [];
+  let i = BigInt("0");
+  for (; i < BigInt("10"); i++) {
+    const { data } = useReadContract({
+      ...nftMarketContractConfig,
+      functionName: "orderList",
+      args: [nftContractConfig.address, i],
+    });
+    if (data && data[1] != BigInt("0")) {
+      let [address, price] = data;
+      let order: Order = {
+        address,
+        price,
+        tokenId: i,
+      };
+      orderList.push(order);
+    }
+  }
+
+  async function approve() {
+    writeContract({
+      ...tokenContractConfig,
+      functionName: "approve",
+      args: [nftMarketContractConfig.address, ethers.parseEther("1")],
+    });
+  }
+
+  async function purchase(tokenId: bigint) {
+    writeContract({
+      ...nftMarketContractConfig,
+      functionName: "purchase",
+      args: [nftContractConfig.address, BigInt(tokenId)],
+    });
+  }
+
+  return (
+    <div>
+      <Listbox
+        items={orderList}
+        aria-label="Dynamic Actions"
+        onAction={(key) => {
+          setTokenId(BigInt(key));
+          approve().catch((error) => console.log(error));
+        }}
+      >
+        {(item) => (
+          <ListboxItem key={item.tokenId.toString()}>
+            <div>
+              <p>owner: {item.address}</p>
+              <p>price: {item.price.toString()}</p>
+              <p>tokenId: {item.tokenId.toString()}</p>
+            </div>
+          </ListboxItem>
+        )}
+      </Listbox>
     </div>
   );
 }
