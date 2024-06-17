@@ -18,7 +18,8 @@ const loadTodosFromLocalStorage = (): Todo[] => {
 export default function Home() {
   
   const [todos, setTodos] = useState<Todo[]>(loadTodosFromLocalStorage);
-  const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
+  const [filter, setFilter] = useState
+  ('all');
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -43,16 +44,16 @@ export default function Home() {
     ));
   };
 
-  const getFilteredTodos = () => {
-    switch(filter){
-      case 'completed':
-        return todos.filter(todo => todo.completed);
-      case 'active':
-        return todos.filter(todo => !todo.completed);
-      default:
-        return todos;
-    }
-  };
+   const getFilteredTodos = () => {
+     switch(filter){
+       case 'completed':
+         return todos.filter(todo => todo.completed);
+       case 'active':
+         return todos.filter(todo => !todo.completed);
+       default:
+         return todos;
+     }
+ };
 
   return (
     <div>
