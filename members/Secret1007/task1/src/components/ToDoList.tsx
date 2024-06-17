@@ -1,18 +1,15 @@
-import { useState } from "react";
 import ToDoItem, { ToDoItemProp } from "./ToDoItem";
 
 interface ToDoListProps {
     todos: ToDoItemProp[];
+    onComplete: (id: number) => void; // 从父组件传递的完成任务的方法
 }
-const ToDoList: React.FC<ToDoListProps> = ({ todos: initialTodos }) => {
-    const [todos, setTodos] = useState<ToDoItemProp[]>(initialTodos);
-    const onComplete = (id: number) => {
-        setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: true } : todo)));
-    };
+
+const ToDoList: React.FC<ToDoListProps> = ({ todos, onComplete }) => {
     return (
         <ul>
             {todos.map((todo, index) => (
-                <ToDoItem item={todo} index={index} onComplete={onComplete}></ToDoItem>
+                <ToDoItem item={todo} index={index} onComplete={onComplete} key={todo.id}></ToDoItem>
             ))}
         </ul>
     );

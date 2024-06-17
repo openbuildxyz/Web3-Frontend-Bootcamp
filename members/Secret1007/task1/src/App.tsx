@@ -10,12 +10,14 @@ function App() {
     const addTodo = (newTodo: ToDoItemProp) => {
         setTodos([...todos, newTodo]);
     };
+
+    const onComplete = () => {};
     return (
         <>
             <div className="App">
                 <div className="grid-paper">
                     <Header></Header>
-                    <ToDoList todos={todos}></ToDoList>
+                    <ToDoList todos={todos} onComplete={onComplete}></ToDoList>
                     <AddToDo addTodo={addTodo}></AddToDo>
                 </div>
             </div>
