@@ -40,7 +40,9 @@
 
 四、Web3前端框架和合约关系（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360093) | [哔站](https://www.bilibili.com/video/BV1pM4m1S74X) | [油管](https://www.youtube.com/watch?v=Qrf-J6QUVtE)）
 
-五、实战项目一：轻松开发DApp前端项目
+四点五、Web3前端训练营AMA答疑第一期（[哔站](https://www.bilibili.com/video/BV1cE421N7yM)）
+
+五、实战项目一：轻松开发DApp前端项目（[哔站](https://www.bilibili.com/video/BV1nz421z7u2)）
 
 六、实战项目二：Uniswap实战
 
