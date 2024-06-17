@@ -1,62 +1,31 @@
-import { useEffect } from "react"
+import { useCallback } from "react"
+import "./ToDoItem.css";
 
-
-interface Todo {
-  id: number;
+export interface ITodoItem {
+  id: string;
   text: string;
-  complete: boolean;
+  done: boolean;
 }
 
-interface ToDoItemProps {
-  list: Todo[]
-  setList: React.Dispatch<React.SetStateAction<Todo[]>>
+type IProps = ITodoItem & {
+  onRemove: () => void;
+  onDone: (flag: boolean) => void;
 }
 
-const ToDoItem: React.FC<ToDoItemProps> = ({list, setList }) => {
+const ToDoItem: React.FC<IProps> = (props) => {
 
-  // 修改完成状态的方法
-  const ifaCcomplish = (id: number) => {
-    setList(
-      list.map((todo) => {
-        console.log(todo)
-        return todo.id === id ? {...todo, complete: !todo.complete} : todo
-      }
-      )
-    )
-  }
-
-  // 删除方法
-  const deletToDo = (id: number) => {
-    setList(
-      list.filter((todo) => {
-        return todo.id !== id
-      })
-    )
-  }
-
-  useEffect(() => {
-    localStorage.removeItem("todos")
-    console.log(localStorage.getItem("todos"))
-    
-    localStorage.setItem("todos", JSON.stringify(list))
-    console.log(localStorage.getItem("todos"))
-  }, [list])
+  const { done, text, onRemove, onDone } = props;
+  const handleDone = useCallback(() => {
+    onDone(!done);
+  }, [done, onDone]);
 
   return (
-    <div >
-      {list.map((todo) => (
-        <div key={todo.id} >
-          <ol type="1">
-              <li>{todo.text}</li>
-              <li onClick={() => ifaCcomplish(todo.id as number)}>{todo.complete ? "完成" : "未完成"}</li>
-              <button  onClick={(event) => {
-                event.stopPropagation()
-                deletToDo(todo.id)
-              }}>删除</button>
-          </ol>
-        </div>
-      ))}
-    </div>
+    <li>
+      <span className={"todoitem__text "+(done ? "--finished" : "")} onClick={handleDone}>{text}</span>
+      <button className="remove-btn" onClick={onRemove}>
+        X
+      </button>
+    </li>
   )
 }
 

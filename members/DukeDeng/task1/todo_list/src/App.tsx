@@ -1,64 +1,80 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import Header from './components/Header'
 import AddToDo from './components/AddToDo'
-import ToDoItem from './components/ToDoItem';
+import ToDoItem, { ITodoItem } from './components/ToDoItem';
+import ToDoItemList from './components/ToDoList';
 
-interface Todo {
-  id: number;
-  text: string;
-  complete: boolean;
+
+import './App.css'
+
+const STORAGE_ID = 'task1-todo-list';
+
+const saveToLocal = (list: ITodoItem[] = []) => {
+  window.localStorage.setItem(STORAGE_ID, JSON.stringify(list));
+  console.log('saveToLocal', list);
 }
 
-function App() {
-  const [todos, setTodos] = useState<Todo[]>(() => {
-      const getSaveTodos = localStorage.getItem("todos")
-      //JSON.parse(savedTodos) 将 savedTodos 从 JSON 字符串转换为对象或数组。
-      // as Todo[] 是 TypeScript 的类型断言，表示解析后的结果应被视为 Todo[] 类型（一个 Todo 对象的数组）。
-      return getSaveTodos ? JSON.parse(getSaveTodos) as Todo[] : []
-    }
-  )
-
-
-
-  const [currentId, setCurrentId] = useState<number>(() => {
-     const getSaveId = localStorage.getItem("currentId")
-     return getSaveId ? JSON.parse(getSaveId) as number : 1
-  })
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
-
-  useEffect(() => {
-    localStorage.setItem("currentId", JSON.stringify(currentId))
-  }, [currentId])
-
-  const addToDo = (text: string): void => {
-    const newTodo: Todo = {
-      id: currentId,
-      text,
-      complete: false
-    }
-    // console.log(newTodo)
-    // console.log(currentId)
-    // console.log(localStorage.getItem("todos"))
-    
-    setTodos([...todos, newTodo])
-    setCurrentId( currentId + 1)
+const restoreFromLocal = () => {
+  const allText = window.localStorage.getItem(STORAGE_ID) || '[]';
+  const defaultValue: ITodoItem[] = [];
+  try {
+    const list = JSON.parse(allText);
+    return Array.isArray(list) ? list : defaultValue;
+  } catch (e) {
+    console.error(e);
+    return defaultValue;
   }
+}
 
-  // const item = (): Todo[] => {
+const App: React.FC = () => {
+  const [list, setList] = useState<ITodoItem[]>(restoreFromLocal());
+  const [hidden, setHidden] = useState<boolean>(true);
 
-  // }
+  useEffect(() => {
+    saveToLocal(list);
+  }, [list]);
+
+  const onAdd = useCallback((text: string) => {
+    const newList = [{
+      id: uuidv4(),
+      text: text.trim(),
+      done: false,
+    }, ...list];
+    setList(newList);
+  }, [list]);
+
+  const onRemove  = useCallback((id: string) => {
+    const newList = list.filter(item => item.id !== id);
+    setList(newList);
+  }, [list]);
+
+  const onDone = useCallback((id: string, flag: boolean) => {
+    const nextList = list.map(item => {
+      return item.id !== id ?  item: {...item, done: flag };
+    }).sort((a: ITodoItem, b: ITodoItem) => (a.done as any as number) - (b.done as any as number));
+    setList(nextList);
+  }, [list]);
+
+  const handleHidden = useCallback(() => {
+    setHidden(!hidden);
+  }, [hidden]);
+
+  const tool = useMemo(() => {
+    return <button onClick={handleHidden} className="tool-btn">{hidden ? 'Show All' : 'Show Completed'}</button>
+  }, [handleHidden]);
+
+  const showList = useMemo(() => {
+    return !hidden ? list : list.filter(item => !item.done);
+  },[hidden, list]);
 
   return (
     <div>
-      <Header />
-      <AddToDo addToDo={addToDo}/>
-      <ToDoItem list={todos} setList={setTodos}></ToDoItem>
+      <Header tool = {tool} />
+      <AddToDo onAdd={onAdd} />
+      <ToDoItemList list={showList} onRemove={onRemove} onDone={onDone} />
     </div>
   )
 }
 
-export default App
+export default App;
