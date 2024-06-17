@@ -1,0 +1,5 @@
+.completed {
+    text-decoration: line-through;
+    text-decoration-color: #74b9ff;
+    text-decoration-thickness: 4px;
+}
