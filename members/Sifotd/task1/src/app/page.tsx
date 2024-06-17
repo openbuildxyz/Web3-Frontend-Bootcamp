@@ -1,5 +1,7 @@
+
 "use client"
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import TodoList from "@/components/TodoList";
@@ -7,36 +9,35 @@ import AddTodo from "@/components/AddTodo";
 import TodoFilter from "@/components/TodoFilter";
 import { Todo } from "@/types";
 
+
+const loadTodosFromLocalStorage = (): Todo[] => {
+  const storedTodos = localStorage.getItem('todos');
+  return storedTodos ? JSON.parse(storedTodos) : [];
+};
+
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  
+  const [todos, setTodos] = useState<Todo[]>(loadTodosFromLocalStorage);
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
-
-
-  useEffect(() => {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      setTodos(JSON.parse(savedTodos));
-    }
-  }, []); 
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]); 
+  }, [todos]);
 
-  const addTodo = (text:string) => {
+  const addTodo = (text: string) => {
     const newTodo = {
-      id:Date.now(),
+      id: Date.now(),
       text,
-      completed:false 
+      completed: false
     };
     setTodos([...todos, newTodo]);
   };
 
-  const deleteTodo = (id:number) => {
+  const deleteTodo = (id: number) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
-  const toggleTodo = (id:number) => {
+  const toggleTodo = (id: number) => {
     setTodos(todos.map(todo => 
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ));
