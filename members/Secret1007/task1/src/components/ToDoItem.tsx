@@ -1,5 +1,4 @@
 import { Button } from "antd";
-import { useState } from "react";
 import "./ToDoItem.css";
 
 interface ToDoItemProps {
@@ -10,22 +9,24 @@ interface ToDoItemProps {
     };
     index: number;
     onComplete: (id: number) => void;
+
+    onDelete: (id: number) => void;
 }
 export type ToDoItemProp = ToDoItemProps["item"];
-const ToDoItem: React.FC<ToDoItemProps> = ({ item, index, onComplete }) => {
-    const [isCompleted, setIsCompleted] = useState(item.completed);
+const ToDoItem: React.FC<ToDoItemProps> = ({ item, index, onComplete, onDelete }) => {
     const handleComplete = () => {
-        setIsCompleted(true);
         onComplete(item.id);
     };
 
-    const handleDelete = () => {};
+    const handleDelete = () => {
+        onDelete(item.id);
+    };
     return (
         <li key={item.id} className="flex justify-between items-center mb-2">
             <div className={`mr-4 ${item.completed ? "completed" : ""}`}>
                 {index + 1}.{item.text}
             </div>
-            {isCompleted ? (
+            {item.completed ? (
                 <Button className="bg-red text-white" onClick={handleDelete}>
                     Delete
                 </Button>
