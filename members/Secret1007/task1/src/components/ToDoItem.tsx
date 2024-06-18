@@ -23,10 +23,15 @@ const ToDoItem: React.FC<ToDoItemProps> = ({ item, index, onComplete, onDelete }
     };
     return (
         <li key={item.id} className="flex justify-between items-center mb-2">
-            <div className={`mr-4 ${item.completed ? "completed" : ""}`}>
-                {index + 1}.{item.text}
+            <div className={`mr-4 ${item.completed ? "completed" : "blinking-text"}`}>
+                <span onClick={handleComplete} className="cursor-pointer">
+                    {index + 1}.{item.text}
+                </span>
             </div>
-            {item.completed ? (
+            <Button className="bg-red text-white" onClick={handleDelete}>
+                Delete
+            </Button>
+            {/* {item.completed ? (
                 <Button className="bg-red text-white" onClick={handleDelete}>
                     Delete
                 </Button>
@@ -34,7 +39,7 @@ const ToDoItem: React.FC<ToDoItemProps> = ({ item, index, onComplete, onDelete }
                 <Button className="bg-#74b9ff text-white" onClick={handleComplete}>
                     Completed
                 </Button>
-            )}
+            )} */}
         </li>
     );
 };
