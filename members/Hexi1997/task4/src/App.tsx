@@ -1,26 +1,22 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useReadContract } from 'wagmi'
-import { contractInfo } from './utils/const';
+import { useAccount, useReadContract } from "wagmi";
+import { contractInfo } from "./utils/const";
+import { AppLayout } from "./components/AppLayout";
+import { RouterProvider } from "react-router-dom";
+import { routers } from "./pages/routes";
 function App() {
   const { address } = useAccount();
   const { data: paymentToken } = useReadContract({
     abi: contractInfo.Market.abi,
     address: contractInfo.Market.address,
-    functionName: "paymentToken"
-  })
+    functionName: "paymentToken",
+  });
 
-  console.log(paymentToken, address)
+  console.log(paymentToken, address);
   return (
-    <>
-      <header className='flex justify-end'>
-        <ConnectButton />
-      </header>
-      <main>
-        app
-      </main>
-    </>
-
-  )
+    <AppLayout>
+      <RouterProvider router={routers} />
+    </AppLayout>
+  );
 }
 
-export default App
+export default App;

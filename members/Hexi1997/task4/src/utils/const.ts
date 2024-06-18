@@ -150,7 +150,7 @@ export const contractInfo = {
         stateMutability: "nonpayable",
         type: "function",
       },
-    ],
+    ] as const,
   },
   Erc20Token: {
     address: "0x9546Da8C91CFF054690431ffbEd9d96F0aD4eD58" as `0x${string}`,
@@ -330,6 +330,6 @@ export const contractInfo = {
         stateMutability: "nonpayable",
         type: "function",
       },
-    ],
+    ] as const,
   },
 };
