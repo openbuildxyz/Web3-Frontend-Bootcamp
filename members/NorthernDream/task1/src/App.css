@@ -16,3 +16,8 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+.item-text.complete {
+  text-align: left;
+  text-decoration: line-through;
+}

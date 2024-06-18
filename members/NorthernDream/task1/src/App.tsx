@@ -29,6 +29,7 @@ function App() {
     (key: number) => setToDoList(toDoList.filter((i) => i.key !== key)),
     [toDoList]
   );
+
   const handleSwitchCompleteItem = useCallback(
     (key: number, complete: boolean) => {
       const item = toDoList.find((i) => i.key === key);
