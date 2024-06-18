@@ -1,0 +1,67 @@
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+/*header{*/
+/*  height: 100px;*/
+/*  width: 100%;*/
+/*}*/
+.ToDoList{
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.bottom{
+  width: 100% ;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+}
+.bottom input{
+  height: 30px;
+  width: 200px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+.bottom button{
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+
+.item{
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+  border-radius: 10px ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  height: 50px;
+  padding: 0 20px ;
+  box-sizing: border-box;
+}
+.item .del{
+  background-color: red;
+  width: 50px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+

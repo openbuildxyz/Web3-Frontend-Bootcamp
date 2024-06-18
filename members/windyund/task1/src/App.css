@@ -1,0 +1,91 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+/*base*/
+body {
+  background: #fff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #da4f49;
+  border: 1px solid #bd362f;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #bd362f;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+}
+.todo-container .todo-wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+
+
+
+
