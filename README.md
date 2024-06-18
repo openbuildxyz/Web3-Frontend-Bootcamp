@@ -44,7 +44,7 @@
 
 五、实战项目一：轻松开发DApp前端项目（[哔站](https://www.bilibili.com/video/BV1nz421z7u2)）
 
-六、实战项目二：Uniswap实战
+六、实战项目二：Uniswap实战（[哔站](https://www.bilibili.com/video/BV1kZ421M7Ke)）
 
 七、进阶实战：探索EVM++
 
