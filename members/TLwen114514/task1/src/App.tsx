@@ -10,15 +10,14 @@ interface Todo {
 }
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  // 从本地存储中获取待办事项
-  useEffect(() => {
-    const storedTodos = localStorage.getItem('todos');
-    if (storedTodos) {
-      setTodos(JSON.parse(storedTodos));
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      return JSON.parse(savedTodos);
+    } else {
+      return [];
     }
-  }, []);
+  });
 
   // 将待办事项保存到本地存储
   useEffect(() => {
