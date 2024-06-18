@@ -1,9 +1,11 @@
 [profile.default]
 src = "src"
 out = "out"
-libs = ["lib"]
 
-[dependencies]
-openzeppelin-contracts = { path = "./lib/openzeppelin-contracts" }
+# Fuzz more than the default 256
+libs = ["node_modules", "lib"]
+
+[dependencies] 
+"@openzeppelin-contracts" = { version = "4.9.2" }
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

@@ -30,7 +30,7 @@ contract NFTMarketTest is Test {
         nft.mintNFT(owner);
         nft.setApprovalForAll(address(market), true);
 
-        market.listNFT(address(nft), 1, 100);
+        market.ListingNft(address(nft), 1, 100);
 
         (address seller, address nftContract, uint256 tokenId, uint256 price) = market.listings(1);
 
@@ -43,12 +43,12 @@ contract NFTMarketTest is Test {
     function testBuyNFT() public {
         nft.mintNFT(owner);
         nft.setApprovalForAll(address(market), true);
-        market.listNFT(address(nft), 1, 100);
+        market.ListingNft(address(nft), 1, 100);
 
         token.transfer(addr1, 100);
         vm.startPrank(addr1);
         token.approve(address(market), 100);
-        market.buyNFT(1);
+        market.buyListingNft(1);
         vm.stopPrank();
 
         assertEq(nft.ownerOf(1), addr1);
