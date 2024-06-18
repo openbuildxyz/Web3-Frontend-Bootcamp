@@ -1,0 +1,113 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "./IERC721.sol";
+
+contract ERC721 is IERC721 {
+    // 代币名称和符号
+    string public name = "myNFT";
+    string public symbol = "NFT";
+
+    // Token ID到URI的映射
+    mapping(uint256 => string) private _tokenURIs;
+
+    // Token ID到所有者的映射
+    mapping(uint256 => address) private _owners;
+
+    // Token ID到被批准地址的映射
+    mapping(uint256 => address) private _tokenApprovals;
+
+    // 所有者到操作员的全局批准映射
+    mapping(address => mapping(address => bool)) private _operatorApprovals;
+
+    // 所有Token的ID列表
+    uint256[] private _allTokens;
+
+
+    // 铸造新Token并分配给msg.sender
+    function mint(uint256 tokenId) public {
+        // 确保Token尚未铸造
+        require(_owners[tokenId] == address(0), "Token already minted");
+        _owners[tokenId] = msg.sender;
+        _allTokens.push(tokenId);
+        emit Transfer(address(0), msg.sender, tokenId);
+    }
+
+    // 获取Token的URI
+    function tokenURI(uint256 tokenId) public view returns (string memory) {
+        require(_exists(tokenId), "Token does not exist");
+        return _tokenURIs[tokenId];
+    }
+
+    // 设置Token的URI
+    function setTokenURI(uint256 tokenId, string memory _uri) public {
+        require(_owners[tokenId] == msg.sender, "Only token owner can set URI");
+        _tokenURIs[tokenId] = _uri;
+    }
+
+    // 检查Token是否存在
+    function _exists(uint256 tokenId) internal view returns (bool) {
+        return _owners[tokenId] != address(0);
+    }
+
+    // 获取Token的当前所有者
+    function ownerOf(uint256 tokenId) public view override returns (address) {
+        return _owners[tokenId];
+    }
+
+    // 批准一个地址对特定Token的操作权限
+    function approve(address to, uint256 tokenId) public override {
+        address owner = ownerOf(tokenId);
+        require(owner == msg.sender || isApprovedForAll(owner, msg.sender), "Not owner nor approved for all");
+        _tokenApprovals[tokenId] = to;
+        emit Approval(owner, to, tokenId);
+    }
+
+    // 获取被批准操作特定Token的地址
+    function getApproved(uint256 tokenId) public view override returns (address) {
+        require(_exists(tokenId), "Token does not exist");
+        return _tokenApprovals[tokenId];
+    }
+
+    // 设置地址为所有者的全局操作员
+    function setApprovalForAll(address operator, bool approved) public override {
+        _operatorApprovals[msg.sender][operator] = approved;
+        emit ApprovalForAll(msg.sender, operator, approved);
+    }
+
+    // 检查地址是否是所有者的全局操作员
+    function isApprovedForAll(address owner, address operator) public view override returns (bool) {
+        return _operatorApprovals[owner][operator];
+    }
+
+    // 从地址from转让Token给地址to
+    function transferFrom(address from, address to, uint256 tokenId) public override {
+        require(_exists(tokenId), "Token does not exist");
+        require(_owners[tokenId] == from, "Sender is not the owner");
+        require(msg.sender == getApproved(tokenId) || isApprovedForAll(from, msg.sender), "Not approved");
+
+        _transferFrom(from, to, tokenId);
+    }
+
+    // 内部函数，用于转移Token所有权
+    function _transferFrom(address from, address to, uint256 tokenId) private {
+        // 清除批准
+        _tokenApprovals[tokenId] = address(0);
+
+        // 转移所有权
+        _owners[tokenId] = to;
+
+        emit Transfer(from, to, tokenId);
+    }
+
+    // 获取一个地址拥有的Token数量
+    function balanceOf(address owner) public view override returns (uint256) {
+        uint256 balance = 0;
+        for (uint256 i = 0; i < _allTokens.length; i++) {
+            if (_owners[_allTokens[i]] == owner) {
+                balance++;
+            }
+        }
+        return balance;
+    }
+}
