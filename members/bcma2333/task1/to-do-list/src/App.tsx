@@ -8,28 +8,35 @@ import { ToDo } from './component/entity/ToDo';
 
 function App() {
   const [toDoItems, setToDoItems] = useState<ToDo[]>(() => {
-    const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : [];
+    var initialItems = localStorage.getItem('todos');
+    return initialItems ? JSON.parse(initialItems) : []; 
   });
 
   useEffect(() => {
+    toDoItems.sort((a:ToDo, b:ToDo) => a.id - b.id);
     localStorage.setItem('todos', JSON.stringify(toDoItems));
   }, [toDoItems]);
 
   const handleAddToDo = (text: string) => {
-    const newItem = {id:Date.now(), text};
+    const newItem : ToDo = {
+      id: Date.now(),
+      text,
+      isCompleted: false
+    };
     setToDoItems([...toDoItems, newItem]);
   };
 
   const deleteToDo = (id: number) => {
-    setToDoItems(toDoItems.filter(todo => todo.id !== id));
-  };
+    var initialItems = localStorage.getItem('todos');
+    var savedTodos : ToDo[]= initialItems ? JSON.parse(initialItems) : [];
+    setToDoItems(savedTodos.filter(todo => todo.id !== id));
+   };
 
   return (
     <>
       <Header/>
       <AddToDo onAdd={handleAddToDo} />
-      <ToDoList items={toDoItems} deleteToDo={deleteToDo} />
+      <ToDoList items={toDoItems} deleteToDo={deleteToDo}/>
     </>
   )
 }
