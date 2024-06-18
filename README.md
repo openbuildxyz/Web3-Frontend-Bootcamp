@@ -32,15 +32,17 @@
 
 ## ⭐ 学习大纲 ⭐
 
-一、React框架介绍和优势
+一、React框架介绍和优势（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360050) | [哔站](https://www.bilibili.com/video/BV1FfTXefEot) | [油管](https://www.youtube.com/watch?v=Ai0eTfBvEzw)）
 
-二、Web3技术基础入门
+二、Web3技术基础入门（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360063) | [哔站](https://www.bilibili.com/video/BV1ZPT9esE2c) | [油管](https://www.youtube.com/watch?v=z3s_iWIo0l0)）
 
-三、智能合约快速入门
+三、智能合约快速入门（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360080) | [哔站](https://www.bilibili.com/video/BV1mS411P7Hm) | [油管](https://www.youtube.com/watch?v=QGwPKges43s)）
 
-四、Web3前端框架和合约关系
+四、Web3前端框架和合约关系（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360093) | [哔站](https://www.bilibili.com/video/BV1pM4m1S74X) | [油管](https://www.youtube.com/watch?v=Qrf-J6QUVtE)）
 
-五、实战项目一：轻松开发DApp前端项目
+四点五、Web3前端训练营AMA答疑第一期（[哔站](https://www.bilibili.com/video/BV1cE421N7yM)）
+
+五、实战项目一：轻松开发DApp前端项目（[哔站](https://www.bilibili.com/video/BV1nz421z7u2)）
 
 六、实战项目二：Uniswap实战
 
