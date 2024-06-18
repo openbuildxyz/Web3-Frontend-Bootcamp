@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  font-family: 'Roboto', sans-serif;
+}
+.todo-list-page-wrapper {
+  padding-inline: 20px;
+  width:1000px;
+  margin-inline: auto;
+}
+
+.btn-add-task {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding:8px;
+  background-color: rgb(74,142,217);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  trasition: background-color 0.3s;
+  &:hover {
+    background-color: rgba(74,142,217,0.8);
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+.input-area-wrapper {
+  border: 1px solid blue;
+  display: flex;
+  gap: 10px;
+  .input-area-boxes {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .input-area-content {
+    height:150px;
+  }
+  .btn-add-task {
+    height: 36px;
+    padding-inline: 10px;
+    align-self: flex-end;
+  }
+}
+
+.todo-list-body {
+  display: flex;
+  .todo-list-body-wrapper {
+    width:30%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    .todo-list-header {
+      font-weight: bold;
+    }
+    .todo-list-task-container {
+      padding-block: 15px;
+      padding-inline: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+}
+.todo-task-wrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+
+  .todo-task-title {
+    padding:10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    &.selected {
+      background-color: rgba(74,142,217,0.8);
+    }
+  }
+}
+
+.todo-item-wrapper {
+  width:70%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  .todo-item-title-wrapper {
+    padding-block:10px;
+    display: flex;
+    align-items: center;
+    gap:20px;
+    .todo-item-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    span:nth-child(2) {
+      display: inline-block;
+      padding: 5px;
+      font-size: 12px;
+      border-radius: 5px;
+      color: white;
+    }
+    .todo-item-icon-completed{
+      background-color: green;
+    }
+    .todo-item-icon-pending{
+      background-color: red;
+    }
+  }
+}
+.todo-item-content {
+  min-height: 300px;
+  padding: 10px;
+  border: 1px solid rgb(205,205,205);
+}
+.todo-item-operation {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  button {
+    padding: 8px;
+    background-color: rgb(74,142,217);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    trasition: background-color 0.3s;
+    &:hover {
+      background-color: rgba(74,142,217,0.8);
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}

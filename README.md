@@ -14,7 +14,7 @@
 | Categories         | Description                                                  |
 | ------------------ | ------------------------------------------------------------ |
 | [🍕Materials](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/materials)         | 课外资料/课堂笔记（欢迎贡献）  |
-| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 答疑   |
+| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 知识答疑   |
 | [💰Bounty](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/bounty)   | Bounty 任务：课堂作业/课堂笔记/社区贡献etc|
 | 💡[I've got an idea!](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/i-ve-got-an-idea)   | 关于一些 Amazing fancy ideas, 用来<br />1. Web3前端共学 <br />2. 组队开发<br />3. 参加黑客松<br />4. 招聘内推<br />5. 自娱自乐🎣<br /> |
 
@@ -32,15 +32,17 @@
 
 ## ⭐ 学习大纲 ⭐
 
-一、React框架介绍和优势
+一、React框架介绍和优势（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360050) | [哔站](https://www.bilibili.com/video/BV1FfTXefEot) | [油管](https://www.youtube.com/watch?v=Ai0eTfBvEzw)）
 
-二、Web3技术基础入门
+二、Web3技术基础入门（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360063) | [哔站](https://www.bilibili.com/video/BV1ZPT9esE2c) | [油管](https://www.youtube.com/watch?v=z3s_iWIo0l0)）
 
-三、智能合约快速入门
+三、智能合约快速入门（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360080) | [哔站](https://www.bilibili.com/video/BV1mS411P7Hm) | [油管](https://www.youtube.com/watch?v=QGwPKges43s)）
 
-四、Web3前端框架和合约关系
+四、Web3前端框架和合约关系（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360093) | [哔站](https://www.bilibili.com/video/BV1pM4m1S74X) | [油管](https://www.youtube.com/watch?v=Qrf-J6QUVtE)）
 
-五、实战项目一：轻松开发DApp前端项目
+四点五、Web3前端训练营AMA答疑第一期（[哔站](https://www.bilibili.com/video/BV1cE421N7yM)）
+
+五、实战项目一：轻松开发DApp前端项目（[哔站](https://www.bilibili.com/video/BV1nz421z7u2)）
 
 六、实战项目二：Uniswap实战
 
@@ -55,6 +57,8 @@
 3. 参考「[活动报名](#活动报名)」提交 PR，完成报名。
 
 ### 任务提交
+
+除了下面的文字说明，也可看视频《[OpenBuild Web3 前端训练营作业提交演示](https://www.bilibili.com/video/BV11gVxeuE7Y)》。
 
 #### 前置操作
 
