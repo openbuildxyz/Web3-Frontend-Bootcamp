@@ -10,7 +10,6 @@ function TodoList() {
   const defaultTodos = savedTodos ? JSON.parse(savedTodos) : [];
   // todo 项列表
   const [todos, setTodos] = useState(defaultTodos);
-  console.log(todos);
 
   // 删除todo项
   const deleteTodo = useCallback((index) => {
