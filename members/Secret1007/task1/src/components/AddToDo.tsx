@@ -14,11 +14,12 @@ const AddToDo: React.FC<AddToDoProps> = ({ addTodo }) => {
             text: input,
             completed: false,
         };
+        if (input.trim() === "") {
+            return;
+        }
 
         addTodo(newTodo);
         setInput(""); // 清空输入框
-
-        console.log("Added Todo:", newTodo);
     };
     return (
         <div className="input-container flex justify-between">
