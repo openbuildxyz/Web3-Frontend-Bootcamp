@@ -1,3 +1,18 @@
+# Sample Hardhat Project
+
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+
+Try running some of the following tasks:
+
+```shell
+npx hardhat help
+npx hardhat test
+REPORT_GAS=true npx hardhat test
+npx hardhat node
+npx hardhat ignition deploy ./ignition/modules/Lock.ts
+```
+
+
 # 编写 NFTMarket 智能合约
 
 ## 任务目标
@@ -23,4 +38,9 @@
 - 部署在Sepolia测试网上
 - 提交全部合约文件（ERC20、ERC721、NFTMarket）
 - 提交上架NFT、购买NFT的交易哈希
- 
+
+
+- Contract MyToken deployed successfully: [0xC2F6FE1FCb070abE231CA0f9c2d148183740E4a8](https://sepolia.etherscan.io/address/0xC2F6FE1FCb070abE231CA0f9c2d148183740E4a8)
+- Contract MyNFT deployed successfully: [0x4ECEd2DEAfC38a647675F650c8ee0abbc52Db26e](https://sepolia.etherscan.io/address/0x4ECEd2DEAfC38a647675F650c8ee0abbc52Db26e)
+- Contract NFTMarket deployed successfully: [0x53b72dE55e80B4569EfDA5C96393b26FBDd27eF8](https://sepolia.etherscan.io/address/0x53b72dE55e80B4569EfDA5C96393b26FBDd27eF8)
+- Purchase NFT's transaction hash: [0xf87b7bbf97f47920944c4941fa087703c0f3f10876431f05b7de50d9b9bc6e93](https://sepolia.etherscan.io/tx/0xf87b7bbf97f47920944c4941fa087703c0f3f10876431f05b7de50d9b9bc6e93)

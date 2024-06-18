@@ -1,9 +1,49 @@
 {
-	"dependencies": {
-		"@openzeppelin/contracts": "^5.0.2",
-		"@truffle/hdwallet-provider": "^2.1.15"
-	},
-	"devDependencies": {
-		"dotenv": "^16.4.5"
-	}
+  "name": "my-nft",
+  "license": "MIT",
+  "scripts": {
+    "clean": "npx hardhat clean",
+    "build": "npx hardhat compile",
+    "deploy:token": "npx hardhat run scripts/deploy-token.ts --network sepolia",
+    "deploy:token:dev": "npx hardhat run scripts/deploy-token.ts --network localhost",
+    "deploy:nft:dev": "npx hardhat run scripts/deploy-nft.ts --network localhost",
+    "deploy:nft": "npx hardhat run scripts/deploy-nft.ts --network sepolia",
+    "deploy:dev": "npx hardhat run scripts/deploy.ts --network localhost",
+    "deploy": "npx hardhat run scripts/deploy.ts --network sepolia",
+    "list:nft:dev": "npx hardhat run scripts/list-nft.ts --network localhost",
+    "list:nft": "npx hardhat run scripts/list-nft.ts --network sepolia",
+    "buy:nft:dev": "npx hardhat run scripts/buy-nft.ts --network localhost",
+    "buy:nft": "npx hardhat run scripts/buy-nft.ts --network sepolia"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.5",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.6",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/hardhat-upgrades": "^3.0.0",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "@types/chai": "^4.2.19",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.18.98",
+    "chai": "^4.4.1",
+    "dotenv": "^16.4.5",
+    "ethereum-waffle": "^4.0.10",
+    "ethers": "^6.13.0",
+    "hardhat": "^2.22.5",
+    "hardhat-gas-reporter": "^1.0.9",
+    "mocha": "^9.2.0",
+    "solidity-coverage": "^0.8.5",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "@openzeppelin/contracts-upgradeable": "^5.0.2"
+  }
 }
