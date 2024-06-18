@@ -9,6 +9,7 @@ function AddToDo({addTodo}) {
   // 改变todo项状态
   const add = useCallback(() => {
     todo && addTodo(todo);
+    setTodo('');
   }, [addTodo, todo]);
 
   return (
