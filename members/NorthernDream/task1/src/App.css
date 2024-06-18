@@ -1,7 +1,18 @@
 #root {
-  max-width: 1280px;
+  max-width: 200px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-text {
+  flex-grow: 999;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+}
