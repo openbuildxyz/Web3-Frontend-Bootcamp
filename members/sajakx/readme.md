@@ -4,7 +4,7 @@
 
 * Github ID:sajakx
 
-* Openbuild Username: Saphire White
+* Openbuild Username: Sapphire White
 
 * ERC20 钱包地址: 
 
