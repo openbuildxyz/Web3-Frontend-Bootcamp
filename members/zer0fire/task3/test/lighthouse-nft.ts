@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 import { Signer, Contract } from "ethers";
 import { expect } from "chai"; // 引入 Chai 断言库
-import { LighthouseNft } from "../typechain-types/contracts/LighthouseNft"; // 导入 LighthouseNft 合约的类型定义
+import { LighthouseNft } from "../typechain-types/contracts/lighthouse-nft.sol"; // 导入 LighthouseNft 合约的类型定义
 
 describe("LighthouseNft", () => {
   let owner: Signer;
