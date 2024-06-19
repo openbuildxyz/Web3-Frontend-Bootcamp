@@ -1,10 +1,10 @@
 import ToDoItem from "./ToDoItem";
 
-const ToDoList = ({ tasks, deleteTask }) => {
+const ToDoList = ({ tasks, deleteTask, setTasks }) => {
     return (
         <div className="toDoListContainer">
-            {tasks.map((task, index) => (
-                <ToDoItem key={index} index={index} tasks={tasks} task={task} deleteTask={deleteTask} />
+            {tasks.map((task) => (
+                <ToDoItem key={task.id} tasks={tasks} task={task} setTasks={setTasks} deleteTask={deleteTask} />
             ))}
         </div>
     );

@@ -45,6 +45,7 @@ p {
   background-color: darkorange;
   cursor: pointer;
 }
+
 .toDoListContainer {
   display: flex;
   flex-direction: column;
@@ -67,10 +68,10 @@ p {
 }
 
 .deleteButton {
-  color: rgb(202, 202, 202);
-  margin: 0 8px;
+  color: black;
+  cursor: pointer;
 }
 
 .deleteButton:hover {
-  color: black; /* Change color to black on hover */
+  color: #f44336;
 }

@@ -3,21 +3,19 @@ import { red } from '@mui/material/colors';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { useState } from 'react';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-const ToDoItem = ({ index, tasks, task, deleteTask }) => {
+const ToDoItem = ({ tasks, task, setTasks, deleteTask }) => {
     const [isChecked, setIsChecked] = useState(task.checked);
 
     const handleCheckboxChange = (event) => {
         const updatedChecked = event.target.checked;
         setIsChecked(updatedChecked);
 
-        const updatedTasks = tasks.map((item, idx) => {
-            if (idx === index) {
-                return { ...item, checked: updatedChecked };
-            }
-            return item;
-        });
+        const updatedTasks = tasks.map((item) =>
+            item.id === task.id ? { ...item, checked: updatedChecked } : item
+        );
+
+        setTasks(updatedTasks);
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
 
@@ -25,7 +23,6 @@ const ToDoItem = ({ index, tasks, task, deleteTask }) => {
         <div className='toDoItemContainer'>
             <div className="toDoItemLeft">
                 <Checkbox
-                    {...label}
                     checked={isChecked} // Pass the checked state
                     sx={{
                         color: red[800],
@@ -39,7 +36,7 @@ const ToDoItem = ({ index, tasks, task, deleteTask }) => {
 
             </div>
             <div className="toDoItemRight">
-                <DeleteOutlinedIcon className="deleteButton" onClick={() => deleteTask(index)} />
+                <DeleteOutlinedIcon className="deleteButton" onClick={() => deleteTask(task.id)} />
             </div>
         </div>
     )
