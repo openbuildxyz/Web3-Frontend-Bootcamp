@@ -1,0 +1,24 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todo {
+    flex-grow: 1;
+    /* Allow text to take up remaining space */
+    margin-right: 10px;
+    /* Add some space between text and buttons */
+}
+
+.toggle,
+.delete {
+    margin-left: 5px;
+    /* Space between buttons */
+    cursor: pointer;
+}

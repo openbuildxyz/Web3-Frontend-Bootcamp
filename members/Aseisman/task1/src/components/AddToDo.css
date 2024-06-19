@@ -1,0 +1,16 @@
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+    padding: 10px 0;
+    input {
+        height: 30px;
+        width: 60%;
+        padding: 0 10px;
+    }
+    button{
+        /* height: 40px; */
+    }
+}
