@@ -1,0 +1,30 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.container {
+    border: 1px solid #eeeeee;
+    padding: 20px;
+}
+.to-do-list{
+    margin: 20px 0;
+}
+.add-to-do {
+    display: flex;
+    align-items: center;
+}
+
+.add-to-do>input {
+    border: 1px solid #eee;
+    height: 38px;
+    margin: 0 20px;
+    width: 200px;
+}
+
+li>.delete{
+    margin-left: 20px;
+    cursor: pointer;
+}
