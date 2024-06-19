@@ -1,8 +1,8 @@
-# Install deps
+## Install deps
 pnpm install
 
-# Dev
+## Dev
 pnpm dev
 
-# Build
+## Build
 pnpm build
