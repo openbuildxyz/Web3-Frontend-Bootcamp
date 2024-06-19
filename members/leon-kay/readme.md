@@ -6,7 +6,7 @@
 
 - Openbuild Username: leontechvoyage
 
-- ERC20 钱包地址:
+- ERC20 钱包地址:0xf4Cf48F453f2610C08Ff19B20C03826fa3649096
 
 ### 个人介绍
 

@@ -1,0 +1,9 @@
+.todoitem__text {
+    cursor: pointer;
+}
+.todoitem__text.--finished {
+    color: #0fd6b5;
+}
+.todoitem__text:hover {
+    color: skyblue;
+}
