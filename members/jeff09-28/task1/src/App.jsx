@@ -1,5 +1,6 @@
 import './App.css'
-import Header from "./ components/Header.jsx";
+import Header from "./components/Header.jsx";
+import {ToDoList} from "./components/ToDoList.jsx";
 
 function App() {
 
@@ -7,9 +8,7 @@ function App() {
         <>
             <div className="card">
                 <Header/>
-                <button>
-                    添加
-                </button>
+                <ToDoList></ToDoList>
             </div>
         </>
     )
