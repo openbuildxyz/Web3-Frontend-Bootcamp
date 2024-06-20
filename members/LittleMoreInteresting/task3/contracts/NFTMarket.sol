@@ -2,10 +2,14 @@
 pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
+
 contract  NFTMarket is ReentrancyGuard {
-    address public immutable _owner; 
+    address public immutable _owner;
+    address public immutable _token; 
     struct Listing {
         uint price;
         address seller;
@@ -74,7 +78,8 @@ contract  NFTMarket is ReentrancyGuard {
         _;
     }
 
-    constructor(){ 
+    constructor(address token){
+        _token = token; 
         _owner = msg.sender;   
     }
 
@@ -97,7 +102,7 @@ contract  NFTMarket is ReentrancyGuard {
         emit NftListed(msg.sender,nftAddress,tokenId,price,0);
     } 
 
-    // buy
+    // buy with ETH
     function buy(
         address nftAddress,
         uint tokenId
@@ -114,6 +119,41 @@ contract  NFTMarket is ReentrancyGuard {
             tokenId
         );
         emit BuyNFT(msg.sender, nftAddress, tokenId, listing.price);
+    }
+
+    function permitBuy (
+        address nftAddress,
+        uint tokenId,
+        uint256 amount,
+        uint256 deadline,
+        bytes memory signature) external payable {
+        (uint8 v, bytes32 r, bytes32 s) = recoverSignature(signature);
+         Listing memory listing = nft_listing[nftAddress][tokenId];
+        if(listing.price != amount){
+            revert ErrorNFTInvalidPrice();
+        }
+        // approve
+        IERC20Permit(_token).permit(msg.sender, address(this), amount, deadline, v, r, s);
+        // transfer
+        require(IERC20(_token).transferFrom(msg.sender, address(this), amount), "Transfer from error");
+        // buy
+        nft_proceeds[listing.seller] += amount;
+        delete nft_listing[nftAddress][tokenId];
+        IERC721(nftAddress).safeTransferFrom(
+            listing.seller,
+            msg.sender,
+            tokenId
+        );
+        emit BuyNFT(msg.sender, nftAddress, tokenId, listing.price);
+    }
+
+    function recoverSignature(bytes memory _signature) internal pure returns(uint8 v,bytes32 r,bytes32 s){
+        require(_signature.length == 65, "invalid signature length");
+         assembly {
+            r := mload(add(_signature, 0x20))
+            s := mload(add(_signature, 0x40))
+            v := byte(0, mload(add(_signature, 0x60)))
+        }
     }
 
     // cancel list
