@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// Transaction Hash 0xe305266680c2c391aaca331fe3b1d3745a1d95abf173c5db9e49a788b65a9019
-// contract hash 0xF7bA907741C6182d0b8e623ac18FC57b7Ac39a32
+// contract hash 0xefccb0647b830d48eabe4f875a65355a305e8c8a
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -55,3 +54,6 @@ contract NFTMarket is Ownable {
     }
 
 }
+
+// listNFT 交易哈希: 0x500c6a49dd5eff57f42c81b6071af6607dcf0b36f9f31a9d274a583c8a1f021b
+// purchaseNFT 交易哈希: 0xcd58261ba817a83057ce8276daeff3c0d03c722a1430f550a39461e19c110e8d

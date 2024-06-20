@@ -5,8 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// transaction hash	0x52a1634ccb4609b4b161baeb11a429ecb4c6e934a2e996a7580b788a2ba90987
-// contract hash 0xEb5755c8BB35E45A3aF8a91f3710D3d98F1a606d
+// contract hash 0xefccb0647b830d48eabe4f875a65355a305e8c8a
 
 contract NFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
@@ -24,4 +23,6 @@ contract NFT is ERC721URIStorage, Ownable {
     }
 }
 
-// MyNFT.approve("0xYourNFTMarketAddress", 1);
+// MyNFT.createNFT('www.xxxx.com')
+
+// MyNFT.approve("0xYourNFTMarketAddress", 0);
