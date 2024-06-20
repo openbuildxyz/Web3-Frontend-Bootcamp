@@ -1,6 +1,5 @@
 import { Contract, Signer } from 'ethers';
 import { ethers } from 'hardhat';
-import { tokenAddress } from './config';
 
 export async function deployContract(deployer: Signer, contractName: string, args: unknown[]): Promise<Contract> {
     const contractFactory = await ethers.getContractFactory(contractName, deployer);
@@ -14,9 +13,9 @@ export async function deployContract(deployer: Signer, contractName: string, arg
 async function main() {
     const [ deployer ] = await ethers.getSigners();
 
-    // const token = await deployContract(deployer, 'MyToken', [ethers.parseEther("10000000000")]);
-    // await deployContract(deployer, 'MyNFT', []);
-    await deployContract(deployer, 'NFTMarket', [tokenAddress]);
+    const token = await deployContract(deployer, 'MyToken', [ethers.parseEther("10000000000")]);
+    await deployContract(deployer, 'MyNFT', []);
+    await deployContract(deployer, 'NFTMarket', [await token.getAddress()]);
 }
 
 main();
