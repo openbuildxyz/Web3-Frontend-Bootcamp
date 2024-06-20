@@ -1,14 +1,18 @@
 import {ToDoItem} from "./ToDoItem.jsx";
 
-export const ToDoList = ({todos, deleteTodo}) => {
+export const ToDoList = ({todos, deleteTodo, toggleTodo}) => {
     return (
         <ul>
-            {todos.map((todo, index) => (
+            {todos.map(todo => (
                 <div key={todo.id}>
                     <span>
-                        {index + 1}、<ToDoItem todo={todo}/>
+                        <ToDoItem
+                            todo={todo}
+                            toggleTodo={toggleTodo}
+                            deleteTodo={deleteTodo}
+                        />
                     </span>
-                    <button onClick={() => deleteTodo(todo.id)}>删除</button>
+
                 </div>
             ))}
         </ul>

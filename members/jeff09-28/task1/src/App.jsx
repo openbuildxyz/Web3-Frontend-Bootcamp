@@ -1,5 +1,5 @@
 import './App.css'
-import Header from "./components/Header.jsx";
+import Header from "./components/Header.jsx"
 import {ToDoList} from "./components/ToDoList.jsx"
 import {AddToDo} from "./components/AddToDo.jsx"
 import {useEffect, useState} from "react"
@@ -29,12 +29,23 @@ function App() {
     const deleteTodo = (id) => {
         setTodos(todos.filter(todo => todo.id !== id))
     }
-
+    // 标记完成切换
+    const toggleTodo = (id) => {
+        setTodos(
+            todos.map(todo =>
+                todo.id === id ? {...todo, completed: !todo.completed} : todo
+            )
+        )
+    }
     return (
         <div className="card">
             <Header/>
-            <AddToDo addTodo={addTodo} todos={todos}></AddToDo>
-            <ToDoList deleteTodo={deleteTodo} todos={todos}></ToDoList>
+            <AddToDo addTodo={addTodo} todos={todos}/>
+            <ToDoList
+                deleteTodo={deleteTodo}
+                todos={todos}
+                toggleTodo={toggleTodo}
+            />
         </div>
     )
 }
