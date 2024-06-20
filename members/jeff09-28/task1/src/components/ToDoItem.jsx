@@ -1,10 +1,5 @@
-import {AddToDo} from "./AddToDo.jsx";
-
-
-export const ToDoItem = () => {
+export const ToDoItem = ({todo}) => {
     return (
-        <>
-            <AddToDo></AddToDo>
-        </>
+        <>{todo.text}</>
     )
 }
