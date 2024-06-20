@@ -1,0 +1,22 @@
+.completed {
+    text-decoration: line-through;
+    text-decoration-color: #74b9ff;
+    text-decoration-thickness: 4px;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+}
+
+.blinking-text span {
+    color: red;
+    font-weight: 700;
+    display: inline-block; /* Ensure transform applies correctly */
+    animation: blink 3s infinite;
+}
