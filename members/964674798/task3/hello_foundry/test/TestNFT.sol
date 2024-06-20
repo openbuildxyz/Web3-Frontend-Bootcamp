@@ -32,7 +32,12 @@ contract NFTMarketTest is Test {
 
         market.ListingNft(address(nft), 1, 100);
 
-        (address seller, address nftContract, uint256 tokenId, uint256 price) = market.listings(1);
+        (
+            address seller,
+            address nftContract,
+            uint256 tokenId,
+            uint256 price
+        ) = market.listings(1);
 
         assertEq(seller, owner);
         assertEq(nftContract, address(nft));
@@ -52,5 +57,6 @@ contract NFTMarketTest is Test {
         vm.stopPrank();
 
         assertEq(nft.ownerOf(1), addr1);
+        // assertEq(nft.ownerOf(1), owner);
     }
 }
