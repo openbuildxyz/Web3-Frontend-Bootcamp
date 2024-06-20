@@ -4,16 +4,13 @@ export const ToDoList = ({todos, deleteTodo, toggleTodo}) => {
     return (
         <ul>
             {todos.map(todo => (
-                <div key={todo.id}>
-                    <span>
-                        <ToDoItem
-                            todo={todo}
-                            toggleTodo={toggleTodo}
-                            deleteTodo={deleteTodo}
-                        />
-                    </span>
-
-                </div>
+                <span className="todo-liet" key={todo.id}>
+                    <ToDoItem
+                        todo={todo}
+                        toggleTodo={toggleTodo}
+                        deleteTodo={deleteTodo}
+                    />
+                </span>
             ))}
         </ul>
     )

@@ -4,13 +4,13 @@ export const ToDoItem = ({todo, toggleTodo, deleteTodo,}) => {
     return (
         <div className="todo-item">
             <input
+                id="checkTodoInput"
+                name="checkTodoInput"
                 type="checkbox"
                 checked={todo.completed}
                 onChange={() => toggleTodo(todo.id)}
             />
-            <span style={{textDecoration}}>
-                {todo.text}
-            </span>
+            <span style={{textDecoration}}>{todo.text}</span>
             <button onClick={() => deleteTodo(todo.id)}>删除</button>
         </div>
     )
