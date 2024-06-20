@@ -1,53 +1,71 @@
-import React,{useEffect,useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import './App.css';
 
 import Header from './components/Header';
 import ToDoList from './components/ToDoList';
 import AddToDo from './components/AddToDo';
 
-
 function App() {
+  const [todos, setTodos] = useState([]);
 
-  const [todos, setTodos] = useState([])
-
+  // 在组件挂载时从 localStorage 加载待办事项
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem('todos'))|| [];
-    setTodos(storedTodos);
-  },[]);// 空依赖数组，表示仅在组件挂载和卸载时执行
+    const loadTodos = () => {
+      const storedTodos = localStorage.getItem('todos');
+      if (storedTodos) {
+        const parsedTodos = JSON.parse(storedTodos);
+        console.log('Loaded todos from localStorage:', parsedTodos);
+        setTodos(parsedTodos);
+      } else {
+        console.log('No todos found in localStorage.');
+      }
+    };
+    loadTodos();
+  }, []); // 空依赖数组表示这个 effect 只在初次渲染后执行一次
 
-  // useEffect 钩子  在todos 状态改变时保存到贝蒂存储
-  useEffect(()=>{
-    localStorage.setItem('todos',JSON.stringify(todos));
-  },[todos]);/// 依赖todos，当todos改变时执行
+  // // 每当 todos 状态改变时，将其保存到 localStorage
+  // useEffect(() => {
+  //   if (todos.length > 0) {
+  //     console.log('Saving todos to localStorage:', todos);
+  //     localStorage.setItem('todos', JSON.stringify(todos));
+  //   }
+  // }, [todos]); // 依赖数组包含 todos，因此每次 todos 变化时都会执行这个 effect
 
-  // 添加待办事项的函数
+  // 添加新待办事项的函数
+  const addTodo = (text) => {
+    const newTodos = [...todos, { text, completed: false }];
+    console.log('New todos after addTodo:', newTodos);
+    setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
 
-  const addTodo = (text)=>{
-    setTodos([...todos,{text, completed:false}]);
   };
 
-  // 删除待办事项的函数
-  const deleteTodo = (index)=>{
-    const newTodos = todos.filter((_,todoIndex)=>todoIndex !== index);
+  // 根据索引删除待办事项的函数
+  const deleteTodo = (index) => {
+    const newTodos = todos.filter((_, todoIndex) => todoIndex !== index);
+    console.log('New todos after deleteTodo:', newTodos);
     setTodos(newTodos);
-  }; 
+    localStorage.setItem('todos', JSON.stringify(newTodos));
 
-    // 切换待办事项完成状态的函数
-  const toggleCompleted = (index)=>{
-    const newTodos = todos.map((todo, i)=>i === index?{...todo, completed:!todo.completed}:todo);
+  };
+
+  // 根据索引切换待办事项完成状态的函数
+  const toggleCompleted = (index) => {
+    const newTodos = todos.map((todo, i) => 
+      i === index ? { ...todo, completed: !todo.completed } : todo
+    );
+    console.log('New todos after toggleCompleted:', newTodos);
     setTodos(newTodos);
-  }
+    localStorage.setItem('todos', JSON.stringify(newTodos));
+  };
 
-
- return (
-  <div className="App">
-    <Header />
-    <AddToDo addTodo={addTodo}/>
-    <ToDoList todos={todos} deleteTodo={deleteTodo} toggleCompleted={toggleCompleted} />
-  </div>
- )
+  return (
+    <div className="App">
+      <Header />
+      <AddToDo addTodo={addTodo} />
+      <ToDoList todos={todos} deleteTodo={deleteTodo} toggleCompleted={toggleCompleted} />
+    </div>
+  );
 }
 
-export default App
+export default App;

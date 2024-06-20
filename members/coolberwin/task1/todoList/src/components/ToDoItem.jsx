@@ -1,6 +1,8 @@
 import React from 'react';
 
 function ToDoItem({ todo, deleteTodo, toggleCompleted }) {
+  console.log('Rendering ToDoItem with todo:', todo); // 添加日志以检查传入的todo
+
   return (
     <li>
       <span
