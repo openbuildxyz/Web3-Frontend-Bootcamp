@@ -40,7 +40,9 @@ function App() {
         <Header />
       </div>
       <AddToDo onAddClick={onAddClick} />
-      <ToDoList todoList={todoList} onDoOK={onDoOK} onDel={onDel} />
+      <div style={{ marginTop: "10px" }}>
+        <ToDoList todoList={todoList} onDoOK={onDoOK} onDel={onDel} />
+      </div>
     </>
   );
 }
