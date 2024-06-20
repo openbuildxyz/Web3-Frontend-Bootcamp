@@ -1,0 +1,25 @@
+.toggle-all {
+  width: 1px;
+  height: 1px;
+  border: none;
+  opacity: 0;
+}
+
+.toggle-all + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 65px;
+  font-size: 0;
+}
+
+.toggle-all + label:before {
+  content: '❯';
+  display: inline-block;
+  font-size: 22px;
+  color: #949494;
+  padding: 10px 27px 10px 27px;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}

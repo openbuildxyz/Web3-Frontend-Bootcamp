@@ -1,0 +1,15 @@
+/* index.css 或 App.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif; /* 你可以选择你喜欢的字体 */
+}
+
+#app {
+  width: 100%;
+  max-width: 600px; /* 根据需要调整最大宽度 */
+}

@@ -1,0 +1,21 @@
+.close-icon:hover {
+  transform: scale(1.2);
+  transition: all ease-in 0.2s;
+}
+
+.todo-item-contain {
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.todo-item-contain:hover {
+  transform: translateY(-4px);
+  box-shadow: 12px 12px 12px -12px rgba(0, 0, 0, 0.5);
+  transition: all ease-in-out 0.2s;
+}

@@ -1,0 +1,142 @@
+/* TodoList.css */
+.todo-header {
+  padding: 0 32px;
+  width: 100vw;
+  height: 60px;
+  line-height: 60px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #44817D;
+  box-shadow: 2px 0 4px 1px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  text-align: left;
+
+}
+.todo-container {
+  width: 60vw;
+  max-width: 600px;
+  margin: 60px auto 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #44817D;
+}
+
+.todo-input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.todo-input button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  /* background-color: #28a745; */
+  background-color: #fff;
+  color: #44817D;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-input button:hover {
+  /* background-color: #218838; */
+  background-color: #DAF0EF;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.todo-item-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  text-align: left;
+}
+
+.todo-item span {
+  margin-left: 8px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.todo-item span.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-item i {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+  }
+}
+
+.todo-item i.completed {
+  background-color: #44817D;
+  border: 1px solid #44817D;
+
+  &::before {
+    background-color: #fff;
+
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') center / contain no-repeat;
+  }
+}
+
+.todo-item button {
+  font-size: 14px;
+  color: #dc3545;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-item button:hover {
+  color: #fff;
+  background-color: #c82333;
+}
+
+.todo-footer {
+  width: 100vw;
+  position: fixed;
+  bottom: 32px;
+  z-index: 9;
+  color: #999;
+}

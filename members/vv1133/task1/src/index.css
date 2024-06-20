@@ -1,0 +1,142 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.input-text {
+  width: 300px;
+  height: 40px;
+  padding: 0 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid #318776;
+  cursor: pointer;
+}
+
+.del-btn {
+  padding: 4px 8px;
+  background-color: #af4c4c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right; /* 靠右对齐 */
+}
+
+/* 普通样式，增加一些外边距 */
+.mr-2 {
+  margin-right: 8px;  /* 根据需要调整外边距的大小 */
+  font-size: 18px;   /* 增大字体大小到18px */
+  width: 300px;
+}
+
+/* 删除线样式 */
+.strike-through {
+  text-decoration: line-through; /* 添加删除线 */
+  color: #888;                   /* 灰色文本表示已完成或不活跃状态 */
+  font-size: 18px;   /* 增大字体大小到18px */
+  width: 300px;
+}
+
+/* 可以额外定义hover效果增强交互 */
+span:hover {
+  background-color: #f4f4f4; /* 鼠标悬停时背景变更 */
+}
+
+ul {
+  list-style-type: none;   /* 移除默认列表符号 */
+  padding: 0;              /* 移除默认的填充 */
+  margin: 0;               /* 移除默认的外边距 */
+}
+
+li {
+  padding: 8px;            /* 每个列表项添加填充 */
+  text-align: left;        /* 文本左对齐 */
+}

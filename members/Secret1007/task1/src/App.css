@@ -1,0 +1,30 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 500px;
+    position: relative;
+}
+.grid-paper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent 39px, rgba(0, 0, 0, 0.3) 40px);
+    background-size: 100% 40px;
+    z-index: 0;
+}
+.todo-title {
+    /* position: absolute; */
+    background-color: #74b9ff;
+    color: white;
+    width: 200px;
+    transform: rotateZ(-15deg);
+}
+
+.input-container {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+}

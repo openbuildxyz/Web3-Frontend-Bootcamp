@@ -1,0 +1,27 @@
+/* App的容器样式 */
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 视口高度的100% */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 居中内容的容器样式 */
+.centered-content {
+  width: 80%; /* 或者你可以设置一个固定的宽度，比如600px */
+  max-width: 600px; /* 最大宽度限制 */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微的阴影效果 */
+  border-radius: 8px; /* 轻微的圆角 */
+  background-color: #ffffff; /* 背景颜色 */
+}
+
+/* 媒体查询，用于响应式设计 */
+@media (max-width: 768px) {
+  .centered-content {
+    width: 95%;
+  }
+}

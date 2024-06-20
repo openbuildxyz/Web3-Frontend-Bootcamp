@@ -1,0 +1,23 @@
+#root {
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-text {
+  flex-grow: 999;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.item-text.complete {
+  text-align: left;
+  text-decoration: line-through;
+}

@@ -1,0 +1,10 @@
+.task-input {
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}

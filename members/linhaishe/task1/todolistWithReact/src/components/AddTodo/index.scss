@@ -1,0 +1,43 @@
+button {
+  font-size: large;
+  margin-left: 10px;
+  padding: 7px;
+  outline: none;
+  border: none;
+  border: 1px solid var(--border-color);
+  background: none;
+  color: var(--btn-color);
+  border-radius: 10px;
+  transition: 0.4s;
+  box-shadow: -4px -4px 7px var(--shadow1), 4px 4px 7px var(--shadow2);
+  cursor: pointer;
+  &:active {
+    scale: 0.9;
+  }
+  &:hover {
+    border: 1px solid var(--border-hover);
+  }
+}
+
+.addTask {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  input {
+    flex: 1;
+    outline: none;
+    padding: 0.8rem 0.6rem;
+    border: 1px solid var(--border-color);
+    color: white;
+    background: none;
+    border-radius: 10px;
+    font-size: 16px;
+    letter-spacing: 0.3ch;
+    box-shadow: -4px -4px 6px var(--shadow1), 4px 4px 10px var(--shadow2);
+    transition: border 0.4s ease;
+    &:focus {
+      border: 1px solid var(--border-hover);
+    }
+  }
+}

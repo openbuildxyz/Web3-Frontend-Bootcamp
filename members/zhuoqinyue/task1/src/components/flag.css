@@ -1,0 +1,23 @@
+.first {
+  background-color: #000;
+  height: 40px;
+}
+
+.second {
+  background-color: #fff;
+  height: 40px;
+}
+
+.third {
+  background-color: #1a3;
+  height: 40px;
+}
+
+.sanjiao {
+  border-left: 60px solid #d00;
+  border-right: 60px solid transparent;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  position: relative;
+  z-index: 999;
+}

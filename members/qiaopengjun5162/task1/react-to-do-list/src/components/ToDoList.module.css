@@ -1,0 +1,22 @@
+.todoList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.todoListItems {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 60%;
+
+}

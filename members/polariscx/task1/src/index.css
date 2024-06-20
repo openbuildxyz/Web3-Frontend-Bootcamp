@@ -1,0 +1,215 @@
+:root {
+  --background-color-light: white;
+  --text-color-light: black;
+  --background-color-dark: #121212;
+  --text-color-dark: rgb(15, 209, 235);
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+}
+/* src/index.css */
+
+[data-theme="light"] {
+  --background-color: var(--background-color-light);
+  --text-color: var(--text-color-light);
+}
+
+[data-theme="dark"] {
+  --background-color: var(--background-color-dark);
+  --text-color: var(--text-color-dark);
+}
+
+[data-theme="system"] {
+  /* Fallback to light or dark based on system preference */
+  --background-color: var(--background-color-light);
+  --text-color: var(--text-color-light);
+}
+
+
+/* Apply the theme */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+/* src/index.css */
+.theme-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001; /* Ensure it appears above other elements */
+}
+
+.theme-switcher button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+}
+
+.theme-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--background-color);
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.theme-options button {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.theme-options button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* Add your existing styles here */
+
+/* Header styles */
+/* header {
+  padding: 10rem;
+  text-align: center;
+  font-size: 2rem;
+} */
+.header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  background-color: var(--background-color);
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+/* ToDo List styles */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--text-color);
+}
+
+
+
+/* Form styles */
+form {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+input {
+  /* width: 50%; */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  margin-right: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+/* Container styles */
+.container {
+  top:0;
+  margin-top: 6rem; /* Adjust margin to ensure content is not covered by header */
+  padding: 1rem;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+}
+
+.centered-content {
+  max-width: 600px; /* Limit the width of the content */
+  width: 100%;
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+.todo-item {
+  display: flex; 
+  align-items: center; 
+  /* margin-bottom: 0.5rem;  */
+  justify-content: space-between; 
+  margin-bottom: 0.5rem; 
+  /* padding: 10px; */
+  border: 1px solid #ddd;  
+  /* border-radius: 4px;  */
+  background-color: #f9f9f9; 
+  /* width: 100%; */
+  /* height: 35px; */
+  box-sizing: border-box; 
+}
+
+.todo-item input[type="checkbox"] {
+  order: -1; 
+  /* align-items: center;  */
+  margin-right: 1rem; 
+}
+
+.todo-item span.completed {
+  text-decoration: line-through;
+}
+
+.todo-list {
+  align-items: center;
+  /* margin-top: 1rem; */
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] {
+    --background-color: var(--background-color-dark);
+    --text-color: var(--text-color-dark);
+  }
+}

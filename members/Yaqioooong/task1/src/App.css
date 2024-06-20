@@ -1,0 +1,60 @@
+.todo-list {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.todo-list h2 {
+  text-align: center;
+}
+.todo-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+.add-todo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.todo-item.completed {
+  color: #999;
+  text-decoration: line-through;
+}
+.todo-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+.todo-item .todo-text {
+  flex: 1;
+}
+.add-todo .add-btn{
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.todo-item .delete-btn {
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.add-todo .add-btn:hover {
+  color: #666;
+}
+.todo-item .delete-btn:hover {
+  color: #666;
+}

@@ -1,0 +1,101 @@
+.lists {
+  margin-top: 1rem;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-height: 650px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 20px;
+  position: relative;
+  @media (max-height: 800px) {
+    max-height: 500px;
+  }
+  @media (min-width: 860px) {
+    padding: 0 30px;
+  }
+
+  .list {
+    // background: rgba(37, 13, 74, 0.49);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: scale 1s ease;
+    box-shadow: -4px -4px 5px #200441, 4px 4px 5px #000000;
+    margin: 5px;
+    position: relative;
+    .span-btns {
+      position: absolute;
+      right: 0;
+      z-index: 9;
+
+      span {
+        cursor: pointer;
+        user-select: none;
+        background: #00000080;
+        height: 20px;
+        width: 20px;
+        padding: 5px;
+        border-radius: 50%;
+        margin-right: 5px;
+        transition: rotate 1s ease;
+      }
+      &:hover {
+        .delete-btn {
+          rotate: 90deg;
+          transition: 0ms;
+        }
+      }
+    }
+    p {
+      margin-left: 10px;
+      text-transform: capitalize;
+      width: calc(100% - 100px);
+      text-align: left;
+    }
+    &:hover {
+      scale: 1.04;
+      transition: 0ms;
+
+      border-left: 4px solid #49149a;
+      border-right: 4px solid #49149a;
+    }
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #49149a;
+    border-radius: 7px;
+  }
+}
+
+.completed {
+  opacity: 0.4;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #3f3f3f;
+  }
+  &::before {
+    content: 'COMPLETED';
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    letter-spacing: 0.3ch;
+    height: 100%;
+    z-index: 1;
+    background: rgba(72, 18, 154, 0.616);
+  }
+}
