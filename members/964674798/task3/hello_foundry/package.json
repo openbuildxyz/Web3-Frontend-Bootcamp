@@ -1,8 +1,0 @@
-{
-    "name": "foundry-starter-kit",
-    "license": "MIT",
-    "version": "2.1.1",
-    "devDependencies": {
-        "@openzeppelin/contracts": "4.9.3"
-    }
-}
