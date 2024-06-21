@@ -11,7 +11,7 @@ contract MarketPlace is ReentrancyGuard {
     struct NFT {
         address nftContract;
         uint256 price;
-        address payable seller;
+        address seller;
         uint256 tokenId;
     }
     
@@ -35,28 +35,30 @@ contract MarketPlace is ReentrancyGuard {
         token = _token;
     }
 
-    function listItem(address nftContract, uint256 tokenId, uint256 price) public {
+    function listNFT(address nftContract, uint256 tokenId, uint256 price) public {
         IERC721 nft = IERC721(nftContract);
         require(nft.ownerOf(tokenId) == msg.sender, "Only the owner can list this NFT");
-        require(nft.isApprovedForAll(msg.sender, msg.sender), "Marketplace not approved");
+        require(nft.isApprovedForAll(msg.sender, address(this)), "Marketplace not approved");
 
-        listings[tokenId] = NFT(nftContract, price, payable(msg.sender), tokenId);
+        listings[tokenId] = NFT(nftContract, price, msg.sender, tokenId);
         emit NFTListed(nftContract, tokenId, msg.sender, price);
     }
 
-    function buyItem(address nftContract, uint256 tokenId) public payable nonReentrant {
+    function buyNFT(address nftContract, uint256 tokenId) public payable {
         NFT storage nft = listings[tokenId];
         IERC721 nftContractInstance = IERC721(nft.nftContract);
-        
+
         require(nft.price > 0, "Item not listed for sale");
         require(nftContractInstance.ownerOf(tokenId) == nft.seller, "ERC721IncorrectOwner: Seller is not the owner");
         require(token.transferFrom(msg.sender, nft.seller, nft.price), "Payment failed");
 
-        address payable buyer = payable(msg.sender);
-
+        IERC721(nftContract).transferFrom(nft.seller, msg.sender, tokenId);
         delete listings[tokenId];
-        IERC721(nftContract).transferFrom(nft.seller, buyer, tokenId);
 
         emit NFTSold(nftContract, tokenId, msg.sender, nft.price);
+    }
+
+    function getListing(uint256 tokenId) public view returns (NFT memory) {
+        return listings[tokenId];
     }
 }
