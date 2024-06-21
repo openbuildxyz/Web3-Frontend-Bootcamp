@@ -1,15 +1,17 @@
+import { marketAddress, tokenAddress } from "./config";
+
 import { ethers } from "hardhat";
-import { marketAddress } from "./config";
 
 async function main() {
   const [buyer] = await ethers.getSigners();
   console.log("Buyer address:", buyer.address);
 
   const market = await ethers.getContractAt("NFTMarket", marketAddress);
-  console.log("Market contract attached:", marketAddress);
+  console.log("Market contract attached:", marketAddress, market);
 
-  // 获取列表中的第一个NFT信息
-  const listing = await market.listings(0);
+
+  // 获取列表中的第3个NFT信息
+  const listing = await market.listings(2);
   console.log("Market listing:", listing);
 
   const seller = listing.seller;
@@ -23,12 +25,20 @@ async function main() {
   console.log("Price:", price.toString());
 
   // 获取支付代币的合约地址
-  const tokenContractAddress = await market.paymentToken();
-  console.log("Payment Token Contract Address:", tokenContractAddress);
+  console.log("Payment Token Contract Address:", tokenAddress);
+  const Token = await ethers.getContractAt("IERC20", tokenAddress);
+  console.log("Token Contract Address:", Token.target);
 
-  // 模拟买家授权市场合约访问代币
-  const Token = await ethers.getContractAt("IERC20", tokenContractAddress);
-  console.log("Token Contract Address:", Token);
+
+  // 获取当前用户拥有的代币数量
+  const balance = await Token.balanceOf(buyer.address);
+  console.log("Balance:", ethers.formatEther(balance), "tokens");
+
+  // 检查用户代币余额是否足够购买 NFT
+  if (balance < price) {
+    console.log("Insufficient balance to purchase the NFT.");
+    process.exit(1);
+  }
 
   const allowance = await Token.allowance(buyer.address, marketAddress);
   console.log("Allowance:", allowance.toString());
@@ -40,11 +50,15 @@ async function main() {
   }
 
   // 购买NFT
-  console.log("Buying NFT...");
-  const buyTx = await market.connect(buyer).buyNFT(0);
-  await buyTx.wait();
+  try {
+    console.log("Buying NFT...");
+    const buyTx = await market.connect(buyer).buyNFT(2);
+    await buyTx.wait();
 
-  console.log(`NFT with tokenId ${tokenId} purchased from ${seller} by ${buyer.address}`);
+    console.log(`NFT with tokenId ${tokenId} purchased from ${seller} by ${buyer.address}`);
+  } catch (error) {
+    console.log("Buying NFT Error", error)
+  }
 }
 
 main().catch((error) => {

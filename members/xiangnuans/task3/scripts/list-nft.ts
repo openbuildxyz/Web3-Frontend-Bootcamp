@@ -4,7 +4,7 @@ import { ethers } from "hardhat";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
-  const tokenId = 1; // 你想要上架的NFT的Token ID
+  const tokenId = 3; // 你想要上架的NFT的Token ID
   const price = ethers.parseEther("10"); // 上架价格
   const tokenURI = "https://my-json-server.typicode.com/abcoathup/samplenft/tokens/1"; // NFT的元数据URI
 

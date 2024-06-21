@@ -43,4 +43,4 @@ npx hardhat ignition deploy ./ignition/modules/Lock.ts
 - Contract MyToken deployed successfully: [0xC2F6FE1FCb070abE231CA0f9c2d148183740E4a8](https://sepolia.etherscan.io/address/0xC2F6FE1FCb070abE231CA0f9c2d148183740E4a8)
 - Contract MyNFT deployed successfully: [0x4ECEd2DEAfC38a647675F650c8ee0abbc52Db26e](https://sepolia.etherscan.io/address/0x4ECEd2DEAfC38a647675F650c8ee0abbc52Db26e)
 - Contract NFTMarket deployed successfully: [0x53b72dE55e80B4569EfDA5C96393b26FBDd27eF8](https://sepolia.etherscan.io/address/0x53b72dE55e80B4569EfDA5C96393b26FBDd27eF8)
-- Purchase NFT's transaction hash: [0xf87b7bbf97f47920944c4941fa087703c0f3f10876431f05b7de50d9b9bc6e93](https://sepolia.etherscan.io/tx/0xf87b7bbf97f47920944c4941fa087703c0f3f10876431f05b7de50d9b9bc6e93)
+- Purchase NFT's transaction hash: [0x60ee944f5619c5f7d1315f2d7e0cafb0f354f4a8dd3cf295709232415da08085](https://sepolia.etherscan.io/tx/0x60ee944f5619c5f7d1315f2d7e0cafb0f354f4a8dd3cf295709232415da08085)
