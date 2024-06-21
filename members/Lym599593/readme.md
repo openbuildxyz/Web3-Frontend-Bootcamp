@@ -8,4 +8,9 @@
 
 ### 个人介绍
 
+<<<<<<< HEAD
  Web3新人，技术栈：Nextjs、Wagmi、Solidity、Ethersjs。想通过该训练营学习能够认识许多朋友，积累经验，为找工作做准备。
+=======
+ Web3新人，技术栈：Nextjs、Wagmi、Solidity、Ethersjs。想通过该训练营学习能够认识许多朋友，积累经验，为找工作做准备。
+
+>>>>>>> b661d2439df3829694d6e5ad116cb05f1218b78f
