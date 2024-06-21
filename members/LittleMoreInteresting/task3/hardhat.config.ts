@@ -4,7 +4,7 @@ import { vars } from "hardhat/config";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const { API_URL, PRIVATE_KEY } = process.env;
+const { API_URL, PRIVATE_KEY,PRIVATE_KEY_B } = process.env;
 const ETHERSCAN_API_KEY = vars.get("ETHERSCAN_API_KEY");
 const config: HardhatUserConfig = {
   solidity: "0.8.24",
@@ -16,7 +16,7 @@ const config: HardhatUserConfig = {
   networks: {
     sepolia: {
       url: API_URL,
-      accounts: [`${PRIVATE_KEY}`]
+      accounts: [`${PRIVATE_KEY}`,`${PRIVATE_KEY_B}`]
    }
   }
 };

@@ -34,7 +34,7 @@ contract  NFTMarket is ReentrancyGuard {
     );
 
     mapping(address => mapping(uint => Listing)) nft_listing;
-    mapping(address => uint) nft_proceeds;
+    //mapping(address => uint) nft_proceeds;
 
     error ErrorNFTHasListed(address nftAddress, uint tokenId);
     error ErrorNFTHasNotListed(address nftAddress, uint tokenId);
@@ -102,7 +102,7 @@ contract  NFTMarket is ReentrancyGuard {
         emit NftListed(msg.sender,nftAddress,tokenId,price,0);
     } 
 
-    // buy with ETH
+    // buy 
     function buy(
         address nftAddress,
         uint tokenId
@@ -111,7 +111,9 @@ contract  NFTMarket is ReentrancyGuard {
         if(listing.price != msg.value){
             revert ErrorNFTInvalidPrice();
         }
-        nft_proceeds[listing.seller] += msg.value;
+        // transfer to seller
+        require(IERC20(_token).transferFrom(msg.sender, listing.seller,listing.price), "Transfer from error");
+        // nft_proceeds[listing.seller] += msg.value;
         delete nft_listing[nftAddress][tokenId];
         IERC721(nftAddress).safeTransferFrom(
             listing.seller,
@@ -134,10 +136,9 @@ contract  NFTMarket is ReentrancyGuard {
         }
         // approve
         IERC20Permit(_token).permit(msg.sender, address(this), amount, deadline, v, r, s);
-        // transfer
-        require(IERC20(_token).transferFrom(msg.sender, address(this), amount), "Transfer from error");
+        // transfer to seller
+        require(IERC20(_token).transferFrom(msg.sender, listing.seller, amount), "Transfer from error");
         // buy
-        nft_proceeds[listing.seller] += amount;
         delete nft_listing[nftAddress][tokenId];
         IERC721(nftAddress).safeTransferFrom(
             listing.seller,
@@ -181,15 +182,6 @@ contract  NFTMarket is ReentrancyGuard {
         emit NftListed(msg.sender, nftAddress, tokenId, newPrice,old_price);
     }
 
-    function withdraw() external {
-        uint proceeds = nft_proceeds[msg.sender];
-        if(proceeds <= 0){
-            revert ErrorNoProceed();
-        }
-        nft_proceeds[msg.sender] = 0;
-        payable(msg.sender).transfer(proceeds);
-    }
-
     function getListing(
         address nftAddress,
         uint tokenId
@@ -197,7 +189,4 @@ contract  NFTMarket is ReentrancyGuard {
         return nft_listing[nftAddress][tokenId];
     }
 
-    function getProceeds(address seller) external view returns (uint) {
-        return nft_proceeds[seller];
-    }
 }

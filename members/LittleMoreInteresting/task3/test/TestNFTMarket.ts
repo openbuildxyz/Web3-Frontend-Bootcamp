@@ -55,11 +55,13 @@ describe("HoraceNFTMarket", function () {
             )
         })
         it("Test buyNFT",async function(){
-            const {market,horace,user1,user2, token1} = await loadFixture(deployHoraceNFTAndMarket)
+            const {obt,market,horace,user1,user2, token1} = await loadFixture(deployHoraceNFTAndMarket)
             const makretAddress = market.getAddress()
             await horace.approve(makretAddress,token1)
             const price = 1000;
             await market.list(horace.getAddress(),price,token1);
+            // approve OBT
+            await obt.connect(user2).approve(makretAddress,price)
             await market.connect(user2).buy(horace.getAddress(),token1, { value: price });
             expect( await horace.connect(user2).ownerOf(token1)).to.equal(user2.address);
         })
@@ -94,9 +96,10 @@ describe("HoraceNFTMarket", function () {
                 nonce:nonce,
                 deadline:deadline
             })
+            console.log("before",await obt.balanceOf(user1));
             await market.connect(user2).permitBuy(horace.getAddress(),token1, price,deadline,sign);
             expect( await horace.connect(user2).ownerOf(token1)).to.equal(user2.address);
-            expect(await market.getProceeds(user1.address)).to.equals(price);
+            console.log("after",await obt.balanceOf(user1));
         })
 
     })
