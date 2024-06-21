@@ -1,1 +1,2 @@
-上架NFT的ID 0xc0d5c9bf45cbd72f9e0e3b129a4f954b2ee6556683d6844b055438dbf1d8c4a7
+上架NFT [0xc0d5c9bf45cbd72f9e0e3b129a4f954b2ee6556683d6844b055438dbf1d8c4a7](https://sepolia.etherscan.io/tx/0xd4fb919333cd9f9bba83548ea5ec8d589a416097c75e9e58e649faab9b6c415a)
+购买NFT https://sepolia.etherscan.io/tx/0x776135c487c3d50d5192e210804ede9d09b8f62e32634ecadf0af02579935f5f
