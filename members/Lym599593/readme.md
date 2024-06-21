@@ -3,14 +3,12 @@
 ## 个人信息
 
 * GitHub ID:Lym599593
+
 * OpenBuild Username:Lym599593
+
 * ERC20 钱包地址:  0x12858F8B6EDCa405F0f5F95406e7011c61A83406
 
 ### 个人介绍
 
-<<<<<<< HEAD
- Web3新人，技术栈：Nextjs、Wagmi、Solidity、Ethersjs。想通过该训练营学习能够认识许多朋友，积累经验，为找工作做准备。
-=======
  Web3新人，技术栈：Nextjs、Wagmi、Solidity、Ethersjs。想通过该训练营学习能够认识许多朋友，积累经验，为找工作做准备。
 
->>>>>>> b661d2439df3829694d6e5ad116cb05f1218b78f
