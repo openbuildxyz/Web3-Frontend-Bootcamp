@@ -1,16 +1,17 @@
 import { useState } from "react";
 // 定义接口
 interface AddToDoProps {
-    addNewToDo: (msg: string) => void;
+    addNewToDo: (msg: string, status: boolean) => void;
 }
 
 function AddToDo({ addNewToDo }: AddToDoProps) {
     const [msg, setMsg] = useState('');
+    const [status] = useState(false);
 
     const handleAdd = () => {
         if (msg.trim()) {
-            addNewToDo(msg);
-            setMsg(''); // 清空输入框
+            addNewToDo(msg, status);
+            setMsg("") //清空输入框
         }
     };
     return (

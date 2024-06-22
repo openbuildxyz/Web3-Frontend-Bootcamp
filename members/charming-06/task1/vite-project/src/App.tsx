@@ -6,21 +6,23 @@ import AddToDo from './components/AddToDo'
 import { useState } from 'react'
 
 function App() {
+    // 从缓存中取出待办事项
+    const data = localStorage.getItem("list");
+    const result = data ? JSON.parse(data) : [];
+    const [list, setList] = useState(result);
     const [title] = useState('我的待办事项')
-    const [list, setList] = useState([
-        { index: 1, msg: '运动三十分钟' },
-        { index: 2, msg: '看书三十分钟' }
-    ]);
 
-    const addNewToDo = (msg: string) => {
+    const addNewToDo = (msg: string, status: boolean) => {
         console.log('msg', msg);
 
-        const newToDo = { index: list.length + 1, msg };
+        const newToDo = { index: list.length + 1, msg, status };
         setList([...list, newToDo]);
     };
     const deleteToDo = (index: number) => {
         console.log('App index', index);
-        setList(list.filter(item => item.index !== index));
+        const result = list.filter(item => item.index !== index);
+        setList(result);
+        localStorage.setItem("list", JSON.stringify(result));
     };
 
     return (
