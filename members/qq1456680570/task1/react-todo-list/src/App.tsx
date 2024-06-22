@@ -11,12 +11,13 @@ function App() {
   const [todoList, setTodoList] = useState<TodoItem[]>([])
   const lastTodoList = useRef(todoList);
 
-  const handleAdd = (content: string) => {
+  const handleAdd = (content: string, id?: string) => {
     setTodoList([
       ...todoList,
       {
-        id: Date.now().toString(),
+        id: id || Date.now().toString(),
         content,
+        complete: false,
       }
     ])
   }
@@ -26,6 +27,29 @@ function App() {
     const newList = [...todoList]
     newList.splice(index, 1)
     setTodoList(newList)
+  }
+
+  const handleUndo = (id: string) => {
+    const index = todoList.findIndex((item) => item.id === id)
+    const copyItem = JSON.parse(JSON.stringify(todoList[index]))
+    copyItem.complete = false 
+    const newList = [...todoList]
+    newList.splice(index, 1)
+    setTodoList([
+      ...newList,
+      copyItem
+    ])
+  }
+  const handleDone = (id: string) => {
+    const index = todoList.findIndex((item) => item.id === id)
+    const copyItem = JSON.parse(JSON.stringify(todoList[index]))
+    copyItem.complete = true 
+    const newList = [...todoList]
+    newList.splice(index, 1)
+    setTodoList([
+      ...newList,
+      copyItem
+    ])
   }
 
   useEffect(() => {
@@ -46,7 +70,7 @@ function App() {
   }, [todoList])
 
   return (
-    <GlobalProvider value={{ todoList, handleAdd, handleRemove }}>
+    <GlobalProvider value={{ todoList, handleAdd, handleRemove, handleDone, handleUndo }}>
       <>
         <TodoHeader />
         <AddTodo />

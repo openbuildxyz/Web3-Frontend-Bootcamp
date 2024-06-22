@@ -6,11 +6,15 @@ interface globalDataProps {
     todoList: TodoItem[];
     handleAdd: Function;
     handleRemove: Function;
+    handleDone: Function;
+    handleUndo: Function;
 }
 const globalDataContext = React.createContext<globalDataProps>({
     todoList: [],
     handleAdd: () => {},
-    handleRemove: () => {}
+    handleRemove: () => {},
+    handleDone: () => {},
+    handleUndo: () => {},
 })
 
 export const GlobalProvider = globalDataContext.Provider;

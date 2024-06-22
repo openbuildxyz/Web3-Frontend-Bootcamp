@@ -8,19 +8,32 @@ type Props = {
 
 export default function TodoList({ }: Props) {
 
-    const { todoList, handleRemove } = useGlobal()
- 
+    const { todoList } = useGlobal()
+    
+    const doingList = todoList.filter((a) => !a.complete).sort((a,b) => a.id < b.id ? 1 : -1)
+    const doneList = todoList.filter((a) => a.complete).sort((a,b) => a.id < b.id ? 1 : -1)
 
     return (
         <div className='todo-list'>
             {
-                todoList.map((item, index) => {
+                doingList.map((item, index) => {
                     return <TodoListItem
                         key={item.id}
                         id={item.id}
                         index={index+1}
+                        complete={item.complete}
                         content={item.content}
-                        callback={id => handleRemove(id)}
+                    />
+                })
+            }
+            {
+                doneList.map((item, index) => {
+                    return <TodoListItem
+                        key={item.id}
+                        id={item.id}
+                        index={doingList.length+index+1}
+                        complete={item.complete}
+                        content={item.content}
                     />
                 })
             }
