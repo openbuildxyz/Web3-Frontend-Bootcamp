@@ -1,6 +1,4 @@
-import { useContext, useState, createContext, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {  useState, useRef, useEffect } from 'react'
 import './App.css'
 import AddTodo from './components/todo-add'
 import TodoList from './components/todo-list'
@@ -11,6 +9,7 @@ import { GlobalProvider } from './context'
 function App() {
 
   const [todoList, setTodoList] = useState<TodoItem[]>([])
+  const lastTodoList = useRef(todoList);
 
   const handleAdd = (content: string) => {
     setTodoList([
@@ -20,11 +19,9 @@ function App() {
         content,
       }
     ])
-    console.log('当前列表：', todoList)
   }
 
   const handleRemove = (id: string) => {
-    console.log('删除todo: ', id);
     const index = todoList.findIndex(it => it.id === id)
     const newList = [...todoList]
     newList.splice(index, 1)
@@ -42,8 +39,8 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (todoList.length){ 
-      console.log('todoList变化了', todoList);
+    if (JSON.stringify(todoList) !== JSON.stringify(lastTodoList.current)){ 
+      lastTodoList.current = todoList
       localStorage.setItem('todoList', JSON.stringify(todoList))
     }
   }, [todoList])
