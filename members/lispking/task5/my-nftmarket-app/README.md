@@ -16,18 +16,18 @@
 
 ![design](design.png)
 
-#### 上架成功展示：
+#### 铸造NFT成功展示：
 
-![上架](上架.png)
-![上架hash](上架hash.png)
+![铸造NFT](铸造NFT.png)
 
-#### 购买成功展示：
+#### 上架NFT成功展示：
 
-![购买](购买.png)
-![购买hash](购买hash.png)
-![购买后NFT官网](购买后NFT官网.png)
+![上架NFT](上架NFT.png)
 
-#### 下架成功展示：
+#### 购买NFT成功展示：
 
-![下架](下架.png)
-![下架hash](下架hash.png)
+![购买NFT](购买NFT.png)
+
+#### 下架NFT成功展示：
+
+![下架NFT](下架NFT.png)

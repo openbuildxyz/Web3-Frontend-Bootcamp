@@ -6,6 +6,7 @@ import {
   useWriteContract,
 } from "wagmi";
 import { hashUrl, MyTokenAddress, NFTMarketAddress } from "./config";
+import NFTImage from "./NFTImage";
 
 function BuyNFT() {
   const [selectIndex, setSelectIndex] = useState<number>(-1);
@@ -82,7 +83,7 @@ function BuyNFT() {
   };
 
   return (
-    <div>
+    <div style={{ border: "1px solid #ccc", padding: "5px", margin: "5px", width: "100%", float: "left" }}>
       <h3>购买 NFT</h3>
       <button
         className="button"
@@ -91,6 +92,11 @@ function BuyNFT() {
       >
         {isPending ? "Buying...." : "Buy NFT"}
       </button>
+      {hashBuy && (
+        <div>
+          购买成功！ 请点击 <a href={hashUrl + hashBuy}>{hashBuy}</a> 查看
+        </div>
+      )}
       <button
         className="button"
         disabled={isPendingOnSale || selectIndex < 0}
@@ -125,7 +131,7 @@ function BuyNFT() {
             }}
             onClick={() => setSelectIndex(index)}
           >
-            <p style={{ width: "30%" }}>{listing.nftAddress}</p>
+            <p style={{ width: "30%" }}><NFTImage tokenId={listing.tokenId}/><br/>{listing.nftAddress}</p>
             <p style={{ width: "20%" }}>{listing.price.toString()}</p>
             <p style={{ width: "10%" }}>{listing.tokenId.toString()}</p>
             <p style={{ width: "30%" }}>{listing.seller.toString()}</p>
@@ -136,11 +142,6 @@ function BuyNFT() {
           </li>
         ))}
       </ul>
-      {hashBuy && (
-        <div>
-          购买成功！ 请点击 <a href={hashUrl + hashBuy}>{hashBuy}</a> 查看
-        </div>
-      )}
       {hashOnSale && (
         <div>
           上架成功！ 请点击 <a href={hashUrl + hashOnSale}>{hashOnSale}</a> 查看

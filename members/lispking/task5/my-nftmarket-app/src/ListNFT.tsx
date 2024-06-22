@@ -46,7 +46,7 @@ function ListNFT() {
   const listHashUrl = hashUrl + hashList;
 
   return (
-    <div>
+    <div style={{ border: "1px solid #ccc", padding: "5px", margin: "5px", width: "45%", height: "400px", float: "left"}}>
       <h3>上架 NFT</h3>
       NFT 合约地址：
       <input
