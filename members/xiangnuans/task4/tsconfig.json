@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
-    "forceConsistentCasingInFileNames": false,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,6 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "forceConsistentCasingInFileNames": false,
     "plugins": [
       {
         "name": "next"

@@ -1,10 +1,10 @@
-// components/ConnectWallet.tsx
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+"use client";
 
-export default function ConnectWallet() {
-  return (
-    <div className="p-4">
-      <ConnectButton />
-    </div>
-  );
+import { Account } from "./Account";
+import { Connect } from "./Connect";
+import { useAccount } from "wagmi";
+
+export function ConnectWallet() {
+  const { isConnected } = useAccount();
+  return <div>{isConnected ? <Account /> : <Connect />}</div>;
 }

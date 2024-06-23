@@ -1,13 +1,13 @@
-import ConnectWallet from "../components/ConnectWallet";
-import ListNFT from "../components/ListNFT";
-import NFTList from "../components/NFTList";
+import BuyNFT from "@/components/BuyNFT";
+import { ConnectWallet } from "@/components/ConnectWallet";
+import ListNFT from "@/components/ListNFT";
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-4">
+    <main className="flex min-h-screen flex-col items-center p-24">
       <ConnectWallet />
       <ListNFT />
-      <NFTList />
-    </div>
+      <BuyNFT />
+    </main>
   );
 }
