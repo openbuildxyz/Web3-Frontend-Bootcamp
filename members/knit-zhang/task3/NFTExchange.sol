@@ -14,6 +14,7 @@ contract Market is  IMarket{
         bool selling;
     }
     mapping (uint256 => Item) private _shelf;
+    uint256[] private _listedCollection;
     address private _payment;
     IERC20 private _token;
 
@@ -27,7 +28,11 @@ contract Market is  IMarket{
         return (token.collectionAddress, token.tokenId, token.owner, token.selling);
     }
 
-	/**
+    function getListedItem() external view returns (uint256[] memory listedCollection) {
+        listedCollection = _listedCollection;
+    }
+
+    /**
 	 * 上架NFT
 	 * @param collection NFT合约地址
 	 * @param tokenId NFT唯一id
@@ -38,7 +43,17 @@ contract Market is  IMarket{
         require(_nft.ownerOf(tokenId) == msg.sender, "Ownership error");
         _shelf[tokenId] = Item(collection, tokenId, _nft.ownerOf(tokenId), price, true);
         require(_nft.getApproved(tokenId) == address(this));
+        _listedCollection.push(tokenId);
         emit ListCollection(tokenId, price);
+    }
+
+    function deleteById(uint256 tokenId) public {
+        for (uint32 i = 0; i < _listedCollection.length; i++) {
+            if (i == tokenId) {
+                _listedCollection[i] = _listedCollection[_listedCollection.length - 1];
+                _listedCollection.pop();
+            }
+        }
     }
 
     function unlistCollection(address collection, uint256 tokenId) external {
@@ -47,14 +62,15 @@ contract Market is  IMarket{
         require(_nft.ownerOf(tokenId) == msg.sender);
         emit UnlistCollection(tokenId);
         delete _shelf[tokenId];
+        deleteById(tokenId);
     }
 
-	/**
+
+    /**
 	 * 购买NFT
 	 * @param collection NFT合约地址
 	 * @param tokenId NFT唯一id
 	 */
-
     function buyCollection(address collection, uint256 tokenId) external{
         Item storage selectedCollection = _shelf[tokenId];
         require(selectedCollection.selling, "Sold Out");
@@ -66,6 +82,7 @@ contract Market is  IMarket{
         IERC721 nft = IERC721(collection);
         nft.safeTransferFrom(selectedCollection.owner, msg.sender, tokenId);
         selectedCollection.selling = false;
+        deleteById(tokenId);
         emit transferCollection(msg.sender, selectedCollection.owner, tokenId);
 
     }
