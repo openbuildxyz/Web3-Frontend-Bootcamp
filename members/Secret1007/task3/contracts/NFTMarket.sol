@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
-contract NFTMarketplace is ReentrancyGuard {
+contract NFTMarket is ReentrancyGuard {
     IERC20 public erc20Token;
     address public owner;
 
