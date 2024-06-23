@@ -6,9 +6,7 @@
 
 * Openbuild Username: jeune
 
-(首次如果没有，学习完毕钱包在填写)
-
-* ERC20 钱包地址: 0xdd8f2631d94fb709ea71b2b65f7da8ac745dca7a354d79c26d915de398010260
+* ERC20 钱包地址: 0xEAB30dB34c72c966e268fD3CD4c380c48F6F725f
 
 ### 个人介绍
 
@@ -17,3 +15,4 @@
 ### 任务提交
 
 [task1](https://github.com/DeJeune/react-to-do-app)
+[task2](./task2)
