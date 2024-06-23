@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import classes from "./AddToDo.module.css";
 
+// 定义 AddToDo 组件的属性类型
+interface AddToDoProps {
+  addToDo: (text: string) => void;
+}
+
 // AddToDo 组件：包含一个输入框和添加按钮，用于添加新的待办事项。
-const AddToDo = (props: { addToDo: (text: string) => void }) => {
+const AddToDo: FC<AddToDoProps> = ({ addToDo }) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
   const handleAddToDo = () => {
-    const text = inputValue;
-    console.log(text, "addToDo");
-
-    // 调用父组件的 addToDo 方法，将输入框中的文本作为参数传递过去
-    props.addToDo(text);
+    if (inputValue.trim() === "") {
+      return;
+    }
+    addToDo(inputValue);
     setInputValue(""); // 清空输入框状态
   };
+
   return (
     <div className={classes.container}>
       <input
