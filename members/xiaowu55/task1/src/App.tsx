@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AddToDo from "./components/AddToDo"
 import { Header } from "./components/Header"
 import { ToDoList } from "./components/ToDoList"
@@ -12,7 +12,13 @@ export interface Item {
 export type ItemList = Item[]
 
 function App() {
-  const [itemList, setItemList] = useState<Item[]>([])
+  const [itemList, setItemList] = useState<ItemList>(()=>{
+    return localStorage.getItem('itemList')?JSON.parse(localStorage.getItem('itemList')!):[]
+  })
+
+  useEffect(()=>{
+    localStorage.setItem('itemList',JSON.stringify(itemList))
+  },[itemList])
 
   function deleteItemHandle(id: number) {
     setItemList(itemList.filter(item => !(item.id === id)))
@@ -29,6 +35,7 @@ function App() {
   function addItemHandle(itemContent: string) {
     !!itemContent && setItemList([...itemList, { itemContent, id: itemList.length + 1, done: false }])
   }
+
 
   return (
     <div className="flex items-center justify-center flex-col">

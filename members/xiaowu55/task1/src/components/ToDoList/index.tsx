@@ -8,8 +8,8 @@ export const ToDoList = (
 ) => {
 
   return (
-    <div className="flex flex-col">
-      {itemList.map((item) => <ToDoItem deleteItemHandle={deleteItemHandle} doneItemHandle={doneItemHandle} item={item} />)}
+    <div className="flex flex-col py-5">
+      {itemList.map((item) => <ToDoItem key={item.id} deleteItemHandle={deleteItemHandle} doneItemHandle={doneItemHandle} item={item} />)}
     </div>
   )
 }
