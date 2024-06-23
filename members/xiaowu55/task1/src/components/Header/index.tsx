@@ -1,5 +1,5 @@
 export const Header = () => {
   return (
-    <div>Todo List</div>
+    <span className="text-pink-200 text-5xl">Todo List</span>
   )
 }
