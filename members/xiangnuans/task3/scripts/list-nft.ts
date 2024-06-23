@@ -43,7 +43,7 @@ async function main() {
     await market.listNFT(nftAddress, tokenId, price);
     console.log(`NFT with tokenId ${tokenId} listed on the market by ${deployer.address}`);
   } catch (error) {
-    console.error("Error approving NFT for transfer:", error);
+    console.error("Error Listing NFT on the market :", error);
     process.exit(1);
   }
 }

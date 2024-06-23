@@ -43,8 +43,12 @@ contract NFTMarket {
             nft.ownerOf(_tokenId) == msg.sender,
             "Not the owner of the NFT"
         );
+        // require(
+        //     nft.isApprovedForAll(msg.sender, address(this)),
+        //     "Contract not approved"
+        // );
         require(
-            nft.isApprovedForAll(msg.sender, address(this)),
+            nft.getApproved(_tokenId) == address(this),
             "Contract not approved"
         );
 
@@ -72,7 +76,7 @@ contract NFTMarket {
             "Payment failed"
         );
 
-        nft.transferFrom(listing.seller, msg.sender, _tokenId);
+        nft.safeTransferFrom(listing.seller, msg.sender, _tokenId);
         listing.isActive = false;
 
         emit NFTBought(msg.sender, _nftContract, _tokenId, listing.price);
