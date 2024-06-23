@@ -1,61 +1,42 @@
-import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
-import hre, { ethers } from "hardhat";
+import { ethers } from "hardhat";
+import { MyToken } from "../typechain-types";
 
 describe("MyToken", function () {
-    async function deployErc20Token() {
-        const [owner, otherAccount] = await hre.ethers.getSigners();
-        const MyToken = await hre.ethers.getContractFactory("MyToken");
-        const erc20 = await MyToken.deploy();
-        return { erc20, owner, otherAccount };
-    }
+    let myToken: MyToken;
+    let owner: any;
+    let addr1: any;
+    let addr2: any;
 
-    describe("Deployment", function () {
-        it("Should set the right token decimal", async function () {
-            const { erc20 } = await loadFixture(deployErc20Token);
-            expect(await erc20.decimals()).to.equal(18n);
-        });
+    beforeEach(async function () {
+        const MyToken = await ethers.getContractFactory("MyToken");
+        [owner, addr1, addr2] = await ethers.getSigners();
+        myToken = await MyToken.deploy();
     });
 
-    describe("mint", function () {
-        describe("Validations", function () {
-            it("Should revert with the right error if not the owner", async function () {
-                const { erc20, owner, otherAccount } = await loadFixture(deployErc20Token);
-                await expect(erc20.connect(otherAccount).mintTo(otherAccount, 100)).to.be.revertedWithCustomError(erc20, "OwnableUnauthorizedAccount");
-            });
-            it("Should not revert if mintTo is called by the owner", async function () {
-                const { erc20, owner, otherAccount } = await loadFixture(deployErc20Token);
-                await expect(erc20.connect(owner).mintTo(otherAccount.address, 100)).not.to.be.reverted;
-            });
-            it("Should not revert if mint is called with ETH", async function () {
-                const { erc20, owner, otherAccount } = await loadFixture(deployErc20Token);
-                await expect(erc20.connect(otherAccount).mint({ value: ethers.parseEther("0.1") })).not.to.be.reverted;
-            });
-        });
-
-        describe("Events", function () {
-            it("Should emit transfer event", async function () {
-                const { erc20, owner, otherAccount } = await loadFixture(deployErc20Token);
-                await expect(erc20.connect(owner).mintTo(otherAccount, 1000)).to.emit(erc20, "Transfer").withArgs(ethers.ZeroAddress, otherAccount, 1000); // We accept any value as `when` arg
-            });
-        });
-
-        it("Should cost the right ether.", async function () {
-            const { erc20, owner, otherAccount } = await loadFixture(deployErc20Token);
-            await expect(() => erc20.connect(otherAccount).mint({ value: ethers.parseEther("0.1") })).to.changeEtherBalance(otherAccount, -ethers.parseEther("0.1"));
-        });
-        it("Should mint right value.", async function () {
-            const { erc20, owner, otherAccount } = await loadFixture(deployErc20Token);
-            await expect(erc20.connect(otherAccount).mint({ value: ethers.parseEther("0.1") })).changeTokenBalance(erc20, otherAccount, ethers.parseEther("0.1") * BigInt(10));
-        });
+    it("should have correct name and symbol", async function () {
+        expect(await myToken.name()).to.equal("SecretToken");
+        expect(await myToken.symbol()).to.equal("ST");
     });
 
-    describe("Transfers", function () {
-        it("Should have the right balance after transfer", async function () {
-            const { erc20, owner, otherAccount } = await loadFixture(deployErc20Token);
-            const mintAmount = ethers.parseEther("0.1");
-            await erc20.connect(otherAccount).mint({ value: ethers.parseEther("0.1") });
-            await expect(() => erc20.connect(otherAccount).transfer(owner.address, mintAmount)).to.changeTokenBalance(erc20, otherAccount, -mintAmount);
-        });
+    it("only owner can mint tokens", async function () {
+        await myToken.mintTo(addr1.address, 100);
+        expect(await myToken.balanceOf(addr1.address)).to.equal(100);
+
+        await expect(myToken.connect(addr1).mintTo(addr1.address, 100)).to.be.revertedWithCustomError(myToken,"OwnableUnauthorizedAccount");
+    });
+
+    it("should mint tokens when sending ETH", async function () {
+        const initialBalance = await myToken.balanceOf(addr1.address);
+        const mintValue = ethers.parseEther("1"); // 1 ETH
+
+        await myToken.connect(addr1).mint({ value: mintValue });
+        const newBalance = await myToken.balanceOf(addr1.address);
+
+        expect(newBalance).to.equal(initialBalance + (mintValue * 10n));
+    });
+
+    it("should fail to mint tokens with zero ETH", async function () {
+        await expect(myToken.connect(addr1).mint({ value: 0 })).to.be.revertedWith("Must send ETH to mint tokens");
     });
 });

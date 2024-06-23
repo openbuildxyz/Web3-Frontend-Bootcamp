@@ -13,9 +13,10 @@ describe("MyNFT", function () {
 
     it("Should deploy the contract and mint a new NFT", async function () {
         const [owner, recipient] = await ethers.getSigners();
-        const tokenURI = "https://example.com/nft";
+        const tokenURI = "tokenURI";
+        const tokenPrice = ethers.parseEther("1")
 
-        const mintTx = await myNFT.connect(owner).mintNFT(recipient.address, tokenURI);
+        const mintTx = await myNFT.mintNFT(recipient.address, tokenURI, tokenPrice);
         await mintTx.wait();
 
         const tokenId = await myNFT.getCurrentTokenId();
@@ -26,5 +27,8 @@ describe("MyNFT", function () {
 
         const storedTokenURI = await myNFT.tokenURI(tokenId);
         expect(storedTokenURI).to.equal(tokenURI);
+
+        const tokenPrice1 = await myNFT.getTokenPrice(tokenId);
+        expect(tokenPrice1).to.equal(tokenPrice);
     });
 });

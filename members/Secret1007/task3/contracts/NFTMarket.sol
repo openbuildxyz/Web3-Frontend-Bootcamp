@@ -59,7 +59,6 @@ contract NFTMarket is ReentrancyGuard {
 
     function buyNFT(uint256 listingId) external nonReentrant {
         Listing memory listing = listings[listingId];
-
         require(listing.price > 0, "NFT not listed for sale");
 
         erc20Token.transferFrom(msg.sender, listing.seller, listing.price);
