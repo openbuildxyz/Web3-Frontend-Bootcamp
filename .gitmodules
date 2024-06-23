@@ -1,0 +1,3 @@
+[submodule "members/coolberwin/task3/nftMarket/lib/forge-std"]
+	path = members/coolberwin/task3/nftMarket/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
