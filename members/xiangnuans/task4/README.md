@@ -48,3 +48,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 提交要求
 - 提交完整代码
 - 提交界面截图
+
+
+完成任务截图：
+![imge](./public/WechatIMG428.jpg)
