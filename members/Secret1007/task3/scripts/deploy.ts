@@ -6,7 +6,7 @@ async function main() {
 
   const MyToken = await ethers.getContractFactory("MyToken");
   const myToken = await MyToken.deploy();
-  console.log('myNFT: ', await myToken.getAddress());
+  console.log('myToken: ', await myToken.getAddress());
 
   const MyNFT = await ethers.getContractFactory("MyNFT");
   const myNFT = await MyNFT.deploy();
