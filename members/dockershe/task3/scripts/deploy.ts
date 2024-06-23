@@ -30,6 +30,11 @@ async function main() {
   const nftMarketContractAddress = await nftMarket.getAddress();
   console.log("NftMarket contract deployed to:", nftMarketContractAddress);
 
+  // 调用函数部署第三个合约  deploy Token Contract
+  const TokenFactory = await ethers.getContractFactory('Token', owner);
+  const token = await TokenFactory.deploy();
+  const tokenContractAddress = await token.getAddress();
+  console.log("Token contract deployed to:", tokenContractAddress);
 
 }
 
