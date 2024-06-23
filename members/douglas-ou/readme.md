@@ -1,11 +1,11 @@
-# Web3 Ç°¶ËÑµÁ·Óª±¨Ãû
+# Web3 å‰ç«¯è®­ç»ƒè¥æŠ¥å
 
-## ¸öÈËÐÅÏ¢
+## ä¸ªäººä¿¡æ¯
 
 * GitHub ID: douglas-ou
 * OpenBuild Username: douglas ou
-* ERC20 Ç®°üµØÖ·: (Ê×´ÎÈç¹ûÃ»ÓÐ£¬Ñ§Ï°Íê±ÏÇ®°üÔÚÌîÐ´)
+* ERC20 é’±åŒ…åœ°å€: 0xe0d13C2339Eb429aC0202E79Eb7228373233EDE6
 
-### ¸öÈË½éÉÜ
+### ä¸ªäººä»‹ç»
 
-web2´òÔÓ£¬Éè¼Æ ²úÆ· Ç°¶Ë ºó¶Ë ¸÷ÁË½âÒ»µã£¬ÏëÈëÃÅweb3
+web2æ‰“æ‚ï¼Œè®¾è®¡ äº§å“ å‰ç«¯ åŽç«¯ å„äº†è§£ä¸€ç‚¹ï¼Œæƒ³å…¥é—¨web3
