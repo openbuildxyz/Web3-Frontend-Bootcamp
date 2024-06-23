@@ -74,6 +74,10 @@ contract NFTMarket is IERC721Receiver, ReentrancyGuard{
         return address(token);
     }
 
+    function getNftSellInfo(address _nftAddress, uint256 _tokenId,) public view returns (Order){
+        return nftList[_nftAddress][_tokenId];
+    }
+
     // 挂单: 卖家上架NFT，合约地址为_nftAddress，tokenId为_tokenId，价格_price为以太坊（单位是wei）
     function listItem(address _nftAddress, uint256 _tokenId, uint256 _price) external
         isOwner(_nftAddress, _tokenId, msg.sender)
