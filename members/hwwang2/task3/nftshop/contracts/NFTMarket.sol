@@ -74,7 +74,7 @@ contract NFTMarket is IERC721Receiver, ReentrancyGuard{
         return address(token);
     }
 
-    function getNftSellInfo(address _nftAddress, uint256 _tokenId,) public view returns (Order){
+    function getNftSellInfo(address _nftAddress, uint256 _tokenId) public view returns (Order memory){
         return nftList[_nftAddress][_tokenId];
     }
 
