@@ -10,9 +10,10 @@ contract NFTMarket {
         address nftContract;
         uint256 tokenId;
         uint256 price;
+        bool isActive;
     }
 
-    Listing[] public listings;
+    mapping(address => mapping(uint256 => Listing)) public listings;
     IERC20 public paymentToken;
 
     event NFTListed(
@@ -29,37 +30,51 @@ contract NFTMarket {
     );
 
     constructor(IERC20 _paymentToken) {
-        paymentToken = _paymentToken;
+        paymentToken = IERC20(_paymentToken);
     }
 
     function listNFT(
-        address nftContract,
-        uint256 tokenId,
-        uint256 price
-    ) public {
-        IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
-        listings.push(Listing(msg.sender, nftContract, tokenId, price));
-        emit NFTListed(msg.sender, nftContract, tokenId, price);
+        address _nftContract,
+        uint256 _tokenId,
+        uint256 _price
+    ) external {
+        IERC721 nft = IERC721(_nftContract);
+        require(
+            nft.ownerOf(_tokenId) == msg.sender,
+            "Not the owner of the NFT"
+        );
+        require(
+            nft.isApprovedForAll(msg.sender, address(this)),
+            "Contract not approved"
+        );
+
+        listings[_nftContract][_tokenId] = Listing(
+            msg.sender,
+            _nftContract,
+            _tokenId,
+            _price,
+            true
+        );
+        emit NFTListed(msg.sender, _nftContract, _tokenId, _price);
     }
 
-    function buyNFT(uint256 index) external {
-        Listing storage listing = listings[index];
-        require(listing.price > 0, "NFT not for sale");
+    function buyNFT(address _nftContract, uint256 _tokenId) external {
+        Listing storage listing = listings[_nftContract][_tokenId];
+        require(listing.isActive, "Not not listed for sale");
 
-        paymentToken.transferFrom(msg.sender, listing.seller, listing.price);
-        IERC721(listing.nftContract).transferFrom(
-            address(this),
-            msg.sender,
-            listing.tokenId
+        IERC721 nft = IERC721(_nftContract);
+        require(
+            paymentToken.transferFrom(
+                msg.sender,
+                listing.seller,
+                listing.price
+            ),
+            "Payment failed"
         );
 
-        emit NFTBought(
-            msg.sender,
-            listing.nftContract,
-            listing.tokenId,
-            listing.price
-        );
+        nft.transferFrom(listing.seller, msg.sender, _tokenId);
+        listing.isActive = false;
 
-        delete listings[index];
+        emit NFTBought(msg.sender, _nftContract, _tokenId, listing.price);
     }
 }
