@@ -17,7 +17,7 @@ contract NFTMarket is ReentrancyGuard {
     }
 
     mapping(uint256 => Listing) public listings;
-    uint256 public listingCount;
+    uint256 public listingCount = 1;
 
     event NFTListed(
         uint256 indexed listingId,

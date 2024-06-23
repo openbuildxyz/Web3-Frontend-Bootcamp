@@ -26,16 +26,15 @@ describe("NFTMarket", async () => {
 
   describe("Listing and Buying NFTs", function () {
     it("Should allow a user to list and buy an NFT", async function () {
-      const tokenPrice = ethers.parseEther("1")
       // 铸造一个新的 NFT
-      await myNFT.connect(addr1).mintNFT(addr1, "tokenURI", tokenPrice);
+      await myNFT.connect(addr1).mintNFT(addr1, "tokenURI");
       expect(await myNFT.ownerOf(1)).to.equal(await addr1.getAddress());
 
       // 批准市场合约转移 NFT
       await myNFT.connect(addr1).approve(nftMarketAddress, 1);
 
       // 列出 NFT
-      const aa = await nftMarket.connect(addr1).listNFT(NFTAddress, 1, ethers.parseUnits("10", 18));
+      await nftMarket.connect(addr1).listNFT(NFTAddress, 1, ethers.parseUnits("10", 18));
       expect(await myNFT.ownerOf(1)).to.equal(nftMarketAddress);
 
       // 转移 MyToken 到 addr2
