@@ -8,7 +8,7 @@
 
 - Openbuild Username: flexibility2
 
-- ERC20 钱包地址:
+- ERC20 钱包地址: 0xdc32e5e98027662Ca0Cd7cB3f906cAE52944b731
 
 ### 个人介绍
 

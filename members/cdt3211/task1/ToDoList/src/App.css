@@ -1,0 +1,35 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.deleteToDo{
+  background-color: rgba(251, 43, 43, 0.829);
+  color: white;
+  border: none;
+  margin-left: 3%;
+  margin-top: 1%;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+.add{
+  background-color: rgba(42, 43, 42, 0.829);
+  color: white;
+}
+input{
+  padding: 0.3rem;
+  border: none;
+  border-radius: 0.3rem;
+  box-shadow: 0 0px 10px 1px rgba(159, 158, 158, 0.5);
+}
+.form{
+  margin-bottom: 5%;
+  width: 250px;
+}
+.toDoText{
+  background-color: rgb(224, 224, 224);
+  border-radius: 0.3rem;
+  width: 100%;
+}
