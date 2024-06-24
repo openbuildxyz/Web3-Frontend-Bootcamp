@@ -80,6 +80,48 @@ contract NFTMarket is Ownable {
         return allListings;
     }
 
+    function getAllSellingListings() public view returns (Listing[] memory) {
+        // 计算有效的列表数量
+        uint256 validCount = 0;
+        for (uint256 i = 0; i < listingCounter; i++) {
+            if (listings[i].price > 0) {
+                validCount++;
+            }
+        }
+
+        // 创建一个精确大小的数组来存储有效的列表
+        Listing[] memory allListings = new Listing[](validCount);
+        uint256 counter = 0;
+        for (uint256 i = 0; i < listingCounter; i++) {
+            if (listings[i].price > 0) {
+                allListings[counter] = listings[i];
+                counter++;
+            }
+        }
+        return allListings;
+    }
+
+    function getAllRemovedListings() public view returns (Listing[] memory) {
+        // 计算有效的列表数量
+        uint256 validCount = 0;
+        for (uint256 i = 0; i < listingCounter; i++) {
+            if (listings[i].price == 0) {
+                validCount++;
+            }
+        }
+
+        // 创建一个精确大小的数组来存储有效的列表
+        Listing[] memory allListings = new Listing[](validCount);
+        uint256 counter = 0;
+        for (uint256 i = 0; i < listingCounter; i++) {
+            if (listings[i].price == 0) {
+                allListings[counter] = listings[i];
+                counter++;
+            }
+        }
+        return allListings;
+    }
+
 }
 
 // listNFT 交易哈希: 0xbb5118e2174dbb02740a5cb00ee68eea28c3828e5cdabe9e39c2793b49b0429d
