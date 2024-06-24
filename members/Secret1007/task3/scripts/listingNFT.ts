@@ -26,6 +26,7 @@ async function listNFT() {
     const price = ethers.parseUnits("1.0", 18); // NFT 价格 (例如 1 ERC20 代币)
 
     try {
+        console.log("Listing NFT...", nftContract);
         // 先授权 NFTMarket 合约可以转移你的 NFT
         const approveTx = await nftContract.approve(nftMarketAddress, tokenId);
         console.log("Approve transaction hash:", approveTx.hash);
