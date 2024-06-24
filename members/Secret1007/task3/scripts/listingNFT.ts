@@ -31,11 +31,11 @@ async function listNFT() {
         console.log("Approve transaction hash:", approveTx.hash);
         await approveTx.wait();
 
-        // 上架 NFT
-        const listTx = await nftMarketContract.listNFT(nftContractAddress, tokenId, price);
-        console.log("List transaction hash:", listTx.hash);
-        await listTx.wait();
-        console.log("NFT listed successfully!");
+        // // 上架 NFT
+        // const listTx = await nftMarketContract.listNFT(nftContractAddress, tokenId, price);
+        // console.log("List transaction hash:", listTx.hash);
+        // await listTx.wait();
+        // console.log("NFT listed successfully!");
     } catch (error) {
         console.error("Error listing NFT:", error);
     }
