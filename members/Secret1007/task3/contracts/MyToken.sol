@@ -5,8 +5,8 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol"; // 确保导入 Ownable 合约
 
 contract MyToken is ERC20, Ownable {
-    constructor() ERC20("SecretToken", "ST"){}
-    
+    constructor() ERC20("SecretToken", "ST") Ownable(msg.sender) {}
+
     // 只有合约所有者可以调用此函数
     function mintTo(address account, uint256 amount) external onlyOwner {
         _mint(account, amount);
