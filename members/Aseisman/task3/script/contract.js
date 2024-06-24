@@ -1,5 +1,0 @@
-module.exports = {
-    nft: '0x610b6689d8426f1794cC10B640cC701263723f0b',
-    token: '0x68570484F1373145bF45eb0364cbDE30dd1151D5',
-    market: '0x01c0C9cFa7fC5229B376317BDA7d09bC0f00a567'
-}
