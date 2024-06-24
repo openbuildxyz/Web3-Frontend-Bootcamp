@@ -1,0 +1,13 @@
+.item {
+    cursor: pointer;
+}
+
+.item--completed {
+    cursor: pointer;
+    text-decoration: line-through;
+    color: grey;
+}
+
+.button {
+    margin-left: 20%;
+}

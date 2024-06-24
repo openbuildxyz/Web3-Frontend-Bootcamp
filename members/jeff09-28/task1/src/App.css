@@ -1,0 +1,66 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.card {
+    padding: 2em;
+    input {
+        height: 32px;
+        padding: 0 12px;
+        margin: 0 5px;
+        border: 1px solid #71afe5;
+        outline: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    input:focus {
+        border: 1px solid #61dafb;
+    }
+    button {
+        margin: 0 4px;
+        padding: 0 14px;
+        line-height: 32px;
+        color: #232323;
+        background: #EBF3FF;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        outline: none;
+    }
+    button:hover {
+        background: #0078d4;
+        cursor: pointer;
+    }
+}
+
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid #eee;
+    outline: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.todo-item button {
+    margin-left: auto;
+}
+.todo-item button:hover {
+    background: #e50c42;
+    cursor: pointer;
+}

@@ -12,8 +12,8 @@ export const ToDoList: React.FC<ToDoListProps> = ({ items, deleteToDo }) => {
     console.log(deleteToDo);
     return (
         <ul>
-            {items.map((item, index) => (
-                <ToDoItem key={index} item={item} deleteToDo={deleteToDo}/>
+            {items.map((item) => (
+                <ToDoItem key={item.id} item={item} deleteToDo={deleteToDo}/>
             ))}
         </ul>
     );

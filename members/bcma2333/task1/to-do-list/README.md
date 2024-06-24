@@ -2,16 +2,16 @@
 
 ## Main UI
 
-![Alt Text](assets/mainUI.png)
+![Alt Text](scr/assets/mainUI.png)
 
 ## Delete Task
 
-![alt text](assets/deleteTask.png)
+![alt text](src/assets/deleteTask.png)
 
 ## Add Task
 
-![Alt Text](assets/addTask.png)
+![Alt Text](src/assets/addTask.png)
 
 ## Mark Completed Task
 
-![Alt Text](assets/markCompletedTask.png)
+![Alt Text](src/assets/markCompletedTask.png)
