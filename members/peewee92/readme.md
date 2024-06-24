@@ -6,7 +6,7 @@
 
 * Wechat ID: peewee92
 
-* Openbuild Username: pee wee
+* Openbuild Username: willp
 
 (首次如果没有，学习完毕钱包在填写)
 
