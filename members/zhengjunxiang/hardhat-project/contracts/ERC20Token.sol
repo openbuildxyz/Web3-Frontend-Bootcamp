@@ -12,9 +12,13 @@ contract ERC20Token is ERC20 {
         _mint(msg.sender, initSupply);
     }
 
+    // 增发代币
     function increaseSupply(uint256 supplyAmount) public {
         require(msg.sender == owner, "IncreaseSupply should be owner");
         require(supplyAmount > 0, "Amount must be greater than 0");
         _mint(msg.sender, supplyAmount);
     }
 }
+
+// 给交易所授权多少个代币
+// approve(marketAddress, value)

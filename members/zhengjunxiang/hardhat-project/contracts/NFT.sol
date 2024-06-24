@@ -9,6 +9,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
+
+    event NFTCreated(uint256 indexed tokenId, string tokenURI);
+
     // onlyOwner 是一个修饰符，用于限制只有合约的所有者才能调用某些特定的函数
     constructor() ERC721("LemNFT", "LEMNFT") Ownable(msg.sender) {
         tokenCounter = 0;
@@ -18,6 +21,7 @@ contract NFT is ERC721URIStorage, Ownable {
         uint256 newItemId = tokenCounter;
         _safeMint(msg.sender, newItemId);
         _setTokenURI(newItemId, tokenURI);
+        emit NFTCreated(newItemId, tokenURI);
         tokenCounter++;
         return newItemId;
     }
