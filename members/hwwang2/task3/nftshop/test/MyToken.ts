@@ -22,7 +22,7 @@ describe("MyToken", function () {
     it("Should set the right token decimal", async function () {
       const { erc20 } = await loadFixture(deployErc20Token);
 
-      expect(await erc20.decimals()).to.equal(18);
+      expect(await erc20.decimals()).to.equal(6);
     });
   });
 

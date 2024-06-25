@@ -28,7 +28,8 @@ contract NFTMarket is IERC721Receiver, ReentrancyGuard{
 
     struct Order{
         address owner;  //卖家 seller
-        uint256 price; 
+        uint256 price;
+        uint256 ts;
     }
 
     modifier isOwner(
@@ -91,6 +92,7 @@ contract NFTMarket is IERC721Receiver, ReentrancyGuard{
         Order storage _order = nftList[_nftAddress][_tokenId]; //设置NF持有人和价格
         _order.owner = msg.sender;
         _order.price = _price;
+        _order.ts = block.timestamp;
 
         // require(_nft.getApproved(_tokenId) == address(this), "Need Approval"); // 合约得到授权
         // 挂单时将 NFT 转移给合约比较常见
