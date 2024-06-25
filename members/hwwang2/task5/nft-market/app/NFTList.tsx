@@ -115,6 +115,30 @@ const NftList = function({
         return;
     }
 
+    const revoke=async function(address:string, tokenId: number){
+      const d2 = await writeContractAsync({
+        abi: MARKET_ABI,
+        address: MARKET_ADDRESS,
+        functionName: "revoke",
+        args: [address,tokenId],
+      },{
+        onSuccess: () => {
+          message.success("下架操作成功！");
+        },
+        onError: (err) => {
+            message.error(err.message);
+        },
+      });
+      console.log(d2);
+      let transactionReceipt = await waitForTransactionReceipt(config, {
+        hash: d2,
+        pollingInterval: 500, 
+      });
+      console.log(transactionReceipt);
+      setOp(op+1);
+      return;
+    }
+
     const [nfts, setNfts] = useState<OwnedNft[]>([]);
     useEffect(function(){
         const settings = {
@@ -152,7 +176,7 @@ const NftList = function({
         />
         <Flex justify="space-between" style={{width:"100%"}} wrap>
         {
-            nfts.map(item=>(<NftItem key={item.contract.address+"_"+item.tokenId} address={item.contract.address} tokenId={(Number)(item.tokenId)} img={item.image.originalUrl} purchase={purchase}/>))
+            nfts.map(item=>(<NftItem key={item.contract.address+"_"+item.tokenId} address={item.contract.address} tokenId={(Number)(item.tokenId)} img={item.image.originalUrl} purchase={purchase} revoke={revoke}/>))
         }
         </Flex>
         </>
@@ -164,11 +188,13 @@ const NftItem= function({
     tokenId,
     img,
     purchase,
+    revoke,
     }: {
         address: string;
         tokenId: number;
         img: string|undefined,
         purchase: (address:string, tokenId: number, price: number) => void;
+        revoke: (address:string, tokenId: number) => void;
     }){
     let _owner = "";
     let _price = 0;
@@ -186,7 +212,7 @@ const NftItem= function({
         const {owner, price, ts} = infoResult.data as {owner:string, price:number, ts: number};
         _owner = owner;
         _price = price;
-        _ts = ts;
+        _ts = Number(ts);
     }
     
     return (
@@ -196,10 +222,11 @@ const NftItem= function({
             <div className={styles.nftItemDesc}>Seller:{_owner}</div>
             <div className={styles.nftItemDesc}>NFTAddr:{address}</div>
             <div className={styles.nftItemDesc}>NFT ID:{tokenId}</div>
-            <div className={styles.nftItemDesc}>上架时间:{_ts}</div>
+            <div className={styles.nftItemDesc}>上架时间:{new Date(_ts*1000).toLocaleString()}</div>
             
             <span>售价:{_price==0?"":formatUnits(BigInt(_price), 6)}</span>
             {_owner && (account?.address!=_owner) && <Button onClick={() =>{purchase(address, tokenId,_price);}}>购买</Button>}
+            {_owner && (account?.address==_owner) && <Button onClick={() =>{revoke(address, tokenId);}}>下架</Button>}
         </div>
     );
 }
