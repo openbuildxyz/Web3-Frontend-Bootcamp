@@ -1,1 +1,10 @@
+NO.1
+
 ERC20: 0xe4d2db7b9d9e277e821650dfc777ac4339e4ba75142ae74c11fa44990a04acd7
+Contract: 0x9f70f6c2B7002a2A302e107ca165BA9238c0858F
+
+NO2
+ERC721:
+transaction hash: 0xc1023c0b415b1cd341153067a837164c7dcef8ab019c783baebc3c80ea58bae6
+contract address:
+0xa5f515e609b4ff5143ee2415e1d86cabad41d66f
