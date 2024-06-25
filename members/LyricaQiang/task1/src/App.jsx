@@ -27,7 +27,7 @@ function App() {
 
   const toggleItemComplete = id => {
     const data = toDos.map(item => {
-      if (item.id == id) item.complete = true;
+      if (item.id == id) item.complete = !item.complete;
       return { ...item };
     });
     setTodos(data);
