@@ -75,6 +75,14 @@ contract CavenNFTMarketplace is IERC721Receiver, Ownable {
         emit NFTBought(msg.sender, listing.nftContract, listing.tokenId, listing.price, listingId);
     }
 
+    function getAllListings() public view returns (Listing[] memory) {
+        Listing[] memory allListings = new Listing[](nextListingId);
+        for (uint256 i = 0; i < nextListingId; i++) {
+            allListings[i] = listings[i];
+        }
+        return allListings;
+    }
+
     // Implement the onERC721Received function to allow the contract to receive ERC721 tokens
     function onERC721Received(address, /*operator*/ address, /*from*/ uint256, /*tokenId*/ bytes calldata /*data*/ )
         external

@@ -108,6 +108,19 @@ contract CavenNFTMarketplaceTest is Test {
         assertTrue(isSold);
     }
 
+    function testGetAllListings() public {
+        (uint256 tokenId, uint256 listingId) = _listNFT();
+
+        CavenNFTMarketplace.Listing[] memory allListings = marketplace.getAllListings();
+
+        assertEq(allListings.length, 1);
+        assertEq(allListings[listingId].seller, lily);
+        assertEq(allListings[listingId].nftContract, address(nft));
+        assertEq(allListings[listingId].tokenId, tokenId);
+        assertEq(allListings[listingId].price, nftPrice);
+        assertEq(allListings[listingId].isSold, false);
+    }
+
     function _listNFT() internal returns (uint256, uint256) {
         // Mint an NFT for Lily and approve the marketplace for transfer
         uint256 tokenId = nft.mint(lily, tokenURI);
