@@ -28,7 +28,6 @@ export const ToDoItem: React.FC<ToDoItemProps> = ({ item, deleteToDo }) => {
       };
 
     return (
-        <li>
                 <Checkbox checked={checked} onChange={onChange}>
                     <span className={checked ? "strikethrough" : ""}>{item.text}</span>
                 </Checkbox>

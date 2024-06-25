@@ -8,6 +8,7 @@ import { ToDo } from './component/entity/ToDo';
 
 function App() {
   const [toDoItems, setToDoItems] = useState<ToDo[]>(() => {
+
     var initialItems = localStorage.getItem('todos');
     return initialItems ? JSON.parse(initialItems) : []; 
   });
@@ -18,6 +19,7 @@ function App() {
   }, [toDoItems]);
 
   const handleAddToDo = (text: string) => {
+
     const newItem : ToDo = {
       id: Date.now(),
       text,
@@ -27,6 +29,7 @@ function App() {
   };
 
   const deleteToDo = (id: number) => {
+
     var initialItems = localStorage.getItem('todos');
     var savedTodos : ToDo[]= initialItems ? JSON.parse(initialItems) : [];
     setToDoItems(savedTodos.filter(todo => todo.id !== id));
