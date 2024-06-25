@@ -13,9 +13,13 @@ if (!process.env.PRIVATE_KEY) {
 const config: HardhatUserConfig = {
   solidity: "0.8.24",
   networks: {
-    localhost: {
+    // localhost: {
+    //   url: process.env.RPC_URL,
+    //   accounts: [process.env.PRIVATE_KEY],
+    // },
+    sepolia: {
       url: process.env.RPC_URL,
-      accounts: [process.env.PRIVATE_KEY],
+      accounts: [process.env.PRIVATE_KEY as string],
     },
   },
 };

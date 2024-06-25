@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract DogArtNft is ERC721, Ownable {
+contract LighthouseNft is ERC721, Ownable {
     using Strings for uint256;
 
 
@@ -18,6 +18,7 @@ contract DogArtNft is ERC721, Ownable {
 
     
     constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) Ownable(msg.sender) {
+
     }
         
     function setBaseTokenURI(string memory baseTokenURI) external onlyOwner {

@@ -14,4 +14,4 @@ npx hardhat ignition deploy ./ignition/modules/Lock.ts
 
 # 部署账号
 
-`npx hardhat run scripts/deploy.ts --network sepoliahar`
+`npx hardhat run scripts/deploy.ts --network sepolia`
