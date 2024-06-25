@@ -1,0 +1,32 @@
+{
+  "name": "nft-market",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.0",
+    "@ant-design/web3": "^1.15.1",
+    "@ant-design/web3-wagmi": "^2.7.0",
+    "@tanstack/react-query": "^5.45.1",
+    "alchemy-sdk": "^3.3.1",
+    "antd": "^5.18.3",
+    "dotenv": "^16.4.5",
+    "next": "14.2.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "wagmi": "^2.10.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "typescript": "^5"
+  }
+}
