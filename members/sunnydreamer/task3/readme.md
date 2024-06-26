@@ -1,10 +1,16 @@
-NO.1
+### Contracts
 
-ERC20: 0xe4d2db7b9d9e277e821650dfc777ac4339e4ba75142ae74c11fa44990a04acd7
-Contract: 0x9f70f6c2B7002a2A302e107ca165BA9238c0858F
+| Contract       | Sepolia                                                                                                                         |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ERC721 SunFT   | [`0x5EA36e7b837430159d43bbFa3FDfFA1039AC88D8`](https://sepolia.etherscan.io/address/0x5EA36e7b837430159d43bbFa3FDfFA1039AC88D8) |
+| ERC20 SunToken | [`0x849e983df1D2001dC44770e2369cFC666c396DDf`](https://sepolia.etherscan.io/address/0x849e983df1D2001dC44770e2369cFC666c396DDf) |
+| NFTExchange    | [`0x68411160530eaEbC24B8D6F710703941Eb6b20de`](https://sepolia.etherscan.io/address/0x68411160530eaEbC24B8D6F710703941Eb6b20de) |
 
-NO2
-ERC721:
-transaction hash: 0xc1023c0b415b1cd341153067a837164c7dcef8ab019c783baebc3c80ea58bae6
-contract address:
-0xa5f515e609b4ff5143ee2415e1d86cabad41d66f
+### Transactions
+
+| Action    | Transaction Hash                                                                                                                                                           |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| List NFT0 | [`0xf6191c2130e58f69baa51076f8c7e2e1b57405e3d573bba8c77d23f9cc973e3e`](https://sepolia.etherscan.io/tx/0xf6191c2130e58f69baa51076f8c7e2e1b57405e3d573bba8c77d23f9cc973e3e) |
+| List NFT1 | [`0x04405b384399c5e5b1bcbe6639537e1b13297db1b18120dd7d0e0ef00bc521b4`](https://sepolia.etherscan.io/tx/0x04405b384399c5e5b1bcbe6639537e1b13297db1b18120dd7d0e0ef00bc521b4) |
+| Buy NFT0  | [`0xb5cbd5b5c3ea9c894625a22ac67a6c63576bf6407d6bc43947902f3af6985155`](https://sepolia.etherscan.io/tx/0xb5cbd5b5c3ea9c894625a22ac67a6c63576bf6407d6bc43947902f3af6985155) |
+| Buy NFT1  | [`0xa83b1b1ff129d5cc350b9a0bcfa3d5f7de2653ce95f51c5d21238852ba6f822a`](https://sepolia.etherscan.io/tx/0xa83b1b1ff129d5cc350b9a0bcfa3d5f7de2653ce95f51c5d21238852ba6f822a) |
