@@ -4,7 +4,7 @@ import { ethers } from "hardhat";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
-  const tokenId = 3; // 你想要上架的NFT的Token ID
+  const tokenId = 5; // 你想要上架的NFT的Token ID
   const price = ethers.parseEther("10"); // 上架价格
   const tokenURI = "https://my-json-server.typicode.com/abcoathup/samplenft/tokens/1"; // NFT的元数据URI
 
@@ -29,23 +29,23 @@ async function main() {
     process.exit(1);
   }
 
-  try {
-    console.log("Approving NFT for transfer...");
-    await nft.approve(marketAddress, tokenId);
-    console.log("NFT approved for transfer.");
-  } catch (error) {
-    console.error("Error approving NFT for transfer:", error);
-    process.exit(1);
-  }
+  // try {
+  //   console.log("Approving NFT for transfer...");
+  //   await nft.approve(marketAddress, tokenId);
+  //   console.log("NFT approved for transfer.");
+  // } catch (error) {
+  //   console.error("Error approving NFT for transfer:", error);
+  //   process.exit(1);
+  // }
 
-  try {
-    console.log("Listing NFT on the market...");
-    await market.listNFT(nftAddress, tokenId, price);
-    console.log(`NFT with tokenId ${tokenId} listed on the market by ${deployer.address}`);
-  } catch (error) {
-    console.error("Error approving NFT for transfer:", error);
-    process.exit(1);
-  }
+  // try {
+  //   console.log("Listing NFT on the market...");
+  //   await market.listNFT(nftAddress, tokenId, price);
+  //   console.log(`NFT with tokenId ${tokenId} listed on the market by ${deployer.address}`);
+  // } catch (error) {
+  //   console.error("Error approving NFT for transfer:", error);
+  //   process.exit(1);
+  // }
 }
 
 main().catch((error) => {

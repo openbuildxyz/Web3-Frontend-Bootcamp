@@ -42,6 +42,10 @@ contract NFTMarket {
         emit NFTListed(msg.sender, nftContract, tokenId, price);
     }
 
+    function getAllListings() external view returns (Listing[] memory) {
+        return listings;
+    }
+
     function buyNFT(uint256 index) external {
         Listing storage listing = listings[index];
         require(listing.price > 0, "NFT not for sale");
