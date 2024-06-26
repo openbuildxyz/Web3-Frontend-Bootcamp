@@ -5,7 +5,8 @@ dotenv.config();
 
 // Replace with your contract address
 const contractAddress = process.env.NFT_CONTRACT_ADDRESS || "";
-const infuraProjectId = process.env.INFURA_API_KEY || "";
+// const infuraProjectId = process.env.INFURA_API_KEY || "";
+const infuraProjectId = "https://eth-sepolia-public.unifra.io";
 const privateKey = process.env.PRIVATE_KEY || "";
 
 // Replace with your contract ABI
@@ -27,10 +28,10 @@ const contract = new ethers.Contract(contractAddress, contractABI, wallet);
 async function mintNFT() {
     try {
         // Estimate gas limit
-        const gasLimit = await contract.mintNFT(recipientAddress, tokenURI);
+        const mintNFTInfo = await contract.mintNFT(recipientAddress, tokenURI);
 
-        // Mint the NFT
-        const tx = await contract.mintNFT(recipientAddress, tokenURI, { gasLimit });
+        // // Mint the NFT
+        const tx = await contract.mintNFT(recipientAddress, tokenURI, { gasLimit: mintNFTInfo.gasLimit });
         console.log("Transaction sent: ", tx.hash);
 
         // Wait for the transaction to be mined
