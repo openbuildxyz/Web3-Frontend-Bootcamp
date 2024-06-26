@@ -6,7 +6,7 @@ async function main() {
 
   const nftContractAddress = "0xdd2F63a137Ea13B7169A2D0dE205BEAC7BA0E290"; // 更新为新的 MyNFT 合约地址
   const nftMarketAddress = "0xb5C48287F6dd8131A855Ec04e4e99d75c62344A5"; // 更新为新的 NFTMarket 合约地址
-  const tokenId = 3;
+  const tokenId = 4;
   const price = ethers.parseUnits("1", 18);
   const metadataURI = "ipfs://QmVz4G63fiZGk65BJmEebUc689C5nGT1i4SnssRZ7MpJtC"; // 替换为实际的元数据 URI
 
@@ -37,7 +37,7 @@ async function main() {
     // 上架 NFT
     const tx3 = await nftMarket.listItem(nftContractAddress, tokenId, price);
     await tx3.wait();
-    console.log("Listed NFT with tokenId:", tokenId, "for price:", price.toString());
+    console.log("Listed NFT with tokenId:", tokenId, "for price:", tx3);
 
     // 打印上架后的物品数量
     const itemCount = await nftMarket.itemCount();
