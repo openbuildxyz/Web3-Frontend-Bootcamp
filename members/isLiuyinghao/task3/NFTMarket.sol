@@ -9,13 +9,21 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 contract NFTMarket is ReentrancyGuard {
     struct Listing {
+        address nftContract;
         uint256 price; // NFT的售价，以ERC20代币计
         address seller; // 卖家地址
         bool isListed; // 是否已经上架
+        string tokenUrl;
+    }
+
+    struct ListKey {
+        address nftContract;
+        uint tokenId;
     }
 
     IERC20 public erc20Token; // 自定义ERC20代币的接口
     mapping(address => mapping(uint256 => Listing)) public listings; // 存储NFT列表信息
+    ListKey[] private AllList;
 
     event ItemListed(
         address indexed seller,
@@ -38,7 +46,8 @@ contract NFTMarket is ReentrancyGuard {
     function listItem(
         IERC721 nft,
         uint256 tokenId,
-        uint256 price
+        uint256 price,
+        string memory tokenUrl
     ) external nonReentrant {
         require(price > 0, "Price must be greater than zero");
         require(
@@ -47,7 +56,14 @@ contract NFTMarket is ReentrancyGuard {
             "Marketplace must be approved to transfer the item"
         );
 
-        listings[address(nft)][tokenId] = Listing(price, msg.sender, true);
+        listings[address(nft)][tokenId] = Listing(
+            address(nft),
+            price,
+            msg.sender,
+            true,
+            tokenUrl
+        );
+        AllList.push(ListKey(address(nft), tokenId));
         emit ItemListed(msg.sender, address(nft), tokenId, price);
     }
 
@@ -84,5 +100,17 @@ contract NFTMarket is ReentrancyGuard {
         delete listings[address(nft)][tokenId];
 
         emit ItemPurchased(msg.sender, address(nft), tokenId, price);
+    }
+
+    function getAll() external view returns (Listing[] memory) {
+        Listing[] memory allItem = new Listing[](AllList.length);
+        ListKey memory nftIdx;
+
+        for (uint256 i = 0; i < AllList.length; i++) {
+            nftIdx = AllList[i];
+            allItem[i] = listings[nftIdx.nftContract][nftIdx.tokenId];
+        }
+
+        return allItem;
     }
 }
