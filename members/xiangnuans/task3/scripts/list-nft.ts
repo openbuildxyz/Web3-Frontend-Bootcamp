@@ -29,23 +29,23 @@ async function main() {
     process.exit(1);
   }
 
-  // try {
-  //   console.log("Approving NFT for transfer...");
-  //   await nft.approve(marketAddress, tokenId);
-  //   console.log("NFT approved for transfer.");
-  // } catch (error) {
-  //   console.error("Error approving NFT for transfer:", error);
-  //   process.exit(1);
-  // }
+  try {
+    console.log("Approving NFT for transfer...");
+    await nft.approve(marketAddress, tokenId);
+    console.log("NFT approved for transfer.");
+  } catch (error) {
+    console.error("Error approving NFT for transfer:", error);
+    process.exit(1);
+  }
 
-  // try {
-  //   console.log("Listing NFT on the market...");
-  //   await market.listNFT(nftAddress, tokenId, price);
-  //   console.log(`NFT with tokenId ${tokenId} listed on the market by ${deployer.address}`);
-  // } catch (error) {
-  //   console.error("Error approving NFT for transfer:", error);
-  //   process.exit(1);
-  // }
+  try {
+    console.log("Listing NFT on the market...");
+    await market.listNFT(nftAddress, tokenId, price);
+    console.log(`NFT with tokenId ${tokenId} listed on the market by ${deployer.address}`);
+  } catch (error) {
+    console.error("Error Listing NFT on the market :", error);
+    process.exit(1);
+  }
 }
 
 main().catch((error) => {
