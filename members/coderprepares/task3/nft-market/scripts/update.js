@@ -1,21 +1,19 @@
 const fs = require("fs");
 
 async function main() {
-    const data = fs.readFileSync('./deployed.json');
-    const deployedAddresses = JSON.parse(data);
-
     const [deployer, addr1] = await ethers.getSigners();
+    console.log("Deploying contracts with the account:", deployer.address);
 
     const MyToken = await ethers.getContractFactory("MyToken");
-    const myToken = await MyToken.attach(deployedAddresses.myToken);
+    const myToken = await MyToken.attach('0x005d3A77B67e951540810e29ac3ba46bE9e61282');
     console.log("Using MyToken at:", myToken.address);
 
     const MyNFT = await ethers.getContractFactory("MyNFT");
-    const myNFT = await MyNFT.attach(deployedAddresses.myNFT);
+    const myNFT = await MyNFT.attach('0x691d32c0f26aFf9188aAF258Cf8036eA9eD2Bccf');
     console.log("Using MyNFT at:", myNFT.address);
 
     const NFTMarket = await ethers.getContractFactory("NFTMarket");
-    const nftMarket = await NFTMarket.attach(deployedAddresses.nftMarket);
+    const nftMarket = await NFTMarket.attach('0xEa9031966A0B41C8DDC94Ba2Ace4D22E91DFab95');
     console.log("Using NFTMarket at:", nftMarket.address);
 
     // 铸造NFT
@@ -34,14 +32,10 @@ async function main() {
     tx = await nftMarket.getListedNFTs();
     console.log("getListedNFTs:", tx);
 
-    // // 转移一些ERC20代币给addr1
-    // await myToken.transfer(addr1.address, price, { gasLimit: 3000000 });
-
-    // // 批准并购买NFT
-    // await myToken.connect(addr1).approve(nftMarket.address, price, { gasLimit: 3000000 });
-    // tx = await nftMarket.connect(addr1).buyNFT(tokenId, { gasLimit: 3000000 });
-    // receipt = await tx.wait();
-    // console.log("Buy NFT transaction hash:", tx.hash);
+    // const NFTMarket = await ethers.getContractFactory("NFTMarket");
+    // const nftMarket = await NFTMarket.deploy(myToken.address, myNFT.address);
+    // await nftMarket.deployed();
+    // console.log("NFTMarket deployed to:", nftMarket.address);
 }
 
 main()

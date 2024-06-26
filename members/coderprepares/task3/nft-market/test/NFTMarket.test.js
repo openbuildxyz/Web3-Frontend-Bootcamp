@@ -24,7 +24,7 @@ describe("NFTMarket", function () {
 
         // 部署NFTMarket合约
         const NFTMarket = await ethers.getContractFactory("NFTMarket");
-        const nftMarket = await NFTMarket.deploy(myToken.address, owner.address);
+        const nftMarket = await NFTMarket.deploy(myToken.address, myNFT.address);
         await nftMarket.deployed();
         console.log("NFTMarket deployed to:", nftMarket.address);
 
@@ -39,7 +39,7 @@ describe("NFTMarket", function () {
 
         // 将NFT上架到市场
         const price = ethers.utils.parseUnits("10", 18);
-        const tx1 = await nftMarket.listNFT(myNFT.address, tokenId, price);
+        const tx1 = await nftMarket.listNFT(tokenId, price);
         console.log("List NFT transaction hash:", tx1.hash);
         console.log(`Listing NFT with tokenId ${tokenId} for ${price} tokens`);
 
@@ -50,7 +50,7 @@ describe("NFTMarket", function () {
         expect(balance.toString()).to.equal(initialSupply.sub(price).toString());
 
         await myToken.connect(addr1).approve(nftMarket.address, price);
-        const tx2 = await nftMarket.connect(addr1).buyNFT(myNFT.address, tokenId);
+        const tx2 = await nftMarket.connect(addr1).buyNFT(tokenId);
         console.log("Buy NFT transaction hash:", tx2.hash);
 
         // 验证NFT的所有者是addr1

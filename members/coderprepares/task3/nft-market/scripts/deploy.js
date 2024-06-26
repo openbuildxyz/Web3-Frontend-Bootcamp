@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 async function main() {
     const [deployer, addr1] = await ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
@@ -14,30 +16,39 @@ async function main() {
     console.log("MyNFT deployed to:", myNFT.address);
 
     const NFTMarket = await ethers.getContractFactory("NFTMarket");
-    const nftMarket = await NFTMarket.deploy(myToken.address, deployer.address);
+    const nftMarket = await NFTMarket.deploy(myToken.address, myNFT.address);
     await nftMarket.deployed();
     console.log("NFTMarket deployed to:", nftMarket.address);
 
-    // 铸造NFT
-    let tx = await myNFT.mintNFT(deployer.address);
-    let receipt = await tx.wait();
-    let tokenId = receipt.events[0].args.tokenId.toNumber();
 
-    // 上架NFT
-    await myNFT.approve(nftMarket.address, tokenId);
-    const price = ethers.utils.parseUnits("10", 18);
-    tx = await nftMarket.listNFT(myNFT.address, tokenId, price, { gasLimit: 1000000 });
-    receipt = await tx.wait();
-    console.log("List NFT transaction hash:", tx.hash);
+    fs.writeFileSync("./deployed.json", JSON.stringify({
+        myToken: myToken.address,
+        myNFT: myNFT.address,
+        nftMarket: nftMarket.address,
+    }, null, 2));
 
-    // 转移一些ERC20代币给addr1
-    await myToken.transfer(addr1.address, price);
+    console.log("Deployed contracts saved to deployed.json");
 
-    // 批准并购买NFT
-    await myToken.connect(addr1).approve(nftMarket.address, price);
-    tx = await nftMarket.connect(addr1).buyNFT(myNFT.address, tokenId, { gasLimit: 1000000 });
-    receipt = await tx.wait();
-    console.log("Buy NFT transaction hash:", tx.hash);
+    // // 铸造NFT
+    // let tx = await myNFT.mintNFT(deployer.address);
+    // let receipt = await tx.wait();
+    // let tokenId = receipt.events[0].args.tokenId.toNumber();
+
+    // // 上架NFT
+    // await myNFT.approve(nftMarket.address, tokenId);
+    // const price = ethers.utils.parseUnits("10", 18);
+    // tx = await nftMarket.listNFT(tokenId, price, { gasLimit: 3000000 });
+    // receipt = await tx.wait();
+    // console.log("List NFT transaction hash:", tx.hash);
+
+    // // 转移一些ERC20代币给addr1
+    // await myToken.transfer(addr1.address, price);
+
+    // // 批准并购买NFT
+    // await myToken.connect(addr1).approve(nftMarket.address, price);
+    // tx = await nftMarket.connect(addr1).buyNFT(tokenId, { gasLimit: 3000000 });
+    // receipt = await tx.wait();
+    // console.log("Buy NFT transaction hash:", tx.hash);
 }
 
 main()
