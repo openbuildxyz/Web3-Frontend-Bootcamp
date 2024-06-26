@@ -86,3 +86,5 @@ Traditional databases provide consistency, reliability, and better scalability f
 ## 操作题
 
 安装一个 WEB3 钱包，创建账户后与 [openbuild.xyz](https://openbuild.xyz/profile) 进行绑定，截图后文件命名为 `./bind-wallet.jpg`.
+
+![wallet-screenshot](bind-wallet.jpg "Wallet")
