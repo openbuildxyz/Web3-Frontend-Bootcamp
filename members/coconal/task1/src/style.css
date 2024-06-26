@@ -1,0 +1,66 @@
+/* 容器样式 */
+body,
+html {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+.app-container {
+	max-width: 1000px;
+	width: 80%; /* 确保它不会超过屏幕宽度 */
+	padding: 20px;
+	box-sizing: border-box; /* 确保padding不会影响到宽度计算 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* 输入框样式 */
+input[type="text"] {
+	width: 50%;
+	padding: 10px;
+	margin: 10px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+/* 按钮样式 */
+.deletebutton {
+	background-color: #4caf50; /* 绿色 */
+	border: none;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 5px 2px;
+	cursor: pointer;
+	border-radius: 8px;
+}
+
+.bt {
+	background-color: #4caf50; /* 绿色 */
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 5px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+/* Todo项样式 */
+.todo-item {
+	background-color: #f9f9f9;
+	border-bottom: 1px solid #eee;
+	padding: 10px;
+	list-style-type: none;
+}

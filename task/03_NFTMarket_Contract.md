@@ -20,5 +20,6 @@
 - 声明购买NFT事件
 
 ## 提交要求
+- 部署在Sepolia测试网上
 - 提交全部合约文件（ERC20、ERC721、NFTMarket）
 - 提交上架NFT、购买NFT的交易哈希
