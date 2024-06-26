@@ -19,7 +19,7 @@ export const useTodos = () => {
 };
 
 export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(JSON.parse(localStorage.getItem('todos') || 'null') || []);
 
   useEffect(() => {
     const storedTodos = localStorage.getItem("todos");
