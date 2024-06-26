@@ -114,6 +114,7 @@ EVM 由Vitalik Buterin于2013 年提出概念，成为以太坊网络的核心�
 
 
 
+
 ## [分析题] 你对去中心化的理解
 
 ```
@@ -133,4 +134,4 @@ EVM 由Vitalik Buterin于2013 年提出概念，成为以太坊网络的核心�
 ## 操作题
 
 安装一个 WEB3 钱包，创建账户后与 [openbuild.xyz](https://openbuild.xyz/profile) 进行绑定，截图后文件命名为 `./bind-wallet.jpg`.
-![./bind-wallet.jpg](img.png)
+![./bind-wallet.jpg](bind-wallet.jpg)
