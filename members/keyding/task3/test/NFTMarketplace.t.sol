@@ -7,7 +7,6 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "../src/Marketplace.sol";
 
 // Custom ERC20 token for testing
@@ -18,17 +17,16 @@ contract TestToken is ERC20 {
 }
 
 // Custom ERC721 token for testing
-contract TestNFT is ERC721URIStorage {
+contract TestNFT is ERC721 {
     uint256 private _nextTokenId;
 
     constructor() ERC721("TestNFT", "TNT") {}
 
-    // Only contract owners can call
-    function mint(address to, string memory tokenURI) public returns (uint256) {
+    function mint() external returns (uint256) {
+        // Ensure that each newly minted NFT has a unique ID.
         uint256 newTokenId = _nextTokenId++;
 
-        _mint(to, newTokenId);
-        _setTokenURI(newTokenId, tokenURI);
+        _safeMint(msg.sender, newTokenId);
 
         return newTokenId;
     }
@@ -67,22 +65,40 @@ contract CavenNFTMarketplaceTest is Test {
     }
 
     function testListNFT() public {
-        (uint256 tokenId, uint256 listingId) = _listNFT();
+        uint256 tokenId = _mintNFT(lily);
+        _setApprovalForAll(lily);
+        uint256 listingId = _listNFT(lily, tokenId);
+
         // Check if the NFT is listed correctly
-        (address seller, address nftContract, uint256 resTokenId, uint256 resPrice, bool isSold) =
-            marketplace.listings(listingId);
-        assertEq(seller, lily);
-        assertEq(nftContract, address(nft));
-        assertEq(resTokenId, tokenId);
-        assertEq(resPrice, nftPrice);
-        assertEq(isSold, false);
-        assertEq(nft.ownerOf(tokenId), address(marketplace));
+        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        assertEq(listedNft.owner, lily);
+        assertEq(listedNft.nftContract, address(nft));
+        assertEq(listedNft.tokenId, tokenId);
+        assertEq(listedNft.price, nftPrice);
+        assertEq(listedNft.isListed, true);
+        assertEq(listedNft.isSold, false);
+        assertEq(nft.isApprovedForAll(lily, address(marketplace)), true);
+    }
+
+    function testDelistNFT() public {
+        uint256 tokenId = _mintNFT(lily);
+        _setApprovalForAll(lily);
+        uint256 listingId = _listNFT(lily, tokenId);
+
+        vm.prank(lily);
+        marketplace.delistNFT(listingId);
+
+        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        assertEq(listedNft.isListed, false);
+        assertEq(listedNft.isSold, false);
     }
 
     function testBuyNFT() public {
-        (uint256 tokenId, uint256 listingId) = _listNFT();
+        uint256 tokenId = _mintNFT(lily);
+        _setApprovalForAll(lily);
+        uint256 listingId = _listNFT(lily, tokenId);
 
-        // Finn approves the marketplace to transfer his tokens and buy the NFT
+        // Finn approved the transfer of his tokens on the marketplace to buy NFTs.
         vm.prank(finn);
         paymentToken.approve(address(marketplace), nftPrice);
 
@@ -103,37 +119,66 @@ contract CavenNFTMarketplaceTest is Test {
         // Check if the new owner of the NFT is Finn
         assertEq(nft.ownerOf(tokenId), finn);
 
-        // Check if the listing is marked as sold
-        (,,,, bool isSold) = marketplace.listings(listingId);
-        assertTrue(isSold);
+        // Check the listed NFT
+        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        assertEq(listedNft.owner, finn);
+        assertEq(listedNft.nftContract, address(nft));
+        assertEq(listedNft.tokenId, tokenId);
+        assertEq(listedNft.price, nftPrice);
+        assertEq(listedNft.isListed, false);
+        assertEq(listedNft.isSold, true);
     }
 
     function testGetAllListings() public {
-        (uint256 tokenId, uint256 listingId) = _listNFT();
+        uint256 tokenId = _mintNFT(lily);
+        _setApprovalForAll(lily);
+        uint256 listingId = _listNFT(lily, tokenId);
 
-        CavenNFTMarketplace.Listing[] memory allListings = marketplace.getAllListings();
+        CavenNFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
 
-        assertEq(allListings.length, 1);
-        assertEq(allListings[listingId].seller, lily);
-        assertEq(allListings[listingId].nftContract, address(nft));
-        assertEq(allListings[listingId].tokenId, tokenId);
-        assertEq(allListings[listingId].price, nftPrice);
-        assertEq(allListings[listingId].isSold, false);
+        assertEq(allNfts.length, 1);
+        assertEq(allNfts[listingId].owner, lily);
+        assertEq(allNfts[listingId].nftContract, address(nft));
+        assertEq(allNfts[listingId].tokenId, listingId);
+        assertEq(allNfts[listingId].price, nftPrice);
+        assertEq(allNfts[listingId].isListed, true);
+        assertEq(allNfts[listingId].isSold, false);
     }
 
-    function _listNFT() internal returns (uint256, uint256) {
-        // Mint an NFT for Lily and approve the marketplace for transfer
-        uint256 tokenId = nft.mint(lily, tokenURI);
+    function testGetListedNFT() public {
+        uint256 tokenId = _mintNFT(lily);
+        _setApprovalForAll(lily);
+        uint256 listingId = _listNFT(lily, tokenId);
 
-        // `vm.prank` sets `msg.sender` to Lily for the next call only
-        vm.prank(lily);
-        // Approve the marketplace for transfer
-        nft.approve(address(marketplace), tokenId);
+        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
 
+        assertEq(listedNft.owner, lily);
+        assertEq(listedNft.nftContract, address(nft));
+        assertEq(listedNft.tokenId, tokenId);
+        assertEq(listedNft.price, nftPrice);
+        assertEq(listedNft.isListed, true);
+        assertEq(listedNft.isSold, false);
+        assertEq(nft.isApprovedForAll(lily, address(marketplace)), true);
+    }
+
+    function _mintNFT(address owner) internal returns (uint256) {
+        // Mint an NFT for owner
+        vm.prank(owner);
+        uint256 tokenId = nft.mint();
+
+        return tokenId;
+    }
+
+    function _setApprovalForAll(address owner) internal {
+        vm.prank(owner);
+        nft.setApprovalForAll(address(marketplace), true);
+    }
+
+    function _listNFT(address owner, uint256 tokenId) internal returns (uint256) {
         // List the NFT on the marketplace
-        vm.prank(lily);
-        uint256 listingId = marketplace.listNFT(address(nft), tokenId, nftPrice);
+        vm.prank(owner);
+        uint256 listingId = marketplace.listNFT(address(nft), tokenId, tokenURI, nftPrice);
 
-        return (tokenId, listingId);
+        return listingId;
     }
 }

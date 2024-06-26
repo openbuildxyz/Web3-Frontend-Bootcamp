@@ -31,12 +31,14 @@ contract DeployNFT is Script {
 
 // Deploy CavenNFTMarketplace contract
 contract DeployNFTMarketplace is Script {
+    address tokenContract = vm.envAddress("TOKEN_CONTRACT_ADDRESS");
+
     function setUp() public {}
 
     function run() public {
         vm.startBroadcast();
-        // CavenToken Contract Address: 0x4B65Ea79B142B6ED8c24D845b1fA5b04ecF5d89C
-        new CavenNFTMarketplace(IERC20(0x4B65Ea79B142B6ED8c24D845b1fA5b04ecF5d89C));
+        // !!! CavenToken Contract Address
+        new CavenNFTMarketplace(IERC20(tokenContract));
         vm.stopBroadcast();
     }
 }

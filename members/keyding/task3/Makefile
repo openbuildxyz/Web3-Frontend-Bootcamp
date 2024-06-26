@@ -37,6 +37,12 @@ deploy-sepolia-token:
 	--etherscan-api-key $(ETHERSCAN_API_KEY) \
 	--broadcast --verify -vvvv
 
+deploy-sepolia-token-local:
+	@forge script script/Deploy.s.sol:DeployToken --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
+	--private-key $(PRIVATE_KEY) \
+	--broadcast -vvvv
+
 deploy-sepolia-nft:
 	@forge script script/Deploy.s.sol:DeployNFT --chain-id $(CHAIN_ID) \
 	--rpc-url $(SEPOLIA_RPC_URL) \
@@ -44,12 +50,24 @@ deploy-sepolia-nft:
 	--etherscan-api-key $(ETHERSCAN_API_KEY) \
 	--broadcast --verify -vvvv
 
+deploy-sepolia-nft-local:
+	@forge script script/Deploy.s.sol:DeployNFT --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
+	--private-key $(PRIVATE_KEY) \
+	--broadcast -vvvv
+
 deploy-sepolia-marketplace:
 	@forge script script/Deploy.s.sol:DeployNFTMarketplace --chain-id $(CHAIN_ID) \
 	--rpc-url $(SEPOLIA_RPC_URL) \
 	--private-key $(PRIVATE_KEY) \
 	--etherscan-api-key $(ETHERSCAN_API_KEY) \
 	--broadcast --verify -vvvv
+
+deploy-sepolia-marketplace-local:
+	@forge script script/Deploy.s.sol:DeployNFTMarketplace --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
+	--private-key $(PRIVATE_KEY) \
+	--broadcast -vvvv
 
 deploy-sepolia-no-verify:
 	@forge script script/DeployToken.s.sol:DeployToken --chain-id $(CHAIN_ID) \
@@ -70,19 +88,44 @@ deploy-sepolia-marketplace-no-verify:
 	--broadcast -vvvv
 
 mint-nft:
-	@forge script script/MintNFT.s.sol:MintNFT --chain-id $(CHAIN_ID) \
+	@forge script script/Interaction.s.sol:MintNFT --chain-id $(CHAIN_ID) \
 	--rpc-url $(SEPOLIA_RPC_URL) \
 	--etherscan-api-key $(ETHERSCAN_API_KEY) \
+	--broadcast -vvvv
+
+mint-nft-local:
+	@forge script script/Interaction.s.sol:MintNFT --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
 	--broadcast -vvvv
 
 list-nft:
-	@forge script script/ListNFT.s.sol:ListNFT --chain-id $(CHAIN_ID) \
+	@forge script script/Interaction.s.sol:ListNFT --chain-id $(CHAIN_ID) \
 	--rpc-url $(SEPOLIA_RPC_URL) \
 	--etherscan-api-key $(ETHERSCAN_API_KEY) \
 	--broadcast -vvvv
 
+list-nft-local:
+	@forge script script/Interaction.s.sol:ListNFT --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
+	--broadcast -vvvv
+
 buy-nft:
-	@forge script script/BuyNFT.s.sol:BuyNFT --chain-id $(CHAIN_ID) \
+	@forge script script/Interaction.s.sol:BuyNFT --chain-id $(CHAIN_ID) \
 	--rpc-url $(SEPOLIA_RPC_URL) \
 	--etherscan-api-key $(ETHERSCAN_API_KEY) \
+	--broadcast -vvvv
+
+buy-nft-local:
+	@forge script script/Interaction.s.sol:BuyNFT --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
+	--broadcast -vvvv
+
+get-all-nfts-local:
+	@forge script script/Interaction.s.sol:GetAllNfts --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
+	--broadcast -vvvv
+
+delist-nft-local:
+	@forge script script/Interaction.s.sol:DelistNFT --chain-id $(CHAIN_ID) \
+	--fork-url http://127.0.0.1:8545 \
 	--broadcast -vvvv
