@@ -1,0 +1,85 @@
+/* src/ToDoList.css */
+.todo-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .input-container input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .input-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .input-container button:hover {
+    background-color: #218838;
+  }
+  
+  .task-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .task-list li span {
+    flex: 1;
+    cursor: pointer;
+  }
+  
+  .task-list li.completed span {
+    text-decoration: line-through;
+    color: green;
+  }
+  
+  .task-list li button {
+    padding: 5px 10px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .task-list .complete-button {
+    background-color: #007bff;
+    margin-right: 10px; /* 设置 complete 和 delete 按钮之间的间隙 */
+  }
+  
+  .task-list .complete-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .task-list .delete-button {
+    background-color: #dc3545;
+  }
+  
+  .task-list .delete-button:hover {
+    background-color: #c82333;
+  }
+  
