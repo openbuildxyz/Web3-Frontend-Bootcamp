@@ -1,126 +1,58 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.20;
+import "@openzeppelin/contracts/interfaces/IERC721.sol";
+import "@openzeppelin/contracts/interfaces/IERC20.sol";
 
-import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import { IERC721 } from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import { ReentrancyGuard } from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+contract NFTMarket {
+    event List(
+        address indexed seller,
+        address indexed nftAddr,
+        uint256 indexed tokenId,
+        uint256 price
+    );
+    event Purchase(
+        address indexed buyer,
+        address indexed nftAddr,
+        uint256 indexed tokenId,
+        uint256 price
+    );
 
-contract RaiGallery is ReentrancyGuard {
-  event NftListed(
-    address indexed seller,
-    address indexed nftContract,
-    uint256 indexed tokenId,
-    uint256 price
-  );
-
-  event NftUnlisted(
-    address indexed seller,
-    address indexed nftContract,
-    uint256 indexed tokenId,
-    uint256 unlistedAt
-  );
-
-  event NftSold(
-    address indexed buyer,
-    address indexed nftContract,
-    uint256 indexed tokenId,
-    uint256 price
-  );
-
-  struct NftItem {
-    address seller;
-    address nftContract;
-    uint tokenId;
-    uint256 price;
-    uint256 listedAt;
-    bool listing;
-  }
-
-  struct NftIndex {
-    address nftContract;
-    uint tokenId;
-  }
-
-  NftIndex[] private _allNfts;
-  IERC20 private _payment;
-
-  mapping(address => mapping(uint256 => NftItem)) private _listedNfts;
-  mapping(address => mapping(uint256 => bool)) private _listedFlags;
-
-  constructor(address coinAddr_) {
-    _payment = IERC20(coinAddr_);
-  }
-
-  function isListing(address nftContract, uint256 tokenId) external view returns (bool) {
-    return _listedNfts[nftContract][tokenId].listing;
-  }
-
-  function getAll() external view returns (NftItem[] memory) {
-    NftItem[] memory allItem = new NftItem[](_allNfts.length);
-    NftIndex memory nftIdx;
-
-    for (uint256 i = 0; i < _allNfts.length; i++) {
-      nftIdx = _allNfts[i];
-      allItem[i] = _listedNfts[nftIdx.nftContract][nftIdx.tokenId];
+    struct Order {
+        address owner;
+        uint256 price;
     }
 
-    return allItem;
-  }
+    // NFTAddress => tokenId => Order
+    mapping(address => mapping(uint256 => Order)) public nftList;
+    IERC20 YMT;
 
-  function sell(address nftContract, uint256 tokenId, uint256 price) external {
-    IERC721 nft = IERC721(nftContract);
-    address seller = msg.sender;
-
-    require(nft.ownerOf(tokenId) == seller, "You're not the owner of the NFT.");
-    require(price > 0, "Price must be greater thant 0.");
-    require(nft.isApprovedForAll(seller, address(this)), "Contract isn't approved.");
-
-    bool nftListed = _listedFlags[nftContract][tokenId];
-
-    if (nftListed) {
-      _listedNfts[nftContract][tokenId].seller = seller;
-      _listedNfts[nftContract][tokenId].price = price;
-      _listedNfts[nftContract][tokenId].listedAt = block.timestamp;
-      _listedNfts[nftContract][tokenId].listing = true;
-    } else {
-      _listedNfts[nftContract][tokenId] = NftItem(seller, nftContract, tokenId, price, block.timestamp, true);
-      _listedFlags[nftContract][tokenId] = true;
-
-      _allNfts.push(NftIndex(nftContract, tokenId));
+    constructor(address _erc20) {
+        YMT = IERC20(_erc20);
     }
 
-    emit NftListed(seller, nftContract, tokenId, price);
-  }
+    receive() external payable {}
+    fallback() external payable {}
 
-  function unlist(address nftContract, uint256 tokenId) external {
-    IERC721 nft = IERC721(nftContract);
-    address seller = msg.sender;
+    function list(address _nftAddr, uint256 _tokenId, uint256 _price) public {
+        IERC721 _nft = IERC721(_nftAddr);
+        require(_nft.getApproved(_tokenId) == address(this), unicode"没有授权");
+        require(_price > 0, unicode"价格要大于 0");
+        Order storage _order = nftList[_nftAddr][_tokenId];
+        _order.owner = msg.sender;
+        _order.price = _price;
+        _nft.transferFrom(msg.sender, address(this), _tokenId);
+        emit List(msg.sender, _nftAddr, _tokenId, _price);
+    }
 
-    require(nft.ownerOf(tokenId) == seller, "You're not the owner of the NFT.");
-    require(nft.isApprovedForAll(seller, address(this)), "Contract isn't approved.");
-    require(_listedNfts[nftContract][tokenId].listing, "NFT isn't listed for sale.");
-
-    _listedNfts[nftContract][tokenId].listing = false;
-
-    emit NftUnlisted(seller, nftContract, tokenId, block.timestamp);
-  }
-
-  function buy(address nftContract, uint256 tokenId) external nonReentrant {
-    NftItem memory targetNft = _listedNfts[nftContract][tokenId];
-
-    require(targetNft.listing, "NFT isn't listed for sale.");
-
-    address buyer = msg.sender;
-
-    require(_payment.transferFrom(buyer, targetNft.seller, targetNft.price), "Payment for NFT failed.");
-
-    IERC721 nft = IERC721(nftContract);
-
-    nft.safeTransferFrom(targetNft.seller, buyer, tokenId);
-
-    _listedNfts[nftContract][tokenId].seller = buyer;
-    _listedNfts[nftContract][tokenId].listing = false;
-
-    emit NftSold(buyer, nftContract, tokenId, targetNft.price);
-  }
+    function purchase(address _nftAddr, uint256 _tokenId) public {
+        Order storage _order = nftList[_nftAddr][_tokenId];
+        require(_order.price > 0, unicode"价格要大于 0");
+        require(YMT.balanceOf(msg.sender) >= _order.price, unicode"钱不够");
+        IERC721 _nft = IERC721(_nftAddr);
+        require(_nft.ownerOf(_tokenId) == address(this), unicode"nft不在合约中");
+        _nft.transferFrom(address(this), msg.sender, _tokenId);
+        YMT.transferFrom(msg.sender, _order.owner, _order.price);
+        emit Purchase(msg.sender, _nftAddr, _tokenId, _order.price);
+        delete nftList[_nftAddr][_tokenId];
+    }
 }
