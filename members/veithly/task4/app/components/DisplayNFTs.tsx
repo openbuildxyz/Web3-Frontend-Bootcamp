@@ -9,8 +9,9 @@ const DisplayNFTs: React.FC = () => {
 
   useEffect(() => {
     const fetchNFTs = async () => {
+      console.log(process.env.NEXT_NEXT_NFTMarket_CONTRACT_ADDRESS || '')
       const provider = new ethers.AlchemyProvider('mainnet', process.env.NEXT_PUBLIC_ALCHEMY_API_KEY);
-      const contract = new ethers.Contract('NFTMarket_CONTRACT_ADDRESS', NFTMarketABI, provider);
+      const contract = new ethers.Contract(process.env.NEXT_PUBLIC_NFTMarket_CONTRACT_ADDRESS || '', NFTMarketABI, provider);
       const nfts = await contract.getListedNFTs();
       setNfts(nfts);
     };

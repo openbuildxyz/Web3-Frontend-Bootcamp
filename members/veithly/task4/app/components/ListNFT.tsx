@@ -15,7 +15,7 @@ const ListNFT: React.FC = () => {
 
   const listNFT = async () => {
     if (!isConnected || !address || !signer) return;
-    const contract = new ethers.Contract('NFTMarket_CONTRACT_ADDRESS', NFTMarketABI, signer);
+    const contract = new ethers.Contract(process.env.NEXT_PUBLIC_NFTMarket_CONTRACT_ADDRESS || '', NFTMarketABI, signer);
     const weiPrice = parseUnits(price, 'ether');
     await contract.listNFT(nftContract, tokenId, weiPrice);
   };

@@ -11,7 +11,7 @@ const BuyNFT: React.FC = () => {
 
   const buyNFT = async () => {
     if (!signer) return;
-    const contract = new ethers.Contract('NFTMarket_CONTRACT_ADDRESS', NFTMarketABI, signer);
+    const contract = new ethers.Contract(process.env.NEXT_PUBLIC_NFTMarket_CONTRACT_ADDRESS || '', NFTMarketABI, signer);
     await contract.buyNFT(listingId);
   };
 

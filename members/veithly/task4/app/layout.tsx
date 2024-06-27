@@ -6,7 +6,7 @@ import { WagmiProvider } from 'wagmi'
 import { config } from './config';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
-import { NextUIProvider } from '@nextui-org/react';
+import { Providers } from "./providers";
 
 const queryClient = new QueryClient();
 
@@ -15,15 +15,15 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <>
       <html>
         <body>
-          <WagmiProvider config={config}>
-            <QueryClientProvider client={queryClient}>
-              <RainbowKitProvider>
-                  <NextUIProvider>
-                    {children}
-                  </NextUIProvider>
-              </RainbowKitProvider>
-            </QueryClientProvider>
-          </WagmiProvider>
+          <Providers>
+            <WagmiProvider config={config}>
+              <QueryClientProvider client={queryClient}>
+                <RainbowKitProvider>
+                      {children}
+                </RainbowKitProvider>
+              </QueryClientProvider>
+            </WagmiProvider>
+          </Providers>
         </body>
       </html>
     </>
