@@ -1,0 +1,35 @@
+/* src/components/ToDoItem.css */
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .todo-item:last-child {
+    border-bottom: none;
+  }
+  
+  .todo-item span {
+    cursor: pointer;
+  }
+  
+  .todo-item span.completed {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .todo-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .todo-item button:hover {
+    background-color: #c82333;
+  }
+  
