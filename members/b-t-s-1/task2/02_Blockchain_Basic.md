@@ -43,8 +43,8 @@
 
 ## [多选题] 以下哪些是以太坊的二层扩容方案？
 
-- [x] Lightning Network（闪电网络）
-- [ ] Optimsitic Rollup
+- [] Lightning Network（闪电网络）
+- [x] Optimsitic Rollup
 - [x] Zk Rollup
 
 ## [简答题] 简述区块链的网络结构
