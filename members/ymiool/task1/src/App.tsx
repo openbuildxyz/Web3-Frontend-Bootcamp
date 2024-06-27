@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react';
 import './App.css'
+import AddToDo from './components/AddToDo'
+import Header from './components/Header'
+import ToDoList from './components/ToDoList'
+
+export interface TodoItem {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+function useLocalStorageState<T>(key: string, initialState: T): [T, React.Dispatch<React.SetStateAction<T>>] {
+  const [state, setState] = useState(() => {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : initialState;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(state));
+  }, [state, key]);
+
+  return [state, setState];
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useLocalStorageState<TodoItem[]>('todos', []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header></Header>
+      <AddToDo setTodos={setTodos}></AddToDo>
+      <ToDoList todos={todos} setTodos={setTodos}></ToDoList>
     </>
   )
 }
 
-export default App
+export default App;
