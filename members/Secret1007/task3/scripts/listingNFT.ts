@@ -23,7 +23,7 @@ async function listNFT() {
     const nftABI = ["function approve(address to, uint256 tokenId) external"];
     const nftContract = new ethers.Contract(nftContractAddress, nftABI, wallet);
 
-    const tokenId = 1; // 你要上架的 NFT ID
+    const tokenId = 2; // 你要上架的 NFT ID
     const price = ethers.parseUnits("1.0", 18); // NFT 价格 (例如 1 ERC20 代币)
 
     try {
