@@ -18,6 +18,9 @@ contract NFTExchange is ReentrancyGuard{
     //拍卖清单
     mapping (address=>mapping (uint256=>Listing)) public _Listings;
     IERC20 public _paymentToken;
+    
+    // 所有NFT
+    Listing[] private _AllListings;
 
     event NFTListed(
         address indexed seller,
@@ -50,7 +53,13 @@ contract NFTExchange is ReentrancyGuard{
             price,
             true
         );
-
+        _AllListings.push(Listing(
+            msg.sender,
+            nftContract,
+            tokenId,
+            price,
+            true
+        ));
         emit NFTListed(msg.sender, nftContract, tokenId, price);
     }
 
@@ -66,6 +75,17 @@ contract NFTExchange is ReentrancyGuard{
         listing.isActive=false;
 
         emit NFTPurchased(listing.seller, msg.sender, tokenId, listing.price);
+    }
+
+    //获取所有NFT 
+    function getAllNFT() external view returns(Listing[] memory) {
+        Listing[] memory allItem = new Listing[](_AllListings.length);
+        Listing memory nftIdx;
+        for (uint256 i = 0; i < _AllListings.length; i++) {
+            nftIdx = _AllListings[i];
+            allItem[i] = _Listings[nftIdx.nftContract][nftIdx.tokenId];
+        }
+        return allItem;
     }
 
 }
