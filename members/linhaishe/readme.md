@@ -4,7 +4,7 @@
 
 - GitHub ID: linhaishe
 - OpenBuild Username: ruochen
-- ERC20 钱包地址: (首次如果没有，学习完毕钱包在填写)
+- ERC20 钱包地址: 0xd7fC917C41d27667343F22379d34E96974047Ae2
 
 ### 个人介绍
 
