@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import postcssPresetEnv from 'postcss-preset-env';
 import { defineConfig } from 'vite';
-
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +13,26 @@ export default defineConfig({
             scss: {
                 additionalData: `@import "./src/styles/sassConfig.scss";`,
             },
+            less: {
+                math: "always",
+                globalVars: {
+                    primary: '#007bff',
+                    success: '#28a745',
+                    info: '#17a2b8',
+                    warning: '#ffc107',
+                    danger: '#dc3545',
+                }
+            }
         },
+        modules: {
+            localsConvention: "camelCase",
+            generateScopedName: '[name]__[local]___[hash:base64:5]',
+            hashPrefix: 'toDoList',
+        },
+        devSourcemap: true, // 配置是否生成 source map 文件索引
+        postcss: {
+            plugins: [postcssPresetEnv()],
+        }
     },
     // 配置 alias
     resolve: {
