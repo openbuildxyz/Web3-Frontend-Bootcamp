@@ -18,12 +18,12 @@ bun dev
 
 上架后
 
-![list](src\assets\images\list.png)
+![list](src/assets/images/list.png)
 
 下架后
 
-![unlist](src\assets\images\unlist.png)
+![unlist](src/assets/images/unlist.png)
 
 购买后
 
-![afterBuy](src\assets\images\afterBuy.png)
+![afterBuy](src/assets/images/afterBuy.png)
