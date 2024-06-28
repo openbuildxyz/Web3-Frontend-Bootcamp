@@ -15,7 +15,7 @@ contract MyNFT is ERC721URIStorage, Ownable {
         address tokenAddress,
         uint256 initialPrice,
         address recipient
-    ) ERC721("SecretNFT", "SNFT") {
+    ) ERC721("SecretNFT", "SNFT") Ownable(msg.sender) {
         token = IERC20(tokenAddress);
         nftPrice = initialPrice;
         recipientAddress = recipient;
@@ -33,12 +33,10 @@ contract MyNFT is ERC721URIStorage, Ownable {
             token.transferFrom(msg.sender, recipientAddress, nftPrice),
             "Token transfer failed"
         );
-
         _currentTokenId++;
         uint256 newItemId = _currentTokenId;
         _mint(recipient, newItemId);
         _setTokenURI(newItemId, tokenURI);
-
         return newItemId;
     }
 

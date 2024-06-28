@@ -3,16 +3,12 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-// Replace with your contract address
 const contractAddress = process.env.NFT_CONTRACT_ADDRESS || "";
-// const infuraProjectId = process.env.INFURA_API_KEY || "";
 const infuraProjectId = "https://eth-sepolia-public.unifra.io";
 const privateKey = process.env.PRIVATE_KEY || "";
 
-// Replace with your contract ABI
 const contractABI = ["function mintNFT(address recipient, string tokenURI) public returns (uint256)", "function getCurrentTokenId() public view returns (uint256)"];
 
-// Replace with your recipient address and token URI
 const recipientAddress = "0x6992663798a664a8cBc3C93b56483C281C1E8438";
 const tokenURI = "ipfs://QmVuwFL2LXjcp2pvcez6membFs7teUb7fhwjKrGwJ1pJVz";
 
