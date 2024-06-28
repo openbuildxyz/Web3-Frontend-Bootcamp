@@ -1,4 +1,4 @@
-import {createContext, Dispatch, PropsWithChildren, SetStateAction, useContext, useState} from 'react'
+import {createContext, Dispatch, PropsWithChildren, SetStateAction, useContext, useEffect, useState} from 'react'
 import {Item} from "./todo.ts";
 
 const TodoListContext = createContext<Value | null>(null)
@@ -10,11 +10,26 @@ type Value = {
 
 
 export function TodoListProvider({children}: PropsWithChildren) {
-    const [items, setItems] = useState<Item[]>([
-        {id: '1', title: 'Buy milk', completed: false},
-        {id: '2', title: 'Buy eggs', completed: false},
-        {id: '3', title: 'Buy bread', completed: false},
-    ])
+    const [loading, setLoading] = useState(true)
+    const [items, setItems] = useState<Item[]>([])
+
+    useEffect(() => {
+        const items = localStorage.getItem('items')
+        if (items) {
+            setItems(JSON.parse(items))
+        }
+        setLoading(false)
+    }, []);
+
+    useEffect(() => {
+        if (loading) return;
+
+        localStorage.setItem('items', JSON.stringify(items))
+    }, [loading, items])
+
+    if (loading) {
+        return null;
+    }
 
     return (
         <TodoListContext.Provider value={{items, setItems}}>
