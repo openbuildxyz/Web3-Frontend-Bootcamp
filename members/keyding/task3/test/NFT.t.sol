@@ -5,14 +5,14 @@ import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import "../src/NFT.sol";
 
-contract CavenNFTTest is Test {
-    CavenNFT public nft;
+contract SnowNFTTest is Test {
+    SnowNFT public nft;
 
     address public lily = address(0x123);
     address public finn = address(0x456);
 
     function setUp() public {
-        nft = new CavenNFT();
+        nft = new SnowNFT();
     }
 
     function testMinting() public {

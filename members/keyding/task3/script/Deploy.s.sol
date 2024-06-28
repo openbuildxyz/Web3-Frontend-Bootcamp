@@ -7,29 +7,29 @@ import "../src/Token.sol";
 import "../src/NFT.sol";
 import "../src/Marketplace.sol";
 
-// Deploy CavenToken contract
+// Deploy SnowToken contract
 contract DeployToken is Script {
     function setUp() public {}
 
     function run() public {
         vm.startBroadcast();
-        new CavenToken();
+        new SnowToken();
         vm.stopBroadcast();
     }
 }
 
-// Deploy CavenNFT contract
+// Deploy SnowNFT contract
 contract DeployNFT is Script {
     function setUp() public {}
 
     function run() public {
         vm.startBroadcast();
-        new CavenNFT();
+        new SnowNFT();
         vm.stopBroadcast();
     }
 }
 
-// Deploy CavenNFTMarketplace contract
+// Deploy NFTMarketplace contract
 contract DeployNFTMarketplace is Script {
     address tokenContract = vm.envAddress("TOKEN_CONTRACT_ADDRESS");
 
@@ -37,8 +37,7 @@ contract DeployNFTMarketplace is Script {
 
     function run() public {
         vm.startBroadcast();
-        // !!! CavenToken Contract Address
-        new CavenNFTMarketplace(IERC20(tokenContract));
+        new NFTMarketplace(IERC20(tokenContract));
         vm.stopBroadcast();
     }
 }

@@ -9,6 +9,14 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "../src/Marketplace.sol";
 
+// contract TimeDependentContract {
+//     uint256 public lastUpdated;
+
+//     function updateTimestamp() public {
+//         lastUpdated = block.timestamp;
+//     }
+// }
+
 // Custom ERC20 token for testing
 contract TestToken is ERC20 {
     constructor() ERC20("TestToken", "TTK") {
@@ -32,8 +40,9 @@ contract TestNFT is ERC721 {
     }
 }
 
-contract CavenNFTMarketplaceTest is Test {
-    CavenNFTMarketplace public marketplace;
+contract NFTMarketplaceTest is Test {
+    // TimeDependentContract public timeDependent;
+    NFTMarketplace public marketplace;
     TestToken public paymentToken;
     TestNFT public nft;
 
@@ -49,7 +58,8 @@ contract CavenNFTMarketplaceTest is Test {
         // Deploy the custom ERC721 token to mint NFTs
         nft = new TestNFT();
         // Deploy the NFT marketplace contract
-        marketplace = new CavenNFTMarketplace(paymentToken);
+        marketplace = new NFTMarketplace(paymentToken);
+        // timeDependent = new TimeDependentContract();
 
         // Allocate some test tokens to Lily and Finn
         paymentToken.transfer(lily, initTokenCount);
@@ -65,18 +75,55 @@ contract CavenNFTMarketplaceTest is Test {
     }
 
     function testListNFT() public {
+        // timeDependent.updateTimestamp();
+
+        // Init timestamp
+        // uint256 initTimestamp = timeDependent.lastUpdated();
         uint256 tokenId = _mintNFT(lily);
         _setApprovalForAll(lily);
         uint256 listingId = _listNFT(lily, tokenId);
 
+        // Use Foundry's `warp` function to advance time
+        // vm.warp(block.timestamp + 1000);
+
         // Check if the NFT is listed correctly
-        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        NFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
         assertEq(listedNft.owner, lily);
         assertEq(listedNft.nftContract, address(nft));
         assertEq(listedNft.tokenId, tokenId);
         assertEq(listedNft.price, nftPrice);
         assertEq(listedNft.isListed, true);
         assertEq(listedNft.isSold, false);
+        assertEq(listedNft.listedAt, block.timestamp);
+        assertEq(nft.isApprovedForAll(lily, address(marketplace)), true);
+    }
+
+    function testReListNFT() public {
+        uint256 tokenId = _mintNFT(lily);
+        _setApprovalForAll(lily);
+        uint256 listingId = _listNFT(lily, tokenId);
+        uint256 newNftPrice = 120 * 10 ** 18;
+
+        // Delist
+        vm.prank(lily);
+        marketplace.delistNFT(listingId);
+
+        // Relist
+        vm.prank(lily);
+        marketplace.listNFT(listingId, newNftPrice);
+
+        NFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
+        assertEq(allNfts.length, 1);
+
+        // Check if the NFT is listed correctly
+        NFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        assertEq(listedNft.owner, lily);
+        assertEq(listedNft.nftContract, address(nft));
+        assertEq(listedNft.tokenId, tokenId);
+        assertEq(listedNft.price, newNftPrice);
+        assertEq(listedNft.isListed, true);
+        assertEq(listedNft.isSold, false);
+        assertEq(listedNft.listedAt, block.timestamp);
         assertEq(nft.isApprovedForAll(lily, address(marketplace)), true);
     }
 
@@ -88,7 +135,7 @@ contract CavenNFTMarketplaceTest is Test {
         vm.prank(lily);
         marketplace.delistNFT(listingId);
 
-        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        NFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
         assertEq(listedNft.isListed, false);
         assertEq(listedNft.isSold, false);
     }
@@ -120,7 +167,7 @@ contract CavenNFTMarketplaceTest is Test {
         assertEq(nft.ownerOf(tokenId), finn);
 
         // Check the listed NFT
-        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        NFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
         assertEq(listedNft.owner, finn);
         assertEq(listedNft.nftContract, address(nft));
         assertEq(listedNft.tokenId, tokenId);
@@ -134,7 +181,7 @@ contract CavenNFTMarketplaceTest is Test {
         _setApprovalForAll(lily);
         uint256 listingId = _listNFT(lily, tokenId);
 
-        CavenNFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
+        NFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
 
         assertEq(allNfts.length, 1);
         assertEq(allNfts[listingId].owner, lily);
@@ -150,7 +197,7 @@ contract CavenNFTMarketplaceTest is Test {
         _setApprovalForAll(lily);
         uint256 listingId = _listNFT(lily, tokenId);
 
-        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        NFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
 
         assertEq(listedNft.owner, lily);
         assertEq(listedNft.nftContract, address(nft));

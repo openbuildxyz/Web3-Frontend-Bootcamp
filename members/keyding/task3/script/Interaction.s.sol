@@ -14,7 +14,7 @@ contract MintNFT is Script {
         vm.startBroadcast(privateKey);
 
         address nftContract = vm.envAddress("NFT_CONTRACT_ADDRESS");
-        CavenNFT nft = CavenNFT(nftContract);
+        SnowNFT nft = SnowNFT(nftContract);
 
         console.log("Minting NFT...");
         uint256 tokenId = nft.mint();
@@ -36,7 +36,7 @@ contract ListNFT is Script {
         address marketplaceContract = vm.envAddress("MARKETPLACE_CONTRACT_ADDRESS");
 
         IERC721 nft = IERC721(nftContract);
-        CavenNFTMarketplace marketplace = CavenNFTMarketplace(marketplaceContract);
+        NFTMarketplace marketplace = NFTMarketplace(marketplaceContract);
 
         console.log("Approve marketplace operable this NFT ...");
         nft.setApprovalForAll(address(marketplace), true);
@@ -46,7 +46,7 @@ contract ListNFT is Script {
         uint256 listingId = marketplace.listNFT(nftContract, tokenId, "carrot", listingPrice);
         console.log("Listed NFT with listingId: ", listingId);
 
-        CavenNFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
+        NFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
         console.log("All Nfts: ", allNfts.length);
 
         vm.stopBroadcast();
@@ -55,7 +55,7 @@ contract ListNFT is Script {
 
 contract DelistNFT is Script {
     // == Logs == After minting the NFT, get the tokenId
-    uint256 listingId = 2;
+    uint256 listingId = 0;
 
     function run() external {
         uint256 privateKey = vm.envUint("PRIVATE_KEY");
@@ -65,7 +65,7 @@ contract DelistNFT is Script {
         address marketplaceContract = vm.envAddress("MARKETPLACE_CONTRACT_ADDRESS");
 
         IERC721 nft = IERC721(nftContract);
-        CavenNFTMarketplace marketplace = CavenNFTMarketplace(marketplaceContract);
+        NFTMarketplace marketplace = NFTMarketplace(marketplaceContract);
 
         console.log("Approve marketplace operable this NFT ...");
         nft.setApprovalForAll(address(marketplace), true);
@@ -73,7 +73,36 @@ contract DelistNFT is Script {
         console.log("Delisting NFT...");
         marketplace.delistNFT(listingId);
 
-        CavenNFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        NFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
+        console.log("isListed", listedNft.isListed);
+
+        vm.stopBroadcast();
+    }
+}
+
+contract RelistNFT is Script {
+    // == Logs == After listing the NFT, get the listingId
+    uint256 listingId = 0;
+
+    function run() external {
+        uint256 privateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(privateKey);
+
+        address nftContract = vm.envAddress("NFT_CONTRACT_ADDRESS");
+        address marketplaceContract = vm.envAddress("MARKETPLACE_CONTRACT_ADDRESS");
+
+        IERC721 nft = IERC721(nftContract);
+        NFTMarketplace marketplace = NFTMarketplace(marketplaceContract);
+
+        console.log("Approve marketplace operable this NFT ...");
+        nft.setApprovalForAll(address(marketplace), true);
+
+        console.log("Listing NFT...");
+        uint256 newListingPrice = 20 * 10 ** 18;
+        uint256 keepListingId = marketplace.listNFT(listingId, newListingPrice);
+        console.log("Listed NFT with listingId: ", keepListingId, listingId);
+
+        NFTMarketplace.NftInfo memory listedNft = marketplace.getListedNft(listingId);
         console.log("isListed", listedNft.isListed);
 
         vm.stopBroadcast();
@@ -83,7 +112,8 @@ contract DelistNFT is Script {
 contract BuyNFT is Script {
     // == Logs == After listing the NFT, get the listingID
     uint256 listingId = 0;
-    uint256 listPrice = 10 * 10 ** 18;
+    // After relisting new price
+    uint256 listPrice = 20 * 10 ** 18;
 
     function run() external {
         uint256 privateKey = vm.envUint("PRIVATE_KEY");
@@ -93,12 +123,12 @@ contract BuyNFT is Script {
         address marketplaceContract = vm.envAddress("MARKETPLACE_CONTRACT_ADDRESS");
 
         IERC20 token = IERC20(tokenContract);
-        CavenNFTMarketplace marketplace = CavenNFTMarketplace(marketplaceContract);
+        NFTMarketplace marketplace = NFTMarketplace(marketplaceContract);
 
         console.log("Approve marketplace contract can transfer tokens.");
         token.approve(marketplaceContract, listPrice);
 
-        CavenNFTMarketplace.NftInfo memory buyNft = marketplace.getListedNft(listingId);
+        NFTMarketplace.NftInfo memory buyNft = marketplace.getListedNft(listingId);
         console.log("#", listingId, "nft has been listed:", buyNft.isListed);
         console.log("#", listingId, "nft has been sold:", buyNft.isSold);
 
@@ -106,7 +136,7 @@ contract BuyNFT is Script {
         marketplace.buyNFT(listingId);
         console.log("Buy NFT completed.");
 
-        CavenNFTMarketplace.NftInfo memory afterBuyNft = marketplace.getListedNft(listingId);
+        NFTMarketplace.NftInfo memory afterBuyNft = marketplace.getListedNft(listingId);
         console.log("#", listingId, "nft has been listed:", afterBuyNft.isListed);
         console.log("#", listingId, "nft has been sold:", afterBuyNft.isSold);
 
@@ -117,9 +147,9 @@ contract BuyNFT is Script {
 contract GetAllNfts is Script {
     function run() external view {
         address marketplaceContract = vm.envAddress("MARKETPLACE_CONTRACT_ADDRESS");
-        CavenNFTMarketplace marketplace = CavenNFTMarketplace(marketplaceContract);
+        NFTMarketplace marketplace = NFTMarketplace(marketplaceContract);
 
-        CavenNFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
+        NFTMarketplace.NftInfo[] memory allNfts = marketplace.getAllNfts();
         console.log("All NFTs:", allNfts.length, "\n");
 
         for (uint256 i = 0; i < allNfts.length; i++) {

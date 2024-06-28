@@ -5,11 +5,11 @@ import "forge-std/Test.sol";
 import "../src/Token.sol";
 
 contract TokenTest is Test {
-    CavenToken public token;
+    SnowToken public token;
 
     // Execute before each test
     function setUp() public {
-        token = new CavenToken();
+        token = new SnowToken();
     }
 
     // Check if the initial supply is correct.

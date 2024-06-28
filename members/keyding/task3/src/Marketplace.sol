@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
-contract CavenNFTMarketplace is ReentrancyGuard {
+contract NFTMarketplace is ReentrancyGuard {
     // NFT info
     struct NftInfo {
         uint256 listingId;
@@ -19,6 +19,8 @@ contract CavenNFTMarketplace is ReentrancyGuard {
         string uri;
         // Listing price
         uint256 price;
+        // Listing timestamp
+        uint256 listedAt;
         // Whether it has been listed
         bool isListed;
         // Whether it has been sold
@@ -38,7 +40,8 @@ contract CavenNFTMarketplace is ReentrancyGuard {
         uint256 indexed tokenId,
         string uri,
         uint256 price,
-        uint256 listingId
+        uint256 listingId,
+        uint256 listedAt
     );
     // Bought NFT event
     event NFTBoughtEvent(
@@ -65,6 +68,7 @@ contract CavenNFTMarketplace is ReentrancyGuard {
         _paymentToken = _payment;
     }
 
+    // List new NFT
     function listNFT(address nftContract, uint256 tokenId, string memory uri, uint256 price)
         external
         returns (uint256)
@@ -78,30 +82,37 @@ contract CavenNFTMarketplace is ReentrancyGuard {
 
         uint256 newListingId = _nextListingId++;
         // Save NFT information
-        _listedNfts[newListingId] = NftInfo(newListingId, owner, nftContract, tokenId, uri, price, true, false);
-
-        // uint256 listingId = _listingIds[nftContract][tokenId];
-        // bool hasListedNft = _listedNfts[listingId].owner != address(0);
-
-        // Listed
-        // if (hasListedNft) {
-        //     _listedNfts[listingId].owner = owner;
-        //     _listedNfts[listingId].price = price;
-        //     _listedNfts[listingId].isListed = true;
-        // }
-        // // New listing
-        // else {
-        //     listingId = _nextListingId++;
-        //     // Save NFT information
-        //     _listedNfts[listingId] = NftInfo(listingId, owner, nftContract, tokenId, uri, price, true);
-        //     // Add listingId
-        //     _listingIds[nftContract][tokenId] = listingId;
-        // }
+        _listedNfts[newListingId] =
+            NftInfo(newListingId, owner, nftContract, tokenId, uri, price, block.timestamp, true, false);
 
         // Trigger NFTListedEvent event
-        emit NFTListedEvent(owner, nftContract, tokenId, uri, price, newListingId);
+        emit NFTListedEvent(owner, nftContract, tokenId, uri, price, newListingId, block.timestamp);
 
         return newListingId;
+    }
+
+    // Relist NFT
+    function listNFT(uint256 listingId, uint256 price) external returns (uint256) {
+        NftInfo storage listedNft = _listedNfts[listingId];
+        IERC721 nft = IERC721(listedNft.nftContract);
+        address owner = msg.sender;
+
+        require(nft.ownerOf(listedNft.tokenId) == owner, "You are not the owner of this NFT.");
+        require(!listedNft.isListed, "NFT is already listed.");
+        require(price > 0, "Price must be greater than 0.");
+        require(nft.isApprovedForAll(owner, address(this)), "Marketplace is not approved.");
+
+        listedNft.price = price;
+        listedNft.isListed = true;
+        listedNft.isSold = false;
+        listedNft.listedAt = block.timestamp;
+
+        // Trigger NFTListedEvent event
+        emit NFTListedEvent(
+            owner, listedNft.nftContract, listedNft.tokenId, listedNft.uri, price, listingId, block.timestamp
+        );
+
+        return listingId;
     }
 
     function delistNFT(uint256 listingId) external {
@@ -158,14 +169,4 @@ contract CavenNFTMarketplace is ReentrancyGuard {
     function getListedNft(uint256 listingId) external view returns (NftInfo memory) {
         return _listedNfts[listingId];
     }
-
-    // Implement the onERC721Received function to allow the contract to receive ERC721 tokens
-    // function onERC721Received(address, /*operator*/ address, /*from*/ uint256, /*tokenId*/ bytes calldata /*data*/ )
-    //     external
-    //     pure
-    //     override
-    //     returns (bytes4)
-    // {
-    //     return this.onERC721Received.selector;
-    // }
 }
