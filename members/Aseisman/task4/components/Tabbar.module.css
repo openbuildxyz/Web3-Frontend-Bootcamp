@@ -1,0 +1,9 @@
+.tabbar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eaeaea;
+    background-color: white;
+}
