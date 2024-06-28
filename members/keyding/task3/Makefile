@@ -135,3 +135,11 @@ get-all-nfts-local:
 	--fork-url http://127.0.0.1:8545 \
 	--broadcast -vvvv
 
+verify-token:
+	@forge verify-contract $(TOKEN_CONTRACT_ADDRESS) src/Token.sol:SnowToken --verifier etherscan --chain-id $(CHAIN_ID)
+
+verify-nft:
+	@forge verify-contract $(NFT_CONTRACT_ADDRESS) src/NFT.sol:SnowNFT --verifier etherscan --chain-id $(CHAIN_ID)
+
+verify-marketplace:
+	@forge verify-contract $(MARKETPLACE_CONTRACT_ADDRESS) src/Marketplace.sol:NFTMarketplace --verifier etherscan --chain-id $(CHAIN_ID)
