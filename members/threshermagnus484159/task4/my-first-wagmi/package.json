@@ -1,0 +1,35 @@
+{
+  "name": "my-first-wagmi",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "biome check .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/web3": "^1.15.1",
+    "@ant-design/web3-wagmi": "^2.7.0",
+    "@tanstack/react-query": "5.0.5",
+    "@web3-react/walletconnect": "^8.2.3",
+    "ant-design": "^1.0.0",
+    "antd": "^5.18.3",
+    "ethers": "^5.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "viem": "latest",
+    "wagmi": "latest"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.1.2",
+    "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.8",
+    "@vitejs/plugin-react": "^4.1.0",
+    "@wagmi/cli": "latest",
+    "buffer": "^6.0.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  }
+}
