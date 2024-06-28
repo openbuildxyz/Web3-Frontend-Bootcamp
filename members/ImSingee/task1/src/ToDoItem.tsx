@@ -8,6 +8,18 @@ export type Props = {
 export function ToDoItem({item}: Props) {
     const setItems = useSetTodoItems()
 
+    function handleToggle() {
+        setItems((items) => items.map((i) => {
+            if (i === item) {
+                return {
+                    ...i,
+                    completed: !i.completed
+                }
+            }
+            return i
+        }))
+    }
+
     function handleDelete() {
         setItems((items) => items.filter((i) => i !== item))
     }
@@ -15,7 +27,7 @@ export function ToDoItem({item}: Props) {
     return (
         <div className="flex">
             <label>
-                <input type="checkbox" checked={item.completed}/>
+                <input type="checkbox" checked={item.completed} onChange={handleToggle}/>
                 {item.title}
             </label>
             <div className="delete" onClick={handleDelete}>Delete</div>
