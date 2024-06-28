@@ -76,6 +76,11 @@ Web3-Frontend-Bootcamp/members/qiaopengjun5162/task1/react-to-do-list on  mai
 pnpm add sass -D
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
+pnpm add prop-types 
+pnpm add @types/prop-types --save-dev
+pnpm add uuid    
+pnpm add --save-dev @types/uuid  
+pnpm add less      
 ```
 
 ## 参考
