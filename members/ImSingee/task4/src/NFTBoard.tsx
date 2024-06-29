@@ -1,5 +1,5 @@
-import {useReadContract} from "wagmi";
-import {BryanMarket} from "./contracts";
+import {useReadContract, useWriteContract} from "wagmi";
+import {BryanCoin, BryanMarket} from "./contracts";
 import {cn} from "./utils/cn.ts";
 
 export function NFTBoard() {
@@ -44,10 +44,35 @@ type NFTItemProps = {
 function NFTItem({item}: NFTItemProps) {
     const sold = item.buyer !== '0x0000000000000000000000000000000000000000'
 
+    const {writeContractAsync} = useWriteContract()
+
     function handleClick() {
         if (sold) return;
 
-        alert("Buy")
+        Promise.resolve()
+            .then(async () => {
+                return writeContractAsync({
+                    ...BryanCoin,
+                    functionName: 'approve',
+                    args: [BryanMarket.address, item.pricing]
+                })
+            })
+            .then(async () => {
+                return writeContractAsync({
+                    ...BryanMarket,
+                    functionName: 'buyNFT',
+                    args: [item.nftContract, item.tokenId]
+                }).then((tx) => {
+                    console.log('buyNFT transaction submitted:', tx)
+                })
+            })
+            .then(() => {
+                alert("Success!")
+            })
+            .catch(err => {
+                console.log('submit transaction error:', err)
+                alert('Error: ' + err.message)
+            })
     }
 
     return (
