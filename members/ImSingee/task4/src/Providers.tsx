@@ -1,7 +1,6 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import {
     getDefaultConfig,
-    RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import {http, WagmiProvider} from 'wagmi';
 import {
@@ -29,9 +28,7 @@ export function Providers({children}: PropsWithChildren) {
     return (
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
-                <RainbowKitProvider>
-                    {children}
-                </RainbowKitProvider>
+                {children}
             </QueryClientProvider>
         </WagmiProvider>
     );

@@ -1,16 +1,13 @@
-import './App.css'
-import {ConnectButton} from "@rainbow-me/rainbowkit";
+import {Header} from "./Header.tsx";
 
 function App() {
 
     return (
         <>
-            <h1 className="text-3xl font-bold">
-                Hello world!
-            </h1>
-            <div>
-                <ConnectButton showBalance={false}/>
-            </div>
+            <Header className="px-8 py-4"/>
+            <main className="m-8 grid place-content-center h-max min-h-[60vh] text-center">
+                <div>TODO</div>
+            </main>
         </>
     )
 }
