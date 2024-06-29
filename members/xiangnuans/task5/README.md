@@ -11,3 +11,12 @@
 - 提交界面的截图
 - 提交测试的截图（上架后、下架后、购买NFT后买家获得NFT的三个截图）
 
+# 上架
+![list](./assets/list.jpg)
+
+# 下架
+![delist](./assets/delist.jpg)
+
+# 购买
+![buy](./assets/buy.jpg)
+

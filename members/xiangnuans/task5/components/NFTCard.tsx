@@ -208,7 +208,7 @@ const NFTCard = ({ listing, index, type }: Props) => {
                 disabled={isPending || isPendingBuy}
                 onClick={buyNFT}
               >
-                {isPending ? "buying...." : "buy NFT"}
+                {isPending || isPendingBuy ? "buying...." : "buy NFT"}
               </Button>
             </>
           )}
