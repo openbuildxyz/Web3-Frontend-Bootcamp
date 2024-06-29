@@ -151,7 +151,7 @@ const NFTCard = ({ listing, index, type }: Props) => {
     <div className="w-full shadow-lg" key={index}>
       <div className="bg-gray-100 cursor-pointer dark:bg-gray-900 shadow-lg overflow-hidden flex flex-col items-center p-6 rounded-lg">
         <img
-          className=" w-full h-full"
+          className=" w-[626] h-[626]"
           src={listing?.tokenURI}
           alt={`${listing?.tokenURI} alt`}
         />
