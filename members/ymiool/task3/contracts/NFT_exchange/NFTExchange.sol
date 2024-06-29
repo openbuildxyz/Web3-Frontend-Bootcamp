@@ -15,8 +15,14 @@ contract NFTExchange is ReentrancyGuard {
         bool isActive;
     }
 
-    mapping(address => mapping(uint256 => NFTItem)) public nftItems;
+    struct NFTLocation {
+        address nftContract;
+        uint256 tokenId;
+    }
 
+    mapping(address => mapping(uint256 => NFTItem)) public nftStore;
+    NFTLocation[] public nftList;
+    
     event NFTItemAdded(
         address indexed nftContract,
         uint256 indexed tokenId,
@@ -50,14 +56,26 @@ contract NFTExchange is ReentrancyGuard {
         require(nft.isApprovedForAll(msg.sender, address(this)), "Contract not approved");
        
         uint256 addTime = block.timestamp;
-        nftItems[_nftContract][_tokenId] = NFTItem(
+        nftStore[_nftContract][_tokenId] = NFTItem(
             _nftContract, _tokenId, msg.sender, _price, addTime, true);
+        nftList.push(NFTLocation(_nftContract, _tokenId));
 
         emit NFTItemAdded(_nftContract, _tokenId, msg.sender, _price, addTime);
     }
 
+    function getAllNFTItems() public view returns (NFTItem[] memory) {
+        NFTItem[] memory _nftItems = new NFTItem[](nftList.length);
+        for (uint256 i = 0; i < nftList.length; i++) 
+        {
+            NFTLocation storage nftLocation = nftList[i];
+            _nftItems[i] = nftStore[nftLocation.nftContract][nftLocation.tokenId];
+        }
+        
+        return _nftItems;
+    }
+
     function exchangeNFT(address _nftContract, uint256 _tokenId) external {
-        NFTItem storage nftItem = nftItems[_nftContract][_tokenId];
+        NFTItem storage nftItem = nftStore[_nftContract][_tokenId];
         require(nftItem.isActive, "This NFT can not be sold");
 
         IERC721 nft = IERC721(_nftContract);
@@ -71,7 +89,7 @@ contract NFTExchange is ReentrancyGuard {
     }
 
     function inactivateNFT(address _nftContract, uint256 _tokenId) external {
-        NFTItem storage nftItem = nftItems[_nftContract][_tokenId];
+        NFTItem storage nftItem = nftStore[_nftContract][_tokenId];
         require(nftItem.isActive, "This NFT is already inactivated");
         require(nftItem.seller == msg.sender, "Only seller can inactivate");
 
