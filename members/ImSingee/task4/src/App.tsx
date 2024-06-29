@@ -10,6 +10,7 @@ function App() {
             <main className="m-8 grid place-content-center h-max min-h-[60vh] text-center">
                 <ConnectedRequired>
                     <NFTBoard/>
+                    <div className="h-4"></div>
                     <ListNewButton />
                 </ConnectedRequired>
             </main>
