@@ -1,0 +1,167 @@
+
+/* 设置单个 NFT 卡片的样式 */
+.nft-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex: 1 1 300px;
+    max-width: 300px;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.nft-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 设置 NFT 图片的样式 */
+.nft-card img {
+    width: 200px; /* 固定宽度 */
+    height: 200px; /* 固定高度 */
+    object-fit: cover; /* 保持宽高比，裁剪多余部分 */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* 设置 NFT 详情容器的样式 */
+.nft-details {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 0.9rem; /* 调整字体大小 */
+    color: #343a40; /* 深色文本 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平居中 */
+}
+
+/* 设置单个详情项的样式 */
+.nft-detail-item {
+    margin-bottom: 0.5rem;
+}
+
+/* 设置详情标签的样式 */
+.nft-detail-label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* 设置详情项值的样式 */
+.nft-detail-value {
+    display: inline-block;
+    vertical-align: middle;
+    word-break: break-all;
+}
+
+/* 截断显示的样式 */
+.nft-detail-value.truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; 
+}
+
+/* 全部显示的样式 */
+.nft-detail-value.full {
+    white-space: normal;
+}
+
+/* 设置按钮的样式 */
+.nft-card button {
+    background-color: #007bff; 
+    color: white; 
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.nft-card button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+}
+
+/* 设置 toggle-button 的基础样式 */
+.toggle-button {
+    background: none;
+    border: none;
+    color: #007bff; /* 使用与主按钮相同的颜色 */
+    cursor: pointer;
+    font-size: 1rem; /* 保持一致的字体大小 */
+    padding: 0;
+    margin: 0;
+    text-decoration: none; /* 去掉下划线 */
+    vertical-align: baseline; 
+    display: inline; 
+    transition: background-color 0.3s, transform 0.3s; /* 添加背景颜色变化的过渡效果 */
+}
+
+/* 设置 toggle-button 的悬停效果 */
+.toggle-button:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* 轻微的背景颜色变化 */
+    transform: scale(1.05); /* 悬停时放大一点点 */
+}
+
+/* 设置价格输入框容器的样式 */
+#priceInputDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* 设置价格输入框的样式 */
+#priceInputDiv label {
+    margin-bottom: 0.5rem;
+    color: #343a40;
+}
+
+#priceInputDiv input {
+    padding: 0.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 设置按钮组的样式，使其在同一行显示 */
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.buy-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+    align-self: center;
+}
+
+.buy-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.you-seller {
+    color: #007bff; /* 设置文本颜色为红色 */
+    font-weight: bold; /* 设置文本加粗 */
+    text-align: center; /* 文本居中对齐 */
+    margin-top: 1rem; /* 增加上方外边距 */
+}
