@@ -2,7 +2,7 @@
 import { useState, ChangeEvent } from 'react';
 import { useAccount } from 'wagmi';
 import { parseUnits, ethers } from 'ethers';
-import NFTMarketABI from '../../abis/NFTMarketABI.json';
+import NFTMarketABI from '../../abis/NFTMarketABI';
 import { Input, Button } from '@nextui-org/react';
 import { useEthersSigner } from '@/utils/useEthersSigner';
 

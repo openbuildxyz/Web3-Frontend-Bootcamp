@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useEthersSigner } from '@/utils/useEthersSigner';
 import { ethers } from 'ethers';
-import NFTMarketABI from '../../abis/NFTMarketABI.json';
+import NFTMarketABI from '../../abis/NFTMarketABI';
 import { Input, Button } from '@nextui-org/react';
 
 const BuyNFT: React.FC = () => {

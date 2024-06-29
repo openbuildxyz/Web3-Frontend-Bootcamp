@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
-import NFTMarketABI from '@/abis/NFTMarketABI.json';
+import NFTMarketABI from '@/abis/NFTMarketABI';
 import { Card } from '@nextui-org/react';
 
 const DisplayNFTs: React.FC = () => {
