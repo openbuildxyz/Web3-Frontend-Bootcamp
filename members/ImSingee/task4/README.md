@@ -1,30 +1,19 @@
-# React + TypeScript + Vite
+# task4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+合约在 contracts 目录下（token 和 nft 直接复用了 task3 的，market 相比 task3 主要是增加了 getAllListings 方法）。
 
-Currently, two official plugins are available:
+未登录状态（展示 Connect Button）：
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![](./imgs/not-connect.jpg)
 
-## Expanding the ESLint configuration
+登录状态（展示市场）：
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![](./imgs/home.jpg)
 
-- Configure the top-level `parserOptions` property like this:
+上架：
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+![](./imgs/listing.jpg)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+购买：
+
+![](./imgs/buy.jpg)
