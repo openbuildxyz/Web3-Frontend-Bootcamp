@@ -19,7 +19,6 @@ const config = getDefaultConfig({
     transports: {
         [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/WNRJZpl5qy73tkiexCJKXpENJ0Vkulcx'),
     },
-    ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
 const queryClient = new QueryClient();
