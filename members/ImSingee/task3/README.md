@@ -9,5 +9,7 @@
 NFT 合约：
   - 地址：0xB880B6594D8d398A430fc6bD42f4ea32b31cE932 https://sepolia.etherscan.io/address/0xb880b6594d8d398a430fc6bd42f4ea32b31ce932
   - 名称：BryanNFT BNFT
+  - 1 号 NFT：https://testnets.opensea.io/assets/sepolia/0xB880B6594D8d398A430fc6bD42f4ea32b31cE932/1
 
-账户 1 mint NFT （获得了 0 号 NFT） 的 transaction：https://sepolia.etherscan.io/tx/0x1b6c36b3a0baf9c6a3007c4e057f20043685d786d1d14fa5cc5c468bb4eb1780
+
+账户 1 mint NFT （获得了 1 号 NFT） 的 transaction：https://sepolia.etherscan.io/tx/0xf6cdb26a59a229cea6540f14d2b892f5ca427a4b4d293fceeea6c9a4dc0d0dbe
