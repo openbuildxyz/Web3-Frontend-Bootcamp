@@ -68,6 +68,7 @@ contract NFTMarket is Ownable {
         delete listings[listingId];
     }
 
+    // 获取所有nft
     function getAllListings() public view returns (Listing[] memory) {
         Listing[] memory allListings = new Listing[](listingCounter);
         uint256 counter = 0;
@@ -80,6 +81,7 @@ contract NFTMarket is Ownable {
         return allListings;
     }
 
+    // 获取正在售卖的nft
     function getAllSellingListings() public view returns (Listing[] memory) {
         // 计算有效的列表数量
         uint256 validCount = 0;
@@ -101,6 +103,7 @@ contract NFTMarket is Ownable {
         return allListings;
     }
 
+    // 获取下架的nft
     function getAllRemovedListings() public view returns (Listing[] memory) {
         // 计算有效的列表数量
         uint256 validCount = 0;
