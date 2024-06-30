@@ -8,8 +8,5 @@ broadcast
 # Docs
 docs/
 
-# lib
-lib/
-
 # Dotenv file
 .env
