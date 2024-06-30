@@ -15,11 +15,8 @@ import { useAccount, useReadContracts } from "wagmi"
 import { MintToken } from "./mint-token"
 import { HashType } from '@/types'
 
-interface UserProps {
-  onMintNFT?: () => void
-}
 
-export function User({ onMintNFT }: UserProps) {
+export function User() {
   const [balance, setBalance] = useState(0)
   const [symbol, setSymbol] = useState("")
   const [avatarPath, setAvatarPath] = useState("")

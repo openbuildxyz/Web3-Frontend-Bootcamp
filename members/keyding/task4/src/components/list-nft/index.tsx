@@ -31,6 +31,10 @@ interface ListNFTProps {
 }
 
 export function ListNFT({ size, onListed, listingId }: ListNFTProps) {
+  const TOKEN_CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS as HashType
+  const NFT_MARKETPLACE_CONTRACT_ADDRESS = process.env
+  .NEXT_PUBLIC_NFT_MARKETPLACE_CONTRACT_ADDRESS as HashType
+
   const { address } = useAccount()
   const [tokenURI, setTokenURI] = useState("")
   const [uriIcon, setURIIcon] = useState("")
@@ -49,14 +53,13 @@ export function ListNFT({ size, onListed, listingId }: ListNFTProps) {
 
   const { data: symbol } = useReadContract({
     abi: TokenABI,
-    address: process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS as HashType,
+    address: TOKEN_CONTRACT_ADDRESS,
     functionName: "symbol",
   })
 
   const { data: nftInfo } = useReadContract({
     abi: NFTMarketPlaceABI,
-    address: process.env
-      .NEXT_PUBLIC_NFT_MARKETPLACE_CONTRACT_ADDRESS as HashType,
+    address: NFT_MARKETPLACE_CONTRACT_ADDRESS,
     functionName: "getListedNft",
     args: hasListingId ? [listingId!] : undefined,
   })
