@@ -1,82 +1,49 @@
-import { ethers } from "ethers";
-import * as dotenv from "dotenv";
+import { ethers } from "hardhat";
 
-dotenv.config();
+// Provider and wallet setup
+const provider = new ethers.InfuraProvider("sepolia", process.env.INFURA_API_KEY);
+const accountPrivateKey = process.env.ACCOUNT3 || ""; // Use ACCOUNT3
+const wallet = new ethers.Wallet(accountPrivateKey, provider);
 
-const infuraProjectId = process.env.INFURA_API_KEY || "";
-const provider = new ethers.InfuraProvider("sepolia", infuraProjectId);
+// Contract details
+const nftMarketAddress = process.env.NFT_MARKET_ADDRESS || ""; // NFT market contract address
+const tokenAddress = process.env.TOKEN_ADDRESS || ""; // ERC20 token address
 
-const privateKey = process.env.PRIVATE_KEY || "";
-const nftMarketplaceAddress = process.env.NFT_MARKET_ADDRESS || "";
-
-const nftMarketplaceABI = [
-    "function listings(uint256) view returns (tuple(address seller, address nftContract, uint256 tokenId, uint256 price))",
+// Contract ABIs
+const nftMarketABI = [
     "function buyNFT(uint256 listingId) external",
-    "event NFTPurchased(uint256 indexed listingId, address indexed buyer, address indexed nftContract, uint256 tokenId, uint256 price)",
+];
+const tokenABI = [
+    "function approve(address spender, uint256 amount) public returns (bool)",
 ];
 
-const erc20TokenABI = [
-    "function approve(address spender, uint256 amount) external returns (bool)",
-    "function balanceOf(address owner) view returns (uint256)",
-    "function allowance(address owner, address spender) view returns (uint256)",
-];
+// Create contract instances
+const nftMarketContract = new ethers.Contract(nftMarketAddress, nftMarketABI, wallet);
+const tokenContract = new ethers.Contract(tokenAddress, tokenABI, wallet);
 
-const erc20TokenAddress = process.env.ERC20_TOKEN_ADDRESS || "";
+async function buyNFT() {
+    const listingId = 1; // Replace with the actual listing ID you want to purchase
+    const price = ethers.parseUnits("1.0", 18); // Replace with the actual price of the NFT
 
-interface Listing {
-    seller: string;
-    nftContract: string;
-    tokenId: number;
-    price: ethers.BigNumberish;
-}
-
-const wallet = new ethers.Wallet(privateKey, provider);
-const nftMarketplaceContract = new ethers.Contract(nftMarketplaceAddress, nftMarketplaceABI, wallet);
-const buyer = process.env.BUYER_PRIVATE || "";
-const buyerWallet = new ethers.Wallet(buyer, provider);
-
-async function checkBalance(address: string, tokenAddress: string): Promise<void> {
-    const balance = await provider.getBalance(address);
-    console.log(`ETH Balance: ${ethers.formatEther(balance)} ETH`);
-
-    const erc20TokenContract = new ethers.Contract(tokenAddress, erc20TokenABI, provider);
-    const tokenBalance = await erc20TokenContract.balanceOf(address);
-    console.log(`Token Balance: ${ethers.formatUnits(tokenBalance, 18)} Tokens`);
-}
-
-async function checkAllowance(owner: string, spender: string, tokenAddress: string): Promise<void> {
-    const erc20TokenContract = new ethers.Contract(tokenAddress, erc20TokenABI, provider);
-    const allowance = await erc20TokenContract.allowance(owner, spender);
-    console.log(`Allowance: ${ethers.formatUnits(allowance, 18)} Tokens`);
-}
-
-async function buyNFT(listingId: number): Promise<void> {
     try {
-        const listing = await nftMarketplaceContract.listings(listingId);
-        console.log("Listing details:", listing);
-        if (!listing.price) {
-            console.error("NFT not listed for sale");
-            return;
-        }
+        console.log("Approving tokens for NFT purchase...");
 
-        await checkBalance(wallet.address, erc20TokenAddress);
-        await checkAllowance(wallet.address, nftMarketplaceAddress, erc20TokenAddress);
-
-        const erc20TokenContract = new ethers.Contract(erc20TokenAddress, erc20TokenABI, wallet);
-
-        // Approve the marketplace to spend the required ERC20 tokens (price of the NFT)
-        const approveTx = await erc20TokenContract.approve(nftMarketplaceAddress, listing.price);
+        // Approve the NFTMarket contract to spend your ERC20 tokens
+        const approveTx = await tokenContract.approve(nftMarketAddress, price);
+        console.log("Approval transaction hash:", approveTx.hash);
         await approveTx.wait();
-        console.log("ERC20 token approval transaction confirmed");
+        console.log("Tokens approved successfully!");
 
-        const buyTx = await nftMarketplaceContract.buyNFT(listingId);
+        console.log("Purchasing NFT...");
+
+        // Purchase the NFT
+        const buyTx = await nftMarketContract.buyNFT(listingId);
+        console.log("Buy transaction hash:", buyTx.hash);
         await buyTx.wait();
-        console.log("NFT purchase transaction confirmed");
+        console.log("NFT purchased successfully!");
     } catch (error) {
-        console.error("Error buying NFT:", error);
+        console.error("Error purchasing NFT:", error);
     }
 }
 
-const listingId = 1;
-
-buyNFT(listingId);
+buyNFT();

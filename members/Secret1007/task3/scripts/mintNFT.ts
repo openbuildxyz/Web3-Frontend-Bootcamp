@@ -1,44 +1,48 @@
-import { ethers } from "ethers";
-import * as dotenv from "dotenv";
+import { ethers } from "hardhat";
 
-dotenv.config();
+// Provider
+const provider = new ethers.InfuraProvider("sepolia", process.env.INFURA_API_KEY);
 
-const contractAddress = process.env.NFT_CONTRACT_ADDRESS || "";
-const infuraProjectId = "https://eth-sepolia-public.unifra.io";
-const privateKey = process.env.PRIVATE_KEY || "";
+// Account and wallet
+const accountPrivateKey = process.env.ACCOUNT2 || "";
+const wallet = new ethers.Wallet(accountPrivateKey, provider);
 
-const contractABI = ["function mintNFT(address recipient, string tokenURI) public returns (uint256)", "function getCurrentTokenId() public view returns (uint256)"];
+// Contract details
+const nftAddress = process.env.NFT_ADDRESS || "";
+const tokenAddress = process.env.TOKEN_ADDRESS || ""; // Your ERC-20 token address
+const tokenABI = [
+    "function approve(address spender, uint256 amount) public returns (bool)"
+];
+const contractABI = [
+    "function mintNFT(string memory tokenURI) public returns (uint256)",
+    "function getCurrentTokenId() public view returns (uint256)"
+];
 
-const recipientAddress = "0x6992663798a664a8cBc3C93b56483C281C1E8438";
 const tokenURI = "ipfs://QmVuwFL2LXjcp2pvcez6membFs7teUb7fhwjKrGwJ1pJVz";
 
-// Replace with your provider URL (e.g., Infura, Alchemy)
-const provider = new ethers.JsonRpcProvider(infuraProjectId);
-
-// Replace with your private key
-const wallet = new ethers.Wallet(privateKey, provider);
-
-// Create a contract instance
-const contract = new ethers.Contract(contractAddress, contractABI, wallet);
+// Create contract instances
+const nftContract = new ethers.Contract(nftAddress, contractABI, wallet);
+const tokenContract = new ethers.Contract(tokenAddress, tokenABI, wallet);
 
 async function mintNFT() {
     try {
-        // Estimate gas limit
-        const mintNFTInfo = await contract.mintNFT(recipientAddress, tokenURI);
+        // Approve tokens for NFT contract
+        const amount = ethers.parseUnits('50', 18); // Replace with the required amount
+        const approveTx = await tokenContract.approve(nftAddress, amount);
+        console.log("Approval transaction sent: ", approveTx.hash);
+        await approveTx.wait();
+        console.log("Approval transaction confirmed");
 
-        // // Mint the NFT
-        const tx = await contract.mintNFT(recipientAddress, tokenURI, { gasLimit: mintNFTInfo.gasLimit });
-        console.log("Transaction sent: ", tx.hash);
-
-        // Wait for the transaction to be mined
-        const receipt = await tx.wait();
-        console.log("Transaction mined: ", receipt.transactionHash);
+        // Mint the NFT
+        const mintTx = await nftContract.mintNFT(tokenURI);
+        console.log("Mint transaction sent: ", mintTx.hash);
+        const receipt = await mintTx.wait();
 
         // Get the new token ID
-        const currentTokenId = await contract.getCurrentTokenId();
+        const currentTokenId = await nftContract.getCurrentTokenId();
         console.log("New Token ID: ", currentTokenId.toString());
     } catch (error) {
-        console.error("Error minting NFT: ", error);
+        console.error("Error minting NFT:", error);
     }
 }
 
