@@ -5,8 +5,6 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// contract hash 0x1a6370F290A81428249D5e914d363D56bB246ebe
-
 contract NFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
     // 记录已经铸造的tokenId
