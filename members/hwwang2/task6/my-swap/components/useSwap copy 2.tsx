@@ -126,7 +126,7 @@ const useSwap = (fromTokenAddress: string, toTokenAddress: string,fromTokenDecim
     //   token0,
     //   token1,
     //   fee,
-    //   slot0[0],
+    //   slot0[0].toString(),
     //   liquidity.toString(),
     //   slot0[1]
     // );
