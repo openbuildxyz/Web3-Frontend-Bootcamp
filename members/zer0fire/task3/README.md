@@ -1,8 +1,11 @@
-# Sample Hardhat Project
+# 部署 nft
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Compiled 1 Solidity file successfully (evm target: paris).
+Deploying contracts with the account: 0xF69618C9c30AF9d8deAD34d3Db2570ed177308B7, Balance: 0.542315375888570146 ETH
+LighthouseNft contract deployed to: 0xDB1964AbCB41Cac54dA8B317461fD0D781a9b90F
+NftMarket contract deployed to: 0x58f0D901d1aE9EA65790eb7c31Bfac7B8b786DcE
 
-Try running some of the following tasks:
+# hardhat 部署等
 
 ```shell
 npx hardhat help
