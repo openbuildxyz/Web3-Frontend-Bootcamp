@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 contract NFTMarket is ReentrancyGuard, Ownable {
     IERC20 public token; // ERC20 token used for payments
@@ -86,6 +86,10 @@ contract NFTMarket is ReentrancyGuard, Ownable {
 
     function getListing(uint256 listingId) external view returns (Listing memory) {
         return listings[listingId];
+    }
+
+    function getListings() external view returns (Listing[] memory) {
+        return listings;
     }
 
     function getSellerListings(address seller) external view returns (uint256[] memory) {
