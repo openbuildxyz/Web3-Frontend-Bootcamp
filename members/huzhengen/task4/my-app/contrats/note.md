@@ -1,0 +1,3 @@
+note.md
+
+部署nft市场新合约：https://sepolia.etherscan.io/tx/0x20507aeb7e37d08e18b3243806b1d1361c503481fd78417c70f9d3f96659eb4f
