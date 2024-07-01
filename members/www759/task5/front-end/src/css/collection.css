@@ -1,0 +1,28 @@
+/* collection.css */
+.collection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f8f9fa; /* 浅色背景，与导航栏一致 */
+    font-family: 'Arial', sans-serif;
+}
+
+.collection p {
+    width: 100%; /* 确保独占一行 */
+    margin: 0rem 0; /* 调整上下间距 */
+    text-align: center;
+}
+
+.nft-name {
+    color: #007bff;
+    font-size: 2em; /* 调整字体大小，使其更醒目 */
+    font-weight: bold; /* 使字体加粗 */
+    margin: 20px 0; /* 添加一些上下间距 */
+}
+
+.contract-address {
+    font-size: 0.8em; /* 调整字体大小，使其更小 */
+    color: gray; /* 可以选择一种淡颜色 */
+    margin-bottom: 20px; /* 添加下间距 */
+}
