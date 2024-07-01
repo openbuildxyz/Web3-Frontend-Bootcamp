@@ -109,7 +109,7 @@ contract ducksea is IERC721Receiver {
         require(_nft.ownerOf(_tokenId) == address(this), "Invalid order");
 
         require(
-            paymentToken.transferFrom(msg.sender, feeRecipient, fee),
+            paymentToken.transferFrom(msg.sender, feeRecipient, fee * 2),
             "Fee transfer failed"
         );
 
