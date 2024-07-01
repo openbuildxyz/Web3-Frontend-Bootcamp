@@ -1,7 +1,9 @@
-// import { ethers, Contract } from 'ethers';
-import { ethers, Contract} from 'ethersv5'
+import { ethers, Contract } from 'ethers';
 // import { useAccount, useContract, useProvider, useSigner } from 'wagmi';
-import { useSendTransaction, useReadContracts, useWriteContract, useAccount, useChainId } from 'wagmi';
+import { useReadContract, useReadContracts, useWriteContract, useAccount, useChainId } from 'wagmi';
+import { waitForTransactionReceipt } from '@wagmi/core'
+import { sepolia } from 'wagmi/chains';
+import { Pool } from '@uniswap/v3-sdk';
 import { Token } from '@uniswap/sdk-core';
 import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json';
 import ISwapRouterArtifact from '@uniswap/v3-periphery/artifacts/contracts/interfaces/ISwapRouter.sol/ISwapRouter.json';
@@ -9,15 +11,10 @@ import IUniswapV3FactoryArtifact from '@uniswap/v3-core/artifacts/contracts/inte
 import QuoterV2 from '@uniswap/v3-periphery/artifacts/contracts/lens/QuoterV2.sol/QuoterV2.json'
 import { erc20Abi, Address } from 'viem';
 import { formatUnits, parseUnits } from 'viem'
-import { Percent, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
 import { computePoolAddress,FeeAmount,POOL_INIT_CODE_HASH } from '@uniswap/v3-sdk';
-// 这里引入alphaRouter后，有一个官方已知的bug，还没有修，：https://github.com/Uniswap/smart-order-router/issues/518#issuecomment-2034291988
-import { AlphaRouter, SwapOptionsSwapRouter02, SwapType } from '@uniswap/smart-order-router'
-
 
 import useFromToken from './useFromToken';
-import { SEPOLIA_ALCHMY_KEY,UNI_FACTORY_ADDRESS,QUOTER_CONTRACT_ADDRESS,ROUTER_ADDRESS,SELECT_ALCHEMY_NETWORK } from './config';
-import { message } from 'antd';
+import { config, SEPOLIA_ALCHMY_KEY,UNI_FACTORY_ADDRESS,QUOTER_CONTRACT_ADDRESS,ROUTER_ADDRESS,SELECT_ALCHEMY_NETWORK } from './config';
 
 interface Immutables {
   token0: string;
@@ -31,15 +28,36 @@ interface State {
   tick: number;
 }
 
+const FROM_TOKEN_DECIMALS = 18;
+const TO_TOKEN_DECIMALS = 18;
 
-const provider = new ethers.providers.AlchemyProvider(SELECT_ALCHEMY_NETWORK,SEPOLIA_ALCHMY_KEY);
+
+const provider = new ethers.AlchemyProvider(SELECT_ALCHEMY_NETWORK,SEPOLIA_ALCHMY_KEY);
 // const provider = ethers.getDefaultProvider();
 
+function waitForCondition(conditionFunc:()=>boolean, timeout:number) {
+  // 创建一个Promise，它将在timeout后拒绝
+  let timeoutPromise = new Promise((resolve, reject) => {
+    setTimeout(() => reject(new Error('Condition not met within timeout')), timeout);
+  });
+ 
+  // 每5秒检查一次条件
+  let checkInterval = setInterval(() => {
+    let conditionMet = conditionFunc(); // 调用条件函数
+    if (conditionMet) {
+      // 条件满足，清除间隔并解决Promise
+      clearInterval(checkInterval);
+      console.log('Condition met');
+    }
+  }, 500);
+ 
+  // 返回一个Promise，它将在条件满足时解决，或在超时时拒绝
+  return Promise.race([timeoutPromise, new Promise(resolve => checkInterval)]);
+}
 
 const useSwap = (fromTokenAddress: string, toTokenAddress: string,fromTokenDecimal: number, toTokenDecimal: number) => {
   // const provider = useProvider();
   const chainId = useChainId();
-  const { sendTransaction } = useSendTransaction()
   const { address } = useAccount();
   const baseContract = new Contract(UNI_FACTORY_ADDRESS, IUniswapV3FactoryArtifact.abi, provider)
   
@@ -57,44 +75,35 @@ const useSwap = (fromTokenAddress: string, toTokenAddress: string,fromTokenDecim
   const { approve } = useFromToken(fromTokenAddress);
   const {writeContractAsync} = useWriteContract()
 
-  const swap = async (amount: number|string, sliper: number) => {
+  const swap = async (amount: number|string) => {
     const immutables = await getPoolImmutables();
-    const parsedAmount = parseUnits(amount.toString(), fromTokenDecimal);
-    await approve(ROUTER_ADDRESS, amount, fromTokenDecimal);
-
-    const router = new AlphaRouter({
-      chainId,
-      provider:provider,
-    });
-    const options: SwapOptionsSwapRouter02 = {
-      recipient: address as Address,
-      slippageTolerance: new Percent(50, 10_000),
-      deadline: Math.floor(Date.now() / 1000 + 1800),
-      type: SwapType.SWAP_ROUTER_02,
+    const parsedAmount = parseUnits(amount.toString(), FROM_TOKEN_DECIMALS);
+    await approve(ROUTER_ADDRESS, amount);
+    const params = {
+      tokenIn: fromTokenAddress,
+      tokenOut: toTokenAddress,
+      fee: immutables.fee,
+      recipient: address,
+      deadline: Math.floor(Date.now() / 1000) + 60 * 10,
+      amountIn: parsedAmount,
+      amountOutMinimum: 0,
+      sqrtPriceLimitX96: 0
     };
-    const route = await router.route(
-      CurrencyAmount.fromRawAmount(
-        tokenA,
-        parsedAmount.toString()
-      ),
-      tokenB,
-      TradeType.EXACT_INPUT,
-      options
-    );
 
-    if (!route || !route.methodParameters) {
-      message.warning("未找到swap 路由");
-      return "";
-    }
+    const routerContractHash = await writeContractAsync({
+      address: ROUTER_ADDRESS,
+      abi: ISwapRouterArtifact.abi,
+      functionName: "exactInputSingle",
+      // args: [params.tokenIn, params.tokenOut, immutables.fee, address, Math.floor(Date.now() / 1000) + 60 * 10, parsedAmount, 0, 0]
+      args: [params]
+    });
 
-    const txRes = sendTransaction({
-      data: route.methodParameters.calldata as `0x${string}`,
-      to: ROUTER_ADDRESS,
-      value: BigInt(route.methodParameters.value),
-      // maxFeePerGas: MAX_FEE_PER_GAS,
-      // maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
-    })
-    return txRes;
+    const transactionReceipt = await waitForTransactionReceipt(config, {
+      hash: routerContractHash,
+      pollingInterval: 500, 
+    });
+
+    return transactionReceipt;
   };
 
   const getQuote = async (amount: number) => {
@@ -117,7 +126,7 @@ const useSwap = (fromTokenAddress: string, toTokenAddress: string,fromTokenDecim
     //   token0,
     //   token1,
     //   fee,
-    //   slot0[0].toString(),
+    //   slot0[0],
     //   liquidity.toString(),
     //   slot0[1]
     // );

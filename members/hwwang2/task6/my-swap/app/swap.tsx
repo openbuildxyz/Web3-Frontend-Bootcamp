@@ -6,22 +6,9 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import tokenList from "../tokenList.json";
-import { Route, Trade, computePoolAddress  } from "@uniswap/v3-sdk";
-import { Address, erc20Abi } from "viem";
-import { WriteContractErrorType, WriteContractReturnType } from "wagmi/actions";
 
 
-import {
-  ChainId,
-  Token,
-  CurrencyAmount,
-  TradeType,
-  Percent,
-} from "@uniswap/sdk-core";
-import { ethers } from "ethers";
 import { useAccount, useWriteContract, useBalance } from "wagmi";
-import { V3_CORE_FACTORY_ADDRESSES } from "@uniswap/sdk-core";
-import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
 
 import useSwap from "@/components/useSwap";
 
@@ -71,7 +58,6 @@ function Swap() {
     token: tokenTwo.address as `0x${string}`,
   });
 
-  const { writeContract } = useWriteContract();
   const account = useAccount();
   // const { data, sendTransaction } = {};
 
@@ -133,13 +119,13 @@ function Swap() {
       setIsExceedBalance(false);
     }
     const quote = await getQuote(amountIn);
-    setQuote(quote);
+    setQuote(Number(quote));
   };
 
   const onClickSwapButton = async () => {
     try {
       setIsLoading(true);
-      const txn = await swap(fromTokenAmount);
+      const txn = await swap(fromTokenAmount, slippage);
       // await txn.wait();
       setIsLoading(false);
       message.error("Swap failed...");
