@@ -3,9 +3,9 @@ import { Button, message, Input } from 'antd'
 import { readContract, writeContract, waitForTransactionReceipt } from '@wagmi/core'
 import {useAccount} from 'wagmi'
 import { config } from '../config'
-import contractABIERC20Token from '../../../hardhat-project/artifacts/contracts/ERC20Token.sol/ERC20Token.json'
-import contractABINFT from '../../../hardhat-project/artifacts/contracts/NFT.sol/NFT.json'
-import contractABINFTMarket from '../../../hardhat-project/artifacts/contracts/NFTMarket.sol/NFTMarket.json'
+import contractABIERC20Token from '../../abis/ERC20Token.json'
+import contractABINFT from '../../abis/NFT.json'
+import contractABINFTMarket from '../../abis/NFTMarket.json'
 
 
 function Content() {
