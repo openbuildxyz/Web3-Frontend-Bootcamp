@@ -102,27 +102,7 @@ contract  NFTMarket is ReentrancyGuard {
         emit NftListed(msg.sender,nftAddress,tokenId,price,0);
     } 
 
-    // buy 
-    function buy(
-        address nftAddress,
-        uint tokenId
-    ) external payable isNFTListed(nftAddress, tokenId) nonReentrant {
-        Listing memory listing = nft_listing[nftAddress][tokenId];
-        if(listing.price != msg.value){
-            revert ErrorNFTInvalidPrice();
-        }
-        // transfer to seller
-        require(IERC20(_token).transferFrom(msg.sender, listing.seller,listing.price), "Transfer from error");
-        // nft_proceeds[listing.seller] += msg.value;
-        delete nft_listing[nftAddress][tokenId];
-        IERC721(nftAddress).safeTransferFrom(
-            listing.seller,
-            msg.sender,
-            tokenId
-        );
-        emit BuyNFT(msg.sender, nftAddress, tokenId, listing.price);
-    }
-
+    // buy
     function permitBuy (
         address nftAddress,
         uint tokenId,
