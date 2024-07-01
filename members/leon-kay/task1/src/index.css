@@ -1,0 +1,67 @@
+/* index.css - 使用更严肃的背景和配色 */
+body,
+input,
+button {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff; /* 白色文字增加对比度 */
+}
+
+body {
+  background-color: #333344; /* 深蓝灰色背景 */
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+input,
+button {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #444455; /* 暗灰色边框 */
+}
+
+input {
+  background-color: #555566; /* 暗蓝灰色输入框背景 */
+  color: #ffffff; /* 白色文字 */
+}
+
+button {
+  cursor: pointer;
+  background-color: #666677; /* 暗灰色按钮背景 */
+  color: #ffffff; /* 白色文字 */
+}
+
+button:hover {
+  background-color: #777788; /* 悬停时略微亮一点的灰色 */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item {
+  background-color: #444455; /* 暗灰蓝背景色 */
+  border-bottom: 1px solid #363646; /* 更深的边线 */
+  padding: 10px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* index.css */
+.todo-item input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.todo-item span {
+  cursor: pointer;
+}
+
+.todo-item button {
+  margin-left: 10px;
+}
