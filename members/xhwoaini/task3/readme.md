@@ -1,0 +1,3 @@
+上架list的hash：0x7cee5d4f8a3ae8bae37561a238d2a85d56edae453e26ed7aa4b58a78cb7df6
+
+购买nft的hash：0x376120ae4c23f63059cbfeb80efa617a930e3379a3c6a215635b3bc3fe4e2dec
