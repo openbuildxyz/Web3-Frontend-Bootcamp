@@ -1,0 +1,36 @@
+{
+  "name": "my-swap",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@rainbow-me/rainbowkit": "^2.1.2",
+    "@tanstack/react-query": "^5.48.0",
+    "@uniswap/sdk-core": "^5.3.1",
+    "@uniswap/smart-order-router": "^3.35.10",
+    "@uniswap/v3-sdk": "^3.13.1",
+    "antd": "^5.18.3",
+    "ethers": "^6.13.1",
+    "fs": "^0.0.1-security",
+    "next": "14.2.4",
+    "pino-pretty": "^11.2.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "viem": "^2.16.2",
+    "wagmi": "^2.10.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "typescript": "^5"
+  }
+}

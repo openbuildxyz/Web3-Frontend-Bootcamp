@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ethersv5": "npm:ethers@^5.7.2"
+  }
+}
