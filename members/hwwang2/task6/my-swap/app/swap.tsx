@@ -5,7 +5,7 @@ import {
   DownOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import tokenList from "../tokenList.json";
+import tokenList from "../tokenList_base.json";
 
 
 import { useAccount, useWriteContract, useBalance } from "wagmi";
