@@ -1,0 +1,82 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.content {
+  padding: 20px 10px;
+}
+
+.padding {
+  padding: 20px 0;
+}
+
+.main {
+  height: 500px;
+  margin: 0 auto;
+}
+
+.buy-nft {
+  display: flex;
+
+}
+
+input {
+  height: 32px;
+  outline: none;
+}
+
+.button {
+  outline: none;
+  color: #fff;
+  background: #1677ff;
+  border-radius: 5px;
+  width: 130px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid transparent;
+  height: 32px;
+}
+
+.button:hover {
+  background: #4096ff;
+}
+
+.table-header {
+  display: flex;
+}
+
+.header-td,.td 
+   {
+  width: 200px;
+  padding: 10px 0;
+  text-align: center;
+  background: #fafafa;
+  border-bottom: 1px solid #fafafa;
+  color: rgba(0,0,0,0.88);
+  font-weight: 600;
+}
+
+.td  {
+  background: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-td {
+  display: flex;
+}
+
+
