@@ -1,0 +1,28 @@
+{
+  "name": "web3-playground",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.4.0",
+  "description": "",
+  "author": "Brendan Dash <me@aiwna.run> (https://github.com/Debbl/)",
+  "license": "MIT",
+  "homepage": "https://github.com/Debbl/web3-playground",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Debbl/web3-playground.git"
+  },
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev",
+    "test": "turbo test",
+    "lint": "eslint . && turbo lint"
+  },
+  "devDependencies": {
+    "@debbl/eslint-config": "^3.3.1",
+    "@types/node": "^20.14.8",
+    "eslint": "8.57.0",
+    "turbo": "^2.0.4",
+    "typescript": "^5.5.2"
+  }
+}
