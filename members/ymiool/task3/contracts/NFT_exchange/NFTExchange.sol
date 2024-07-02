@@ -56,10 +56,15 @@ contract NFTExchange is ReentrancyGuard {
         require(nft.isApprovedForAll(msg.sender, address(this)), "Contract not approved");
        
         uint256 addTime = block.timestamp;
+
+        // check if the NFT is added for the first time (assume NFT can be added for sale again after being purchased)
+        if (nftStore[_nftContract][_tokenId].nftContract == address(0)) {
+            nftList.push(NFTLocation(_nftContract, _tokenId));            
+        }
+
         nftStore[_nftContract][_tokenId] = NFTItem(
             _nftContract, _tokenId, msg.sender, _price, addTime, true);
-        nftList.push(NFTLocation(_nftContract, _tokenId));
-
+        
         emit NFTItemAdded(_nftContract, _tokenId, msg.sender, _price, addTime);
     }
 
