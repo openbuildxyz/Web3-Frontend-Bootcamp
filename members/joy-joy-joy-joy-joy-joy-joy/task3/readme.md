@@ -1,5 +1,5 @@
-# 上架nft交易哈希：0x11f9def8df23fb866be82ad7961289970980e507abfbb34d5e165199b72a4aad
-# 购买nft交易哈希：0x0dfc4743fd55ce677085ff40bcc94927155c790f01eb68cbe3fc3842b3b855ef
+# 上架nft交易哈希：0x827db8009811b1fd65ee378550ce4f7bfcc7cc0cb18d9a7a29212101628ee45e
+# 购买nft交易哈希：0x8f048bedd9ad131cc958f6c16ecb9ef6aac05b62cb93955b0a600c5e5dbe0280
 
 ## 创新点介绍
 ### 1.我加入了一个抽奖逻辑，在用户成功调用purchase时有概率中奖。奖池总量为当前supply的10%。奖池每小时更新，更新奖池时烧掉之前奖池剩余的量，在用户触发purchase时检查是否到了更新时间，这样就可以在用户购买频繁时及时更新奖池，避免了使用链下计时器。
