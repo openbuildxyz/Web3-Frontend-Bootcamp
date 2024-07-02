@@ -34,6 +34,8 @@ contract NFTMarket is Ownable {
 
     // 上架 NFT 的函数
     function listItem(address nftContract, uint256 tokenId, uint256 price) public {
+        // 增加上架前price检查，价格必须大于0
+        require(price > 0, "Price must be greater than 0");
         // 转移 NFT 所有权给市场合约
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
 
