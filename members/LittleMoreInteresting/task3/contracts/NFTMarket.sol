@@ -106,18 +106,14 @@ contract  NFTMarket is ReentrancyGuard {
     function permitBuy (
         address nftAddress,
         uint tokenId,
-        uint256 amount,
         uint256 deadline,
         bytes memory signature) external payable {
         (uint8 v, bytes32 r, bytes32 s) = recoverSignature(signature);
          Listing memory listing = nft_listing[nftAddress][tokenId];
-        if(listing.price != amount){
-            revert ErrorNFTInvalidPrice();
-        }
         // approve
-        IERC20Permit(_token).permit(msg.sender, address(this), amount, deadline, v, r, s);
+        IERC20Permit(_token).permit(msg.sender, address(this), listing.price, deadline, v, r, s);
         // transfer to seller
-        require(IERC20(_token).transferFrom(msg.sender, listing.seller, amount), "Transfer from error");
+        require(IERC20(_token).transferFrom(msg.sender, listing.seller, listing.price), "Transfer from error");
         // buy
         delete nft_listing[nftAddress][tokenId];
         IERC721(nftAddress).safeTransferFrom(
