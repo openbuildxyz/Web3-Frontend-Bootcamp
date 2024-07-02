@@ -215,9 +215,9 @@ Transaction Hash:
 
 Transaction Hash:
 - approve
-[0x1ca79153c15f7f10021a4a300432441123ea5cf0729e5cc28b4dfa23ad04d9d1](https://sepolia.etherscan.io/tx/0x1ca79153c15f7f10021a4a300432441123ea5cf0729e5cc28b4dfa23ad04d9d1)
+[0xd35d0206c9b43bc1dc338935449c99577b256f4522d029565ad8b649b6e65ab8](https://sepolia.etherscan.io/tx/0xd35d0206c9b43bc1dc338935449c99577b256f4522d029565ad8b649b6e65ab8)
 - buy
-[0x85d84a9087b544de105b9269beeb8478bf3351025c98b0f883af3df6bde40ef0](https://sepolia.etherscan.io/tx/0x85d84a9087b544de105b9269beeb8478bf3351025c98b0f883af3df6bde40ef0)
+[0x691cbbc24dea5008c168d6f938e5474e8669c7fadc207a9bf5370faa343d986c](https://sepolia.etherscan.io/tx/0x691cbbc24dea5008c168d6f938e5474e8669c7fadc207a9bf5370faa343d986c)
 
 ### Get All Nfts
 
