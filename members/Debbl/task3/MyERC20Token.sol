@@ -9,6 +9,6 @@ contract MyERC20Token is ERC20 {
         string memory name,
         string memory symbol
     ) ERC20(name, symbol) {
-        _mint(msg.sender, initialSupply);
+        _mint(msg.sender, initialSupply * 10 ** decimals());
     }
 }
