@@ -6,7 +6,7 @@ pragma solidity ^0.8.0;
 
 
 // This is the main building block for smart contracts.
-contract Token {
+contract TestToken {
     // Some string type variables to identify the token.
     string public name = "My Test Token";
     string public symbol = "MTT";
