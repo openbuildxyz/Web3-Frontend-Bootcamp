@@ -1,0 +1,22 @@
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+broadcast
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+
+lib/
+script/
+test/
+
+.env.example
+foundry.toml
+Makefile
+remappings.txt
+.gitmodules
