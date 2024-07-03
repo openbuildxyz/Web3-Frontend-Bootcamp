@@ -62,7 +62,7 @@ function resolveSortedSequence() {
 function generateResult() {
   const rows = resolveSortedSequence().map((id, idx) => {
     const student = studentMap[id];
-    const cols = [`\`${id}\``, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed }) => resolveCompletedEmoji(completed)));
+    const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed }) => resolveCompletedEmoji(completed)));
 
     return `| ${idx + 1} | ${cols.join(' | ')} |`;
   });
