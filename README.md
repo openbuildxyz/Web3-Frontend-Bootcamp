@@ -5,11 +5,9 @@
 
 ## Introduction
 
-本次「Web3前端训练营」由W3F 和 OpenBuild 共同发起。Artela、Morph 共同主办，并获得 theGraph 、Vara和 Chainlink 生态支持
+本次「Web3前端训练营」由 W3F 和 OpenBuild 共同发起。Artela、Morph 共同主办，并获得 theGraph、Vara 和 Chainlink 生态支持。通过为期4周的系统课程和共同学习机制，帮助更多前端开发者丝滑进入Web3。与此同时，本次训练营将以实战为导向，一步步熟悉和掌握 Web3 前端代码开发。在4周的学习中，学员可以免费参与训练营，并可通过「学习绩点」得到最高 200U 的奖学金激励、Web3行业资源、和行业人脉等。
 
-。通过为期4周的系统课程和共同学习机制，帮助更多前端开发者丝滑进入Web3。与此同时，本次训练营将以实战为导向，一步步熟悉和掌握 Web3 前端代码开发。在4周的学习中，学员可以免费参与训练营，并可通过「学习绩点」得到最高 200U 的奖学金激励、Web3行业资源、和行业人脉等。
-
-## [Github Discussion](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions) 使用方法
+### [Github Discussion](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions) 使用方法
 
 | Categories         | Description                                                  |
 | ------------------ | ------------------------------------------------------------ |
@@ -30,7 +28,7 @@
 
 💰 前端训练营总奖池超过20000元RMB
 
-## ⭐ 学习大纲 ⭐
+### ⭐ 学习大纲 ⭐
 
 一、React框架介绍和优势（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360050) | [哔站](https://www.bilibili.com/video/BV1FfTXefEot) | [油管](https://www.youtube.com/watch?v=Ai0eTfBvEzw)）
 
@@ -46,7 +44,9 @@
 
 六、实战项目二：Uniswap实战（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360121) | [哔站](https://www.bilibili.com/video/BV1kZ421M7Ke) | [油管](https://www.youtube.com/watch?v=TmCSyB7vPtw)）
 
-七、进阶实战：探索EVM++
+七、进阶实战一：探索EVM++（[官网](https://openbuild.xyz/learn/challenges/2036589711/1718782513) | [哔站](https://www.bilibili.com/video/BV1vi421e7T5) | [油管](https://www.youtube.com/watch?v=KGsalPnWEU0)）
+
+八、进阶实战二：在Morph上部署你的第一个合约（[官网](https://openbuild.xyz/learn/challenges/2036589711/1719368568) | [哔站](https://www.bilibili.com/video/BV1vi421e7T5) | [油管](https://www.youtube.com/watch?v=HBD2EgKD0Zg)）
 
 ## 参与方式
 
