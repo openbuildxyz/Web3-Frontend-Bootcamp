@@ -24,12 +24,21 @@ function resolveTask(memberDirPath, taskNum) {
   return { name: taskDirName, completed: existsSync(joinPath(memberDirPath, taskDirName)) };
 }
 
-function resolveCheckboxEmoji(checked) {
+function resolveCompletedEmoji(checked) {
   return checked ? '🟢' : '🔴';
 }
 
+function compareMembers(a, b) {
+  for (let i = 0; i < a.tasks.length; i++) {
+    if (a.tasks[i].completed !== b.tasks[i].completed) {
+        return a.tasks[i].completed ? -1 : 1;
+    }
+  }
+
+  return 0;
+}
+
 function resolveSortedSequence() {
-  const sorted = [];
   const registeredStudents = [];
   const unregisteredStudents = [];
 
@@ -43,13 +52,17 @@ function resolveSortedSequence() {
     }
   });
 
-  return [].concat(registeredStudents, unregisteredStudents);
+  const students = registeredStudents.map(id => studentMap[id]);
+
+  students.sort(compareMembers);
+
+  return [].concat(students.map(({ id }) => id), unregisteredStudents);
 }
 
 function generateResult() {
   const rows = resolveSortedSequence().map((id, idx) => {
     const student = studentMap[id];
-    const cols = [`\`${id}\``, resolveCheckboxEmoji(student.registered)].concat(student.tasks.map(({ completed }) => resolveCheckboxEmoji(completed)));
+    const cols = [`\`${id}\``, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed }) => resolveCompletedEmoji(completed)));
 
     return `| ${idx + 1} | ${cols.join(' | ')} |`;
   });
