@@ -44,7 +44,7 @@
 
 六、实战项目二：Uniswap实战（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360121) | [哔站](https://www.bilibili.com/video/BV1kZ421M7Ke) | [油管](https://www.youtube.com/watch?v=TmCSyB7vPtw)）
 
-七、进阶实战一：探索EVM++（[官网](https://openbuild.xyz/learn/challenges/2036589711/1718782513) | [哔站](https://www.bilibili.com/video/BV1vi421e7T5) | [油管](https://www.youtube.com/watch?v=KGsalPnWEU0)）
+七、进阶实战一：探索EVM++（[官网](https://openbuild.xyz/learn/challenges/2036589711/1718782513) | [哔站](https://www.bilibili.com/video/BV16w4m1e7DF) | [油管](https://www.youtube.com/watch?v=KGsalPnWEU0)）
 
 八、进阶实战二：在Morph上部署你的第一个合约（[官网](https://openbuild.xyz/learn/challenges/2036589711/1719368568) | [哔站](https://www.bilibili.com/video/BV1vi421e7T5) | [油管](https://www.youtube.com/watch?v=HBD2EgKD0Zg)）
 
