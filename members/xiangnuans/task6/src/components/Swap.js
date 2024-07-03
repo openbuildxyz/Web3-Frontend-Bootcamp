@@ -11,11 +11,11 @@ import {
 import { Input, Modal, Popover, Radio, message } from "antd";
 import { Pair, Route } from "@uniswap/v2-sdk";
 import React, { useEffect, useState } from "react";
-import { infura_connection_sepolia, pair_abi, router_abi } from "../resource";
+import { infura_connection_base, pair_abi, router_abi } from "../resource";
 import { useAccount, useWriteContract } from "wagmi";
 
 import { ethers } from "ethers";
-import tokenList from "../tokenList.json";
+import tokenList from "../tokenList-base.json";
 
 function Swap() {
   const [messageApi, contextHolder] = message.useMessage();
@@ -83,20 +83,20 @@ function Swap() {
   }
 
   async function createPair(one, two) {
-    const tokenOneToken = new Token(ChainId.SEPOLIA, one.address, one.decimals);
-    const tokenTwoToken = new Token(ChainId.SEPOLIA, two.address, two.decimals);
+    const tokenOneToken = new Token(ChainId.BASE, one.address, one.decimals);
+    const tokenTwoToken = new Token(ChainId.BASE, two.address, two.decimals);
     const pairAddress = Pair.getAddress(tokenOneToken, tokenTwoToken);
     // router v2 02:  0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
     // router v2 02 base:  0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24
+    // router v2 02 sepolia: 0x425141165d3DE9FEC831896C016617a52363b687
     // Setup provider, import necessary ABI ...
     console.log("oneAddress ..", one.address)
     console.log("TwoAddress ..", two.address)
-    console.log("TwoAddress ..", pairAddress)
+    console.log("pairAddress ..", pairAddress)
 
     const provider = new ethers.providers.JsonRpcProvider(
-      infura_connection_sepolia
+      infura_connection_base
     );
-    console.log("pairAddress : ", pairAddress);
     const pairContract = new ethers.Contract(pairAddress, pair_abi, provider);
     // console.log("pairContract: " + JSON.stringify(pairContract))
     const reserves = await pairContract["getReserves"]();
@@ -117,12 +117,12 @@ function Swap() {
 
   async function fetchPrices(tokenOne, tokenTwo) {
     const tokenOneToken = new Token(
-      ChainId.SEPOLIA,
+      ChainId.BASE,
       tokenOne.address,
       tokenOne.decimals
     );
     const tokenTwoToken = new Token(
-      ChainId.SEPOLIA,
+      ChainId.BASE,
       tokenTwo.address,
       tokenTwo.decimals
     );
@@ -183,12 +183,12 @@ function Swap() {
 
   async function fetchDexSwap() {
     const tokenOneToken = new Token(
-      ChainId.SEPOLIA,
+      ChainId.BASE,
       tokenOne.address,
       tokenOne.decimals
     );
     const tokenTwoToken = new Token(
-      ChainId.SEPOLIA,
+      ChainId.BASE,
       tokenTwo.address,
       tokenTwo.decimals
     );

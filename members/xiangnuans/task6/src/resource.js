@@ -1,9 +1,9 @@
 export const infura_connection =
-  "https://mainnet.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f";
+  "https://eth-mainnet.g.alchemy.com/v2/JbPXxlyKaMCuNnlrVbQ7fDZtHh84JUyG";
 
-export const infura_connection_base = "https://base-mainnet.infura.io/v3/8cb704475672484983ef98fa6d68d033";
+export const infura_connection_base = "https://base-mainnet.g.alchemy.com/v2/JbPXxlyKaMCuNnlrVbQ7fDZtHh84JUyG";
 
-export const infura_connection_sepolia = "https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f"
+export const infura_connection_sepolia = "https://eth-sepolia.g.alchemy.com/v2/JbPXxlyKaMCuNnlrVbQ7fDZtHh84JUyG"
 
 export const pair_abi = [
   {
