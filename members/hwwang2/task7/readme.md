@@ -6,3 +6,7 @@
 aspectId： 0x67420345Cdb67cb77f833f01f14CAc12831659de
 
 [事务链接](https://betanet-scan.artela.network/tx/0xca066b2f553c321f8949010a9cec8937a1ca43561220c7ba1c0e2c7e4af30402)
+
+事务截图
+
+![img](./aspect.jpg)
