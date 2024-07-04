@@ -13,12 +13,17 @@ jobs:
   count:
     # if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    env:
+      REPO_NAME: openbuildxyz/Web3-Frontend-Bootcamp
+      REPO_BRANCH: main
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
         with:
-          # persist-credentials: false
+          repository: ${{ env.REPO_NAME }}
+          ref: ${{ env.REPO_BRANCH }}
           token: ${{ secrets.GH_TOKEN }}
+          # persist-credentials: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,5 +38,6 @@ jobs:
           git commit -m "chore: update counted task completion"
       - uses: ad-m/github-push-action@master
         with:
+          repository: ${{ env.REPO_NAME }}
           github_token: ${{ secrets.GH_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: ${{ env.REPO_BRANCH }}
