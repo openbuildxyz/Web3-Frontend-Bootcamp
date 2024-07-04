@@ -1,31 +1,20 @@
 import './App.css'
 import '@rainbow-me/rainbowkit/styles.css';
-import {
-  getDefaultConfig,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import {
-  optimismSepolia
-} from 'wagmi/chains';
 import {
   QueryClientProvider,
   QueryClient,
 } from "@tanstack/react-query";
 import Header from './components/Header';
 import NFTList from './components/NFTList';
-
-const config = getDefaultConfig({
-  appName: 'NFT Market',
-  projectId: 'task6',
-  chains: [optimismSepolia]
-});
+import { wagmiConfig } from './config/wagmi-config';
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
           <Header></Header>
