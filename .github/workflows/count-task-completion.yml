@@ -30,4 +30,5 @@ jobs:
           git commit -m "chore: update counted task completion"
       - uses: ad-m/github-push-action@master
         with:
+          github_token: ${{ secrets.GH_TOKEN }}
           branch: ${{ github.ref }}
