@@ -1,4 +1,5 @@
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -19,7 +20,7 @@ contract NFTMarket is Ownable {
     event NFTListed(uint256 listingId, address seller, address nftContract, uint256 tokenId, uint256 price);
     event NFTBought(uint256 listingId, address buyer);
 
-    constructor(address _currencyToken) {
+    constructor(address _currencyToken) Ownable(msg.sender) {
         currencyToken = IERC20(_currencyToken);
     }
 
@@ -44,5 +45,14 @@ contract NFTMarket is Ownable {
         delete listings[_listingId];
 
         emit NFTBought(_listingId, msg.sender);
+    }
+
+
+    function getAllListings() external view returns (Listing[] memory) {
+        Listing[] memory allListings = new Listing[](listingCount);
+        for (uint256 i = 1; i <= listingCount; i++) {
+            allListings[i-1] = listings[i];
+        }
+        return allListings;
     }
 }
