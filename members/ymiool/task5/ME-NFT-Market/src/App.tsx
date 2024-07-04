@@ -9,6 +9,16 @@ import {
 import Header from './components/Header';
 import NFTList from './components/NFTList';
 import { wagmiConfig } from './config/wagmi-config';
+import Menu from './components/Menu';
+
+export interface INFTItem {
+  nftContract: string;
+  tokenId: bigint;
+  seller: string;
+  price: bigint;
+  addTime: bigint;
+  isActive: boolean;
+}
 
 const queryClient = new QueryClient();
 
@@ -18,6 +28,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
           <Header></Header>
+          <Menu></Menu>
           <NFTList></NFTList>
         </RainbowKitProvider>
       </QueryClientProvider>

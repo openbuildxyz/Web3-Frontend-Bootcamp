@@ -296,3 +296,5 @@ export const marketContractAbi = [
 ]
 
 export const marketContractAddress = '0x60c80d788D4E312817E5396bDb56250c91B4F22C'
+
+export const marketPaymentTokenDecimal: number = 6;
