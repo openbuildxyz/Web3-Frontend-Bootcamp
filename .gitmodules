@@ -1,3 +1,0 @@
-[submodule "members/b-t-s-1/task3/lib/forge-std"]
-	path = members/b-t-s-1/task3/lib/forge-std
-	url = https://github.com/foundry-rs/forge-std

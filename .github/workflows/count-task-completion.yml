@@ -1,0 +1,43 @@
+name: Count task completion when PR merged
+
+on:  
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+    paths:
+      - members/*/**
+  workflow_dispatch:
+  
+jobs:
+  count:
+    # if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    env:
+      REPO_NAME: openbuildxyz/Web3-Frontend-Bootcamp
+      REPO_BRANCH: main
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.REPO_NAME }}
+          ref: ${{ env.REPO_BRANCH }}
+          # token: ${{ secrets.GH_TOKEN }}
+          persist-credentials: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14.15.3
+      - name: Count task completion
+        run: node scripts/count.js
+      - name: Commit changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "chore: update counted task completion"
+      - uses: ad-m/github-push-action@master
+        with:
+          repository: ${{ env.REPO_NAME }}
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ env.REPO_BRANCH }}
