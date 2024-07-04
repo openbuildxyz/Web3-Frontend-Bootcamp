@@ -22,7 +22,7 @@ jobs:
         with:
           repository: ${{ env.REPO_NAME }}
           ref: ${{ env.REPO_BRANCH }}
-          token: ${{ secrets.GH_TOKEN }}
+          # token: ${{ secrets.GH_TOKEN }}
           # persist-credentials: false
       - name: Install Node.js
         uses: actions/setup-node@v4
