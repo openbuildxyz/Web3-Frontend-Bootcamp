@@ -1,7 +1,13 @@
 {
   "name": "hardhat-project",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
-    "hardhat": "^2.22.5"
+    "hardhat": "^2.22.6"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2"
+  },
+  "scripts": {
+    "deploy": "npx hardhat ignition deploy ./ignition/modules/NFTMarketDeployment.js --network sepolia --verify"
   }
 }
