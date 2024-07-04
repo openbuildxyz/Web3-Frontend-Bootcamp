@@ -11,7 +11,7 @@ on:
   
 jobs:
   count:
-    if: github.event.pull_request.merged == true
+    if: github.event_name == "workflow_dispatch" || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
