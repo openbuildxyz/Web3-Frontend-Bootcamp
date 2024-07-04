@@ -16,8 +16,8 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
-        # with:
-        #   persist-credentials: false
+        with:
+          persist-credentials: false
         #   token: ${{ secrets.GH_TOKEN }}
       - name: Install Node.js
         uses: actions/setup-node@v4
