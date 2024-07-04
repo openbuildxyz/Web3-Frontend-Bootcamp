@@ -1,12 +1,13 @@
 name: Count task completion when PR merged
 
-on:  
-  pull_request:
-    types: [closed]
-    branches:
-      - main
-    paths:
-      - members/*/**
+on:
+  # 这种触发方式总是报错，暂时排查不出具体原因，先注释掉
+  # pull_request:
+  #   types: [closed]
+  #   branches:
+  #     - main
+  #   paths:
+  #     - members/*/**
   workflow_dispatch:
   
 jobs:
