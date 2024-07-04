@@ -14,7 +14,7 @@
 
 ## 任务提交
 
-- task1： todo
+- task1： https://github.com/uhalo-web3-dev/Web3-Frontend-Bootcamp-Task/tree/main/task1/web3-task1-todolist-vite
 - task2： todo
 - task3： todo
 - task4： todo
