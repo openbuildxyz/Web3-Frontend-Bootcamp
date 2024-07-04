@@ -18,6 +18,7 @@
     "alchemy-sdk": "^3.3.1",
     "ethers": "^6.13.1",
     "framer-motion": "^11.2.12",
+    "lucide-react": "^0.400.0",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
@@ -25,6 +26,7 @@
     "wagmi": "^2.10.5"
   },
   "devDependencies": {
+    "@iconify/tailwind": "^1.1.1",
     "@types/node": "^20",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18",

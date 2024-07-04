@@ -1,22 +1,19 @@
 import type { NextPage } from 'next';
-import ConnectWallet from './components/ConnectWallet';
-import ListNFT from './components/ListNFT';
-import DisplayNFTs from './components/DisplayNFTs';
-import BuyNFT from './components/BuyNFT';
-import { Spacer } from '@nextui-org/react';
+import ConnectWallet from '@/app/components/ConnectWallet';
+import ListNFT from '@/app/components/ListNFT';
+import DisplayNFTs from '@/app/components/DisplayNFTs';
 
 const Home: NextPage = () => {
   return (
     <div>
-      <h1>NFT Marketplace</h1>
-      <Spacer y={1} />
-      <ConnectWallet />
-      <Spacer y={2} />
-      <ListNFT />
-      <Spacer y={2} />
-      <DisplayNFTs />
-      <Spacer y={2} />
-      <BuyNFT />
+      <div className="flex flex-row justify-between p-4">
+        <h1>NFT Marketplace</h1>
+        <ConnectWallet />
+      </div>
+      <div className='p-2'>
+        <ListNFT className='mb-2' />
+        <DisplayNFTs />
+      </div>
     </div>
   );
 };

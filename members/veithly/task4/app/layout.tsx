@@ -14,6 +14,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <html>
+        <head>
+          <title>NFT Marketplace</title>
+        </head>
         <body>
           <Providers>
             <WagmiProvider config={config}>
