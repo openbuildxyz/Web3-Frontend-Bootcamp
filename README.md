@@ -14,7 +14,7 @@
 | Categories         | Description                                                  |
 | ------------------ | ------------------------------------------------------------ |
 | [🍕Materials](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/materials)         | 课外资料/课堂笔记（欢迎贡献）  |
-| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 答疑   |
+| [🙏 Q&A](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/q-a)              | 提问 / 知识答疑   |
 | [💰Bounty](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/bounty)   | Bounty 任务：课堂作业/课堂笔记/社区贡献etc|
 | 💡[I've got an idea!](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions/categories/i-ve-got-an-idea)   | 关于一些 Amazing fancy ideas, 用来<br />1. Web3前端共学 <br />2. 组队开发<br />3. 参加黑客松<br />4. 招聘内推<br />5. 自娱自乐🎣<br /> |
 
@@ -32,17 +32,19 @@
 
 ## ⭐ 学习大纲 ⭐
 
-一、React框架介绍和优势
+一、React框架介绍和优势（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360050) | [哔站](https://www.bilibili.com/video/BV1FfTXefEot) | [油管](https://www.youtube.com/watch?v=Ai0eTfBvEzw)）
 
-二、Web3技术基础入门
+二、Web3技术基础入门（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360063) | [哔站](https://www.bilibili.com/video/BV1ZPT9esE2c) | [油管](https://www.youtube.com/watch?v=z3s_iWIo0l0)）
 
-三、智能合约快速入门
+三、智能合约快速入门（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360080) | [哔站](https://www.bilibili.com/video/BV1mS411P7Hm) | [油管](https://www.youtube.com/watch?v=QGwPKges43s)）
 
-四、Web3前端框架和合约关系
+四、Web3前端框架和合约关系（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360093) | [哔站](https://www.bilibili.com/video/BV1pM4m1S74X) | [油管](https://www.youtube.com/watch?v=Qrf-J6QUVtE)）
 
-五、实战项目一：轻松开发DApp前端项目
+四点五、Web3前端训练营AMA答疑第一期（[官网](https://openbuild.xyz/learn/challenges/2036589711/1718779928) | [哔站](https://www.bilibili.com/video/BV1cE421N7yM) | [油管](https://www.youtube.com/watch?v=OFkKhAedcpg)）
 
-六、实战项目二：Uniswap实战
+五、实战项目一：轻松开发DApp前端项目（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360106) | [哔站](https://www.bilibili.com/video/BV1nz421z7u2) | [油管](https://www.youtube.com/watch?v=gjerUfj_IsI)）
+
+六、实战项目二：Uniswap实战（[官网](https://openbuild.xyz/learn/challenges/2036589711/1716360121) | [哔站](https://www.bilibili.com/video/BV1kZ421M7Ke) | [油管](https://www.youtube.com/watch?v=TmCSyB7vPtw)）
 
 七、进阶实战：探索EVM++
 
@@ -55,6 +57,8 @@
 3. 参考「[活动报名](#活动报名)」提交 PR，完成报名。
 
 ### 任务提交
+
+除了下面的文字说明，也可看视频《[OpenBuild Web3 前端训练营作业提交演示](https://www.bilibili.com/video/BV11gVxeuE7Y)》。
 
 #### 前置操作
 
@@ -78,7 +82,7 @@
 
 每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
 
-**⚠️⚠️⚠️ 请按要求提交你的pr，否则可能影响奖励的计算**
+**⚠️⚠️⚠️ 不符合规范的会加上「[invalid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Aopen+is%3Apr+label%3Ainvalid)」标签，请按要求提交你的 PR，否则可能影响奖励的计算！**
 
 #### PR 命名
 
@@ -86,7 +90,7 @@
 
 提交 task 的 PR，命名为 `task[n]: user-name`，例如： `task0: Beavnvvv`
 
-需要编写网页的 `task`，请上传效果截图。
+需要编写网页的 `task`，请在描述中上传效果截图。
 
 **请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！<br>请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！<br>请不要把报名和提交TASK的内容合并到一起，也不要将多个TASK放到一起提交！**
 
@@ -108,9 +112,10 @@
 | [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    ￥18     | 区块链基础小测 |
 | [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
 | [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 使用ethers.js和wagmi与NFTMarket合约交互         |
-| [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 完成一个完整的NFTMarket的Dapp         |
+| [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 开发一个完整的NFTMarket的Dapp         |
 | [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
-| [Task 7](task/06.SDK_PTB_NAVI.md)          | web3小工具实践 |  💲50（Token) | 跟随教程学习EVM++，实现一个限流器demo   |
+| [Task 7](task/07_EVM++_Demo.md)          | web3小工具实践 |  💲50（Token) | 跟随[教程](https://fanatical-krypton-122.notion.site/OpenBuild-Frontend-Bootcamp-5e62657ab5774786b1901bfd862e8e9a?pvs=4)学习EVM++，实现一个限流器demo   |
+| [Task 8](task/08_Hello_Morph.md)          | Hello Morph |    10U     |  在Morph Holesky上部署任意合约并在Morph浏览器上验证   |
 
 ## 参考资料
 
