@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useReadContract } from 'wagmi';
-import { marketContractAbi, marketContractAddress, marketPaymentTokenDecimal } from '../config/market-contract';
+import React from 'react';
+import { paymentTokenDecimal } from "../config/payment-token-contract";
 import NFTItem from './NFTItem';
-import { INFTItem } from '../App';
+import { INFTItem } from '../model/app';
 import styled from 'styled-components';
 
-const NFTList: React.FC = () => {
-    const [nftItems, setNftItems] = useState<INFTItem[]>([]);
+interface NFTListProps {
+    nftItems: INFTItem[];
+    onBuy: (item: INFTItem) => void;
+    onRemove: (item: INFTItem) => void;
+}
 
-    const { data } = useReadContract(
-        {
-            abi: marketContractAbi,
-            address: marketContractAddress,
-            functionName: 'getAllNFTItems'
-        }
-    );
-    useEffect(() => {
-        if (data) {
-            setNftItems(data as INFTItem[]);
-        }
-    }, [data])
-
+const NFTList: React.FC<NFTListProps> = ({ nftItems, onBuy, onRemove }: NFTListProps) => {
     return (
         <List>
             {[...nftItems].map((item: INFTItem, index: number) =>
-                <NFTItem key={index} item={item} priceDecimal={marketPaymentTokenDecimal}></NFTItem>
+                <NFTItem key={index} item={item} priceDecimal={paymentTokenDecimal}
+                    onBuy={onBuy} onRemove={onRemove}
+                ></NFTItem>
             )}
         </List>
     );

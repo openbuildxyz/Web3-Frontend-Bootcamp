@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { INFTItem } from '../App';
+import { INFTItem } from '../model/app';
 import { formatUnits } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
-import { NFTAbi } from '../config/nft-contract';
+import { nftAbi } from '../config/nft-contract';
 import styled from 'styled-components';
 
 function formatAddress(address: string): string {
@@ -12,16 +12,18 @@ function formatAddress(address: string): string {
 interface NFTItemProps {
     item: INFTItem;
     priceDecimal: number;
+    onBuy: (item: INFTItem) => void;
+    onRemove: (item: INFTItem) => void;
 }
 
-const NFTItem: React.FC<NFTItemProps> = ({ item, priceDecimal }: NFTItemProps) => {
+const NFTItem: React.FC<NFTItemProps> = ({ item, priceDecimal, onBuy, onRemove }: NFTItemProps) => {
     const { address } = useAccount();
 
     const [tokenURI, setTokenURI] = useState<string>();
 
     const { data } = useReadContract(
         {
-            abi: NFTAbi,
+            abi: nftAbi,
             address: item.nftContract as `0x${string}`,
             functionName: 'tokenURI',
             args: [item.tokenId]
@@ -58,9 +60,13 @@ const NFTItem: React.FC<NFTItemProps> = ({ item, priceDecimal }: NFTItemProps) =
             </InfoLine>
             <InfoLine>
                 <span>Price💲{formatUnits(item.price, priceDecimal)}</span>
-                {address === item.seller ? <span>下架⬇️</span> : <span>购买🉐</span>}
+                {item.isActive === false && <span>已下架🤍</span>}
+                {item.isActive === true && (address === item.seller ?
+                    <span onClick={() => { onRemove(item) }}>下架⬇️</span> :
+                    <span onClick={() => { onBuy(item) }
+                    }>购买🉐</span>)}
             </InfoLine>
-        </NFTCard>
+        </NFTCard >
     );
 };
 

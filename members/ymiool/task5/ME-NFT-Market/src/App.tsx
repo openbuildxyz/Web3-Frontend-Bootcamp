@@ -6,19 +6,8 @@ import {
   QueryClientProvider,
   QueryClient,
 } from "@tanstack/react-query";
-import Header from './components/Header';
-import NFTList from './components/NFTList';
 import { wagmiConfig } from './config/wagmi-config';
-import Menu from './components/Menu';
-
-export interface INFTItem {
-  nftContract: string;
-  tokenId: bigint;
-  seller: string;
-  price: bigint;
-  addTime: bigint;
-  isActive: boolean;
-}
+import Home from './pages/home';
 
 const queryClient = new QueryClient();
 
@@ -27,9 +16,7 @@ function App() {
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <Header></Header>
-          <Menu></Menu>
-          <NFTList></NFTList>
+          <Home></Home>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
