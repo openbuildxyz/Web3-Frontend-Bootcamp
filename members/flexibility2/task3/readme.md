@@ -1,0 +1,7 @@
+1.  上架 NFT 的交易哈希
+
+- 0x2a1daf4d1bb51296a948c4abf0a3aeb00c223c256be92fb473fd3f137c3914f1
+
+2. 购买 NFT 的交易哈希
+
+- 0xc11da54ed3b861c0f98144e962ea7c4b3d6b139ab69456a24086f92e0224a478
