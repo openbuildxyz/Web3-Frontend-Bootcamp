@@ -44,6 +44,7 @@ contract NFTMarket is ReentrancyGuard {
         uint256 tokenId,
         uint256 price
     ) external nonReentrant {
+        require(price > 0, "Price must be greater than zero");
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
 
         listings[listingCount] = Listing({
