@@ -53,7 +53,7 @@ class Aspect implements IPreContractCallJP {
         }
 
         // update the throttle state
-        lastExecState.set(lastExecAt+1);
+        lastExecState.set(blockTime);
         execTimeState.set(execTimes+1);
     }
 
