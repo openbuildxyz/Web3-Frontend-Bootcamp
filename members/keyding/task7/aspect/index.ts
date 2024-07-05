@@ -44,7 +44,7 @@ class Aspect implements IPreContractCallJP {
     const lastExecAt = lastExecAtStatus.unwrap();
 
     // check if the throttle interval has passed, revert if not
-    if (lastExecAt && blockTime - lastExecAt > interval) {
+    if (lastExecAt && blockTime - lastExecAt < interval) {
       sys.revert(`Action is throttled. Please wait ${interval} more seconds.`);
     }
 
