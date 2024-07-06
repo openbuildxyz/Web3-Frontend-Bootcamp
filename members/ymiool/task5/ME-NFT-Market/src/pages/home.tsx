@@ -22,7 +22,7 @@ const Home: React.FC = () => {
             onSuccess:
                 () => {
                     delayRefresh();
-                    showMessage('添加成功✨');
+                    showMessage('上架成功✨');
                 }
         });
     }

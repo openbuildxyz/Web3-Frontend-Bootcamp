@@ -25,14 +25,14 @@ const NFTAddingDialog: React.FC<NFTAddingDialogProps> = ({ onAdd }: NFTAddingDia
             {showDialog &&
                 <Dialog>
                     <DialogHeader>
-                        <button onClick={() => { setShowDialog(false) }}>❎</button>
+                        <CloseBtn onClick={() => { setShowDialog(false) }}>✖</CloseBtn>
                     </DialogHeader>
 
                     <Form onSubmit={handleOnSubmit}>
                         <Input name="nftContract" placeholder="NFT Contract" required defaultValue={nftContractAddress}></Input>
                         <Input name="tokenId" placeholder="NFT TokenID" required></Input>
                         <Input name="price" placeholder="NFT Price" required></Input>
-                        <button type="submit">上架</button>
+                        <button type="submit">上架 📣</button>
                     </Form>
                 </Dialog>
             }
@@ -80,16 +80,14 @@ const BtnText = styled.span`
 
 const Dialog = styled.div`
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 20px;
+    bottom: 20px;
     z-index: 1000;
-    width: min(80vw, 800px);
-    height: 70vh;
+    width: 200px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0px 0px 300px 200px rgb(102 100 214 / 30%);
+    box-shadow: 0px 0px 300px 160px rgb(102 100 214 / 30%);
     border: 4px solid #f2eeda;
 
     animation: fadeIn 0.5s forwards;
@@ -104,9 +102,9 @@ const Dialog = styled.div`
 `;
 
 const DialogHeader = styled.div`
-    height: 10%;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 16px;
 `;
 
 const Form = styled.form`
@@ -121,3 +119,14 @@ const Input = styled.input`
     border-radius: 5px;
     border: 1px solid #745ec2;
 `;
+
+const CloseBtn = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    padding: 0px;
+`

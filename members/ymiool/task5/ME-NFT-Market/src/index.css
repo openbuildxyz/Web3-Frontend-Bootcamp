@@ -31,12 +31,21 @@ button {
   cursor: pointer;
   transition: all 0.25s;
 }
+
 button:hover {
   transform: scale(1.1);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:disabled {
+  &:hover {
+    transform: none;
+    cursor: default;
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -44,7 +53,7 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  
+
   button {
     background-color: #f9f9f9;
   }

@@ -10,7 +10,7 @@ export function useFetchNFTList(): {
 } {
     const [nftItems, setNftItems] = useState<INFTItem[]>([]);
 
-    const { data: nftList, refetch: refetchList, isFetching: isListFetching } = useReadContract(
+    const { data: nftList, dataUpdatedAt, refetch: refetchList, isFetching: isListFetching } = useReadContract(
         {
             abi: marketContractAbi,
             address: marketContractAddress,
@@ -21,15 +21,15 @@ export function useFetchNFTList(): {
     async function delayRefresh() {
         setTimeout(() => {
             refetchList();
-        }, 2000)
+        }, 2500)
     }
     
-    useEffect(() => {
+    useEffect(() => {        
         if (nftList) {
             const activeNFTItems = (nftList as INFTItem[]).filter((item: INFTItem) => item.isActive);
             setNftItems(nftList as INFTItem[]);
         }
-    }, [nftList]);
+    }, [dataUpdatedAt]);
 
     return {
         nftItems, isListFetching, delayRefresh

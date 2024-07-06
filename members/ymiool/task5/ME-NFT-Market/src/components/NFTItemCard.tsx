@@ -41,17 +41,17 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
             <InfoLine>
                 <InfoItem>
                     <span>NFT Contract</span>
-                    <span>{formatAddress(item.nftContract)}</span>
+                    <span title={item.nftContract}>{formatAddress(item.nftContract)}</span>
                 </InfoItem>
                 <InfoItem>
                     <span>Token ID</span>
-                    <span>{item.tokenId.toString()}</span>
+                    <span># {item.tokenId.toString()}</span>
                 </InfoItem>
             </InfoLine>
             <InfoLine>
                 <InfoItem>
                     <span>Seller</span>
-                    <span>{formatAddress(item.seller)}</span>
+                    <span title={item.seller}>{formatAddress(item.seller)}</span>
                 </InfoItem>
                 <InfoItem>
                     <span>Add Time</span>
@@ -59,13 +59,15 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
                 </InfoItem>
             </InfoLine>
             <InfoLine>
-                <span>Price💲{formatUnits(item.price, priceDecimal)}</span>
+                {item.isActive === false && <ActionBtn disabled>已下架🤍</ActionBtn>}
 
-                {item.isActive === false && <span>已下架🤍</span>}
                 {item.isActive === true && (address === item.seller ?
-                    <span onClick={() => { onRemove(item) }}>下架⬇️</span> :
-                    <ActionBtn onClick={() => { onBuy(item) }
+                    <ActionBtn $color={'#4aa3e7'} onClick={() => { onRemove(item) }}>下架⬇️</ActionBtn> :
+
+                    <ActionBtn $color={'red'} onClick={() => { onBuy(item) }
                     }>购买🉐</ActionBtn>)}
+
+                <span style={{ display: 'flex' }}>Price💲<Price>{formatUnits(item.price, priceDecimal)}</Price></span>
             </InfoLine>
         </NFTCard >
     );
@@ -74,39 +76,76 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
 export default NFTItemCard;
 
 const NFTCard = styled.div`
-    border: 1px solid #e9ecef;
+    border: 1px solid #cfcef0;
+    border-radius: 6px;
     padding: 20px;
     margin: 20px;
     width: 200px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: 1px 2px 3px rgb(102 100 214 / 30%);
 `;
 
 const NFTImg = styled.img`
     width: 200px;
     height: 200px;
     object-fit: contain;
+    cursor: grab;
+    
+    &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s;
+    }
 `;
 
 const InfoLine = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
+
+    &:not(:last-child) {
+        gap: 50px;
+        padding: 0 4px;
+    }
+
+    &:last-child {
+        font-size: 14px;
+        padding-top: 16px;
+        border-top: 3px dotted #cfcef0;
+        flex-direction: row-reverse;
+    }
 `;
 
 const InfoItem = styled.div`
     width: 50%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     font-size: 12px;
+
+    span:first-child {
+        color: #b3b3b3;
+    }
 `
 
-const ActionBtn = styled.button`
-    border: 1px solid red;
+const ActionBtn = styled.button<{ $color?: string }>`
+    flex-shrink: 0;
+    border: 1px solid ${props => props.$color || 'none'};
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     line-height: 16px;
     padding: 8px 10px;
+`;
+
+const Price = styled.span`
+    font-size: 16px;
+    font-weight: bold;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    margin-right: 2px;
 `;
