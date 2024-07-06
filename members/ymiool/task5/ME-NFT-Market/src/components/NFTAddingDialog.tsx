@@ -1,79 +1,38 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { BaseError, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
-import { marketContractAbi, marketContractAddress } from '../config/market-contract';
-import { paymentTokenContractAbi, paymentTokenContractAddress, paymentTokenDecimal } from "../config/payment-token-contract";
-import { nftAbi, nftContractAddress } from '../config/nft-contract';
+import { nftContractAddress } from '../config/nft-contract';
 
-interface MenuProps {
-    onRefresh: any;
+interface NFTAddingDialogProps {
+    onAdd: (nftContract: string, tokenId: string, price: string, onEnd: () => void) => void;
 }
 
-const Menu: React.FC = ({ onRefresh }: MenuProps) => {
+const NFTAddingDialog: React.FC<NFTAddingDialogProps> = ({ onAdd }: NFTAddingDialogProps) => {
     const [showDialog, setShowDialog] = useState(false);
-    const { data: addHash, isPending: isAddPending, error, writeContract: contractAddNFT } = useWriteContract();
-    const { data: approveNFTHash, writeContract: contractApproveNFT } = useWriteContract();
-    const { data: approveTokenHash, writeContract: contractApproveToken } = useWriteContract();
 
-    const { isLoading: isAddLoading, isSuccess: isAddSuccess } = useWaitForTransactionReceipt({
-        hash: addHash
-    });
-
-    async function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
+    function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const nftContract = formData.get('nftContract') as string;
         const tokenId = formData.get('tokenId') as string;
         const price = formData.get('price') as string;
-        contractAddNFT({
-            abi: marketContractAbi,
-            address: marketContractAddress,
-            functionName: 'addNFT',
-            args: [nftContract, BigInt(tokenId), BigInt(Number(price) * Math.pow(10, paymentTokenDecimal))]
-        }, {
-            onSettled: () => {
-                setShowDialog(false);
-            },
-            onError: () => {
-                alert((error as BaseError).shortMessage || error?.message);
-            },
-            onSuccess: () => {
-                onRefresh();
-                console.log('add success');
-            }
-        }
-        );
-    }
-
-    async function handleOnAuthorize() {
-        contractApproveNFT({
-            abi: nftAbi,
-            address: nftContractAddress,
-            functionName: 'setApprovalForAll',
-            args: [marketContractAddress, true]
-        });
-        contractApproveToken({
-            abi: paymentTokenContractAbi,
-            address: paymentTokenContractAddress,
-            functionName: 'approve',
-            args: [marketContractAddress, BigInt(100000 * Math.pow(10, paymentTokenDecimal))]
-        });
+        onAdd(nftContract, tokenId, price, () => { setShowDialog(false) });
     }
 
     return (
         <>
             <FloatButton onClick={() => { setShowDialog(!showDialog) }}><BtnText>➕</BtnText></FloatButton>
+
             {showDialog &&
-                <Dialog $showDialog={showDialog}>
-                    <Header>
+                <Dialog>
+                    <DialogHeader>
                         <button onClick={() => { setShowDialog(false) }}>❎</button>
-                    </Header>
-                    <button onClick={handleOnAuthorize}>授权</button>
+                    </DialogHeader>
+
                     <Form onSubmit={handleOnSubmit}>
                         <Input name="nftContract" placeholder="NFT Contract" required defaultValue={nftContractAddress}></Input>
                         <Input name="tokenId" placeholder="NFT TokenID" required></Input>
                         <Input name="price" placeholder="NFT Price" required></Input>
-                        <button type="submit" disabled={isAddLoading || isAddPending}>上架</button>
+                        <button type="submit">上架</button>
                     </Form>
                 </Dialog>
             }
@@ -81,7 +40,7 @@ const Menu: React.FC = ({ onRefresh }: MenuProps) => {
     );
 };
 
-export default Menu;
+export default NFTAddingDialog;
 
 const FloatButton = styled.button`
     position: fixed;
@@ -119,7 +78,7 @@ const BtnText = styled.span`
         }
 `;
 
-const Dialog = styled.div<{ $showDialog: boolean }>`
+const Dialog = styled.div`
     position: fixed;
     top: 50%;
     left: 50%;
@@ -133,7 +92,7 @@ const Dialog = styled.div<{ $showDialog: boolean }>`
     box-shadow: 0px 0px 300px 200px rgb(102 100 214 / 30%);
     border: 4px solid #f2eeda;
 
-    animation: fadeIn 0.3s forwards;
+    animation: fadeIn 0.5s forwards;
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -144,7 +103,7 @@ const Dialog = styled.div<{ $showDialog: boolean }>`
     }
 `;
 
-const Header = styled.div`
+const DialogHeader = styled.div`
     height: 10%;
     display: flex;
     justify-content: flex-end;

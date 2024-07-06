@@ -6,3 +6,9 @@ export interface INFTItem {
     addTime: bigint;
     isActive: boolean;
 }
+
+export interface IAddNFTParams {
+    nftContract: string;
+    tokenId: string;
+    price: string;
+}

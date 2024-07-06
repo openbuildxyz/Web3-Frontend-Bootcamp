@@ -1,7 +1,7 @@
 import React from 'react';
 import { paymentTokenDecimal } from "../config/payment-token-contract";
-import NFTItem from './NFTItem';
-import { INFTItem } from '../model/app';
+import NFTItemCard from './NFTItemCard';
+import { INFTItem } from '../model/data';
 import styled from 'styled-components';
 
 interface NFTListProps {
@@ -14,9 +14,9 @@ const NFTList: React.FC<NFTListProps> = ({ nftItems, onBuy, onRemove }: NFTListP
     return (
         <List>
             {[...nftItems].map((item: INFTItem, index: number) =>
-                <NFTItem key={index} item={item} priceDecimal={paymentTokenDecimal}
+                <NFTItemCard key={index} item={item} priceDecimal={paymentTokenDecimal}
                     onBuy={onBuy} onRemove={onRemove}
-                ></NFTItem>
+                ></NFTItemCard>
             )}
         </List>
     );

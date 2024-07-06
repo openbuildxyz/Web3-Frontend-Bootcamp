@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { INFTItem } from '../model/app';
+import { INFTItem } from '../model/data';
 import { formatUnits } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
 import { nftAbi } from '../config/nft-contract';
@@ -9,14 +9,14 @@ function formatAddress(address: string): string {
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }
 
-interface NFTItemProps {
+interface NFTItemCardProps {
     item: INFTItem;
     priceDecimal: number;
     onBuy: (item: INFTItem) => void;
     onRemove: (item: INFTItem) => void;
 }
 
-const NFTItem: React.FC<NFTItemProps> = ({ item, priceDecimal, onBuy, onRemove }: NFTItemProps) => {
+const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, onRemove }: NFTItemCardProps) => {
     const { address } = useAccount();
 
     const [tokenURI, setTokenURI] = useState<string>();
@@ -60,17 +60,18 @@ const NFTItem: React.FC<NFTItemProps> = ({ item, priceDecimal, onBuy, onRemove }
             </InfoLine>
             <InfoLine>
                 <span>Price💲{formatUnits(item.price, priceDecimal)}</span>
+
                 {item.isActive === false && <span>已下架🤍</span>}
                 {item.isActive === true && (address === item.seller ?
                     <span onClick={() => { onRemove(item) }}>下架⬇️</span> :
-                    <span onClick={() => { onBuy(item) }
-                    }>购买🉐</span>)}
+                    <ActionBtn onClick={() => { onBuy(item) }
+                    }>购买🉐</ActionBtn>)}
             </InfoLine>
         </NFTCard >
     );
 };
 
-export default NFTItem;
+export default NFTItemCard;
 
 const NFTCard = styled.div`
     border: 1px solid #e9ecef;
@@ -100,3 +101,12 @@ const InfoItem = styled.div`
     flex-direction: column;
     font-size: 12px;
 `
+
+const ActionBtn = styled.button`
+    border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 8px 10px;
+`;

@@ -1,120 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import { marketContractAbi, marketContractAddress } from '../config/market-contract';
-import { useReadContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
-import { INFTItem } from '../model/app';
+import React from 'react';
+import { INFTItem } from '../model/data';
 import Header from '../components/Header';
-import Menu from '../components/Menu';
+import NFTAddingDialog from '../components/NFTAddingDialog';
 import NFTList from '../components/NFTList';
-import styled from 'styled-components';
+import Message, { useMessage } from '../components/Message';
+import LoadingOverlay from '../components/LoadingOverlay';
+import { useFetchNFTList } from '../hooks/useFetchNFTList';
+import { useBuyNFTItem } from '../hooks/useBuyNFTItem';
+import { useAddNFTToMarket } from '../hooks/useAddNFTToMarket';
+import { useRemoveNFTFromMarket } from '../hooks/useRemoveNFTFromMarket';
 
 const Home: React.FC = () => {
-    const [nftItems, setNftItems] = useState<INFTItem[]>([]);
+    const { showMessage, msgToggle, msg } = useMessage();
 
-    const { data, dataUpdatedAt, refetch: refetchList, isFetching: isListFetching } = useReadContract(
-        {
-            abi: marketContractAbi,
-            address: marketContractAddress,
-            functionName: 'getAllNFTItems'
-        }
-    );
+    const { nftItems, isListFetching, delayRefresh } = useFetchNFTList();
 
-    function delayRefresh() {
-        console.log("delay");
-        setTimeout(() => {
-            refetchList();
-            console.log("refreshed");
-        }, 2000)
+    const { isAddPending, isAddLoading, addNFTToMarket } = useAddNFTToMarket();
+    const handleOnAdd = (nftContract: string, tokenId: string, price: string, onEnd: () => void) => {
+        addNFTToMarket({ nftContract, tokenId, price }, {
+            onEnd,
+            onSuccess:
+                () => {
+                    delayRefresh();
+                    showMessage('添加成功✨');
+                }
+        });
     }
 
-    useEffect(() => {
-        console.log(data);
-        console.log(new Date(dataUpdatedAt));
-        if (data) {
-            const activeNFTItems = (data as INFTItem[]).filter((item: INFTItem) => item.isActive);
-            setNftItems(data);
-        }
-    }, [dataUpdatedAt]);
-
-    const { data: buyHash, writeContract: writeContractBuy } = useWriteContract();
-    const onBuy = (item: INFTItem) => {
-        writeContractBuy({
-            abi: marketContractAbi,
-            address: marketContractAddress,
-            functionName: 'exchangeNFT',
-            args: [item.nftContract, item.tokenId],
-        }, {
+    const { isBuyConfirming, buyNFTItem } = useBuyNFTItem();
+    const handleOnBuy = (item: INFTItem) => {
+        buyNFTItem(item, {
             onSuccess: () => {
                 delayRefresh();
+                showMessage('购买成功🎉');
             }
         });
     }
-    const { isLoading: isBuyConfirming, isSuccess: isBuyConfirmed } =
-        useWaitForTransactionReceipt({
-            hash: buyHash
-        })
 
-    const { data: removeHash, writeContract: writeContractRemove } = useWriteContract();
-    const onRemove = (item: INFTItem) => {
-        writeContractRemove({
-            abi: marketContractAbi,
-            address: marketContractAddress,
-            functionName: 'inactivateNFT',
-            args: [item.nftContract, item.tokenId]
-        }, {
+    const { isRemoveConfirming, removeNFTFromMarket } = useRemoveNFTFromMarket();
+    const handelOnRemove = (item: INFTItem) => {
+        removeNFTFromMarket(item, {
             onSuccess: () => {
                 delayRefresh();
-                console.log('remove success');
+                showMessage('下架成功📦');
             }
-        }
-        );
+        });
     }
-    const { isLoading: isRemoveConfirming, isSuccess: isRemoveConfirmed } =
-        useWaitForTransactionReceipt({
-            hash: removeHash
-        })
 
     return (
         <>
             <Header></Header>
-            <Menu onRefresh={delayRefresh}></Menu>
             <NFTList nftItems={nftItems}
-                onBuy={onBuy}
-                onRemove={onRemove}
+                onBuy={handleOnBuy}
+                onRemove={handelOnRemove}
             ></NFTList>
-            {(isBuyConfirming || isRemoveConfirming || isListFetching) &&
-                <LoadingOverlay>Loading...</LoadingOverlay>}
+            <NFTAddingDialog onAdd={handleOnAdd}></NFTAddingDialog>
+
+            {msgToggle && <Message text={msg}></Message>}
+            {<LoadingOverlay isLoading={isBuyConfirming || isRemoveConfirming || isListFetching || isAddPending || isAddLoading}></LoadingOverlay>}
         </>
     );
 };
 
 export default Home;
-
-const LoadingOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: #745ec2;
-    z-index: 9999;
-
-    &::after {
-        content: '⏳';
-        animation: spin 2s infinite linear;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-`;
-

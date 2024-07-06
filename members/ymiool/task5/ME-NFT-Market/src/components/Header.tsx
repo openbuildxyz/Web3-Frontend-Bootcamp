@@ -1,12 +1,16 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import React from 'react';
 import styled from 'styled-components';
+import AuthBar from './AuthBar';
 
 const Header: React.FC = () => {
     return (
         <MarketHeader>
             <MarketTitle>🔮NFT Market</MarketTitle>
-            <ConnectButton></ConnectButton>
+            <RightPart>
+                <AuthBar></AuthBar>
+                <ConnectButton></ConnectButton>
+            </RightPart>
         </MarketHeader>
     );
 };
@@ -29,4 +33,9 @@ const MarketHeader = styled.header`
 const MarketTitle = styled.span`
     font-size: 24px;
     font-weight: bold;
+`;
+
+const RightPart = styled.div`
+    display: flex;
+    align-items: center;
 `;

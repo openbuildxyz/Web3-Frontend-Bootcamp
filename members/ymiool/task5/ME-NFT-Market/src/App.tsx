@@ -7,8 +7,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { wagmiConfig } from './config/wagmi-config';
-import Home from './pages/home';
-
+import Home from './pages/Home';
 const queryClient = new QueryClient();
 
 function App() {
