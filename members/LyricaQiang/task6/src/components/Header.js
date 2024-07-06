@@ -20,7 +20,7 @@ function Header() {
       <div className="rightH">
         <div className="headerItem">
           {/* <img src={Base} alt="base" className="eth" /> */}
-          Base Chain
+          ETH Mainnet
         </div>
         <ConnectButton />
       </div>

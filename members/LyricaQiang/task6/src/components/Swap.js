@@ -155,10 +155,11 @@ const Swap = () => {
           
         const tokenOnePrice = route.midPrice.toSignificant(6) // 1901.08
         const tokenTwoPrice = route.midPrice.invert().toSignificant(6) // 0.000526017
-        console.log(route.midPrice.toSignificant(6)) 
-        console.log(route.midPrice.invert().toSignificant(6)) 
+        // console.log(route.midPrice.toSignificant(6)) 
+        // console.log(route.midPrice.invert().toSignificant(6)) 
 
         const ratio = tokenOnePrice
+        console.log(ratio)
         setPrices({
             tokenOne: tokenOnePrice,
             tokenTwo: tokenTwoPrice,
@@ -172,7 +173,7 @@ const Swap = () => {
     const changeAmount = (e)=> {
         setTokenOneAmount(e.target.value)
         if(e.target.value && prices) {
-            setTokenTwoAmount((e.target.value & prices.ratio).toFixed(6))
+            setTokenTwoAmount((e.target.value * prices.ratio).toFixed(6))
         } else { 
             setTokenTwoAmount(null)
         }
