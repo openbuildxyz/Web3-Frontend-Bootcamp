@@ -8,6 +8,7 @@
 
 ### 2.部署NFT
 需要部署NFT用于买卖
+https://sepolia.etherscan.io/address/0x3e47268d528641769324c14ca8c834fc06af777f
 
 ### 3.上架NFT
 - 用户可以将自己的NFT上架到市场。
@@ -21,5 +22,14 @@
 
 ## 提交要求
 - 部署在Sepolia测试网上
+  - npm run deploy
+  - [ERC20代币](https://sepolia.etherscan.io/address/0xd9fB4C6587b2d7312a2542F1213c1e9CA93B88Df)
+  - [ERC721](https://sepolia.etherscan.io/address/0x3dBe0B68eaC8888F9508959685FF0D74a6E712E7)
+  - [NFTMarket](https://sepolia.etherscan.io/address/0x682ce468Bd59c23CA730d83aBDa540B677A5052F)
 - 提交全部合约文件（ERC20、ERC721、NFTMarket）
+   - contracts/*.sol
 - 提交上架NFT、购买NFT的交易哈希
+    - [上架](https://sepolia.etherscan.io/tx/0x4bd40e15a8f6f06e7c66d2bcf7a3b0a07fd75467f124ff32168ab8e03942a9b3)
+    - [购买](https://sepolia.etherscan.io/tx/0x98b5efccc00b865cb78002f0031d1c618fe77fe426eaaa39d4efcce16a093399)(revert了，why?)
+
+
