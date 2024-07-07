@@ -1,0 +1,132 @@
+$width: 500px;
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .logo {
+        width: 300px;
+    }
+}
+
+.add-todo {
+    width: $width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+
+    .todo-input {
+        flex: 1;
+        height: 50px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 4px 10px;
+        font-size: 16px;
+        color: #020;
+
+    }
+
+    .todo-submit {
+        width: 80px;
+        flex-shrink: 0;
+        height: 55px;
+        background-color: #fefefe;
+        margin-left: 15px;
+        color: #020;
+        border: 1px solid #ccc;
+        font-weight: 700;
+        outline: none;
+
+        &:active {
+            background-color: #eee;
+        }
+    }
+}
+
+.todo-list {
+    width: $width;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    .todo-item {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        min-height: 50px;
+        align-items: center;
+        border-radius: 10px;
+        padding-left: 15px;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        &:hover {
+            background-color: #eee;
+        }
+
+        .num {
+            font-weight: 700;
+        }
+
+        .content {
+            justify-self: flex-start;
+            flex: 1;
+            text-align: left;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .remove,
+        .done,
+        .undo {
+            color: #222;
+            width: 80px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            opacity: 0;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #ddd;
+            }
+
+            &:active {
+                font-weight: 700;
+                color: #000;
+                opacity: .7;
+            }
+        }
+        .done:hover {
+            background-color: greenyellow;
+        }
+
+        &:hover {
+
+            .remove,
+            .done,
+            .undo {
+
+                opacity: 1;
+            }
+        }
+        &.complete {
+            .content {
+                text-decoration: line-through;
+            }
+            .remove, .done, .undo {
+                text-decoration: unset;
+            }
+        }
+    }
+}

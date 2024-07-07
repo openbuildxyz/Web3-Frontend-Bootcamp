@@ -1,4 +1,5 @@
 .gitmodules
+.editorconfig
 
 # build output
 dist/
