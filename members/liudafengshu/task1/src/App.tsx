@@ -9,10 +9,14 @@ function App() {
   const [inputValue, setInputeValue] = useState("");
 
   useEffect(() => {
-    setPenddingList(JSON.parse(localStorage.getItem("peddindList") as string));
-    setCompletedList(
-      JSON.parse(localStorage.getItem("completedList") as string)
-    );
+    localStorage.getItem("peddindList") &&
+      setPenddingList(
+        JSON.parse(localStorage.getItem("peddindList") as string)
+      );
+    localStorage.getItem("completedList") &&
+      setCompletedList(
+        JSON.parse(localStorage.getItem("completedList") as string)
+      );
   }, []);
 
   window.onbeforeunload = function () {
