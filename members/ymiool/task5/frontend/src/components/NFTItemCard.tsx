@@ -21,6 +21,7 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
 
     const [tokenURI, setTokenURI] = useState<string>();
     const [owner, setOwner] = useState<string>('');
+    const [imageURI, setImgURI] = useState<string | undefined>(undefined);
 
     const { data } = useReadContracts(
         {
@@ -38,14 +39,20 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
         });
     useEffect(() => {
         if (data) {
-            setTokenURI(data[0].result as string);
+            const metadataURI = data[0].result as string;
+            setTokenURI(metadataURI);
             setOwner(data[1].result as string);
+
+            fetch(metadataURI)
+            .then(res => res.json())
+            .then(data => { setImgURI(data.image); })
+            .catch(error => console.error(error));
         }
     }, [data])
 
     return (
         <NFTCard>
-            <NFTImg src={tokenURI} />
+            <NFTImg src={imageURI ?? tokenURI} />
             <InfoLine>
                 <InfoItem>
                     <span>NFT Contract</span>
