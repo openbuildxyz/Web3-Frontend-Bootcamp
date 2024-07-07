@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { INFTItem } from '../model/data';
 import { formatUnits } from 'viem';
-import { useAccount, useReadContract } from 'wagmi';
+import { useAccount, useReadContracts } from 'wagmi';
 import { nftAbi } from '../config/nft-contract';
 import styled from 'styled-components';
 
@@ -20,18 +20,26 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
     const { address } = useAccount();
 
     const [tokenURI, setTokenURI] = useState<string>();
+    const [owner, setOwner] = useState<string>('');
 
-    const { data } = useReadContract(
+    const { data } = useReadContracts(
         {
-            abi: nftAbi,
-            address: item.nftContract as `0x${string}`,
-            functionName: 'tokenURI',
-            args: [item.tokenId]
-        }
-    );
+            contracts: [{
+                abi: nftAbi,
+                address: item.nftContract as `0x${string}`,
+                functionName: 'tokenURI',
+                args: [item.tokenId]
+            }, {
+                abi: nftAbi,
+                address: item.nftContract as `0x${string}`,
+                functionName: 'ownerOf',
+                args: [item.tokenId]
+            }]
+        });
     useEffect(() => {
         if (data) {
-            setTokenURI(data as string);
+            setTokenURI(data[0].result as string);
+            setOwner(data[1].result as string);
         }
     }, [data])
 
@@ -50,8 +58,8 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
             </InfoLine>
             <InfoLine>
                 <InfoItem>
-                    <span>Seller</span>
-                    <span title={item.seller}>{formatAddress(item.seller)}</span>
+                    <span>{item.isActive ? 'Seller' : 'Owner'}</span>
+                    <span title={item.seller}>{formatAddress(owner)}</span>
                 </InfoItem>
                 <InfoItem>
                     <span>Add Time</span>
