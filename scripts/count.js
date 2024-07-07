@@ -71,8 +71,8 @@ function generateResult() {
 
 报名与完成情况统计如下：
 
-| 序号 | 学员 | 报名 | task1 | task2 | task3 | task4 | task5 | task6 | task7 | task8 |
-| ---: | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 序号 | 学员 | 报名 | task1 | task2 | task3 | task4 | task5 | task6 | task7 | task8 | task9 |
+| ---: | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 ${rows.join('\n')}`;
 }
 
@@ -86,7 +86,7 @@ readdirSync(MEMBER_ROOT).forEach(dirName => {
   studentMap[dirName] = {
     id: dirName,
     registered: isRegistered(dirPath),
-    tasks: Array.from(new Array(8)).map((_, i) => resolveTask(dirPath, i + 1)),
+    tasks: Array.from(new Array(9)).map((_, i) => resolveTask(dirPath, i + 1)),
   };
 
   studentSeq.push(dirName);
