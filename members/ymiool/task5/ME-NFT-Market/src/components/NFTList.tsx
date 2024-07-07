@@ -13,7 +13,7 @@ interface NFTListProps {
 const NFTList: React.FC<NFTListProps> = ({ nftItems, onBuy, onRemove }: NFTListProps) => {
     return (
         <List>
-            {[...nftItems].map((item: INFTItem, index: number) =>
+            {nftItems.map((item: INFTItem, index: number) =>
                 <NFTItemCard key={index} item={item} priceDecimal={paymentTokenDecimal}
                     onBuy={onBuy} onRemove={onRemove}
                 ></NFTItemCard>

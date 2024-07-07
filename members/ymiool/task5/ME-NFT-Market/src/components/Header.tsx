@@ -38,4 +38,5 @@ const MarketTitle = styled.span`
 const RightPart = styled.div`
     display: flex;
     align-items: center;
+    gap: 8px;
 `;
