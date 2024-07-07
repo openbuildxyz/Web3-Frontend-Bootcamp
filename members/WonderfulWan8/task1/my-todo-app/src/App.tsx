@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ToDoList from './components/ToDoList';
@@ -13,17 +12,21 @@ interface Todo {
 
 const App: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>(() => {
-        const savedTodos = localStorage.getItem('todos');
-        return savedTodos ? JSON.parse(savedTodos) : [];
+        try {
+            const savedTodos = localStorage.getItem('todos');
+            return savedTodos ? JSON.parse(savedTodos) : [];
+        } catch (e) {
+            console.error('Failed to parse todos from localStorage', e);
+            return [];
+        }
     });
 
     useEffect(() => {
-        const savedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
-        setTodos(savedTodos);
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos));
+        try {
+            localStorage.setItem('todos', JSON.stringify(todos));
+        } catch (e) {
+            console.error('Failed to save todos to localStorage', e);
+        }
     }, [todos]);
 
     const addTodo = (text: string) => {
@@ -32,16 +35,16 @@ const App: React.FC = () => {
             text,
             completed: false,
         };
-        setTodos([...todos, newTodo]);
+        setTodos((prevTodos) => [...prevTodos, newTodo]);
     };
 
     const deleteTodo = (id: number) => {
-        setTodos(todos.filter((todo) => todo.id !== id));
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
     };
 
     const toggleComplete = (id: number) => {
-        setTodos(
-            todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+        setTodos((prevTodos) =>
+            prevTodos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
         );
     };
 
