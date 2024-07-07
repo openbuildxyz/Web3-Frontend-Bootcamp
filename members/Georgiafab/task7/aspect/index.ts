@@ -20,8 +20,8 @@ class Aspect implements IPreContractCallJP {
    */
   preContractCall(input: PreContractCallInput): void {
     // read the throttle config from the properties and decode
-    const interval = sys.aspect.property.get<number>("interval");
-    const limit = sys.aspect.property.get<number>("limit");
+    const interval = sys.aspect.property.get<u64>("interval");
+    const limit = sys.aspect.property.get<u64>("limit");
     // get the contract address, from address and build the storage prefix
     const contractAddress = uint8ArrayToHex(input.call!.to);
     const from = uint8ArrayToHex(input.call!.from);
@@ -34,7 +34,7 @@ class Aspect implements IPreContractCallJP {
 
     // load last execution timestamp
 
-    const lastExecState = sys.aspect.mutableState.get<number>(
+    const lastExecState = sys.aspect.mutableState.get<u64>(
       storagePrefix + "lastExecAt"
     );
 
@@ -45,7 +45,7 @@ class Aspect implements IPreContractCallJP {
       sys.revert("throttled");
     }
     // check if the throttle limit has been reached, revert if so
-    const execTimeState = sys.aspect.mutableState.get<number>(
+    const execTimeState = sys.aspect.mutableState.get<u64>(
       storagePrefix + "execTimes"
     );
     const execTimes = execTimeState.unwrap();
@@ -65,7 +65,7 @@ class Aspect implements IPreContractCallJP {
    * @param sender address of the transaction
    * @return true if check success, false if check fail
    */
-  isOwner(sender: Uint8Array): boolean {
+  isOwner(sender: Uint8Array): bool {
     return false;
   }
 }
