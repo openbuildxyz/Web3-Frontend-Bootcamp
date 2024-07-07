@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { INFTItem } from '../model/data';
 import { formatUnits } from 'viem';
-import { useAccount, useReadContracts } from 'wagmi';
+import { useAccount, useReadContract } from 'wagmi';
 import { nftAbi } from '../config/nft-contract';
 import styled from 'styled-components';
 
@@ -20,35 +20,43 @@ const NFTItemCard: React.FC<NFTItemCardProps> = ({ item, priceDecimal, onBuy, on
     const { address } = useAccount();
 
     const [tokenURI, setTokenURI] = useState<string>();
-    const [owner, setOwner] = useState<string>('');
     const [imageURI, setImgURI] = useState<string | undefined>(undefined);
+    const [owner, setOwner] = useState<string>('');
 
-    const { data } = useReadContracts(
+    const { data: URI } = useReadContract(
         {
-            contracts: [{
-                abi: nftAbi,
-                address: item.nftContract as `0x${string}`,
-                functionName: 'tokenURI',
-                args: [item.tokenId]
-            }, {
-                abi: nftAbi,
-                address: item.nftContract as `0x${string}`,
-                functionName: 'ownerOf',
-                args: [item.tokenId]
-            }]
+            abi: nftAbi,
+            address: item.nftContract as `0x${string}`,
+            functionName: 'tokenURI',
+            args: [item.tokenId]
         });
     useEffect(() => {
-        if (data) {
-            const metadataURI = data[0].result as string;
+        if (URI) {
+            const metadataURI = URI as string;
             setTokenURI(metadataURI);
-            setOwner(data[1].result as string);
-
             fetch(metadataURI)
-            .then(res => res.json())
-            .then(data => { setImgURI(data.image); })
-            .catch(error => console.error(error));
+                .then(res => res.json())
+                .then(data => { setImgURI(data.image); })
+                .catch(error => console.error(error));
         }
-    }, [data])
+    }, [URI])
+
+    const { data: newOwner, dataUpdatedAt, refetch } = useReadContract(
+        {
+            abi: nftAbi,
+            address: item.nftContract as `0x${string}`,
+            functionName: 'ownerOf',
+            args: [item.tokenId]
+        }
+    );
+    useEffect(() => {
+        refetch();
+    }, [item])
+    useEffect(() => {
+        if (newOwner) {
+            setOwner(newOwner as string);
+        }
+    }, [dataUpdatedAt]);
 
     return (
         <NFTCard>
