@@ -12,7 +12,10 @@ interface Todo {
 }
 
 const App: React.FC = () => {
-    const [todos, setTodos] = useState<Todo[]>([]);
+    const [todos, setTodos] = useState<Todo[]>(() => {
+        const savedTodos = localStorage.getItem('todos');
+        return savedTodos ? JSON.parse(savedTodos) : [];
+    });
 
     useEffect(() => {
         const savedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
