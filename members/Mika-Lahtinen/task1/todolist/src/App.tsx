@@ -22,56 +22,52 @@ import TodoList from './components/TodoList'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [todos, setTodos] = useState<string[]>(()=>
-  {
-    const saved = localStorage.getItem("todos");
-    if (saved){
-      return JSON.parse(saved);
+
+  // Read and save item into local storage.
+  const [todos, setTodos] = useState<string[]>(() => {
+    const storedTodos = localStorage.getItem('todos');
+    if (storedTodos) {
+      return JSON.parse(storedTodos);
+    } else {
+      return [];
     }
-    return [];
-  }
-  );
-  const [newTodo, setNewTodo] = useState<string>('')
+  })
 
-  const addTodo = () => {
-    if (newTodo.trim()) {
-      setTodos([...todos, { text: newTodo, completed: false }]);
-      setNewTodo('')
-    }
-  }
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+    console.log('Saved to local storage:', todos);
+  }, [todos]);
 
-  const deleteTodo = (index) => {
-    const newTodos = [...todos]
-    newTodos.splice(index, 1)
-    setTodos(newTodos)
+  // Implementation of the following functions:
+  // 1. AddTodo
+  // 2. DeleteTodo
+  // 3. ToggleTodo
+  const addTodo = (todo) => {
+    setTodos([...todos, todo]);
   }
 
-  const toggleTodo = (index) => {
-    const newTodos = [...todos]
-    newTodos[index].completed = !newTodos[index].completed
-    setTodos(newTodos)
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  useEffect(()=>{
-    localStorage.setItem('todos',JSON.stringify(todos))
-  }, [todos])
-  
+  const toggleTodo = (id) => {
+    setTodos(todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        };
+      }
+      return todo;
+    }));
+  }
   return (
     <>
-      <div>
-        <Header />
-        <AddTodo
-          newTodo={newTodo}
-          setNewTodo={setNewTodo}
-          addTodo={addTodo} />
-        <TodoList
-          todos={todos}
-          deleteTodo={deleteTodo}
-          toggleTodo={toggleTodo} 
-          />
-      </div>
+      <Header />
+      <AddTodo addTodo={addTodo} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
     </>
-  )
+  );
 }
 
 export default App

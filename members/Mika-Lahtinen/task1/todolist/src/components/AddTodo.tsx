@@ -1,19 +1,31 @@
-const AddTodo = ({ newTodo, setNewTodo, addTodo }) => {
+import { useState } from 'react'
+const AddTodo = ({ addTodo }) => {
+    const [todoText, setTodoText] = useState('')
+
+    const submitCreate = (event) => {
+        event.preventDefault();
+
+        const todoInput = {
+            id: Date.now(),
+            text: todoText,
+            completed: false,
+        };
+
+        addTodo(todoInput);
+        setTodoText('');
+    }
+
     return (
-        <>
-            <div>
-                <input
-                    type="text"
-                    placeholder="New todo plz..."
-                    value={newTodo}
-                    onChange={(e) => setNewTodo(e.target.value)}
-                />
-            </div>
-            <br />
-            <div>
-                <button onClick={addTodo}>Add it</button>
-            </div>
-        </>);
+        <form onSubmit={submitCreate}>
+            <input
+                type="text"
+                value={todoText}
+                onChange={(event) => setTodoText(event.target.value)}
+                placeholder="Add todo here plz..."
+            />
+            <button type="submit">Add it</button>
+        </form>
+    );
 };
 
 export default AddTodo

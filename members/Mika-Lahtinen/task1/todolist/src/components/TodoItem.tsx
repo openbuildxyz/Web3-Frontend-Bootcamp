@@ -1,12 +1,23 @@
-const TodoItem = ({todo, toggleTodo, deleteTodo}) => {
+/*
+ * For the implementation of th e todolist,
+ * here I design it into two components:
+ * 1. Items
+ * 2. List
+ * 
+ * Here is the implementation of the Items component.
+ */
+
+const TodoItem = ({ todo, deleteTodo, toggleTodo }) => {
     return (
-        <li
-            style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
-            onClick={toggleTodo}>
-            <span>{todo.text}</span>
-            <button onClick={deleteTodo}>Delete it</button>
+        <li>
+            <input type="checkbox"
+                defaultChecked={todo.completed}
+                onClick={() => toggleTodo(todo.id)}
+            />
+            {todo.text}
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
         </li>
-    );
+    )
 };
 
 export default TodoItem

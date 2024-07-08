@@ -3,16 +3,8 @@ import TodoItem from "./TodoItem";
 const TodoList = ({ todos, deleteTodo, toggleTodo }) => {
     return (
         <ul>
-            {
-                todos.map((todo, index) => (
-                    <TodoItem
-                        key={index}
-                        todo={todo}
-                        deleteTodo={() => deleteTodo(index)}
-                        toggleTodo={() => toggleTodo(index)}
-                    />
-                ))
-            }
+            {todos.map(todo => 
+            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleTodo={toggleTodo}/>)}
         </ul>
     );
 }
