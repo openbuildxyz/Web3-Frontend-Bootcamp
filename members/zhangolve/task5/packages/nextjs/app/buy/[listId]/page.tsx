@@ -1,6 +1,6 @@
 "use client";
 
-import { useBalance, useNFTPurchase } from "./utils";
+import { useBalance, useNFTPurchase, formatTimestamp} from "./utils";
 import { formatUnits } from "viem";
 import { useNFT } from "~~/app/utils";
 import Loading from "~~/components/Loading";
@@ -52,6 +52,7 @@ const BuyNFT = ({
   if (txResult) {
     return <Success />;
   }
+  console.log('tttt',token)
   const price = token.price ? `${formatUnits(token.price, 18)}` : 0;
   const tokenId = parseInt(token.tokenId);
   const formattedBalance = balance ? formatUnits(balance, 18) : 0;
@@ -66,8 +67,9 @@ const BuyNFT = ({
           <p>Seller: {token.seller}</p>
           <p>Contract: {token.nftContract}</p>
           <p>Token ID: {tokenId}</p>
-          <p>Price: {price}</p>
+          <p>Price: {price} $Olive token</p>
           <p>Current Balance: {formattedBalance}</p>
+          <p>list time: {formatTimestamp(token.timestamp)}</p>
           <div className="card-actions justify-end">
             <button className={`btn btn-primary ${balance < token.price ? "btn-disabled" : ""}`} onClick={onBuy}>
               Buy now!

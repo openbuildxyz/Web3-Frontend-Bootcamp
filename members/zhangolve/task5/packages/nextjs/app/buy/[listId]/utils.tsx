@@ -52,4 +52,11 @@ const useNFTPurchase = ({
   return [handleWrite, purchaseNFTResult];
 };
 
-export { useBalance, useNFTPurchase };
+
+const formatTimestamp = (timestamp:bigint) => {
+  const date = new Date(Number(timestamp) * 1000); // Convert seconds to milliseconds
+  return date.toLocaleString();
+};
+
+
+export { useBalance, useNFTPurchase,formatTimestamp };

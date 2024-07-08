@@ -1517,6 +1517,11 @@ const deployedContracts = {
                   name: "listingId",
                   type: "uint256",
                 },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
               ],
               internalType: "struct NFTMarket.Listing",
               name: "",
@@ -1586,6 +1591,11 @@ const deployedContracts = {
                   name: "listingId",
                   type: "uint256",
                 },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
               ],
               internalType: "struct NFTMarket.Listing[]",
               name: "",
@@ -1640,6 +1650,11 @@ const deployedContracts = {
                 {
                   internalType: "uint256",
                   name: "listingId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
                   type: "uint256",
                 },
               ],
@@ -1717,6 +1732,11 @@ const deployedContracts = {
             {
               internalType: "uint256",
               name: "listingId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
               type: "uint256",
             },
           ],

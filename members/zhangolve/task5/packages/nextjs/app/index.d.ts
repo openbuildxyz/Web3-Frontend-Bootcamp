@@ -5,6 +5,7 @@ export interface NFTMarketToken {
   price: bigint;
   sold: boolean;
   listingId: number;
+  timestamp: bigint;
 }
 
 export interface NFTTokenMetadata {
