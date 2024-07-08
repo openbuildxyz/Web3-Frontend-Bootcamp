@@ -1,0 +1,19 @@
+{
+  "name": "react.dev",
+  "version": "0.0.0",
+  "main": "/src/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-transition-group": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.11"
+  }
+}

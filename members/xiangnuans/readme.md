@@ -17,5 +17,5 @@
 - 6年前端开发
 - 约1年的RN开发
 
-https://github.com/xiangnuans?tab=repositories&type=source
+https://github.com/xiangnuans
 
