@@ -48,7 +48,7 @@
 
 八、进阶实战二：在Morph上部署你的第一个合约（[官网](https://openbuild.xyz/learn/challenges/2036589711/1719368568) | [哔站](https://www.bilibili.com/video/BV1vi421e7T5) | [油管](https://www.youtube.com/watch?v=HBD2EgKD0Zg)）
 
-八点五、Web3前端训练营AMA答疑第二期（[哔站](https://www.bilibili.com/video/BV1xf421q7or)）
+八点五、Web3前端训练营AMA答疑第二期（[哔站](https://www.bilibili.com/video/BV1xf421q7or) | [油管](https://www.youtube.com/watch?v=slA_mKWZfSQ)）
 
 ## 参与方式
 
