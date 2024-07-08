@@ -18,7 +18,7 @@
 5. 编写映射（mapping.ts）
 编写映射逻辑，以处理合约事件并更新子图的存储
 6. 部署子图
-使用Graph CLI工具部署子图到The Graph的托管服务。
+使用Graph CLI工具部署子图到The Graph Studio。
 ## 提交要求
 - 提交NFTMarket合约地址
-- 提交TheGraph托管服务链接以及截图
+- 提交在The Graph Sudio ( https://thegraph.com/studio/ ) 上部署的子图的链接以及截图
