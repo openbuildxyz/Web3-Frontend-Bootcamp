@@ -18,6 +18,19 @@ const NFTs = ({ deployedNFTContractData, deployedNFTMarketContractData }: { depl
     return <Loading />;
   }
 
+  if (txResult) {
+    return (<div className="flex items-center flex-col mt-10">
+      <div className="text-primary-content my-4">Transaction submitted: {txResult?.transactionHash}</div>
+      <div className="text-primary-content my-4">Waiting for confirmation...</div>
+      <button
+        onClick={() => {
+          window.location.reload();
+        }}
+        className="btn btn-primary"
+      >Refresh the Page</button>
+    </div>);
+  };
+
   return (
     <div>
       <TokenList tokens={tokens} type="delist" onDelist={delistNFT}/>
