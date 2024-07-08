@@ -56,26 +56,41 @@ export const useNFT = ({
   contractAddress,
   abi,
   args,
+  ERC721ContractData,
 }: {
   contractAddress: string;
   abi: Abi;
   args: [number];
 }): [NFTMarketToken, boolean] => {
   const { targetNetwork } = useTargetNetwork();
-  const { data: token, isFetching } = useReadContract({
+  const [isFetching, setIsFetching] = useState(false);
+  const [token, setToken] = useState<NFTMarketTokenDetailedInfo | null>(null);
+  const { refetch: getListing } = useReadContract({
     address: contractAddress,
     functionName: "getListing",
     abi: abi,
     chainId: targetNetwork.id,
     args,
     query: {
-      enabled: true,
+      enabled: false,
       retry: false,
     },
-  }) as {
-    data: NFTMarketToken;
-    isFetching: boolean;
-  };
+  }) 
+  useEffect(()=>{
+    async function getDetailedToken() {
+        setIsFetching(true);
+       const { data: token } = await getListing();
+        const tokenData = (await getTokenData({
+          tokenId: token.tokenId,
+          contractAddress:ERC721ContractData.address,
+          abi:ERC721ContractData.abi,
+          targetNetwork
+        })) as NFTTokenMetadata;
+        setToken({ ...token, ...tokenData });
+        setIsFetching(false);
+    }
+    getDetailedToken();
+  }, [])
   return [token, isFetching];
 };
 
@@ -93,7 +108,6 @@ export const useDetailTokens = ({
   const [detailedTokens, setDetailedTokens] = useState<NFTMarketTokenDetailedInfo[]>([]);
   useEffect(() => {
     async function fetchTokens(tokens: NFTMarketToken[]) {
-      console.log(tokens,'tttszz')
       const newTokens: NFTMarketTokenDetailedInfo[] = [];
       if (tokens?.length > 0) {
         for (let t = 0; t < tokens.length; t++) {

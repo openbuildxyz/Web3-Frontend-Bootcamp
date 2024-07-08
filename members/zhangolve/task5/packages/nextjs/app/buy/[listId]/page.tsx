@@ -16,6 +16,7 @@ const BuyNFT = ({
   listId,
   ERC20ContractData,
   NFTMarketContractData,
+  ERC721ContractData,
 }: {
   listId: number;
   ERC20ContractData: Contract<"ERC20Token">;
@@ -24,6 +25,7 @@ const BuyNFT = ({
   const [token, isFetching] = useNFT({
     contractAddress: NFTMarketContractData.address,
     abi: NFTMarketContractData.abi,
+    ERC721ContractData,
     args: [listId],
   });
   const [balance, isBalanceFetching] = useBalance({
@@ -56,8 +58,8 @@ const BuyNFT = ({
   return (
     <div className="flex items-center justify-center">
       <div className="card glass w-120">
-        <figure>
-          <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="car!" />
+        <figure className="w-96 h-96">
+          <img src={token.image} alt={token.name} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">NFT info</h2>
@@ -80,14 +82,15 @@ const BuyNFT = ({
 const SellNFTPage = ({ params }: PageProps) => {
   const { data: NFTMarketContractData } = useDeployedContractInfo("NFTMarket");
   const { data: ERC20ContractData } = useDeployedContractInfo("ERC20Token");
+  const { data: ERC721ContractData } = useDeployedContractInfo("ERC721Token");
 
   const listId = params?.listId as number;
 
-  if (!NFTMarketContractData || !ERC20ContractData) {
+  if (!NFTMarketContractData || !ERC20ContractData ||!ERC721ContractData) {
     return <Loading />;
   }
 
-  return <BuyNFT listId={listId} ERC20ContractData={ERC20ContractData} NFTMarketContractData={NFTMarketContractData} />;
+  return <BuyNFT listId={listId} ERC20ContractData={ERC20ContractData} NFTMarketContractData={NFTMarketContractData} ERC721ContractData={ERC721ContractData}/>;
 };
 
 export default SellNFTPage;

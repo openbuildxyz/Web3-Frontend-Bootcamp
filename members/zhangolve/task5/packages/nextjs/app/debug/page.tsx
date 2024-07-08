@@ -8,7 +8,6 @@ export const metadata = getMetadata({
 });
 
 const Debug: NextPage = () => {
-  console.log("9999");
   return (
     <>
       <DebugContracts />
