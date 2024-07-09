@@ -1,0 +1,3 @@
+export const nftAddress = "0x98A8461fA15833d3EDcCB4181eFa2795D560f855";
+export const YZQAddress = "0x62e9162f5D866529D24b3775Fd1AB28B879F5767";
+export const marketAddress = "0xcE55D9BE8f10d2E13e615Dc32E144a3dA7865680";

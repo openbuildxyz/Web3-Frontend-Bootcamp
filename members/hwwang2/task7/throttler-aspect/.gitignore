@@ -1,0 +1,7 @@
+node_modules
+build
+*.txt
+.vscode
+build/*
+
+yarn-error.log
