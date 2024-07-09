@@ -1,0 +1,119 @@
+.item-wrap {
+  width: 200px;
+  height: max-content;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px lightgray;
+  margin: 10px;
+  padding-bottom: 10px;
+
+  .nft-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .user-info-wraps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 15px;
+
+    .avatar-img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: lightcyan;
+      margin-right: 10px;
+    }
+
+    .user-account-wrap-item-card {
+      width: 70%;
+      height: max-content;
+
+      .user-names {
+        font-size: 12px;
+        color: grey;
+        font-weight: 900;
+        line-height: 12px;
+      }
+
+      .user-ids {
+        font-size: 12px;
+        color: grey;
+        width: 100%;
+        overflow: hidden;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 600;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .item-card-nft-info {
+    padding-left: 15px;
+    margin-top: 10px;
+
+    .item-card-nft-info-title {
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .item-card-nft-info-desc {
+      color: grey;
+      font-weight: 600;
+    }
+  }
+
+  .item-card-price-info-wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 20px;
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .item-card-price-info {
+      text-align: center;
+
+      .item-card-price-info-price {
+        font-weight: 900;
+        color: rgb(68, 77, 240);
+        font-size: 30px;
+        line-height: 30px;
+      }
+
+      .item-card-price-info-title {
+        color: grey;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+
+    .action-btn {
+      width: 50px;
+      height: 30px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 30px;
+      color: #fff;
+      background-color: rgb(68, 77, 240);
+      cursor: pointer;
+      font-weight: 600;
+    }
+  }
+
+  .item-card-create-time {
+    font-size: 13px;
+    color: grey;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+}
