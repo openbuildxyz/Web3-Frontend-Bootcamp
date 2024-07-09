@@ -1,0 +1,13 @@
+ZZTokenModule#ZZToken - 0x11B45E86c29124791b34742bfF01D3dC48E787Ef
+ZZNFTModule#ZZNFT - 0xb2438ca2a2776C04b84F49588B9E3F984a446D9e
+ZZNFTMarketModule#ZZNFTMarket - 0x074D3C9D4dF1951B8d708Be8eAC38027Ff22B796
+
+NFT Minted. Transaction Hash: 0x9f3fc52ca4f46ffcaef3bed10d29a522407f6864b9cb87e95740f47bd446a32f
+NFTMinted: owner=0x2ADF0a6ca92adbC7b5693804C382d52Dc929efDE, itemId=1, itemURI=https://img.zworker.top/file/0bb43c4f6d9ddedd2cadf.jpg
+Token URI: https://img.zworker.top/file/0bb43c4f6d9ddedd2cadf.jpg
+Approval for NFTMarket set.
+NFT Listed. Transaction Hash: 0x9c07c40667920860c19e46a928830d5d45d12cf52d71e05319ca73ff18ecf9f0
+Token Transfer. Transaction Hash: 0x1eefa8935e7e85c9f7aa9e7df2d45ef9caa36f06fbb6d1c99331850d0dff10a4
+Balance of 0x73a77E8521647D92392ab5E62328B7344F20D17d: 10000 个 ERC20 代币
+Approval transaction hash: 0xea19e0725a3fabaf124c430e04b47cd1e37abae50408dbd782eea6b9e576e262
+NFT Purchased. Transaction Hash: 0xe1d60f2ac49c9ffcb860f6ab849f73fa6dde92a16795837a21ba29fc57504edc
