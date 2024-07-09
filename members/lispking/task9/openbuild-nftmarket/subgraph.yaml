@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFTMarket
+    network: sepolia
+    source:
+      address: "0xEE9e3a49eCA927933Ef08c742ce2E0a89bEDd419"
+      abi: NFTMarket
+      startBlock: 6146179
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NFTBought
+        - NFTListed
+        - NFTStatusChanged
+      abis:
+        - name: NFTMarket
+          file: ./abis/NFTMarket.json
+      eventHandlers:
+        - event: NFTBought(indexed address,indexed uint256,address,uint256)
+          handler: handleNFTBought
+        - event: NFTListed(indexed address,indexed uint256,address,uint256)
+          handler: handleNFTListed
+        - event: NFTStatusChanged(indexed address,indexed uint256,address,bool)
+          handler: handleNFTStatusChanged
+      file: ./src/nft-market.ts
