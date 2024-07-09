@@ -25,15 +25,16 @@ export default function Home({
       );
       const balance = await erc20Contract.balanceOf(address);
 
-      if (BigNumber.from(allowance._hex).toString() < price) {
+      if (Number(BigNumber.from(allowance._hex).toString()) < Number(price)) {
         const approve = await erc20Contract.approve(marketplace.address, price);
         await approve.wait();
       }
 
-      if (BigNumber.from(balance._hex).toString() < price) {
+      if (Number(BigNumber.from(balance._hex).toString()) < Number(price)) {
         alert('钱不够哈');
         return;
       }
+
       const itemInfo = await marketplace.getMarketItemByTokenId(
         hexToDecimal(nftId)
       );
@@ -62,6 +63,8 @@ export default function Home({
     }
   };
 
+  console.log('item444', marketNftLists);
+
   return (
     <>
       {marketNftLists?.filter(
@@ -72,19 +75,23 @@ export default function Home({
             const isSell = v.seller === address && v.isUpForSale;
 
             return (
-              <div key={i}>
-                <ItemCard
-                  item={v}
-                  buttonText={isSell ? 'unList' : 'Buy'}
-                  actionFunc={() => {
-                    isSell
-                      ? onUnlist(v.itemId)
-                      : onBuy(v?.id?.tokenId, v?.metadata?.price);
-                  }}
-                  personTitle={'Seller'}
-                  ownerAddress={v.seller}
-                />
-              </div>
+              <>
+                {v.isUpForSale && (
+                  <div key={i}>
+                    <ItemCard
+                      item={v}
+                      buttonText={isSell ? 'unList' : 'Buy'}
+                      actionFunc={() => {
+                        isSell
+                          ? onUnlist(v.itemId)
+                          : onBuy(v?.id?.tokenId, v?.metadata?.price);
+                      }}
+                      personTitle={'Seller'}
+                      ownerAddress={v.seller}
+                    />
+                  </div>
+                )}
+              </>
             );
           })}
         </div>

@@ -57,7 +57,9 @@ export default function OwnedPage({
         marketplace.address
       );
 
-      if (BigNumber.from(allowance._hex).toString() < listingPrice) {
+      if (
+        Number(BigNumber.from(allowance._hex).toString()) < Number(listingPrice)
+      ) {
         const approve = await erc20Contract.approve(
           marketplace.address,
           listingPrice
