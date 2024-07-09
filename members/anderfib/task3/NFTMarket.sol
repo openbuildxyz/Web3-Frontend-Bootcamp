@@ -45,10 +45,6 @@ contract NFTMarket {
             "You are not owner of this nft."
         );
         require(
-            nft.getApproved(_tokenId) == address(this),
-            "Please approved first."
-        );
-        require(
             nft.isApprovedForAll(msg.sender, address(this)),
             "Please approved first."
         );
