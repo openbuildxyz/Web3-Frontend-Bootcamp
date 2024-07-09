@@ -20,7 +20,7 @@ function App() {
   }, [todos]);
 
   const addTodo = (task) => {
-    const newTodo = { id: uuidv4(), task }; // 为每个任务生成唯一 ID
+    const newTodo = { id: uuidv4(), task, isCompleted: false }; // 为每个任务生成唯一 ID
     const newTodos = [...todos, newTodo];
     setTodos(newTodos);
   }
@@ -30,11 +30,18 @@ function App() {
     setTodos(newTodos);
   }
 
+  const toggleComplete = (id) => {
+    const newTodos = todos.map(todo =>
+      todo.id == id ? {...todo, isCompleted: !todo.isCompleted } : todo
+    );
+    setTodos(newTodos);
+  };
+
   return (
     <div className='App'>
       <Header />
       <AddToDo onAdd={addTodo} />
-      <ToDoList items={todos} onDelete={deleteTodo}/>
+      <ToDoList items={todos} onDelete={deleteTodo} onToggleComplete={toggleComplete}/>
     </div>
   )
 }
