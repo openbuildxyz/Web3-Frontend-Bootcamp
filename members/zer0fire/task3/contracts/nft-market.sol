@@ -23,7 +23,7 @@ event NftReceived(address indexed _from, address indexed _to, uint256 indexed _t
 
 
 
-contract MarketDemo is IERC721Receiver, ReentrancyGuard {
+contract NftMarket is IERC721Receiver, ReentrancyGuard {
 
     struct Order{
         address owner;  
