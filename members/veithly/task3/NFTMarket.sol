@@ -32,7 +32,7 @@ contract NFTMarket is Ownable {
         require(_price > 0, "Price must be greater than zero");
         IERC721 nftContract = IERC721(_nftContract);
         require(nftContract.ownerOf(_tokenId) == msg.sender, "You do not own this NFT");
-        require(nftContract.isApprovedForAll(msg.sender, address(this)), "Market contract is not approved");
+        require(nftContract.getApproved(_tokenId) == address(this), "Market contract is not approved for this NFT");
 
         // Get the token URI from the NFT contract
         string memory tokenURI = IERC721Metadata(_nftContract).tokenURI(_tokenId);
