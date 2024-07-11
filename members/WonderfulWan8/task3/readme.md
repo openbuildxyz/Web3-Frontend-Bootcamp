@@ -1,8 +1,20 @@
+# task3
+## 1、在测试网部署三个合约
+0xe99c00a82688f5cd804ad52ecc8839727c8fdb07a20d95113889d7b4aeb45da6
+https://sepolia.etherscan.io/tx/0xe99c00a82688f5cd804ad52ecc8839727c8fdb07a20d95113889d7b4aeb45da6
+![alt text](image-1.png)
 
-- 上架NFT: [0xbf50fee422b8a6346106d218911653cf8b3e045c0a51695d1ead611d6ad28283](https://sepolia.etherscan.io/tx/0xbf50fee422b8a6346106d218911653cf8b3e045c0a51695d1ead611d6ad28283)
+0xbd2573658a58f738c72f6903612cf450e9f0efb110884d118f9996534f18008e
+https://sepolia.etherscan.io/tx/0xbd2573658a58f738c72f6903612cf450e9f0efb110884d118f9996534f18008e
+![alt text](image.png)
 
 
-0xd9145CCE52D386f254917e481eB44e9943F39138
+0xc685fc2ddae3004fec35a858d0646c9ce877ff1b03e8293bcade16f06947ae30
+https://sepolia.etherscan.io/tx/0xc685fc2ddae3004fec35a858d0646c9ce877ff1b03e8293bcade16f06947ae30
+![alt text](image-2.png)
 
-
-- 购买NFT: [0xd6503afa83f4056cc6b9c48bd77a04f9f59e8412d92297151026f22b3db86222](https://sepolia.etherscan.io/tx/0xd6503afa83f4056cc6b9c48bd77a04f9f59e8412d92297151026f22b3db86222)
+## 2、上架NFT、购买NFT的交易哈希
+### 1）上架NFT
+https://etherscan.io/tx/0xb787503aa9611c25ab91b95b8ca23c23641c63148f2e73aa8d14807a154d2986
+![alt text](image-3.png)
+### 2）购买NFT的交易哈希
