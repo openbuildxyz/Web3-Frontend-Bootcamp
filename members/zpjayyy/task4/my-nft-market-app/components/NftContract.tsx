@@ -3,6 +3,7 @@ import { nftContractConfig } from "@/config/nftContractConfig";
 import { FormEvent } from "react";
 import {Button} from "@nextui-org/button";
 import {Input} from "@nextui-org/input";
+import {nftMarketContractConfig} from "@/config/nftMarketContractConfig";
 
 export default function NftContract() {
   return (
@@ -36,7 +37,7 @@ function Mint() {
 }
 
 function Approve() {
-  const { data: hash, writeContract } = useWriteContract();
+  const { data: hash, error, writeContract } = useWriteContract();
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,8 +46,12 @@ function Approve() {
     writeContract({
       ...nftContractConfig,
       functionName: "approve",
-      args: ["0x3261150cE2beEe2F6B68712F588FEd47B947D9A7", BigInt(tokenId)],
+      args: [nftMarketContractConfig.address, BigInt(tokenId)],
     });
+  }
+
+  if (error) {
+    return <div>something is wrong: {error.message}</div>
   }
 
   return (

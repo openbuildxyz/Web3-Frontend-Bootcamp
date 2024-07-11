@@ -1,55 +1,30 @@
-import { useWatchContractEvent, useWriteContract } from "wagmi";
-import { FormEvent, useEffect, useState } from "react";
+import { useAccount, useReadContract, useWriteContract } from "wagmi";
+import { FormEvent } from "react";
 import { nftMarketContractConfig } from "@/config/nftMarketContractConfig";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { nftContractConfig } from "@/config/nftContractConfig";
 import { tokenContractConfig } from "@/config/tokenContractConfig";
-import { ethers } from "ethers";
 import { Listbox, ListboxItem } from "@nextui-org/listbox";
-import { readContract } from "@wagmi/core";
-import { config } from "@/config/config";
+import { DateFormatter } from "@internationalized/date";
 
 export default function NftMarketContract() {
   return (
     <div>
       <List />
       <ListNft />
-      {/*<Purchase />*/}
     </div>
   );
 }
 
 function List() {
-  const { data: hash, writeContract } = useWriteContract();
-  const [tokenId, setTokenId] = useState<bigint>();
-  const [price, setPrice] = useState<bigint>();
-
-  useWatchContractEvent({
-    ...nftContractConfig,
-    eventName: "Approval",
-    onLogs(logs) {
-      console.log(logs);
-      // approved
-      if (tokenId && price) {
-        list(tokenId, price).catch((error) => console.log(error));
-      }
-    },
-  });
-
-  async function approve(tokenId: bigint) {
-    writeContract({
-      ...nftContractConfig,
-      functionName: "approve",
-      args: [nftMarketContractConfig.address, BigInt(tokenId)],
-    });
-  }
+  const { data: hash, error, writeContract } = useWriteContract();
 
   async function list(tokenId: bigint, price: bigint) {
     writeContract({
       ...nftMarketContractConfig,
       functionName: "list",
-      args: [nftContractConfig.address, BigInt(tokenId), BigInt(price)],
+      args: [nftContractConfig.address, tokenId, price],
     });
   }
 
@@ -58,9 +33,11 @@ function List() {
     const formDate = new FormData(e.target as HTMLFormElement);
     const tokenId = BigInt(formDate.get("tokenId") as string);
     const price = BigInt(formDate.get("price") as string);
-    setTokenId(tokenId);
-    setPrice(price);
-    await approve(tokenId);
+    await list(tokenId, price);
+  }
+
+  if (error) {
+    return <div>something is wrong: {error.message}</div>;
   }
 
   return (
@@ -79,84 +56,94 @@ interface Order {
   address: string;
   price: bigint;
   tokenId: bigint;
+  listTime: bigint;
+}
+
+function ApproveOrPurchase({
+  tokenId,
+  price,
+}: {
+  tokenId: bigint;
+  price: bigint;
+}) {
+  const { address } = useAccount();
+
+  const { data: allowance } = useReadContract({
+    ...tokenContractConfig,
+    functionName: "allowance",
+    args: [address || `0x${address}`, nftMarketContractConfig.address],
+  });
+
+  const { data, isPending, error, writeContract } = useWriteContract();
+
+  if (error) {
+    return <div>something is wrong: {error.message}</div>;
+  }
+
+  if (!allowance || BigInt(allowance.toString()) < price) {
+    return (
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+        onClick={async () => {
+          writeContract({
+            ...tokenContractConfig,
+            functionName: "approve",
+            args: [nftMarketContractConfig.address, price],
+          });
+        }}
+      >
+        {isPending ? "approving" : "approve"}
+      </button>
+    );
+  } else {
+    return (
+      <div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+          onClick={async () => {
+            writeContract({
+              ...nftMarketContractConfig,
+              functionName: "purchase",
+              args: [nftContractConfig.address, tokenId],
+            });
+          }}
+        >
+          {isPending ? "purchasing" : "purchased"}
+        </button>
+      </div>
+    );
+  }
 }
 
 function ListNft() {
-  const {writeContract } = useWriteContract();
-
-  const [tokenId, setTokenId] = useState<bigint>();
-
-  const [orderList, setOrderList] = useState<Order[]>([]);
-
-  useWatchContractEvent({
-    ...tokenContractConfig,
-    eventName: "Approval",
-    onLogs(logs) {
-      console.log(logs);
-      // approved
-      if (tokenId) {
-        purchase(tokenId).catch((error) => console.log(error));
-      }
-    },
+  const { data: itemList, error } = useReadContract({
+    ...nftMarketContractConfig,
+    functionName: "getAllListNft",
+    args: [nftContractConfig.address],
   });
 
-  useEffect(() => {
-    const fetchOrderList = async () => {
-      let result = [];
-      let i = BigInt("0");
-      for (; i < BigInt("10"); i++) {
-        const data = await readContract(config, {
-          ...nftMarketContractConfig,
-          functionName: "orderList",
-          args: [nftContractConfig.address, i],
-        });
-        if (data && data[1] != BigInt("0")) {
-          let [address, price] = data;
-          let order: Order = {
-            address,
-            price,
-            tokenId: i,
-          };
-          result.push(order);
-        }
-      }
-      setOrderList(result);
-    };
-    fetchOrderList().then(() => {});
-  }, []);
+  console.log("nft", itemList);
 
-  async function approve() {
-    writeContract({
-      ...tokenContractConfig,
-      functionName: "approve",
-      args: [nftMarketContractConfig.address, ethers.parseEther("1")],
-    });
-  }
-
-  async function purchase(tokenId: bigint) {
-    writeContract({
-      ...nftMarketContractConfig,
-      functionName: "purchase",
-      args: [nftContractConfig.address, BigInt(tokenId)],
-    });
+  if (error) {
+    return <div>something is wrong: {error.message}</div>;
   }
 
   return (
     <div className="w-1/3">
-      <Listbox
-        items={orderList}
-        aria-label="Dynamic Actions"
-        onAction={(key) => {
-          setTokenId(BigInt(key));
-          approve().catch((error) => console.log(error));
-        }}
-      >
+      <Listbox items={itemList || []} aria-label="Dynamic Actions">
         {(item) => (
-          <ListboxItem key={item.tokenId.toString()}>
+          <ListboxItem
+            key={item.tokenId.toString()}
+            textValue={item.tokenId.toString()}
+          >
             <div className="flex flex-col border-2 border-gray-200">
-              <p>owner: {item.address}</p>
-              <p>price: {item.price.toString()}</p>
-              <p>tokenId: {item.tokenId.toString()}</p>
+              <div>owner: {item.owner}</div>
+              <div>price: {item.price.toString()}</div>
+              <div>tokenId: {item.tokenId.toString()}</div>
+              <div>
+                listTime: {new Date(Number(item.listTime) * 1000).toLocaleString()}
+              </div>
+              <ApproveOrPurchase price={item.price} tokenId={item.tokenId} />
             </div>
           </ListboxItem>
         )}

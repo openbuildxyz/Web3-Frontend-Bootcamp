@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main>
       <ConnectWallet />
-      <TokenContract />
+      {/*<TokenContract />*/}
       <NftContract />
       <NftMarketContract />
     </main>

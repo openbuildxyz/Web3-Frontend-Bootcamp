@@ -4,5 +4,5 @@ import {nftMarketAbi} from "@/abi/NftMarketAbi";
 export const nftMarketContractConfig = {
   chainId: sepolia.id,
   abi: nftMarketAbi,
-  address: "0x3261150cE2beEe2F6B68712F588FEd47B947D9A7"
+  address: "0x0695AeFd80F824b45acc6132CDa0f605b7433437"
 } as const;
