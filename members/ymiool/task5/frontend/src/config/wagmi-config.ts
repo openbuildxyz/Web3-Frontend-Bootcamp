@@ -4,6 +4,6 @@ import { Config } from 'wagmi';
 
 export const wagmiConfig: Config = getDefaultConfig({
     appName: 'NFT Market',
-    projectId: 'task6',
+    projectId: 'task5',
     chains: [optimismSepolia]
 });
