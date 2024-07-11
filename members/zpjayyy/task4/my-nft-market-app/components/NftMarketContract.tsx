@@ -6,7 +6,6 @@ import { Button } from "@nextui-org/button";
 import { nftContractConfig } from "@/config/nftContractConfig";
 import { tokenContractConfig } from "@/config/tokenContractConfig";
 import { Listbox, ListboxItem } from "@nextui-org/listbox";
-import { DateFormatter } from "@internationalized/date";
 
 export default function NftMarketContract() {
   return (
@@ -52,13 +51,6 @@ function List() {
   );
 }
 
-interface Order {
-  address: string;
-  price: bigint;
-  tokenId: bigint;
-  listTime: bigint;
-}
-
 function ApproveOrPurchase({
   tokenId,
   price,
@@ -74,7 +66,7 @@ function ApproveOrPurchase({
     args: [address || `0x${address}`, nftMarketContractConfig.address],
   });
 
-  const { data, isPending, error, writeContract } = useWriteContract();
+  const {isPending, error, writeContract } = useWriteContract();
 
   if (error) {
     return <div>something is wrong: {error.message}</div>;

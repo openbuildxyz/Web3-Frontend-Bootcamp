@@ -2,7 +2,6 @@
 
 import { useAccount } from "wagmi";
 import Account from "@/components/Account";
-import TokenContract from "@/components/TokenContract";
 import WalletOptions from "@/components/WalletOptions";
 import NftContract from "@/components/NftContract";
 import NftMarketContract from "@/components/NftMarketContract";
