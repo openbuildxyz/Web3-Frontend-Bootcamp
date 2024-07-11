@@ -5,27 +5,20 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiProvider, http } from "wagmi";
+import { http, WagmiProvider } from "wagmi";
 import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  sepolia,
+  optimism
 } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { infura_connection, infura_connection_base } from "./resource";
+import { op_connection } from "./resource";
 
-const config = getDefaultConfig({
-  appName: "My RainbowKit App",
-  projectId: "YOUR_PROJECT_ID",
-  chains: [base],
-  ssr: true, // If your dApp uses server side rendering (SSR)
+export const wagmiConfig = getDefaultConfig({
+  appName: "My Uniswap App",
+  projectId: "task6",
+  chains: [optimism],
   transports: {
-    // [mainnet.id]: http(infura_connection),
-    [base.id]: http(infura_connection_base),
-  },
+    [optimism.id]: http(op_connection)
+  }
 });
 
 const queryClient = new QueryClient();
@@ -33,7 +26,7 @@ const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
           <BrowserRouter>

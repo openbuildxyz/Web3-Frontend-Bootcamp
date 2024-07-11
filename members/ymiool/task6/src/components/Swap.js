@@ -6,7 +6,6 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import tokenList from "../tokenList.json";
-import axios from "axios";
 import { Route, Pair, Trade } from "@uniswap/v2-sdk";
 import {
   ChainId,
@@ -16,18 +15,21 @@ import {
   Percent,
 } from "@uniswap/sdk-core";
 import { ethers } from "ethers";
-import { infura_connection_base, pair_abi, router_abi } from "../resource";
-import { useAccount, useWriteContract } from "wagmi";
+import { factory_abi, op_connection, pair_abi, router_abi, uniswap_v2_op_factory_contract_address, uniswap_v2_op_router_contract_address } from "../resource";
+import { useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
+import { waitForTransactionReceipt } from '@wagmi/core'
+import { wagmiConfig } from "..";
 
 function Swap() {
-  const [messageApi, contextHolder] = message.useMessage();
-  const [slippage, setSlippage] = useState(2.5);
-  const [tokenOneAmount, setTokenOneAmount] = useState(null);
-  const [tokenTwoAmount, setTokenTwoAmount] = useState(null);
+  const CHAIN_ID = ChainId.OPTIMISM;
+  const account = useAccount();
+
   const [tokenOne, setTokenOne] = useState(tokenList[0]);
   const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [tokenOneAmount, setTokenOneAmount] = useState(null);
+  const [tokenTwoAmount, setTokenTwoAmount] = useState(null);
   const [changeToken, setChangeToken] = useState(1);
+  const [slippage, setSlippage] = useState(2.5);
   const [prices, setPrices] = useState(null);
   const [txDetails, setTxDetails] = useState({
     to: null,
@@ -35,11 +37,12 @@ function Swap() {
     value: null,
   });
 
-  const { writeContract } = useWriteContract();
-  const account = useAccount();
-  const { data, sendTransaction } = {};
+  const [messageApi, contextHolder] = message.useMessage();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const { isLoading, isSuccess } = {};
+  const { writeContractAsync: approveUniswap } = useWriteContract();
+  const { data: tradeHash, writeContractAsync: swapTrade } = useWriteContract();
+  const { isLoading, isSuccess } = useWaitForTransactionReceipt({ hash: tradeHash });
 
   function handleSlippageChange(e) {
     setSlippage(e.target.value);
@@ -85,16 +88,14 @@ function Swap() {
   }
 
   async function createPair(one, two) {
-    const tokenOneToken = new Token(ChainId.BASE, one.address, one.decimals);
-    const tokenTwoToken = new Token(ChainId.BASE, two.address, two.decimals);
-    const pairAddress = Pair.getAddress(tokenOneToken, tokenTwoToken);
-    // router v2 02:  0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
-    // router v2 02 base:  0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24
-    // Setup provider, import necessary ABI ...
-    const provider = new ethers.providers.JsonRpcProvider(
-      infura_connection_base
-    );
+    const tokenOneToken = new Token(CHAIN_ID, one.address, one.decimals);
+    const tokenTwoToken = new Token(CHAIN_ID, two.address, two.decimals);
+
+    const provider = new ethers.providers.JsonRpcProvider(op_connection);
+    const factoryContract = new ethers.Contract(uniswap_v2_op_factory_contract_address, factory_abi, provider);
+    const pairAddress = await factoryContract.getPair(tokenOneToken.address, tokenTwoToken.address);
     const pairContract = new ethers.Contract(pairAddress, pair_abi, provider);
+
     const reserves = await pairContract["getReserves"]();
     const [reserve0, reserve1] = reserves;
 
@@ -112,12 +113,12 @@ function Swap() {
 
   async function fetchPrices(tokenOne, tokenTwo) {
     const tokenOneToken = new Token(
-      ChainId.BASE,
+      CHAIN_ID,
       tokenOne.address,
       tokenOne.decimals
     );
     const tokenTwoToken = new Token(
-      ChainId.BASE,
+      CHAIN_ID,
       tokenTwo.address,
       tokenTwo.decimals
     );
@@ -137,9 +138,6 @@ function Swap() {
   }
 
   async function approveToken(tokenAddress, amount) {
-    console.log(
-      "approve token called, token: " + tokenAddress + " with amount: " + amount
-    );
     const tokenABI = [
       {
         inputs: [
@@ -152,24 +150,15 @@ function Swap() {
         type: "function",
       },
     ];
-    writeContract(
+    return approveUniswap(
       {
         address: tokenAddress,
         abi: tokenABI,
         functionName: "approve",
-        args: ["0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24", amount],
+        args: [uniswap_v2_op_router_contract_address, amount],
       },
       {
-        onSuccess: (tx) => {
-          messageApi.info("Transaction is successful!" + tx.hash);
-          setTxDetails({
-            to: tx.to,
-            data: tx.data,
-            value: tx.value,
-          });
-        },
         onError: (error) => {
-          console.log("🚀 ~ fetchDexSwap ~ error:", error.message);
           messageApi.error(error.shortMessage);
         },
       }
@@ -178,65 +167,44 @@ function Swap() {
 
   async function fetchDexSwap() {
     const tokenOneToken = new Token(
-      ChainId.BASE,
+      CHAIN_ID,
       tokenOne.address,
       tokenOne.decimals
     );
     const tokenTwoToken = new Token(
-      ChainId.BASE,
+      CHAIN_ID,
       tokenTwo.address,
       tokenTwo.decimals
     );
-    // See the Fetching Data guide to learn how to get Pair data
-    // const pair = await createPair(tokenOneToken, tokenTwoToken);
-
-    const pair = new Pair(
-      CurrencyAmount.fromRawAmount(
-        tokenOneToken,
-        formatTokenAmount(tokenOneAmount, tokenOne.decimals)
-      ),
-      CurrencyAmount.fromRawAmount(
-        tokenTwoToken,
-        formatTokenAmount(tokenTwoAmount, tokenTwo.decimals)
-      )
-    );
+    const pair = await createPair(tokenOneToken, tokenTwoToken);
     const route = new Route([pair], tokenOneToken, tokenTwoToken);
 
     const amountIn = formatTokenAmount(tokenOneAmount, tokenOne.decimals);
-
     const trade = new Trade(
       route,
       CurrencyAmount.fromRawAmount(tokenOneToken, amountIn),
       TradeType.EXACT_INPUT
     );
-
-    // const slippageTolerance = new Percent(slippage * 100, "10000"); // 1, 2.5, 5
-
-    // const amountOutMin = trade.minimumAmountOut(slippageTolerance).toExact(); // needs to be converted to e.g. decimal string
-
-    const tokenTwoOut = (
-      (Number(tokenTwoAmount) * (100 - slippage)) /
-      100
-    ).toString();
-
-    const amountOutMin = formatTokenAmount(tokenTwoOut, tokenTwo.decimals);
+    const slippageTolerance = new Percent(slippage * 100, "10000");
+    const amountOutMin = formatTokenAmount(trade.minimumAmountOut(slippageTolerance).toExact(), tokenTwo.decimals);
 
     const path = [tokenOneToken.address, tokenTwoToken.address];
-    const to = account.address; // should be a checksummed recipient address
+    const to = account.address;
     const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20 minutes from the current Unix time
 
     console.log(amountIn, amountOutMin, path, to, deadline);
-    await approveToken(tokenOne.address, amountIn);
-    writeContract(
+
+    const approveTx = await approveToken(tokenOne.address, amountIn);
+    await waitForTransactionReceipt(wagmiConfig, { chainId: CHAIN_ID, hash: approveTx });
+    swapTrade(
       {
-        address: "0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24",
+        address: uniswap_v2_op_router_contract_address,
         abi: router_abi,
         functionName: "swapExactTokensForTokens",
         args: [amountIn, amountOutMin, path, to, deadline],
       },
       {
         onSuccess: (tx) => {
-          messageApi.info("Transaction is successful!" + tx.hash);
           setTxDetails({
             to: tx.to,
             data: tx.data,
@@ -244,7 +212,6 @@ function Swap() {
           });
         },
         onError: (error) => {
-          console.log("🚀 ~ fetchDexSwap ~ error:", error.message);
           messageApi.error(error.shortMessage);
         },
       }
@@ -256,14 +223,7 @@ function Swap() {
   }, []);
 
   useEffect(() => {
-    if (txDetails.to && account.isConnected) {
-      sendTransaction();
-    }
-  }, [txDetails]);
-
-  useEffect(() => {
     messageApi.destroy();
-
     if (isLoading) {
       messageApi.open({
         type: "loading",

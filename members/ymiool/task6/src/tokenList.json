@@ -1,44 +1,37 @@
 [
   {
-    "ticker": "WETH",
-    "img": "https://basescan.org/token/images/weth_28.png",
-    "name": "Wrapped Ether",
-    "address": "0x4200000000000000000000000000000000000006",
-    "decimals": 18
-  },
-  {
-    "ticker": "USDC",
-    "img": "https://cdn.moralis.io/eth/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.png",
-    "name": "USD Coin",
-    "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+    "ticker": "USDT",
+    "img": "https://cryptologos.cc/logos/tether-usdt-logo.png",
+    "name": "Tether",
+    "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
     "decimals": 6
   },
   {
-    "ticker": "PEPE",
-    "img": "https://basescan.org/token/images/pepe0x69onbase_32.png",
-    "name": "Pepe Base",
-    "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    "decimals": 9
+    "ticker": "USDC",
+    "img": "https://cryptologos.cc/logos/usd-coin-usdc-logo.png",
+    "name": "USD Coin",
+    "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+    "decimals": 6
   },
   {
-    "ticker": "BRETT",
-    "img": "https://basescan.org/token/images/brettbased_32.png",
-    "name": "Brett",
-    "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+    "ticker": "WLD",
+    "img": "https://cryptologos.cc/logos/worldcoin-wld-logo.png",
+    "name": "Worldcoin",
+    "address": "0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1",
     "decimals": 18
   },
   {
-    "ticker": "weirdo",
-    "img": "https://basescan.org/token/images/weirdo_32.png",
-    "name": "weirdo",
-    "address": "0x76734b57dfe834f102fb61e1ebf844adf8dd931e",
-    "decimals": 8
+    "ticker": "WLD",
+    "img": "https://cryptologos.cc/logos/worldcoin-wld-logo.png",
+    "name": "Worldcoin",
+    "address": "0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1",
+    "decimals": 18
   },
   {
-    "ticker": "GME",
-    "img": "https://basescan.org/assets/base/images/svg/empty-token.svg?v=24.6.1.0",
-    "name": "GameStop",
-    "address": "0xbeb0fd48c2ba0f1aacad2814605f09e08a96b94e",
-    "decimals": 9
+    "ticker": "OP",
+    "img": "https://assets.coingecko.com/coins/images/25244/small/Optimism.png?1696524385",
+    "name": "Optimism",
+    "address": "0x4200000000000000000000000000000000000042",
+    "decimals": 18
   }
 ]

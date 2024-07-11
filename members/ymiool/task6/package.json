@@ -1,5 +1,5 @@
 {
-  "name": "dex",
+  "name": "uniswap-dex",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@uniswap/sdk-core": "^5.0.0",
     "@uniswap/v2-sdk": "^4.4.0",
+    "@wagmi/core": "^2.11.7",
     "antd": "^5.1.5",
     "axios": "^1.2.3",
     "ethers": "^5.7.2",
