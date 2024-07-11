@@ -17,4 +17,7 @@ https://sepolia.etherscan.io/tx/0xc685fc2ddae3004fec35a858d0646c9ce877ff1b03e829
 ### 1）上架NFT
 https://etherscan.io/tx/0xb787503aa9611c25ab91b95b8ca23c23641c63148f2e73aa8d14807a154d2986
 ![alt text](image-3.png)
+
 ### 2）购买NFT的交易哈希
+https://sepolia.etherscan.io/tx/0xec8be77e080b6b0a3909cb0bb627803ca88d1bae204e5f05d15b66b3bb244750
+![alt text](image-4.png)
