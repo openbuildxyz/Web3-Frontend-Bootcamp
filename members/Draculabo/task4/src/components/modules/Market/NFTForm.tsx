@@ -15,13 +15,13 @@ import { Button } from '@/components/ui/button';
 import {
   NFTMARKET_ADDR,
   MYTOKEN_ADDR,
-  getExchangeFuncVars,
-  getNftFuncVars,
-} from '@/abis/contract';
+} from '@/abis/address';
 import { useWriteContract } from 'wagmi';
 import { parseUnits } from 'viem';
 import { useToast } from '@/components/ui/use-toast';
-import {  useState } from 'react';
+import { useState } from 'react';
+import MyToken from '@/abis/MyToken';
+import NFTMarket from '@/abis/NFTMarket';
 
 const formSchema = z.object({
   tokenId: z.string().min(1).max(50),
@@ -30,7 +30,7 @@ const formSchema = z.object({
 interface NFTFormProps {
   closeDialog: () => void;
 }
-const NFTForm = ({closeDialog}: NFTFormProps) => {
+const NFTForm = ({ closeDialog }: NFTFormProps) => {
   const { toast } = useToast();
   const { writeContractAsync } = useWriteContract();
   const [loading, setLoading] = useState(false);
@@ -40,7 +40,7 @@ const NFTForm = ({closeDialog}: NFTFormProps) => {
   });
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { tokenId, price } = values;
-    if (price === '' || tokenId === '') {
+    if (price === '' || tokenId  === '') {
       toast({
         variant: 'destructive',
         description: 'Please input token id and price.',
@@ -56,17 +56,19 @@ const NFTForm = ({closeDialog}: NFTFormProps) => {
     }
     try {
       setLoading(true);
-      await writeContractAsync(
-        getNftFuncVars('setApprovalForAll', [NFTMARKET_ADDR, true]),
-      );
-       await writeContractAsync(
-        getExchangeFuncVars('listGrantedNFT', [
-          MYTOKEN_ADDR,
-          tokenId,
-          parseUnits(`${price}`, 6),
-        ]),
-      );
-      closeDialog()
+      await writeContractAsync({
+        abi: MyToken,
+        address: MYTOKEN_ADDR,
+        functionName: 'setApprovalForAll',
+        args: [NFTMARKET_ADDR, true],
+      });
+      await writeContractAsync({
+        abi: NFTMarket,
+        address: NFTMARKET_ADDR,
+        functionName: 'listGrantedNFT',
+        args: [MYTOKEN_ADDR, BigInt(tokenId), parseUnits(`${price}`, 6)],
+      });
+      closeDialog();
       toast({
         variant: 'success',
         description:
@@ -110,7 +112,7 @@ const NFTForm = ({closeDialog}: NFTFormProps) => {
             )}
           />
           <Button type="submit" loading={loading}>
-              Submit
+            Submit
           </Button>
         </form>
       </Form>

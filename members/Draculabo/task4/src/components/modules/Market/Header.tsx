@@ -1,7 +1,7 @@
 'use client';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useWriteContract } from 'wagmi';
-import { MYTOKEN_ADDR, getNftFuncVars } from '@/abis/contract';
+import { MYTOKEN_ADDR } from '@/abis/address';
 import {
   Dialog,
   DialogContent,
@@ -13,6 +13,7 @@ import NFTForm from './NFTForm';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 import { useState } from 'react';
+import MyToken from "@/abis/MyToken";
 
 const Header = () => {
   const account = useAccount();
@@ -26,7 +27,11 @@ const Header = () => {
       return;
     }
     try {
-      await writeContractAsync(getNftFuncVars('mint'));
+      await writeContractAsync({
+        abi: MyToken,
+        address: MYTOKEN_ADDR,
+        functionName: "mint",
+      });
       toast({
         variant: 'success',
         description: 'mint success',
@@ -36,9 +41,10 @@ const Header = () => {
     }
   };
   return (
-    <>
-      <div className="w-full flex content-end items-center py-2.5 px-2 border border-gray-400 bg-white">
-        <Button className="text-gray-400 mr-2" onClick={handleMint}>
+      <div className="w-full flex justify-between items-center py-2.5 px-2 border border-gray-400 bg-white">
+
+        <div>
+   <Button className="text-white mr-2" onClick={handleMint}>
           mint
         </Button>
         <Dialog open={open}>
@@ -47,7 +53,7 @@ const Header = () => {
               onClick={() => {
                 setOpen(true);
               }}
-              className="text-gray-400"
+              className="text-white"
             >
               listGrantedNFT
             </Button>
@@ -70,11 +76,11 @@ const Header = () => {
             />
           </DialogContent>
         </Dialog>
+        </div>
         <div className="ml-2.5">
           <ConnectButton label="connect wallet" />
         </div>
       </div>
-    </>
   );
 };
 export default Header;

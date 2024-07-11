@@ -2,17 +2,19 @@
 import { useReadContract, useAccount, useWriteContract } from 'wagmi';
 
 import {
-  getExchangeFuncVars,
   NFTMARKET_ADDR,
-  getTokenFuncVars,
-} from '@/abis/contract';
+  OPENBUILDTOKEN_ADDR,
+} from '@/abis/address';
 
 import { formatUnits } from 'viem';
 import { useToast } from '@/components/ui/use-toast';
 import { INFTITem } from '@/types/NFTMarket';
-import { FC, useState } from 'react';
+import { FC, Fragment, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import NFTMarket from '@/abis/NFTMarket';
+import OpenBuildToken from "@/abis/OpenBuildToken";
+import Balance from "./Balance";
 const Item: FC<{
   data: INFTITem;
 }> = ({ data: nft }) => {
@@ -20,7 +22,7 @@ const Item: FC<{
   const account = useAccount();
   const [loading, setLoading] = useState(false);
   const { writeContractAsync } = useWriteContract();
-  const buyNft = async (nft: any) => {
+  const buyNft = async (nft: INFTITem) => {
     if (!nft.isActive) {
       toast({
         variant: 'destructive',
@@ -50,14 +52,19 @@ const Item: FC<{
     try {
       setLoading(true);
       await writeContractAsync(
-        getTokenFuncVars('approve', [NFTMARKET_ADDR, nft.price]),
+        {
+          abi: OpenBuildToken,
+          address: OPENBUILDTOKEN_ADDR,
+          functionName: "approve",
+          args: [NFTMARKET_ADDR, nft.price]
+        }
       );
-      await writeContractAsync(
-        getExchangeFuncVars('buyNFT', [
-          nft.nftContract,
-          formatUnits(nft.tokenId, 0),
-        ]),
-      );
+      await writeContractAsync({
+        abi: NFTMarket,
+        address: NFTMARKET_ADDR,
+        functionName: 'buyNFT',
+        args: [nft.nftContract, nft.tokenId],
+      });
       toast({
         variant: 'success',
         description:
@@ -73,11 +80,11 @@ const Item: FC<{
   const infoClassName =
     'overflow-hidden overflow-ellipsis  text-sm w-full text-sm';
   const itemClassName = 'text-nowrap flex items-center';
-  const labelClassName = 'w-[10em] text-md whitespace-pre-wrap';
+  const labelClassName = 'w-[10em] text-md whitespace-pre-wrap font-bold';
   return (
     <div
       key={nft.tokenId}
-      className="flex items-center content-center border border-gray-400 rounded-md p-4 bg-white  mx-2.5 mb-2.5 text-gray-600 "
+      className="flex  content-center border border-gray-400 rounded-md p-4 bg-white  mx-2.5 mb-2.5 text-gray-600 "
     >
       <div>
         <div className="p-2 border bg-gray-200 border-gray-300 w-[150px] h-[150px] rounded-sm">
@@ -88,14 +95,15 @@ const Item: FC<{
           />
         </div>
 
-        <div className="h-6 mt-1.5 text-center text-red-400 ">
-          {formatUnits(nft.price, 6)} OBT
+        <div className="h-6 mt-1.5 text-center  ">
+          <span className="font-bold">price：</span>
+          <span className="text-red-400">{formatUnits(nft.price, 6)} OBT</span>
         </div>
       </div>
 
       <div className="w-full px-2.5">
         {nft.isActive && (
-          <Button onClick={() => buyNft(nft)} loading={loading}>
+          <Button className="w-[calc(100% - 128px)] mb-2" onClick={() => buyNft(nft)} loading={loading}>
             Buy NFT
           </Button>
         )}
@@ -132,9 +140,15 @@ const Item: FC<{
   );
 };
 const Content = () => {
-  const result = useReadContract(getExchangeFuncVars('getNFTItems'));
+  const result = useReadContract({
+    abi: NFTMarket,
+    address: NFTMARKET_ADDR,
+    functionName: "getNFTItems"
+  });
   const nfts = (result.data || []) as INFTITem[];
   return (
+  <Fragment>
+    <Balance />
     <div className="flex-1 p-4  flex flex-wrap min-h-[300px] bg-gray-100 border rounded-sm border-gray-400 mt-4  mx-4">
       {nfts.length === 0 ? (
         <div className="w-full text-center h-full my-auto  text-gray-400">
@@ -144,6 +158,7 @@ const Content = () => {
         nfts.map((item) => <Item key={item.tokenId} data={item} />)
       )}
     </div>
+  </Fragment>
   );
 };
 

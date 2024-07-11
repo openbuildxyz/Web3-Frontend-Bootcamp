@@ -16,9 +16,8 @@ import {
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import Header from '@/components/modules/Market/Header';
 import Content from '@/components/modules/Market/Content';
-
 const config = getDefaultConfig({
-  appName: 'RainbowKit App',
+  appName: 'nft market',
   projectId: 'YOUR_PROJECT_ID',
   chains: [
     mainnet,
@@ -32,7 +31,19 @@ const config = getDefaultConfig({
   ssr: true,
 });
 
-const client = new QueryClient({});
+const client = new QueryClient({
+ defaultOptions: {
+    queries: {
+      gcTime: 1_000 * 60 * 60 * 24, // 24 hours
+      networkMode: 'offlineFirst',
+      refetchOnWindowFocus: false,
+      retry: 0,
+    },
+    mutations: {
+      networkMode: 'offlineFirst',
+    },
+  },
+});
 
 function Index() {
   return (
