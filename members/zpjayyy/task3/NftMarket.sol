@@ -20,12 +20,27 @@ contract NftMarket is IERC721Receiver {
         uint256 price
     );
 
+    event Cancel(
+        address indexed seller,
+        address indexed nftAddr,
+        uint256 indexed tokenId
+    );
+
     struct Order {
         address owner;
         uint256 price;
+        uint256 listTime;
+    }
+
+    struct OrderData {
+        address owner;
+        uint256 price;
+        uint256 listTime;
+        uint256 tokenId;
     }
 
     mapping(address => mapping(uint256 => Order)) public orderList;
+    mapping(address => uint256[]) public orderTokenIdList;
 
     IERC20 private _myToken;
 
@@ -48,8 +63,11 @@ contract NftMarket is IERC721Receiver {
         Order storage _order = orderList[_nftAddress][_tokenId];
         _order.owner = msg.sender;
         _order.price = _price;
+        _order.listTime = block.timestamp;
         _nft.safeTransferFrom(msg.sender, address(this), _tokenId);
 
+        uint256[] storage _tokenIdList = orderTokenIdList[_nftAddress];
+        _tokenIdList.push(_tokenId);
         emit List(msg.sender, _nftAddress, _tokenId, _price);
     }
 
@@ -67,8 +85,54 @@ contract NftMarket is IERC721Receiver {
         _myToken.transferFrom(msg.sender, _order.owner, _order.price);
 
         delete orderList[_nftAddress][_tokenId];
+        uint256[] storage _tokenIdList = orderTokenIdList[_nftAddress];
+        for (uint256 i = 0; i < _tokenIdList.length; i++) {
+            if (_tokenIdList[i] == _tokenId) {
+                _tokenIdList[i] = _tokenIdList[_tokenIdList.length - 1];
+                _tokenIdList.pop();
+                break;
+            }
+        }
 
         emit Purchase(msg.sender, _nftAddress, _tokenId, _order.price);
+    }
+
+    function cancel(address _nftAddress, uint256 _tokenId) public {
+        Order storage _order = orderList[_nftAddress][_tokenId];
+        require(_order.owner == msg.sender, "not owner");
+
+        IERC721 _nft = IERC721(_nftAddress);
+        _nft.safeTransferFrom(address(this), msg.sender, _tokenId);
+
+        delete orderList[_nftAddress][_tokenId];
+
+        uint256[] storage _tokenIdList = orderTokenIdList[_nftAddress];
+        for (uint256 i = 0; i < _tokenIdList.length; i++) {
+            if (_tokenIdList[i] == _tokenId) {
+                _tokenIdList[i] = _tokenIdList[_tokenIdList.length - 1];
+                _tokenIdList.pop();
+                break;
+            }
+        }
+
+        emit Cancel(msg.sender, _nftAddress, _tokenId);
+    }
+
+    function getAllListNft(
+        address _nftAddress
+    ) public view returns (OrderData[] memory orderDataList) {
+        uint256[] storage _tokenIdList = orderTokenIdList[_nftAddress];
+        OrderData[] memory _orderList = new OrderData[](_tokenIdList.length);
+        for (uint256 i = 0; i < _tokenIdList.length; i++) {
+            Order storage _order = orderList[_nftAddress][_tokenIdList[i]];
+            _orderList[i] = OrderData(
+                _order.owner,
+                _order.price,
+                _order.listTime,
+                _tokenIdList[i]
+            );
+        }
+        orderDataList = _orderList;
     }
 
     function onERC721Received(
