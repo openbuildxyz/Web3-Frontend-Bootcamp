@@ -63,8 +63,6 @@ export default function Home({
     }
   };
 
-  console.log('item444', marketNftLists);
-
   return (
     <>
       {marketNftLists?.filter(

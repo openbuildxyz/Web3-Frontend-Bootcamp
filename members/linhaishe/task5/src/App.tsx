@@ -26,9 +26,9 @@ function App() {
   const [userNftLists, setUserNftLists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  function transformData(dataFromAlchemy, dataFromContract) {
+  function transformData(dataFromContract, dataFromAlchemy) {
     // 使用 map 方法遍历原始数组，并返回新的对象数组
-    const transformedArray = dataFromAlchemy.map((item) => {
+    const transformedArray = dataFromContract.map((item) => {
       return {
         itemId: item.itemId,
         tokenId: item.tokenId,
@@ -45,7 +45,7 @@ function App() {
 
     // 使用 map 方法遍历 transformedArray，并将匹配的 oriData2 数据合并
     const finalData = transformedArray.map((item1) => {
-      const matchedItem = dataFromContract.find((item2) => {
+      const matchedItem = dataFromAlchemy.find((item2) => {
         return BigNumber.from(item1.tokenId._hex.toString()).eq(
           item2?.id?.tokenId
         );
