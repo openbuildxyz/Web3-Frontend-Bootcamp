@@ -1,1 +1,0 @@
-界面中NFTMint与ERC20Mint为测试用组件，可去除。
