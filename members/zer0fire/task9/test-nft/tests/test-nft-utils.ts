@@ -1,6 +1,6 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
-import { NFTListed, NFTPurchased } from "../generated/NftMarket/NftMarket"
+import { NFTListed, NFTPurchased } from "../generated/test-nft/test-nft"
 
 export function createNFTListedEvent(
   seller: Address,

@@ -1,7 +1,7 @@
 import {
   NFTListed as NFTListedEvent,
   NFTPurchased as NFTPurchasedEvent
-} from "../generated/NftMarket/NftMarket"
+} from "../generated/test-nft/test-nft"
 import { NFTListed, NFTPurchased } from "../generated/schema"
 
 export function handleNFTListed(event: NFTListedEvent): void {
