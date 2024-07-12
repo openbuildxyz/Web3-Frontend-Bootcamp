@@ -48,6 +48,7 @@ contract NFTMarket {
         IERC721 nft = IERC721(item.nftContract);
         nft.safeTransferFrom(address(this), msg.sender, item.tokenId);
         item.isSold = true;
+        item.owner = msg.sender;
         emit NFTSold(item.nftContract, item.tokenId, item.price, msg.sender, item.owner);
     }
    
