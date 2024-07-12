@@ -1,4 +1,4 @@
-import {useAccount, useReadContract, useWriteContract} from "wagmi";
+import {useAccount, useReadContract, useWatchContractEvent, useWriteContract} from "wagmi";
 import {FormEvent, useEffect, useState} from "react";
 import {nftMarketContractConfig} from "@/config/nftMarketContractConfig";
 import {Input} from "@nextui-org/input";
@@ -90,7 +90,7 @@ function ApproveOrPurchase({
       <button
         className="disabled:bg-gray-600 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full "
         disabled={address === owner}
-        onClick={async () => {
+        onClick={() => {
           writeContract({
             ...tokenContractConfig,
             functionName: "approve",
@@ -105,9 +105,9 @@ function ApproveOrPurchase({
     return (
       <div>
         <button
-          className="disabled:bg-gray-600 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full "
+          className="disabled:bg-gray-600 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
           disabled={address === owner}
-          onClick={async () => {
+          onClick={() => {
             writeContract({
               ...nftMarketContractConfig,
               functionName: "purchase",
