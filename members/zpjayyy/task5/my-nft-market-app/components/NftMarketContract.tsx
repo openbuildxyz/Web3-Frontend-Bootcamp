@@ -5,7 +5,6 @@ import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 import {nftContractConfig} from "@/config/nftContractConfig";
 import {tokenContractConfig} from "@/config/tokenContractConfig";
-import {Listbox, ListboxItem} from "@nextui-org/listbox";
 import Image from "next/image";
 import {getWeb3AssetUrl} from "@/utils/urlUtil";
 import {readContract} from "@wagmi/core";
@@ -127,7 +126,7 @@ function ListNft() {
   const {address} = useAccount();
   const [orderList, setOrderList] = useState<Order[]>();
 
-  const {data, error, writeContract} = useWriteContract();
+  const {writeContract} = useWriteContract();
   useEffect(() => {
     async function fetchImages() {
       const itemList = await readContract(config, {
