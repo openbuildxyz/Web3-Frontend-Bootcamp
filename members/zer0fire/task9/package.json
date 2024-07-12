@@ -1,0 +1,13 @@
+{
+  "name": "task9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "graph": "graph init --studio test-nft --network=sepolia --protocol=ethereum --from-contract=0xe7f1725e7734ce288f8367e1bb143e90bb3f0512 --abi=NftMarket.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
