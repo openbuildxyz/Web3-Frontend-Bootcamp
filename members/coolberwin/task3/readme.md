@@ -23,9 +23,9 @@ https://sepolia.etherscan.io/tx/0xe5c9f9b03d48f02ad0ea1a86e6a4d43d1c79ef9ba00765
         https://sepolia.etherscan.io/address/0x0447ad17d800cef171e5f9b5fa4b0343f1cd5a78
 
 - Step3 部署 NFTmarket
-https://sepolia.etherscan.io/tx/0x64bfc84b7dc3a042944920f02766ab5adbcee73e7500197df25f08521e2a33df
+https://sepolia.etherscan.io/tx/0x340e02e37cbc80b52c856b357b0d4fc35a241c69881c75c1ca732389a72d1334
     - nftmarket Address
-        https://sepolia.etherscan.io/address/0xc557afa2a25eada376d5dab816f9ca0fc98f02e8
+        https://sepolia.etherscan.io/address/0xef444ba96744f247301601a0233cfa8989408aa3
 
 ## 买卖过程
 
@@ -33,22 +33,22 @@ https://sepolia.etherscan.io/tx/0x64bfc84b7dc3a042944920f02766ab5adbcee73e750019
 https://sepolia.etherscan.io/tx/0x213dad5f1a92c560269357da40ff40ac1e811a4f78a9db3152dd4ead00a64fc1
 
 - Step5 seller mint 一个 nft
-https://sepolia.etherscan.io/tx/0xd46f0eac851ddbdfdad597274b5b651e8b6641388482fb33f09e2a85f150f4bc
+https://sepolia.etherscan.io/tx/0x9cda082543b7aec4a65efdd7e616685b062df5e6eed63b061160d85990339059
 
 
-- Step6 seller  把 nft approve 给 nftmarket
-https://sepolia.etherscan.io/tx/0x85aee3f549847a347dfe3677b8c9b59de32123b236b642c3bc9470d65a05f545
+- Step6 seller  把 tokenid 为 1 的 nft approve 给 nftmarket
+https://sepolia.etherscan.io/tx/0xd689543bc1baa5340f67eebcd27cd8afa31e634761f04ba7fb1541e20603f4e4
 
-- Step7 seller list a nft
+- Step7 seller list a nft 标价 10 btk
 
-https://sepolia.etherscan.io/tx/0x83086b838f1d7b80357b7ddda2d2fd628f7c87832bea525634779c02fbc4382b
+https://sepolia.etherscan.io/tx/0x5729ba0256ddc0b3cda70828375507f67d7a53b7db5d0de25e250fa6d624880f
 
 
-- Step8 buyer approve nftmarket 200 btk
-https://sepolia.etherscan.io/tx/0x5c27cfff8c2faad3291a387991fac086deae0a3b43104aa50ed0b14995445451
+- Step8 buyer bertoken approve  nftmarket 50 btk
+https://sepolia.etherscan.io/tx/0x69c9e88878afb6e5aa88a2b7b54f26c9aa468d6fa7693213d7013d4b9b0b9aa2
 
 - Step9 buyer buy nft
 
-https://sepolia.etherscan.io/tx/0x816ebaa2027f22fe118f7272bcce8cc1112dda1b8c61e944a6c4e6a2105606ff
+https://sepolia.etherscan.io/tx/0x95199d9acccbfdb99b806dfa01f84fc1ad54be9794e54051f5a8bc6cddfd94d4
 
 
