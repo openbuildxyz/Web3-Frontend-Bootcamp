@@ -35,14 +35,11 @@ class Aspect implements IPreContractCallJP {
         // load the current block timestamp
         // 获取区块的时间戳,通过底层hostApi获取
         const blockTimeBytes = sys.hostApi.runtimeContext.get<u64>('block.header.timestamp');
-        console.log('blockTimeBytes', blockTimeBytes);
         const blockTimes = Protobuf.decode<UintData>(blockTimeBytes, UintData.decode).data;
-        console.log('blockTimes', blockTimes);
 
         // load last execution timestamp
          // 获取最近一次区块的交易,根据获取的合约地址和交易地址组成的key，通过aspect本身存储的数据获取
          const lastExecState = sys.aspect.mutableState.get<u64>(storagePrefix + 'lastExecAt');
-         console.log(lastExecState, 'lastExecState');
          const lastExec = lastExecState.unwrap();
 
         // check if the throttle interval has passed, revert if not
