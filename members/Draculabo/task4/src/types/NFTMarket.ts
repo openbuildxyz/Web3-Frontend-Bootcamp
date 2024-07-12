@@ -1,5 +1,5 @@
 export interface INFTITem {
-  seller: string;
+  seller: `0x${string}`;
   nftContract: `0x${string}`;
   tokenId: bigint;
   price: bigint;

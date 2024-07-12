@@ -13,7 +13,7 @@ import NFTForm from './NFTForm';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 import { useState } from 'react';
-import MyToken from "@/abis/MyToken";
+import MyToken from '@/abis/MyToken';
 
 const Header = () => {
   const account = useAccount();
@@ -30,7 +30,7 @@ const Header = () => {
       await writeContractAsync({
         abi: MyToken,
         address: MYTOKEN_ADDR,
-        functionName: "mint",
+        functionName: 'mint',
       });
       toast({
         variant: 'success',
@@ -41,10 +41,9 @@ const Header = () => {
     }
   };
   return (
-      <div className="w-full flex justify-between items-center py-2.5 px-2 border border-gray-400 bg-white">
-
-        <div>
-   <Button className="text-white mr-2" onClick={handleMint}>
+    <div className="w-full flex justify-between items-center py-2.5 px-2 border border-gray-400 bg-white">
+      <div>
+        <Button className="text-white mr-2" onClick={handleMint}>
           mint
         </Button>
         <Dialog open={open}>
@@ -58,9 +57,12 @@ const Header = () => {
               listGrantedNFT
             </Button>
           </DialogTrigger>
-          <DialogContent className="box-content" clickCloseIcon={() => {
-            setOpen(false)
-          }}>
+          <DialogContent
+            className="box-content"
+            clickCloseIcon={() => {
+              setOpen(false);
+            }}
+          >
             <DialogHeader>
               <DialogTitle>
                 <div>
@@ -76,11 +78,11 @@ const Header = () => {
             />
           </DialogContent>
         </Dialog>
-        </div>
-        <div className="ml-2.5">
-          <ConnectButton label="connect wallet" />
-        </div>
       </div>
+      <div className="ml-2.5">
+        <ConnectButton label="connect wallet" />
+      </div>
+    </div>
   );
 };
 export default Header;

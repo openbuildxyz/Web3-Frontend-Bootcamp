@@ -15,6 +15,7 @@ import { cn } from '@/lib/utils';
 import NFTMarket from '@/abis/NFTMarket';
 import OpenBuildToken from "@/abis/OpenBuildToken";
 import Balance from "./Balance";
+import { useBalance } from "@/app/hooks/useBalance";
 const Item: FC<{
   data: INFTITem;
 }> = ({ data: nft }) => {
@@ -22,6 +23,8 @@ const Item: FC<{
   const account = useAccount();
   const [loading, setLoading] = useState(false);
   const { writeContractAsync } = useWriteContract();
+  const isOwner = nft.seller === account.address
+  const balance = useBalance({address: account.address!})
   const buyNft = async (nft: INFTITem) => {
     if (!nft.isActive) {
       toast({
@@ -39,16 +42,13 @@ const Item: FC<{
         description: 'Please connect wallet first.',
       });
     }
-
-    if (nft.seller === account.address) {
+    if(balance < nft.price) {
       toast({
-        variant: 'destructive',
+        variant: "destructive",
         title: 'Uh oh! Something went wrong.',
-        description: `NFT ${nft.nftContract}#${Number(nft.tokenId)} `,
-      });
-      return;
+        description: `Your balance is insufficient.`
+      })
     }
-
     try {
       setLoading(true);
       await writeContractAsync(
@@ -87,7 +87,7 @@ const Item: FC<{
       className="flex  content-center border border-gray-400 rounded-md p-4 bg-white  mx-2.5 mb-2.5 text-gray-600 "
     >
       <div>
-        <div className="p-2 border bg-gray-200 border-gray-300 w-[150px] h-[150px] rounded-sm">
+        <div className="p-2 border bg-gray-200 border-gray-300 w-[200px] h-[200px] rounded-sm">
           <img
             src="https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg&w=400&fit=max"
             alt="nft cover"
@@ -95,18 +95,9 @@ const Item: FC<{
           />
         </div>
 
-        <div className="h-6 mt-1.5 text-center  ">
-          <span className="font-bold">price：</span>
-          <span className="text-red-400">{formatUnits(nft.price, 6)} OBT</span>
-        </div>
       </div>
 
       <div className="w-full px-2.5">
-        {nft.isActive && (
-          <Button className="w-[calc(100% - 128px)] mb-2" onClick={() => buyNft(nft)} loading={loading}>
-            Buy NFT
-          </Button>
-        )}
         <div title={nft.nftContract} className={itemClassName}>
           <span className={labelClassName}>nftContract: </span>
           <span className={cn(infoClassName, 'break-words')}>
@@ -135,6 +126,18 @@ const Item: FC<{
             {nft.isActive ? 'untraded' : 'traded'}
           </span>
         </div>
+        <div className={cn(itemClassName, `h-6 mt-1.5`)}>
+          <span className={labelClassName}>price：</span>
+          <span className={cn(infoClassName, `text-red-400`)}>{formatUnits(nft.price, 6)} OBT</span>
+        </div>
+        {nft.isActive && !isOwner &&(
+        <div className="mt-4">
+          <Button className="w-full my-auto" onClick={() => buyNft(nft)} loading={loading}>
+            Buy NFT
+          </Button>
+
+          </div>
+        )}
       </div>
     </div>
   );
@@ -149,7 +152,7 @@ const Content = () => {
   return (
   <Fragment>
     <Balance />
-    <div className="flex-1 p-4  flex flex-wrap min-h-[300px] bg-gray-100 border rounded-sm border-gray-400 mt-4  mx-4">
+    <div className="flex-1 p-4  flex flex-wrap min-h-[300px] border rounded-sm border-gray-400 mt-4  mx-4">
       {nfts.length === 0 ? (
         <div className="w-full text-center h-full my-auto  text-gray-400">
           Empty
