@@ -1,0 +1,7 @@
+{
+  "name": "TodoList",
+  "version": "1.0.0",
+  "description": "A TodoList app based on React",
+  "main": "index.js",
+  "license": "MIT"
+}
