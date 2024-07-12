@@ -1,23 +1,35 @@
-import { useAccount, useReadContract, useWriteContract } from "wagmi";
-import { FormEvent } from "react";
-import { nftMarketContractConfig } from "@/config/nftMarketContractConfig";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
-import { nftContractConfig } from "@/config/nftContractConfig";
-import { tokenContractConfig } from "@/config/tokenContractConfig";
-import { Listbox, ListboxItem } from "@nextui-org/listbox";
+import {useAccount, useReadContract, useWriteContract} from "wagmi";
+import {FormEvent, useEffect, useState} from "react";
+import {nftMarketContractConfig} from "@/config/nftMarketContractConfig";
+import {Input} from "@nextui-org/input";
+import {Button} from "@nextui-org/button";
+import {nftContractConfig} from "@/config/nftContractConfig";
+import {tokenContractConfig} from "@/config/tokenContractConfig";
+import {Listbox, ListboxItem} from "@nextui-org/listbox";
+import Image from "next/image";
+import {getWeb3AssetUrl} from "@/utils/urlUtil";
+import {readContract} from "@wagmi/core";
+import {config} from "@/config/config";
+
+interface Order {
+  owner: string;
+  price: bigint;
+  tokenId: bigint;
+  listTime: bigint;
+  image: string;
+}
 
 export default function NftMarketContract() {
   return (
     <div>
-      <List />
-      <ListNft />
+      <List/>
+      <ListNft/>
     </div>
   );
 }
 
 function List() {
-  const { data: hash, error, writeContract } = useWriteContract();
+  const {data: hash, error, writeContract} = useWriteContract();
 
   async function list(tokenId: bigint, price: bigint) {
     writeContract({
@@ -42,8 +54,8 @@ function List() {
   return (
     <div className="w-1/3 m-4">
       <form onSubmit={submit}>
-        <Input type="number" name="tokenId" placeholder="tokenId" required />
-        <Input type="number" name="price" placeholder="price" required />
+        <Input type="number" name="tokenId" placeholder="tokenId" required/>
+        <Input type="number" name="price" placeholder="price" required/>
         <Button type="submit">List</Button>
         {hash && <div>transaction hash: {hash}</div>}
       </form>
@@ -52,21 +64,21 @@ function List() {
 }
 
 function ApproveOrPurchase({
-  tokenId,
-  price,
-}: {
+                             tokenId,
+                             price,
+                           }: {
   tokenId: bigint;
   price: bigint;
 }) {
-  const { address } = useAccount();
+  const {address} = useAccount();
 
-  const { data: allowance } = useReadContract({
+  const {data: allowance} = useReadContract({
     ...tokenContractConfig,
     functionName: "allowance",
     args: [address || `0x${address}`, nftMarketContractConfig.address],
   });
 
-  const {isPending, error, writeContract } = useWriteContract();
+  const {isPending, error, writeContract} = useWriteContract();
 
   if (error) {
     return <div>something is wrong: {error.message}</div>;
@@ -108,21 +120,39 @@ function ApproveOrPurchase({
 }
 
 function ListNft() {
-  const { data: itemList, error } = useReadContract({
-    ...nftMarketContractConfig,
-    functionName: "getAllListNft",
-    args: [nftContractConfig.address],
-  });
+  const [orderList, setOrderList] = useState<Order[]>();
+  useEffect(() => {
+    async function fetchImages() {
+      const itemList = await readContract(config, {
+        ...nftMarketContractConfig,
+        functionName: "getAllListNft",
+        args: [nftContractConfig.address],
+      })
 
-  console.log("nft", itemList);
-
-  if (error) {
-    return <div>something is wrong: {error.message}</div>;
-  }
+      const orders: Order[] = new Array<Order>();
+      if (itemList) {
+        for (let item of itemList) {
+          const url = `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/${item.tokenId}`;
+          const response = await fetch(getWeb3AssetUrl(url) || "");
+          const data = await response.json();
+          const order = {
+            owner: item.owner,
+            price: item.price,
+            tokenId: item.tokenId,
+            listTime: item.listTime,
+            image: getWeb3AssetUrl(data.image) || "",
+          };
+          orders.push(order);
+        }
+        setOrderList(orders);
+      }
+    }
+    fetchImages().catch(error => console.log(error));
+  }, []);
 
   return (
     <div className="w-1/3">
-      <Listbox items={itemList || []} aria-label="Dynamic Actions">
+      <Listbox items={orderList || []} aria-label="Dynamic Actions">
         {(item) => (
           <ListboxItem
             key={item.tokenId.toString()}
@@ -135,7 +165,8 @@ function ListNft() {
               <div>
                 listTime: {new Date(Number(item.listTime) * 1000).toLocaleString()}
               </div>
-              <ApproveOrPurchase price={item.price} tokenId={item.tokenId} />
+              <Image width={200} height={200} src={item.image} alt="image"/>
+              <ApproveOrPurchase price={item.price} tokenId={item.tokenId}/>
             </div>
           </ListboxItem>
         )}
