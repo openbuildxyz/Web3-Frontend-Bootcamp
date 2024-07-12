@@ -94,12 +94,16 @@ function createInitialLists(todos: ListsInterface[]): ListStateInterface {
     return {
       lists: JSON.parse(lists),
     } as listAction;
+  }else{
+    return {
+      lists: [],
+    } as listAction;
   }
 }
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialLists, createInitialLists);
-
+  console.info(state, 'll1');
   useEffect(() => {
     localStorage.setItem('todo-list', JSON.stringify(state.lists));
   }, [state.lists]);
