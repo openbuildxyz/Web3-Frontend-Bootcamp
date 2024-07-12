@@ -21,25 +21,25 @@ class Aspect implements IPreContractCallJP {
     preContractCall(input: PreContractCallInput): void {
         // read the throttle config from the properties and decode
         // 读取限流配置
-        const interval = sys.aspect.property.get<u64>("interval"); 
+        const interval = sys.aspect.property.get<u64>("interval");
         // 次数
         const limit = sys.aspect.property.get<u64>("limit");
 
         // get the contract address, from address and build the storage prefix
         // 获取当前调用的合约地址
-        const contranctAddress = uint8ArrayToHex(input.call!.to);
+        const contractAddress = uint8ArrayToHex(input.call!.to);
         // 发送地址
         const from = uint8ArrayToHex(input.call!.from);
-        const storagePrefix = `${contranctAddress}:${from}`;
+        const storagePrefix = `${contractAddress}:${from}`;
 
         // load the current block timestamp
         // 获取区块的时间戳,通过底层hostApi获取
-        const blockTimeBytes = sys.hostApi.runtimeContext.get<u64>('block.header.timestamp');
+        const blockTimeBytes = sys.hostApi.runtimeContext.get('block.header.timestamp');
         const blockTimes = Protobuf.decode<UintData>(blockTimeBytes, UintData.decode).data;
 
         // load last execution timestamp
          // 获取最近一次区块的交易,根据获取的合约地址和交易地址组成的key，通过aspect本身存储的数据获取
-         const lastExecState = sys.aspect.mutableState.get<u64>(storagePrefix + 'lastExecAt');
+         const lastExecState = sys.aspect.mutableState.get<u64>(`${storagePrefix}:lastExecAt`);
          const lastExec = lastExecState.unwrap();
 
         // check if the throttle interval has passed, revert if not
