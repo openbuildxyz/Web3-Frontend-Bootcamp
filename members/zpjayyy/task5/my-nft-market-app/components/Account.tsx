@@ -11,7 +11,7 @@ export default function Account() {
   const { data: ensAvatar } = useEnsAvatar();
 
   return (
-    <Card className="bg-gray-200 w-1/3 m-4">
+    <Card className="">
       <CardHeader className="flex gap-3">
         <Avatar src={ensAvatar || ""} />
         {address && <div>{ensName ? `${ensName} (${address})` : address}</div>}

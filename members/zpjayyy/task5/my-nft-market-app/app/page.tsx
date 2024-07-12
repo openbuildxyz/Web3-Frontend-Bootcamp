@@ -16,11 +16,15 @@ function ConnectWallet() {
 
 export default function Home() {
   return (
-    <main>
-      <ConnectWallet />
+    <main className="dark text-foreground bg-background flex flex-row">
+      <div className="">
+        <ConnectWallet/>
+        <NftContract />
+      </div>
       {/*<TokenContract />*/}
-      <NftContract />
-      <NftMarketContract />
+      <div className="flex-1">
+        <NftMarketContract />
+      </div>
     </main>
   );
 }

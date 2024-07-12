@@ -66,9 +66,11 @@ function List() {
 function ApproveOrPurchase({
                              tokenId,
                              price,
+                             owner
                            }: {
   tokenId: bigint;
   price: bigint;
+  owner: string
 }) {
   const {address} = useAccount();
 
@@ -87,7 +89,8 @@ function ApproveOrPurchase({
   if (!allowance || BigInt(allowance.toString()) < price) {
     return (
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+        className="disabled:bg-gray-600 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full "
+        disabled={address === owner}
         onClick={async () => {
           writeContract({
             ...tokenContractConfig,
@@ -96,14 +99,15 @@ function ApproveOrPurchase({
           });
         }}
       >
-        {isPending ? "approving" : "approve"}
+        {isPending ? "approving" : "buy"}
       </button>
     );
   } else {
     return (
       <div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+          className="disabled:bg-gray-600 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full "
+          disabled={address === owner}
           onClick={async () => {
             writeContract({
               ...nftMarketContractConfig,
@@ -112,7 +116,7 @@ function ApproveOrPurchase({
             });
           }}
         >
-          {isPending ? "purchasing" : "purchased"}
+          {isPending ? "purchasing" : "buy"}
         </button>
       </div>
     );
@@ -120,7 +124,10 @@ function ApproveOrPurchase({
 }
 
 function ListNft() {
+  const {address} = useAccount();
   const [orderList, setOrderList] = useState<Order[]>();
+
+  const {data, error, writeContract} = useWriteContract();
   useEffect(() => {
     async function fetchImages() {
       const itemList = await readContract(config, {
@@ -144,33 +151,47 @@ function ListNft() {
           };
           orders.push(order);
         }
+        console.log(orders)
         setOrderList(orders);
       }
     }
+
     fetchImages().catch(error => console.log(error));
   }, []);
 
   return (
-    <div className="w-1/3">
-      <Listbox items={orderList || []} aria-label="Dynamic Actions">
-        {(item) => (
-          <ListboxItem
-            key={item.tokenId.toString()}
-            textValue={item.tokenId.toString()}
-          >
-            <div className="flex flex-col border-2 border-gray-200">
-              <div>owner: {item.owner}</div>
-              <div>price: {item.price.toString()}</div>
-              <div>tokenId: {item.tokenId.toString()}</div>
-              <div>
-                listTime: {new Date(Number(item.listTime) * 1000).toLocaleString()}
-              </div>
+    <div className="flex flex-row flex-wrap">
+      {orderList?.map(item => {
+        return (
+          <div key={item.tokenId} className="flex-1 flex flex-col border-2 border-gray-200 m-2">
+            <div>owner: {item.owner}</div>
+            <div className="flex flex-row">
               <Image width={200} height={200} src={item.image} alt="image"/>
-              <ApproveOrPurchase price={item.price} tokenId={item.tokenId}/>
+              <div className="flex flex-col m-4">
+                <div>price: {item.price.toString()}</div>
+                <div>tokenId: {item.tokenId.toString()}</div>
+                <div>
+                  listTime: {new Date(Number(item.listTime) * 1000).toLocaleString()}
+                </div>
+              </div>
             </div>
-          </ListboxItem>
-        )}
-      </Listbox>
+            <div className="flex flex-row">
+              <ApproveOrPurchase price={item.price} tokenId={item.tokenId} owner={item.owner}/>
+              <Button disabled={address !== item.owner}
+                      className="bg-blue-500 text-white font-bold py-2 px-4 rounded w-full disabled:bg-gray-600 hover:bg-blue-700"
+                      onClick={() => {
+                        writeContract({
+                          ...nftMarketContractConfig,
+                          functionName: "cancel",
+                          args: [nftContractConfig.address, item.tokenId]
+                        })
+                      }}>
+                cancel
+              </Button>
+            </div>
+          </div>
+        )
+      })}
     </div>
   );
 }
