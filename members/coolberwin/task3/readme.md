@@ -1,13 +1,30 @@
 
 # NFT Market 项目合约
 
-```
-seller
-0x94925edBae8100ab03F519087Afe1bB1Fc375586
 
-buyer
-0xF551AeA5154ddb9e2Ca866EbBe6f3D718329ADB5
-```
+## 文件说明：
+
+| 文件名      | Sepolia 地址 | 说明                 |
+|-------------|--------------|----------------------|
+| berToken.sol   | 0x9C25947fbD19003DC8659Ab84598007a903BD69A | ERC-20 代币 |
+| berNFT.sol  | 0x0447ad17d800cef171e5f9b5fa4b0343f1cd5a78 | ERC-721 代币   |
+| berNFTMarket.sol | 0xef444ba96744f247301601a0233cfa8989408aa3 | NFT 市场  |
+
+## 交易哈希：
+
+| 哈希值     | 说明          |
+|------------|---------------|
+|  0x5729ba0256ddc0b3cda70828375507f67d7a53b7db5d0de25e250fa6d624880f| seller 上架 nft  |
+| 0x95199d9acccbfdb99b806dfa01f84fc1ad54be9794e54051f5a8bc6cddfd94d4 | buyer 购买 nft  |
+
+## 买卖双方
+
+| address     | 说明          |
+|------------|---------------|
+| 0x94925edBae8100ab03F519087Afe1bB1Fc375586| seller   |
+| 0xF551AeA5154ddb9e2Ca866EbBe6f3D718329ADB5 | buyer  |
+
+
 
 ## 部署过程
 
