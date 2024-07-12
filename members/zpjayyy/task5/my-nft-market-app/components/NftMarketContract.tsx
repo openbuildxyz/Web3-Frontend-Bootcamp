@@ -1,4 +1,4 @@
-import {useAccount, useReadContract, useWatchContractEvent, useWriteContract} from "wagmi";
+import {useAccount, useReadContract, useWriteContract} from "wagmi";
 import {FormEvent, useEffect, useState} from "react";
 import {nftMarketContractConfig} from "@/config/nftMarketContractConfig";
 import {Input} from "@nextui-org/input";

@@ -1,22 +1,10 @@
-import {
-  useAccount,
-  useDisconnect,
-  useEnsAvatar,
-  useEnsName,
-  useReadContract,
-  useWatchContractEvent,
-  useWriteContract
-} from "wagmi";
+import {useAccount, useDisconnect, useEnsAvatar, useEnsName, useWatchContractEvent} from "wagmi";
 import {Button} from "@nextui-org/button";
 import {Card, CardBody, CardFooter, CardHeader} from "@nextui-org/card";
 import {Avatar} from "@nextui-org/avatar";
 import {Divider} from "@nextui-org/divider";
 import {nftMarketContractConfig} from "@/config/nftMarketContractConfig";
-import {readContract} from "@wagmi/core";
-import {config} from "@/config/config";
-import {nftContractConfig} from "@/config/nftContractConfig";
 import {useState} from "react";
-import {set} from "idb-keyval";
 
 export default function Account() {
   const {address} = useAccount();
