@@ -51,7 +51,7 @@ class Aspect implements IPreContractCallJP {
         // 检查执行次数
         const execTimeState = sys.aspect.mutableState.get<u64>(storagePrefix + 'execTimes');
         const execTimes = execTimeState.unwrap();
-        if (limit && execTimes > limit) {
+        if (limit && execTimes >= limit) {
             sys.revert('exec times exceeded');
         }
         // update the throttle state
