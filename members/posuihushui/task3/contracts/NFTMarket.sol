@@ -51,7 +51,7 @@ contract NFTMarket {
             "Contract is not approved"
         );
         nft.transferFrom(msg.sender, address(this), tokenId);
-        listings[tokenId] = Listing(msg.sender, nftContract, tokenId, price);
+        listings[listingCounter] = Listing(msg.sender, nftContract, tokenId, price);
         emit NFTListed(listingCounter, msg.sender, nftContract, tokenId, price);
         listingCounter++;
     }
@@ -72,6 +72,7 @@ contract NFTMarket {
             msg.sender,
             listing.tokenId
         );
+        delete listings[listingId];
         emit NFTPurchased(
             listingId,
             msg.sender,
