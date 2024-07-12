@@ -41,6 +41,7 @@ const Item: FC<{
       toast({
         description: 'Please connect wallet first.',
       });
+      return;
     }
     if(balance < nft.price) {
       toast({
@@ -48,6 +49,7 @@ const Item: FC<{
         title: 'Uh oh! Something went wrong.',
         description: `Your balance is insufficient.`
       })
+      return;
     }
     try {
       setLoading(true);
