@@ -1,0 +1,12 @@
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700;
+}
+
+.input {
+  @apply mb-2 p-2 border rounded-lg w-full;
+}
