@@ -1,0 +1,51 @@
+[
+  {
+    "ticker": "WETH",
+    "img": "https://basescan.org/token/images/weth_28.png",
+    "name": "Wrapped Ether",
+    "address": "0xfff9976782d46cc05630d1f6ebab18b2324d6b14",
+    "decimals": 18
+  },
+  {
+    "ticker": "USDC",
+    "img": "https://cdn.moralis.io/eth/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.png",
+    "name": "USD Coin",
+    "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+    "decimals": 6
+  },
+  {
+    "ticker": "USDT",
+    "img": "https://cdn.moralis.io/eth/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.png",
+    "name": "USDT",
+    "address": "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238",
+    "decimals": 6
+  },
+  {
+    "ticker": "BRETT",
+    "img": "https://basescan.org/token/images/brettbased_32.png",
+    "name": "Brett",
+    "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "decimals": 18
+  },
+  {
+    "ticker": "PEPE",
+    "img": "https://basescan.org/token/images/pepe0x69onbase_32.png",
+    "name": "Pepe Base",
+    "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "decimals": 9
+  },
+  {
+    "ticker": "weirdo",
+    "img": "https://basescan.org/token/images/weirdo_32.png",
+    "name": "weirdo",
+    "address": "0x76734b57dfe834f102fb61e1ebf844adf8dd931e",
+    "decimals": 8
+  },
+  {
+    "ticker": "GME",
+    "img": "https://basescan.org/assets/base/images/svg/empty-token.svg?v=24.6.1.0",
+    "name": "GameStop",
+    "address": "0xbeb0fd48c2ba0f1aacad2814605f09e08a96b94e",
+    "decimals": 9
+  }
+]
