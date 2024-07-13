@@ -1,0 +1,5 @@
+#root {
+  width: min(100vw, 1920px);
+  margin: 0 auto;
+  text-align: center;
+}
