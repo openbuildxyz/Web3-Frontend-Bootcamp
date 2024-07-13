@@ -9,6 +9,7 @@ import { WagmiProvider } from "wagmi";
 
 import App from "./App.tsx";
 import { config } from "./config";
+import "bootstrap/dist/css/bootstrap.css";
 
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")!).render(
