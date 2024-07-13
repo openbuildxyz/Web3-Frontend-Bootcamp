@@ -1,0 +1,3 @@
+List NFT transaction hash: 0x4acc89ca94e89aa253d1209917ed1fdc09232098ed86246b5e54276100761179
+
+Buy NFT transaction hash: 0x3dbe89ad4678f198b147a7673dfc48b06982ad7ab53b00049481f5501fefec4b
