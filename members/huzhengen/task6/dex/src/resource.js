@@ -1,6 +1,9 @@
+export const infura_connection =
+  "https://mainnet.infura.io/v3/9351e8a2b93542e6b47285630099690a";
+
 export const infura_connection_base =
-  "https://base-mainnet.infura.io/v3/8cb704475672484983ef98fa6d68d033"
-  
+  "https://base-mainnet.infura.io/v3/8cb704475672484983ef98fa6d68d033";
+
 export const router_abi = [
   {
     inputs: [

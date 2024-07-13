@@ -1,10 +1,12 @@
 import React from "react";
 import Logo from "../moralis-logo.svg";
-// import Base from "../base-logo.svg";
+import Eth from "../eth.svg";
 import { Link } from "react-router-dom";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-function Header() {
+function Header (props) {
+
+  const { address, isConnected, connect } = props;
 
   return (
     <header>
@@ -19,8 +21,8 @@ function Header() {
       </div>
       <div className="rightH">
         <div className="headerItem">
-          {/* <img src={Base} alt="base" className="eth" /> */}
-          Base Chain
+          <img src={Eth} alt="eth" className="eth" />
+          Ethereum
         </div>
         <ConnectButton />
       </div>

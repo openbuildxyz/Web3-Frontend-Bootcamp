@@ -6,17 +6,20 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import tokenList from "../tokenList.json";
-import { Route, Pair, } from "@uniswap/v2-sdk";
+import axios from "axios";
 import {
-  ChainId,
-  Token,
-  CurrencyAmount,
-} from "@uniswap/sdk-core";
-import { ethers } from "ethers";
-import { infura_connection_base, pair_abi, router_abi } from "../resource";
-import { useAccount, useWriteContract } from "wagmi";
+  ChainId, Token, WETH9, CurrencyAmount, TradeType, Percent
 
-function Swap () {
+} from '@uniswap/sdk-core'
+import { Pair, Route, Trade, } from '@uniswap/v2-sdk'
+import { infura_connection, infura_connection_base, pair_abi, router_abi } from "../resource";
+import { ethers } from 'ethers'
+import { useAccount, useWriteContract } from "wagmi";
+// import { useSendTransaction, useWaitForTransaction } from "wagmi";
+
+
+function Swap (props) {
+  const { address, isConnected } = props;
   const [messageApi, contextHolder] = message.useMessage();
   const [slippage, setSlippage] = useState(2.5);
   const [tokenOneAmount, setTokenOneAmount] = useState(null);
@@ -32,11 +35,11 @@ function Swap () {
     value: null,
   });
 
-  const { writeContract } = useWriteContract();
-  const account = useAccount();
-  const { sendTransaction } = {};
+  const { writeContract, isLoading, isSuccess } = useWriteContract()
+  const account = useAccount()
+  // const { data, sendTransaction } = {}
 
-  const { isLoading, isSuccess } = {};
+  // const { isLoading, isSuccess } = {}
 
   function handleSlippageChange (e) {
     setSlippage(e.target.value);
@@ -45,7 +48,7 @@ function Swap () {
   function changeAmount (e) {
     setTokenOneAmount(e.target.value);
     if (e.target.value && prices) {
-      setTokenTwoAmount((e.target.value * prices.ratio).toFixed(6));
+      setTokenTwoAmount((e.target.value * prices.ratio).toFixed(6))
     } else {
       setTokenTwoAmount(null);
     }
@@ -73,63 +76,69 @@ function Swap () {
     setTokenTwoAmount(null);
     if (changeToken === 1) {
       setTokenOne(tokenList[i]);
-      fetchPrices(tokenList[i], tokenTwo);
+      fetchPrices(tokenList[i], tokenTwo)
     } else {
       setTokenTwo(tokenList[i]);
-      fetchPrices(tokenOne, tokenList[i]);
+      fetchPrices(tokenOne, tokenList[i])
     }
     setIsOpen(false);
   }
 
+
   async function createPair (tokenOne, tokenTwo) {
-    const tokenOneToken = new Token(ChainId.BASE, tokenOne.address, tokenOne.decimals);
-    const tokenTwoToken = new Token(ChainId.BASE, tokenTwo.address, tokenTwo.decimals);
-    const pairAddress = Pair.getAddress(tokenOneToken, tokenTwoToken);
+    const tokenOneToken = new Token(ChainId.BASE, tokenOne.address, tokenOne.decimals)
+    const tokenTwoToken = new Token(ChainId.BASE, tokenTwo.address, tokenTwo.decimals)
+
+    const pairAddress = Pair.getAddress(tokenOneToken, tokenTwoToken)
+
+    // router v2 02 : 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
 
     // Setup provider, import necessary ABI ...
-    const provider = new ethers.providers.JsonRpcProvider(
-      infura_connection_base
-    );
-    const pairContract = new ethers.Contract(pairAddress, pair_abi, provider);
-    const reserves = await pairContract["getReserves"]();
-    const [reserve0, reserve1] = reserves;
+    const provider = new ethers.providers.JsonRpcProvider(infura_connection_base)
+    console.log('provider', provider)
+    const pairContract = new ethers.Contract(pairAddress, pair_abi, provider)
+    console.log('pairContract', pairContract)
+    const reserves = await pairContract["getReserves"]()
+    console.log('reserves', reserves);
+    const [reserve0, reserve1] = reserves
+    console.log('reserve0', reserve0, reserve1);
 
-    const tokens = [tokenOneToken, tokenTwoToken];
-    const [token0, token1] = tokens[0].sortsBefore(tokens[1])
-      ? tokens
-      : [tokens[1], tokens[0]];
+    const tokens = [tokenOneToken, tokenTwoToken]
+    console.log(2, tokens)
+    const [token0, token1] = tokens[0].sortsBefore(tokens[1]) ? tokens : [tokens[1], tokens[0]]
 
-    const pair = new Pair(
-      CurrencyAmount.fromRawAmount(token0, reserve0),
-      CurrencyAmount.fromRawAmount(token1, reserve1)
-    );
-    return pair;
+    console.log(3)
+    const pair = new Pair(CurrencyAmount.fromRawAmount(token0, reserve0), CurrencyAmount.fromRawAmount(token1, reserve1))
+    console.log(4)
+    return pair
   }
 
   async function fetchPrices (tokenOne, tokenTwo) {
-    const tokenOneToken = new Token(
-      ChainId.BASE,
-      tokenOne.address,
-      tokenOne.decimals
-    );
-    const tokenTwoToken = new Token(
-      ChainId.BASE,
-      tokenTwo.address,
-      tokenTwo.decimals
-    );
+    console.log('tokenOne  tokenTwo', tokenOne, tokenTwo)
+    const tokenOneToken = new Token(ChainId.BASE, tokenOne.address, tokenOne.decimals)
+    const tokenTwoToken = new Token(ChainId.BASE, tokenTwo.address, tokenTwo.decimals)
 
-    const pair = await createPair(tokenOneToken, tokenTwoToken);
-    const route = new Route([pair], tokenOneToken, tokenTwoToken);
-    const tokenOnePrice = route.midPrice.toSignificant(6);
-    const tokenTwoPrice = route.midPrice.invert().toSignificant(6);
+    const pair = await createPair(tokenOneToken, tokenTwoToken)
+    console.log(1)
+    const route = new Route([pair], tokenOneToken, tokenTwoToken)
+    console.log(6)
+    const tokenOnePrice = route.midPrice.toSignificant(6)
+    console.log('tokenOnePrice', tokenOnePrice)
+    const tokenTwoPrice = route.midPrice.invert().toSignificant(6)
 
-    const ratio = tokenOnePrice;
+    const ratio = tokenOnePrice
+
+    console.log('fetchPrices', {
+      tokenOne: tokenOnePrice,
+      tokenTwo: tokenTwoPrice,
+      ratio: ratio
+    })
 
     setPrices({
       tokenOne: tokenOnePrice,
       tokenTwo: tokenTwoPrice,
-      ratio: ratio,
-    });
+      ratio: ratio
+    })
   }
 
   async function approveToken (tokenAddress, amount) {
@@ -169,92 +178,115 @@ function Swap () {
   }
 
   async function fetchDexSwap () {
-    const tokenOneToken = new Token(
-      ChainId.BASE,
-      tokenOne.address,
-      tokenOne.decimals
-    );
-    const tokenTwoToken = new Token(
-      ChainId.BASE,
-      tokenTwo.address,
-      tokenTwo.decimals
-    );
+    const tokenOneToken = new Token(ChainId.MAINNET, tokenOne.address, tokenOne.decimals)
+    const tokenTwoToken = new Token(ChainId.MAINNET, tokenTwo.address, tokenTwo.decimals)
 
-    const amountIn = formatTokenAmount(tokenOneAmount, tokenOne.decimals);
+    // See the Fetching Data guide to learn how to get Pair data
+    // const pair = await createPair(tokenOneToken, tokenTwoToken)
 
-    const tokenTwoOut = (
-      (Number(tokenTwoAmount) * (100 - slippage)) /
-      100
-    ).toString();
+    // const route = new Route([pair], tokenOneToken, tokenTwoToken)
 
-    const amountOutMin = formatTokenAmount(tokenTwoOut, tokenTwo.decimals);
+    // const amountIn = tokenOneAmount
 
-    const path = [tokenOneToken.address, tokenTwoToken.address];
-    const to = account.address; // should be a checksummed recipient address
-    const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20 minutes from the current Unix time
+    const amountIn = formatTokenAmount(tokenOneAmount, tokenOne.decimals)
 
-    await approveToken(tokenOne.address, amountIn);
+    // const trade = new Trade(route, CurrencyAmount.fromRawAmount(tokenOneToken, amountIn), TradeType.EXACT_INPUT)
+
+    // const slippageTolerance = new Percent(slippage * 100, '10000') // 50 bips, or 0.50%
+
+    const tokenTwoOut = ((Number(tokenTwoAmount) * (100 - slippage)) / 100).toString()
+
+    // const amountOutMin = trade.minimumAmountOut(slippageTolerance).toExact() // needs to be converted to e.g. decimal string
+    const amountOutMin = formatTokenAmount(tokenTwoOut, tokenTwo.decimals)
+
+    const path = [tokenOneToken.address, tokenTwoToken.address]
+    const to = account.address // should be a checksummed recipient address
+    const deadline = Math.floor(Date.now() / 1000) + 60 * 20 // 20 minutes from the current Unix time
+    // const value = trade.inputAmount.toExact() // // needs to be converted to e.g. decimal string
+
+    console.log(amountIn, amountOutMin, path, to, deadline)
+
+    await approveToken(tokenOne.address, amountIn)
+
     writeContract(
       {
-        address: "0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24",
         abi: router_abi,
-        functionName: "swapExactTokensForTokens",
+        address: '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24',
+        functionName: 'swapExactTokensForTokens',
         args: [amountIn, amountOutMin, path, to, deadline],
+        // value: 0,
       },
       {
         onSuccess: (tx) => {
-          messageApi.info("Transaction is successful!" + tx.hash);
+          messageApi.destroy()
+          messageApi.info('Transaction is successful: ' + tx.hash)
           setTxDetails({
             to: tx.to,
             data: tx.data,
             value: tx.value,
-          });
+          })
         },
         onError: (error) => {
-          messageApi.error(error.shortMessage);
-        },
+          messageApi.destroy()
+          messageApi.info('error: ' + error.shortMessage)
+          console.log('error', error)
+        }
       }
-    );
+    )
+
+    // setTokenTwoAmount((Number(tx.data.toTokenAmount) / decimals).toFixed(2));
+
+    // setTxDetails(tx.data.tx);
+
   }
 
-  useEffect(() => {
-    fetchPrices(tokenList[0], tokenList[1]);
-  }, []);
 
   useEffect(() => {
-    if (txDetails.to && account.isConnected) {
-      sendTransaction();
+
+    fetchPrices(tokenList[0], tokenList[1])
+
+  }, [])
+
+  useEffect(() => {
+
+    if (txDetails.to && isConnected) {
+      // sendTransaction();
     }
-  }, [txDetails]);
+  }, [txDetails])
 
   useEffect(() => {
+
     messageApi.destroy();
 
     if (isLoading) {
       messageApi.open({
-        type: "loading",
-        content: "Transaction is Pending...",
+        type: 'loading',
+        content: 'Transaction is Pending...',
         duration: 0,
-      });
+      })
     }
-  }, [isLoading]);
+
+  }, [isLoading])
 
   useEffect(() => {
     messageApi.destroy();
     if (isSuccess) {
       messageApi.open({
-        type: "success",
-        content: "Transaction Successful",
+        type: 'success',
+        content: 'Transaction Successful',
         duration: 1.5,
-      });
+      })
     } else if (txDetails.to) {
       messageApi.open({
-        type: "error",
-        content: "Transaction Failed",
-        duration: 1.5,
-      });
+        type: 'error',
+        content: 'Transaction Failed',
+        duration: 1.50,
+      })
     }
-  }, [isSuccess]);
+
+
+  }, [isSuccess])
+
 
   const settings = (
     <>
@@ -330,11 +362,8 @@ function Swap () {
             <DownOutlined />
           </div>
         </div>
-        <div
-          className="swapButton"
-          disabled={!tokenOneAmount || !account.isConnected}
-          onClick={fetchDexSwap}
-        >
+        <div className="swapButton" disabled={!tokenOneAmount}
+          onClick={fetchDexSwap}>
           Swap
         </div>
       </div>
@@ -343,6 +372,7 @@ function Swap () {
 }
 
 export default Swap;
+
 
 const formatTokenAmount = (amount, decimals) => {
   // 将数字拆分成整数部分和小数部分
