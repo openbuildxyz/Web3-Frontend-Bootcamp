@@ -1,0 +1,19 @@
+.main {
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(#fafbfd 0, rgba(246,247,148,0) 85rem);
+}
+
+.tabbar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eaeaea;
+    background-color: white;
+}
