@@ -1,0 +1,30 @@
+[
+    {
+        "ticker": "WETH",
+        "img": "https://logo.moralis.io/0x89_0x7ceb23fd6bc0add59e62ac25578270cff1b9f619_bbf71f7ad58c42aba5eab8c62e8e0d53",
+        "name": "Wrapped Ether",
+        "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+        "decimals": 18
+    },
+    {
+        "ticker": "USDT",
+        "img": "https://logo.moralis.io/0x89_0xc2132d05d31c914a87c6611c10748aeb04b58e8f_f15a70692a8b490c94be2eb26975fd72",
+        "name": "(PoS) Tether USD",
+        "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+        "decimals": 6
+    },
+    {
+        "ticker": "BNB",
+        "img": null,
+        "name": "BNB (PoS)",
+        "address": "0x3ba4c387f786bfee076a58914f5bd38d668b42c3",
+        "decimals": 18
+    },
+    {
+        "ticker": "USDC",
+        "img": "https://logo.moralis.io/0x89_0x3c499c542cef5e3811e1192ce70d8cc03d5c3359_bd5c7117e0814f328072e8f8ee4cc3a1",
+        "name": "USD Coin",
+        "address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+        "decimals": 6
+    }
+]
