@@ -53,7 +53,7 @@ const ListNFT = () => {
   };
   const listHashUrl = hashUrl + hashItem;
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="mb-3">
       <div className="mb-3">
         <label htmlFor="" className="form-label">
           NFT合约地址

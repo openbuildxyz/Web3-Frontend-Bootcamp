@@ -4,6 +4,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 import { Profile } from "./profile";
 import ListNFT from "./ListNFT";
+import BuyList from "./BuyList";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <ConnectButton />
       <Profile></Profile>
       <ListNFT></ListNFT>
+      <BuyList></BuyList>
     </>
   );
 }

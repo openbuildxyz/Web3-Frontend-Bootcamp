@@ -3,6 +3,47 @@
         "inputs": [
             {
                 "internalType": "address",
+                "name": "_nftContract",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "buyNFT",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_nftContract",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_price",
+                "type": "uint256"
+            }
+        ],
+        "name": "listNFT",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
                 "name": "_paymentToken",
                 "type": "address"
             }
@@ -75,42 +116,80 @@
     {
         "inputs": [
             {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "allListings",
+        "outputs": [
+            {
                 "internalType": "address",
-                "name": "_nftContract",
+                "name": "seller",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "nftContract",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "_tokenId",
+                "name": "tokenId",
                 "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "isActivate",
+                "type": "bool"
             }
         ],
-        "name": "buyNFT",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [
+        "inputs": [],
+        "name": "getAllListings",
+        "outputs": [
             {
-                "internalType": "address",
-                "name": "_nftContract",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_price",
-                "type": "uint256"
+                "components": [
+                    {
+                        "internalType": "address",
+                        "name": "seller",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "nftContract",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "price",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "isActivate",
+                        "type": "bool"
+                    }
+                ],
+                "internalType": "struct NFTExchange.Listing[]",
+                "name": "",
+                "type": "tuple[]"
             }
         ],
-        "name": "listNFT",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
     },
     {
