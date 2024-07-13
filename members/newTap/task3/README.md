@@ -1,0 +1,9 @@
+Contract Token deployed successfully: 0xd6944975Ebb96e36A7671a04Da306E7c40BdD4d5
+
+Contract NFT deployed successfully: 0x00E5CbCC55158F56bA3Ba9db48D408B99D1BE51c
+
+Contract Market deployed successfully: 0x91640Ff048d7BCDFcf92713Dc0e7B12238598053
+
+上架NFT的哈希: 0xe16f21787f928ce96e915fc6bd54b9f03344ea1aee9432472d7561a822faef06
+
+购买NFT的交易哈希: 0x4c1a2ccff4bd64cbe597d1f33ab4467867a0544d568651b78e96a212a7a59b4c
