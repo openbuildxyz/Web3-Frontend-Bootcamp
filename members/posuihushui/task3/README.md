@@ -23,13 +23,13 @@ https://sepolia.etherscan.io/address/0x3e47268d528641769324c14ca8c834fc06af777f
 ## 提交要求
 - 部署在Sepolia测试网上
   - npm run deploy
-  - [ERC20代币](https://sepolia.etherscan.io/address/0xd9fB4C6587b2d7312a2542F1213c1e9CA93B88Df)
-  - [ERC721](https://sepolia.etherscan.io/address/0x3dBe0B68eaC8888F9508959685FF0D74a6E712E7)
-  - [NFTMarket](https://sepolia.etherscan.io/address/0x682ce468Bd59c23CA730d83aBDa540B677A5052F)
+  - [ERC20代币](https://sepolia.etherscan.io/address/0x75473962c5000EFEd2EADB406955e541C07844FF)
+  - [ERC721](https://sepolia.etherscan.io/address/0xc7d32a7e1eAd1ff2201E8a56dFb1Ed5b0C46ec0F)
+  - [NFTMarket](https://sepolia.etherscan.io/address/0x99b274C6c28d837048c38a6AE3ce102630f2876d)
 - 提交全部合约文件（ERC20、ERC721、NFTMarket）
    - contracts/*.sol
 - 提交上架NFT、购买NFT的交易哈希
-    - [上架](https://sepolia.etherscan.io/tx/0x4bd40e15a8f6f06e7c66d2bcf7a3b0a07fd75467f124ff32168ab8e03942a9b3)
-    - [购买](https://sepolia.etherscan.io/tx/0x98b5efccc00b865cb78002f0031d1c618fe77fe426eaaa39d4efcce16a093399)(revert了，why?)
+    - [上架](https://sepolia.etherscan.io/tx/0x534e1d83bf899b3ad4bfb59336f07cbcfef4efc164455040f7918e7c66f88d1c)
+    - [购买](https://sepolia.etherscan.io/tx/0x5dcd5a56267c0ce1a3b44dfc11d4055aaac615eda4c622bc95474b61c353ef8f)
 
 
