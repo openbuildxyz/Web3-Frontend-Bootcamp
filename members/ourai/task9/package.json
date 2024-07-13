@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.78.0"
+  },
+  "scripts": {
+    "init": "graph init --network sepolia --protocol ethereum --from-contract 0x17cB0240c669c988E2529077DFa98ff8A22c92fe --contract-name RaiGallery --abi abi.json --index-events --skip-git --studio rai-gallery subgraph",
+    "auth": "graph auth --studio"
+  }
+}
