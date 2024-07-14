@@ -17,8 +17,12 @@ import NFTMarketConstract from "@/artifacts/contracts/NFTMarket.sol/NFTMarket.js
 import { parseAbi } from "viem";
 import { useState } from "react";
 
+// const ERC721_ABI = parseAbi([
+//   "function approve(address to, uint256 tokenId) external",
+// ]);
+
 const ERC721_ABI = parseAbi([
-  "function approve(address to, uint256 tokenId) external",
+  "function setApprovalForAll(address operator, bool approved) external",
 ]);
 
 interface Props {
@@ -31,8 +35,13 @@ const NFTModal = ({ isOpen, onClose }: Props) => {
   const [tokenId, setTokenId] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const [tokenURI, setTokenURI] = useState<string>(
-    "https://my-json-server.typicode.com/abcoathup/samplenft/tokens/1"
+    "https://img.freepik.com/free-vector/hand-drawn-nft…e-illustration_23-2149622021.jpg?size=626&ext=jpg"
   );
+  const {
+    data: mintHash,
+    writeContractAsync: writeContractAsyncMinit,
+    isMinitPending,
+  } = useWriteContract(); // 铸造
   const { data: hash, writeContractAsync, isPending } = useWriteContract(); // 授权
   const {
     data: listNFTHash,
@@ -42,15 +51,15 @@ const NFTModal = ({ isOpen, onClose }: Props) => {
 
   const { address } = useAccount();
 
-  console.log("NFTModal =", isOpen);
+  console.log("NFTModal =", isOpen, address);
 
-  const approve = async () => {
+  const approveAll = async () => {
     try {
       return await writeContractAsync({
         address: nftAddress,
-        functionName: "approve",
-        args: [MarketAddress, tokenId as any],
-        abi: ERC721_ABI,
+        functionName: "setApprovalForAll",
+        args: [MarketAddress, true],
+        abi: NFTContract.abi,
       });
     } catch (error) {
       console.log("Error during approve：", error);
@@ -59,7 +68,6 @@ const NFTModal = ({ isOpen, onClose }: Props) => {
   };
 
   console.log("hash=", hash);
-  console.log("listNFTAddress=", listNFTHash);
 
   const listItem = async () => {
     try {
@@ -74,13 +82,14 @@ const NFTModal = ({ isOpen, onClose }: Props) => {
       throw error;
     }
   };
+  console.log("listNFTHash=", listNFTHash);
 
   /**
    * 铸造NFT
    */
   const mintNFT = async () => {
     try {
-      return await writeContractAsync({
+      return await writeContractAsyncMinit({
         address: nftAddress,
         functionName: "mint",
         args: [address as `0x${string}`, tokenURI], //
@@ -94,7 +103,7 @@ const NFTModal = ({ isOpen, onClose }: Props) => {
 
   async function listNFT() {
     await mintNFT();
-    await approve();
+    await approveAll();
     await listItem();
     onClose();
   }
@@ -153,10 +162,12 @@ const NFTModal = ({ isOpen, onClose }: Props) => {
               </Button>
               <Button
                 className="bg-[##E76FD] shadow-lg shadow-indigo-500/20"
-                isLoading={isPending}
+                isLoading={isMinitPending || isPending || isPendingList}
                 onClick={listNFT}
               >
-                {isPending || isPendingList ? "上架中...." : "上架 NFT"}
+                {isMinitPending || isPending || isPendingList
+                  ? "listing...."
+                  : "list NFT"}
               </Button>
             </ModalFooter>
           </>

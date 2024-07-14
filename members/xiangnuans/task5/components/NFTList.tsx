@@ -49,7 +49,7 @@ export default function NFTList() {
     if (listingsResult?.data) {
       setListings(listingsResult?.data ?? []);
     }
-  }, [listingsResult?.data, isOpen]);
+  }, [listingsResult?.data]);
 
   useEffect(() => {
     if (delistedResult?.error) {

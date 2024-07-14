@@ -54,7 +54,7 @@ dependencies:
     specifier: ^18
     version: 18.3.1(react@18.3.1)
   viem:
-    specifier: ^2.16.2
+    specifier: ^2.13.10
     version: 2.16.2(typescript@5.5.2)
   wagmi:
     specifier: ^2.10.7

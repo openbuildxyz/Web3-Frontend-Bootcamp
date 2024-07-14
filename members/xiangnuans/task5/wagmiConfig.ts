@@ -7,11 +7,20 @@ import { sepolia } from "wagmi/chains";
 dotenvConfig({ path: resolve(__dirname, './.env') });
 const { NETWORK } = process.env;
 
-console.log("network", NETWORK)
 let networkConfig;
 
 if (NETWORK === 'sepolia') {
-  networkConfig = sepolia;
+  networkConfig = {
+    ...sepolia,
+    // rpcUrls: {
+    //   default: {
+    //     http: ['https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f'],
+    //   },
+    //   public: {
+    //     http: ['https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f'],
+    //   },
+    // },
+  };
 } else {
   networkConfig = {
     id: 1337,
@@ -36,14 +45,15 @@ if (NETWORK === 'sepolia') {
   }
 }
 console.log("network", networkConfig)
+console.log('http', networkConfig.rpcUrls?.default?.http?.[0])
 
 export const wagmiConfig = createConfig({
   chains: [
-    networkConfig
+    sepolia
   ],
   transports: {
-    // [sepolia.id]: http(`https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f`),
-    [networkConfig.id]: http(networkConfig.rpcUrls?.default?.http?.[0]),
+    [sepolia.id]: http(`https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f`),
+    // [networkConfig.id]: networkConfig.name === 'Sepolia' ? http('https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f') : http(networkConfig.rpcUrls?.default?.http?.[0]),
   },
   // storage: createStorage({
   //   storage: cookieStorage

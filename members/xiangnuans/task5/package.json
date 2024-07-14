@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "NETWORK=local next dev",
+    "dev:sepolia": "NETWORK=sepolia next dev",
     "build": "next build",
     "start": "NETWORK=sepolia next start",
     "lint": "next lint",
@@ -34,7 +35,7 @@
     "pino-pretty": "^11.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "viem": "^2.16.2",
+    "viem": "^2.13.10",
     "wagmi": "^2.10.7"
   },
   "devDependencies": {

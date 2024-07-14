@@ -1,11 +1,12 @@
 import { MarketAddress, MyTokenAddress, hashUrl } from "@/scripts/config";
+import { useAccount, useReadContract, useWriteContract } from "wagmi";
 
 import { Button } from "@nextui-org/react";
-import MarkContract from "@/artifacts/contracts/NFTMarket.sol/NFTMarket.json";
+import ERC20_ABI from "@/artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json";
+import MyToken from "@/artifacts/contracts/myToken.sol/MyToken.json";
+import NFTMarket from "@/artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 import React from "react";
-import TokenContract from "@/artifacts/contracts/myToken.sol/MyToken.json";
 import { parseUnits } from "ethers";
-import { useWriteContract } from "wagmi";
 
 interface Props {
   listing: {
@@ -35,6 +36,7 @@ function formatTimestamp(timestamp: number) {
 }
 
 const NFTCard = ({ listing, index, type }: Props) => {
+  const { address } = useAccount();
   const {
     data: hash,
     writeContractAsync: approveContractAsync,
@@ -43,7 +45,7 @@ const NFTCard = ({ listing, index, type }: Props) => {
 
   const {
     data: hashBuy,
-    writeContractAsync: buyContractAsyncBuy,
+    writeContractAsync: buyContractAsync,
     isPending: isPendingBuy,
   } = useWriteContract();
   const {
@@ -54,31 +56,37 @@ const NFTCard = ({ listing, index, type }: Props) => {
 
   const buyHashUrl = hashUrl + hash;
 
-  const buyNFT = async () => {
+  const approveTokens = async (price: any) => {
     try {
-      const price = parseUnits(listing.price.toString(), "ether");
       console.log("price = ", price);
-      const approvRes = await approveContractAsync({
+      return await approveContractAsync({
         address: MyTokenAddress,
-        abi: TokenContract.abi,
         functionName: "approve",
         args: [MarketAddress, price],
+        abi: MyToken.abi,
       });
-      console.log("approve success ", approvRes);
     } catch (error) {
       console.log("approve ERROR: " + error);
       throw error;
     }
+  };
 
+  console.log("approve success = ", hash);
+
+  const buyNFT = async () => {
     try {
-      await buyContractAsyncBuy({
+      console.log("🍎buyNFT =", listing);
+      const price = parseUnits(listing.price.toString(), "ether");
+      await approveTokens(price);
+      return await buyContractAsync({
         address: MarketAddress,
-        abi: MarkContract.abi,
+        abi: NFTMarket.abi,
         functionName: "buyNFT",
         args: [listing.nftContract, listing.tokenId],
       });
     } catch (err) {
       console.error("buyNFT error", err);
+      throw err;
     }
   };
 
@@ -86,66 +94,12 @@ const NFTCard = ({ listing, index, type }: Props) => {
   const delistNFT = async () => {
     await DelContractAsync({
       address: MarketAddress,
-      abi: MarkContract.abi,
+      abi: NFTMarket.abi,
       functionName: "delistNFT",
       args: [listing.nftContract, listing.tokenId],
     });
     // TODO 因为列表定时获取数据，所以这里不做刷新处理
   };
-
-  // const approve = async () => {
-  //   try {
-  //     return await writeContractAsync({
-  //       address: nftAddress,
-  //       functionName: "approve",
-  //       args: [MarketAddress, tokenId as any],
-  //       abi: ERC721_ABI,
-  //     });
-  //   } catch (error) {
-  //     console.log("Error during approve：", error);
-  //     throw error;
-  //   }
-  // };
-
-  // console.log("hash=", hash);
-  // console.log("listNFTAddress=", listNFTHash);
-
-  // const listItem = async () => {
-  //   try {
-  //     return await writeContractAsyncList({
-  //       address: MarketAddress,
-  //       abi: NFTMarketConstract.abi,
-  //       functionName: "listNFT",
-  //       args: [nftAddress, tokenId, price] as any,
-  //     });
-  //   } catch (error) {
-  //     console.log("error during listNFT", error);
-  //     throw error;
-  //   }
-  // };
-
-  // /**
-  //  * 铸造NFT
-  //  */
-  // const mintNFT = async () => {
-  //   try {
-  //     return await writeContractAsync({
-  //       address: nftAddress,
-  //       functionName: "mint",
-  //       args: [address as `0x${string}`, tokenURI], //
-  //       abi: NFTContract.abi,
-  //     });
-  //   } catch (error) {
-  //     console.log("Error during mint: ", error);
-  //     throw error;
-  //   }
-  // };
-
-  // async function listNFT() {
-  //   await mintNFT();
-  //   await approve();
-  //   await listItem();
-  // }
 
   return (
     <div className="w-full shadow-lg" key={index}>
@@ -198,6 +152,7 @@ const NFTCard = ({ listing, index, type }: Props) => {
                 key="1"
                 className="bg-[#fd0e0e] text-white py-2 px-4 rounded h-8 mr-4 "
                 disabled={isDelPending}
+                isLoading={isDelPending}
                 onClick={delistNFT}
               >
                 {isDelPending ? "delisting...." : "delist NFT"}
@@ -206,6 +161,7 @@ const NFTCard = ({ listing, index, type }: Props) => {
                 key="2"
                 className="bg-[#0E76FD] text-white py-2 px-4 rounded h-8 mr-4"
                 disabled={isPending || isPendingBuy}
+                isLoading={isPending || isPendingBuy}
                 onClick={buyNFT}
               >
                 {isPending || isPendingBuy ? "buying...." : "buy NFT"}
@@ -214,11 +170,11 @@ const NFTCard = ({ listing, index, type }: Props) => {
           )}
         </div>
       </div>
-      {/* {hashBuy && (
+      {hashBuy && (
         <div>
           购买 NFT 成功！ 请点击 <a href={buyHashUrl}>{hash}</a> 查看
         </div>
-      )} */}
+      )}
     </div>
   );
 };

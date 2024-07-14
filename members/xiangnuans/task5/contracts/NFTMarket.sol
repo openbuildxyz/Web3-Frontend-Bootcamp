@@ -71,10 +71,7 @@ contract NFTMarket {
             "Not the owner of the NFT"
         ); //  确保调用者是NFT的所有者
 
-        require(
-            nft.getApproved(_tokenId) == address(this),
-            "Contract not approved"
-        ); // 确保NFT合约被批准转移
+        require(nft.isApprovedForAll(msg.sender, address(this)), "No approval");
 
         string memory uri = nftMetadata.tokenURI(_tokenId);
 

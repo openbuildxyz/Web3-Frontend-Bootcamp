@@ -10,9 +10,13 @@
 - 提交完整代码
 - 提交界面的截图
 - 提交测试的截图（上架后、下架后、购买NFT后买家获得NFT的三个截图）
+# Sepolia链
 
+
+# 本地链
 # 上架
 ![list](./assets/list.jpg)
+
 
 # 下架
 ![delist](./assets/delist.jpg)
