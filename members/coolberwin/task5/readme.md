@@ -23,6 +23,9 @@ task5 任务：task4 的基础上，完善 NFT 市场
 
 ### 1 展示NFTMarket详细信息
 
+NFT信息包括（价格、上架时间、拥有者, 合约地址）
+
+![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task5/members/coolberwin/task5/img/NFT%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA.png?raw=true)
 
 ### 2 上架 nft
 
@@ -31,11 +34,11 @@ task5 任务：task4 的基础上，完善 NFT 市场
 ![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task4/members/coolberwin/task4/img/%E4%B8%8A%E6%9E%B6NFT1.png?raw=true)
 
 将 nft 转移到 market 合约
-![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task4/members/coolberwin/task4/img/%E4%B8%8A%E6%9E%B6NFT2.png?raw=true)
+![图片2](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task4/members/coolberwin/task4/img/%E4%B8%8A%E6%9E%B6NFT2.png?raw=true)
 
 显示 nft 上架已经上架
 
-![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task4/members/coolberwin/task4/img/%E4%B8%8A%E6%9E%B6NFT3.png?raw=true)
+![图片3](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task4/members/coolberwin/task4/img/%E4%B8%8A%E6%9E%B6NFT3.png?raw=true)
 
 
 
@@ -55,4 +58,21 @@ task5 任务：task4 的基础上，完善 NFT 市场
 
 ### 4 下架 nft
 
+owner === address 才可以操作下架
+![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task5/members/coolberwin/task5/img/%E5%8F%96%E6%B6%88%E4%B8%8A%E6%9E%B61.png?raw=true)
+
 下架 nft, nft 从 market合约 转移 到钱包地址
+![图片2](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task5/members/coolberwin/task5/img/%E5%8F%96%E6%B6%88%E4%B8%8A%E6%9E%B62.png?raw=true)
+
+弹出信息 nft 下架成功
+
+![图片3](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task5/members/coolberwin/task5/img/%E5%8F%96%E6%B6%88%E4%B8%8A%E6%9E%B63.png?raw=true)
+
+下架NFT回到 mynfts 列表
+
+
+![图片4](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task5/members/coolberwin/task5/img/%E5%8F%96%E6%B6%88%E4%B8%8A%E6%9E%B64.png?raw=true)
+
+## 结束task5
+
+---
