@@ -1,9 +1,14 @@
-# task4: 利用 wagmi 和 ethers.js 创建 NFT 市场
+# task5: 完善 NFT 市场
 
 ```
 @Author coolberwin
 Date 2024/07/13
 ```
+
+## 对比 task4
+- 添加 下架 操作  
+- 更新 钱包无法 购买自己 list 的 NFT
+- 新增 相关合约文件
 
 ## 相关依赖
 ```
@@ -32,13 +37,17 @@ Date 2024/07/13
 - page.tsx  整体界面
 - providers.tsx  添加 rainbow钱包组件
 - components
-  - AccountNFT.tsx   Address钱包 NFT 展示上架
+  - AccountNFT.tsx   Address钱包 NFT的展示 NFT的上架
   - BalanceToken.tsx Address钱包 token 余额
-  - NFTOrderList.tsx NFT 上架列表 展示
+  - NFTOrderList.tsx NFT展示 NFT下架  
 - config
   - Marketabi.tsx  NFT Market 合约 abi
   - NFTabi.tsx  NFT 合约 abi
   - Tokenabi.tsx  Token 合约 abi
+- solidity
+  - berNewToken.sol   ERC-20 代币
+  - berNewNFT.sol  ERC-721 代币 即NFT
+  - berNewNFTMarket.sol  NFT 市场 
 
 # 相关合约
 

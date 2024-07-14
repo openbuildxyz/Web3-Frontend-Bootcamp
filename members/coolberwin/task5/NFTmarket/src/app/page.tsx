@@ -31,8 +31,8 @@ function App() {
             <AccountNFTs />
           </div>
         )}
-        <NFTOrderList />
-      </div>
+        <NFTOrderList address={address} />
+        </div>
     </>
   );
 }

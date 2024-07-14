@@ -4,6 +4,7 @@ import axios from 'axios';
 import {NFT_ABI} from '../config/NFTabi.tsx';
 import {Market_ABI} from '../config/Marketabi.tsx';
 import {Token_ABI} from '../config/Tokenabi.tsx';
+import { useAccount} from 'wagmi';
 
 // 替换为你的合约地址
 const CONTRACT_ADDRESS = '0xeeae464ce594ba0ed9e42f651583767bfed07894';
@@ -15,6 +16,8 @@ function NFTOrderList() {
   const contract = new ethers.Contract(CONTRACT_ADDRESS, Market_ABI, provider);
   const [orders, setOrders] = useState([]);
   const [nftData, setNftData] = useState({});
+  const { address, isConnected } = useAccount();
+
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -47,6 +50,32 @@ function NFTOrderList() {
     fetchOrders();
   }, [contract]);
 
+  const cancelNFT = async (nftAddr, tokenId) => {
+    try {
+      if (!window.ethereum) {
+        throw new Error('MetaMask is not installed');
+      }
+      const provider1 = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider1.getSigner();
+      const marketContractWithSigner = new ethers.Contract(CONTRACT_ADDRESS, Market_ABI, signer);
+
+      console.log(`Canceling token ID ${tokenId} from contract ${nftAddr}...`);
+
+      const tx = await marketContractWithSigner.cancel(nftAddr, tokenId);
+      console.log('Cancel transaction hash:', tx.hash);
+      await tx.wait();
+      console.log('Cancel confirmed');
+
+      alert(`NFT ${tokenId} has been removed from the market`);
+      // Refresh the page after 2 seconds
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (error) {
+      console.error('Error canceling NFT:', error);
+      alert('Failed to cancel NFT');
+    }
+  };
 
   const purchaseNFT = async (nftAddr, tokenId, price) => {
     try {
@@ -81,6 +110,9 @@ function NFTOrderList() {
         window.location.reload();
       }, 2000);
     } catch (error) {
+      if (!isConnected) {
+        alert('MetaMask is not installed');
+      }
       console.error('Error purchasing NFT:', error);
       alert('Failed to purchase NFT');
     }
@@ -97,7 +129,7 @@ function NFTOrderList() {
             <li key={index}>
               {nftData[order.tokenId] && (
                 <div>
-                  <img src={"https://ipfs.io/ipfs/"+nftData[order.tokenId].image.split("://")[1]} alt={`NFT ${order.tokenId}`} width="200" />
+                  <img src={"https://ipfs.io/ipfs/" + nftData[order.tokenId].image.split("://")[1]} alt={`NFT ${order.tokenId}`} width="200" />
                 </div>
               )}
               <p>Owner: {order.owner}</p>
@@ -105,9 +137,11 @@ function NFTOrderList() {
               <p>List Time: {new Date(order.listTime.toNumber() * 1000).toLocaleString()}</p>
               <p>NFT Address: {order.nftAddr}</p>
               <p>Token ID: {order.tokenId.toString()}</p>
-              <button onClick={() => purchaseNFT(order.nftAddr, order.tokenId, order.price)}>
-                Purchase
-              </button>
+              {order.owner && address && order.owner.toLowerCase() === address.toLowerCase() ? (
+                <button onClick={() => cancelNFT(order.nftAddr, order.tokenId)}>Cancel Order</button>
+              ) : (
+                <button onClick={() => purchaseNFT(order.nftAddr, order.tokenId, order.price)}>Purchase</button>
+              )}
               <p>----------------------------------------------------------------------------------</p>
             </li>
           ))}
@@ -116,6 +150,5 @@ function NFTOrderList() {
     </div>
   );
 }
-
 
 export default NFTOrderList;
