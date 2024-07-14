@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
 import { NFTListed } from "../generated/schema"
-import { NFTListed as NFTListedEvent } from "../generated/Contract/Contract"
-import { handleNFTListed } from "../src/contract"
-import { createNFTListedEvent } from "./contract-utils"
+import { NFTListed as NFTListedEvent } from "../generated/NftMarket/NftMarket"
+import { handleNFTListed } from "../src/nft-market"
+import { createNFTListedEvent } from "./nft-market-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
