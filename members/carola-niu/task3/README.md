@@ -1,0 +1,11 @@
+>ERC20 contract address: 0x2bbBFaad3982C354Ae3aaA23aE4321Ae22079774
+>ERC721 contract address: 0x4278147757aEea278fB7a2f1d20A500548Ca6DBF
+>NFT Market contract address: 0xF9a94a208801194153936a5D6E5366cDd27BBB7e
+
+>Listing NFT:0x4d2cd8e2eed2b9b418134b53347a961998e47b947c1d33e5b3c6b2e49d9838c6
+
+etherscan:https://sepolia.etherscan.io/tx/0x4d2cd8e2eed2b9b418134b53347a961998e47b947c1d33e5b3c6b2e49d9838c6
+
+>Buying NFT: 0x0168e2a09fa65ba937076ecd33e2451976f41fc23df23714dc6b7285d69634d2
+
+etherscan:https://sepolia.etherscan.io/tx/0x0168e2a09fa65ba937076ecd33e2451976f41fc23df23714dc6b7285d69634d2

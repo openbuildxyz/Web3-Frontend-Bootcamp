@@ -50,6 +50,8 @@
 
 八点五、Web3前端训练营AMA答疑第二期（[哔站](https://www.bilibili.com/video/BV1xf421q7or) | [油管](https://www.youtube.com/watch?v=slA_mKWZfSQ)）
 
+九、扩展工具篇：利用The Graph实现DAPP数据分析和数据可视化（[哔站](https://www.bilibili.com/video/BV1qS421R7bW)）
+
 ## 参与方式
 
 **⚠️⚠️⚠️ 请先完整地看完这部分内容再开始操作！**
