@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFTExchange
+    network: optimism-sepolia
+    source:
+      address: "0x60c80d788D4E312817E5396bDb56250c91B4F22C"
+      abi: NFTExchange
+      startBlock: 14235232
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NFTExchanged
+        - NFTInactivated
+        - NFTItemAdded
+      abis:
+        - name: NFTExchange
+          file: ./abis/NFTExchange.json
+      eventHandlers:
+        - event: NFTExchanged(indexed address,indexed uint256,indexed address,uint256)
+          handler: handleNFTExchanged
+        - event: NFTInactivated(indexed address,indexed uint256,indexed address)
+          handler: handleNFTInactivated
+        - event: NFTItemAdded(indexed address,indexed uint256,indexed address,uint256,uint256)
+          handler: handleNFTItemAdded
+      file: ./src/nft-exchange.ts
