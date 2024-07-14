@@ -4,7 +4,7 @@ import {
   NFTBought,
   NFTListed,
   NFTStatusChanged
-} from "../generated/NFTMarket/NFTMarket"
+} from "../generated/Contract/Contract"
 
 export function createNFTBoughtEvent(
   nftAddress: Address,

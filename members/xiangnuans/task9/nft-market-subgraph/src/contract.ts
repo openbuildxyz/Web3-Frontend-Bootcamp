@@ -2,7 +2,7 @@ import {
   NFTBought as NFTBoughtEvent,
   NFTListed as NFTListedEvent,
   NFTStatusChanged as NFTStatusChangedEvent
-} from "../generated/NFTMarket/NFTMarket"
+} from "../generated/Contract/Contract"
 import { NFTBought, NFTListed, NFTStatusChanged } from "../generated/schema"
 
 export function handleNFTBought(event: NFTBoughtEvent): void {
