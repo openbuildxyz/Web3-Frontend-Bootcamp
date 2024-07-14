@@ -1,0 +1,38 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFTMarket
+    network: sepolia
+    source:
+      address: "0xfd51b237f98084b15ada565717ac4775536594e0"
+      abi: NFTMarket
+      startBlock: 6181456
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ItemListed
+        - ItemUpdated
+        - NftReceived
+        - Purchase
+        - Revoke
+      abis:
+        - name: NFTMarket
+          file: ./abis/NFTMarket.json
+      eventHandlers:
+        - event: ItemListed(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleItemListed
+        - event: ItemUpdated(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleItemUpdated
+        - event: NftReceived(indexed address,indexed address,indexed uint256,bytes)
+          handler: handleNftReceived
+        - event: Purchase(indexed address,indexed address,indexed uint256,uint256)
+          handler: handlePurchase
+        - event: Revoke(indexed address,indexed address,indexed uint256)
+          handler: handleRevoke
+      file: ./src/nft-market.ts
