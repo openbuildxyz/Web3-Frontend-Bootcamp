@@ -1,11 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.5.0/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts@4.5.0/access/Ownable.sol";
 
-contract cUSDT is ERC20 {
-  constructor() ERC20("ihan's erc20", "cUSDT") {
-    _mint(msg.sender, 1 * 10**8 * 10**18); //1*10**8代表1亿，10**18精度是18
-  }
+contract SadMonkey is ERC20, Ownable {
+    constructor() ERC20("lin's erc20", "SadMonkey") {}
+
+    function mint() public onlyOwner {
+        _mint(msg.sender, 1000 * 10 ** decimals());
+    }
 }

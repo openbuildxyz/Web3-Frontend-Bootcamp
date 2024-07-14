@@ -1,160 +1,227 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
-import "@openzeppelin/contracts/interfaces/IERC20.sol";
-import "@openzeppelin/contracts/interfaces/IERC721.sol";
+pragma solidity ^0.8.4;
 
-contract Market {
-  IERC20 public erc20;
-  IERC721 public erc721;
+import "@openzeppelin/contracts@4.5.0/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts@4.5.0/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts@4.5.0/token/ERC721/IERC721Receiver.sol";
+import "@openzeppelin/contracts@4.5.0/access/Ownable.sol";
+import "@openzeppelin/contracts@4.5.0/utils/Counters.sol";
+import "@openzeppelin/contracts@4.5.0/security/ReentrancyGuard.sol";
 
-  bytes4 internal constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
-  struct Order {
-    address seller;
-    uint256 tokenId;
-    uint256 price;
-  }
-  mapping(uint256 => Order) public orderOfId; //token id to order
+/*
+Marketplace contract 
+*/
 
-  Order[] public orders;
-  mapping(uint256 => uint256) public idToOrderIndex; //token id to index in orders
+contract Market is Ownable, ReentrancyGuard, IERC721Receiver {
+    using Counters for Counters.Counter;
+    Counters.Counter private _itemIds;
+    Counters.Counter private _itemsSold;
 
-  event Deal(address seller, address buyer, uint256 tokenId, uint256 price);
-  event NewOrder(address seller, uint256 tokenId, uint256 price);
-  event PriceChanged(
-    address seller,
-    uint256 tokenId,
-    uint256 privousPrice,
-    uint256 price
-  );
-  event OrderCancelled(address seller, uint256 tokenId);
+    address public acceptedTokenAddress;
+    uint256 public listingPrice = 0.000000000000000001 ether;
+    uint256 private _amountCollected;
 
-  constructor(address _erc20, address _erc721) {
-    require(_erc20 != address(0), "zero address");
-    require(_erc721 != address(0), "zero address");
-    erc20 = IERC20(_erc20);
-    erc721 = IERC721(_erc721);
-  }
+    struct MarketItem {
+        uint256 itemId;
+        uint256 tokenId;
+        address seller;
+        address owner;
+        uint256 price;
+        bool isSold;
+        bool isUpForSale;
+        bool exists;
+        uint256 createdTimestamp;
+        uint256 listingTimestamp;
+        address nftContract;
+    }
 
-  function buy(uint256 _tokenId) external {
-    address seller = orderOfId[_tokenId].seller;
-    address buyer = msg.sender;
-    uint256 price = orderOfId[_tokenId].price;
-    //transferFrom代表market将钱由buyer转给seller，所以market需要被approve，market才能花a的钱，防止market私自花a的币
-    require(
-      erc20.transferFrom(buyer, seller, price),
-      "transfer not successful"
+    mapping(uint256 => MarketItem) public idToMarketItem;
+
+    event MarketItemCreated(
+        uint256 indexed itemId,
+        uint256 indexed tokenId,
+        address seller,
+        address owner,
+        uint256 price
     );
-    erc721.safeTransferFrom(address(this), buyer, _tokenId); //这里不会调用hook函数
-    //调用erc721.safeTransferFrom(address(this), seller, _tokenId)时，由于代币的接收方是seller地址，而不是当前合约地址address(this)，因此不会触发onERC721Received函数。
-    //safeTransferFrom函数遵循ERC-721标准，并具有以下行为：
 
-    //如果接收方是一个智能合约，并且实现了onERC721Received函数，那么将调用该函数。
-    //如果接收方是一个智能合约，但未实现onERC721Received函数，或者返回值不正确，那么将抛出异常并回滚交易。
-    //如果接收方是一个普通的外部地址（例如用户地址），那么不会调用onERC721Received函数。
-    //所以，在您的情况下，由于seller是一个外部地址，而不是一个智能合约地址，所以onERC721Received函数不会执行。
+    event MarketItemUpForSale(
+        uint256 indexed itemId,
+        uint256 indexed tokenId,
+        address seller,
+        address owner,
+        uint256 price
+    );
 
-    removeOrder(_tokenId);
-    emit Deal(seller, buyer, _tokenId, price);
-  }
+    event MarketItemUpNotForSale(
+        uint256 indexed itemId,
+        uint256 indexed tokenId,
+        address seller,
+        address owner,
+        uint256 price
+    );
 
-  function cancelOrder(uint256 _tokenId) external {
-    address seller = orderOfId[_tokenId].seller;
-    require(msg.sender == seller, "not seller");
-    erc721.safeTransferFrom(address(this), seller, _tokenId);
-    removeOrder(_tokenId);
-    emit OrderCancelled(seller, _tokenId);
-  }
-
-  function changePrice(uint256 _tokenId, uint256 _price) external {
-    address seller = orderOfId[_tokenId].seller;
-    require(msg.sender == seller, "not seller");
-
-    uint256 previousPrice = orderOfId[_tokenId].price;
-    orderOfId[_tokenId].price = _price;
-
-    //因为我们还定义了一个查看所有订单的数据结构，所以这个数据结构里需要改价 storage存储在区块链上，memory存储在内存中，没有修改区块链上的
-    Order storage order = orders[idToOrderIndex[_tokenId]];
-    order.price = _price;
-
-    emit PriceChanged(seller, _tokenId, previousPrice, _price);
-  }
-
-  //调用NFT合约的safeTransferFrom(四个参数)会自动调用这个方法
-  //在NFT合约里调用safeTransferFrom，自动调用这个方法实现自动上架
-  function onERC721Received(
-    address operator,
-    address from,
-    uint256 tokenId,
-    bytes calldata data
-  ) external returns (bytes4) {
-    uint256 price = toUint256(data, 0); //使用价格转换
-    require(price > 0, "price must be greater than 0");
-
-    //todo 上架
-
-    orderOfId[tokenId] = Order(from, tokenId, price);
-    orders.push(Order(from, tokenId, price));
-    idToOrderIndex[tokenId] = orders.length - 1;
-
-    emit NewOrder(from, tokenId, price);
-
-    //return this.onERC721Received.selector;
-    return MAGIC_ON_ERC721_RECEIVED;
-  }
-
-  //上面函数我们接收到一个bytes 类型的data 里面包含价格信息，需要使用下面的函数进行转换
-
-  function toUint256(bytes memory _bytes, uint256 _start)
-    public
-    pure
-    returns (uint256)
-  {
-    require(_start + 32 >= _start, "Market:toUint256_overflow");
-    require(_bytes.length >= _start + 32, "Market: toUint256_outOfBounds");
-    uint256 tempUint;
-
-    assembly {
-      tempUint := mload(add(add(_bytes, 0x20), _start))
+    constructor(address _acceptedTokenAddress) {
+        acceptedTokenAddress = _acceptedTokenAddress;
     }
-    return tempUint;
-  }
 
-  function removeOrder(uint256 _tokenId) internal {
-    uint256 index = idToOrderIndex[_tokenId];
-    uint256 lastIndex = orders.length - 1;
-    if (index != lastIndex) {
-      Order storage lastOrder = orders[lastIndex];
-      orders[index] = lastOrder;
-      idToOrderIndex[lastOrder.tokenId] = index;
+    function onERC721Received(
+        address operator,
+        address from,
+        uint256 tokenId,
+        bytes calldata data
+    ) external override returns (bytes4) {
+        return this.onERC721Received.selector;
     }
-    orders.pop();
-    delete idToOrderIndex[_tokenId];
-    delete orderOfId[_tokenId];
-  }
 
-  //方便一个一个遍历
-  function getOrderLength() external view returns (uint256) {
-    return orders.length;
-  }
+    function addItemToMarket(
+        uint256 tokenId,
+        uint256 price,
+        address nftContract
+    ) public nonReentrant {
+        require(
+            price >= listingPrice,
+            "Price should be at least same as listing price"
+        );
 
-  //可以整个输出
-  function getAllNFTs() external view returns (Order[] memory) {
-    return orders;
-  }
+        _itemIds.increment();
+        uint256 itemId = _itemIds.current();
 
-  function getMyNFTs() external view returns (Order[] memory) {
-    Order[] memory myOrders = new Order[](orders.length);
-    uint256 count = 0;
-    for (uint256 i = 0; i < orders.length; i++) {
-      if (orders[i].seller == msg.sender) {
-        myOrders[count] = orders[i];
-        count++;
-      }
+        idToMarketItem[itemId] = MarketItem(
+            itemId,
+            tokenId,
+            msg.sender,
+            address(this),
+            price,
+            false,
+            false,
+            true,
+            block.timestamp,
+            block.timestamp,
+            nftContract
+        );
+
+        IERC20(acceptedTokenAddress).transferFrom(
+            msg.sender,
+            address(this),
+            price
+        );
+        IERC721(nftContract).safeTransferFrom(
+            msg.sender,
+            address(this),
+            tokenId
+        );
+
+        _amountCollected += price;
+
+        emit MarketItemCreated(itemId, tokenId, msg.sender, address(0), price);
     }
-    return myOrders;
-  }
 
-  function isListed(uint256 _tokenId) public view returns (bool) {
-    return orderOfId[_tokenId].seller != address(0);
-  }
+    function createSale(
+        uint256 itemId,
+        bool changePrice,
+        uint256 newPrice
+    ) public nonReentrant {
+        MarketItem memory item = idToMarketItem[itemId];
+
+        require(item.owner == msg.sender, "Only Item owner can create sale.");
+        require(item.exists == true, "Item does not exist.");
+
+        idToMarketItem[itemId].isUpForSale = true;
+        idToMarketItem[itemId].listingTimestamp = block.timestamp; // 设置上架时间
+        if (changePrice) idToMarketItem[itemId].price = newPrice;
+
+        emit MarketItemUpForSale(
+            itemId,
+            item.tokenId,
+            msg.sender,
+            item.seller,
+            idToMarketItem[itemId].price
+        );
+    }
+
+    function unlistNFT(uint256 itemId) public nonReentrant {
+        MarketItem memory item = idToMarketItem[itemId];
+
+        require(item.owner == msg.sender, "Only Item owner can create sale.");
+        require(item.exists == true, "Item does not exist.");
+
+        idToMarketItem[itemId].isUpForSale = false;
+
+        emit MarketItemUpNotForSale(
+            itemId,
+            item.tokenId,
+            msg.sender,
+            item.seller,
+            idToMarketItem[itemId].price
+        );
+    }
+
+    function buyItem(
+        uint256 itemId,
+        uint256 itemPrice,
+        address nftContract
+    ) public nonReentrant {
+        uint256 price = idToMarketItem[itemId].price;
+        uint256 tokenId = idToMarketItem[itemId].tokenId;
+        bool isUpForSale = idToMarketItem[itemId].isUpForSale;
+        require(itemPrice >= price, "Asking Price not satisfied!");
+        require(isUpForSale == true, "NFT not for sale.");
+
+        address prevSeller = idToMarketItem[itemId].owner;
+        idToMarketItem[itemId].price = itemPrice;
+        idToMarketItem[itemId].owner = msg.sender;
+        idToMarketItem[itemId].seller = msg.sender;
+        idToMarketItem[itemId].isSold = true;
+        idToMarketItem[itemId].isUpForSale = false;
+        IERC721(nftContract).safeTransferFrom(prevSeller, msg.sender, tokenId);
+        IERC20(acceptedTokenAddress).transferFrom(
+            msg.sender,
+            prevSeller,
+            itemPrice
+        );
+        _itemsSold.increment();
+    }
+
+    // get item by itemId
+    function getMarketItemById(
+        uint256 marketItemId
+    ) public view returns (MarketItem memory) {
+        MarketItem memory item = idToMarketItem[marketItemId];
+        return item;
+    }
+
+    function getUnsoldItems() public view returns (MarketItem[] memory) {
+        uint256 itemCount = _itemIds.current();
+        uint256 unsoldItemCount = _itemIds.current() - _itemsSold.current();
+        uint256 currentIndex = 0;
+
+        MarketItem[] memory items = new MarketItem[](unsoldItemCount);
+        for (uint256 i = 0; i < itemCount; i++) {
+            if (!idToMarketItem[i + 1].isSold) {
+                uint256 currentId = i + 1;
+                MarketItem memory currentItem = idToMarketItem[currentId];
+                items[currentIndex] = currentItem;
+                currentIndex += 1;
+            }
+        }
+
+        return items;
+    }
+
+    // 返回市场中所有的NFT信息
+    function getAllMarketItems() public view returns (MarketItem[] memory) {
+        uint256 itemCount = _itemIds.current();
+        MarketItem[] memory items = new MarketItem[](itemCount);
+        uint256 currentIndex = 0;
+
+        for (uint256 i = 0; i < itemCount; i++) {
+            uint256 currentId = i + 1;
+            MarketItem memory currentItem = idToMarketItem[currentId];
+            items[currentIndex] = currentItem;
+            currentIndex += 1;
+        }
+
+        return items;
+    }
 }
