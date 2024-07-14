@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFTExchange
+    network: sepolia
+    source:
+      address: "0xdB3b3325AaB10167Ac11353e4CE41951Dd42623f"
+      abi: NFTExchange
+      startBlock: 6241216
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NFTDeListed
+        - NFTListed
+        - NFTPurchased
+      abis:
+        - name: NFTExchange
+          file: ./abis/NFTExchange.json
+      eventHandlers:
+        - event: NFTDeListed(indexed address,indexed address,indexed uint256)
+          handler: handleNFTDeListed
+        - event: NFTListed(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleNFTListed
+        - event: NFTPurchased(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleNFTPurchased
+      file: ./src/nft-exchange.ts
