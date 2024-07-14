@@ -1,13 +1,11 @@
 import React, { useMemo, useState } from "react";
-import { hashUrl, OBTAddress, NFTExchangeAddress } from "./config";
+import { useReadContract, useWriteContract } from "wagmi";
+
 import NFTExchange from "./abis/NFTExchange.json";
 import OpenBuildToken from "./abis/OpenBuildToken.json";
-import {
-  useReadContract,
-  useWaitForTransactionReceipt,
-  useWriteContract,
-} from "wagmi";
-const BuyList = () => {
+import { NFTExchangeAddress, OBTAddress, hashUrl, WFTAddress } from "./config";
+
+const BuyNFT = () => {
   //   const [selectIndex, setSelectIndex] = useState<number>(-1);
   const { data: hash, writeContractAsync, isPending } = useWriteContract();
 
@@ -17,10 +15,17 @@ const BuyList = () => {
     isPending: isPendingBuy,
   } = useWriteContract();
 
+  const {
+    data: hashDeList,
+    writeContractAsync: writeContractAsyncDeList,
+    isPending: isPendingDeList,
+  } = useWriteContract();
+
   const result = useReadContract({
     abi: NFTExchange,
     address: NFTExchangeAddress,
     functionName: "getAllListings",
+    args: [WFTAddress],
     query: {
       refetchInterval: 3000,
     },
@@ -37,6 +42,7 @@ const BuyList = () => {
   console.log("listings: ", listings);
 
   const buyHashUrl = hashUrl + hash;
+  const DelistHashUrl = hashUrl + hashDeList;
 
   //   const canBuy = () => {
   //     if (selectIndex === -1) {
@@ -55,17 +61,33 @@ const BuyList = () => {
 
     const tokenId = Number(selectItem.tokenId);
 
-    await writeContractAsync({
-      address: OBTAddress,
-      abi: OpenBuildToken,
-      functionName: "approve",
-      args: [NFTExchangeAddress, price],
-    });
+    // await writeContractAsync({
+    //   address: OBTAddress,
+    //   abi: OpenBuildToken,
+    //   functionName: "approve",
+    //   args: [NFTExchangeAddress, price],
+    // });
 
     await writeContractAsyncBuy({
       address: NFTExchangeAddress,
       functionName: "buyNFT",
       args: [selectItem.nftContract, tokenId],
+      abi: NFTExchange,
+    });
+  };
+
+  const DeListNFT = async (selectItem) => {
+    console.log("DeListItem: ", selectItem);
+    if (!selectItem) {
+      return;
+    }
+
+    const tokenId = Number(selectItem.tokenId);
+
+    await writeContractAsyncDeList({
+      address: NFTExchangeAddress,
+      functionName: "DelistNFT",
+      args: [selectItem.nftContract, tokenId, false],
       abi: NFTExchange,
     });
   };
@@ -78,9 +100,12 @@ const BuyList = () => {
         <thead>
           <tr>
             <th>合约地址</th>
+            <th>拥有者</th>
             <th>TokenId</th>
             <th>价格</th>
+            <th>上架时间</th>
             <th>是否可以购买</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -88,8 +113,11 @@ const BuyList = () => {
           {listings.map((item, index) => (
             <tr key={index}>
               <td> {item.nftContract}</td>
+              <td> {item.seller}</td>
               <td>{item.tokenId.toString()}</td>
               <td>{item.price.toString()}</td>
+              <td>{new Date().toISOString()}</td>
+
               <td>{item.isActivate.toString()}</td>
 
               <td>
@@ -100,22 +128,39 @@ const BuyList = () => {
                   disabled={
                     isPending ||
                     isPendingBuy ||
+                    isPendingDeList ||
                     item.isActivate.toString() === "false"
                   }
                 >
-                  Buy
+                  {isPendingBuy ? "Buying..." : "Buy"}
+                </button>
+              </td>
+
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => DeListNFT(item)}
+                  disabled={
+                    isPending ||
+                    isPendingBuy ||
+                    isPendingDeList ||
+                    item.isActivate.toString() === "false"
+                  }
+                >
+                  {isPendingDeList ? "DeListing..." : "DeList"}
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
 
-        {hashBuy && (
+        {(hashBuy || hashDeList) && (
           <tfoot>
             <tr>
               <td>
                 {" "}
-                购买 NFT 成功！ 请点击 <a href={buyHashUrl}>{hash}</a> 查看
+                下架NFT 成功！ 请点击 <a href={DelistHashUrl}>{hash}</a> 查看
               </td>
               <td> </td>
               <td></td>
@@ -128,4 +173,4 @@ const BuyList = () => {
   );
 };
 
-export default BuyList;
+export default BuyNFT;

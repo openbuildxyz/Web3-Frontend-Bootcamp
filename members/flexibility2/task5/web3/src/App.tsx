@@ -2,17 +2,17 @@ import "./App.css";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-import { Profile } from "./profile";
 import ListNFT from "./ListNFT";
-import BuyList from "./BuyList";
+import BuyNFT from "./BuyNFT";
+import Mint from "./Mint";
 
 function App() {
   return (
     <>
       <ConnectButton />
-      <Profile></Profile>
+      <Mint></Mint>
       <ListNFT></ListNFT>
-      <BuyList></BuyList>
+      <BuyNFT></BuyNFT>
     </>
   );
 }
