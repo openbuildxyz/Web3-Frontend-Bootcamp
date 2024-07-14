@@ -3,8 +3,9 @@
 0xeEe54Eb79156df7af72c98E5644dA949776Bc45d
 
 链接：
+https://api.studio.thegraph.com/query/83151/my_nft_market/v0.0.1
 
-[Subgraph Studio (thegraph.com)](https://thegraph.com/studio/subgraph/my_nft_market/playground)
+https://thegraph.com/studio/subgraph/my_nft_market/
 
 owner 地址：
 
