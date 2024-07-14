@@ -73,6 +73,25 @@ export const NFTExchange = [
     type: 'event'
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'nftContract',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256'
+      }
+    ],
+    name: 'NFTRemoved',
+    type: 'event'
+  },
+  {
     inputs: [
       {
         internalType: 'address',
@@ -125,6 +144,11 @@ export const NFTExchange = [
             internalType: 'bool',
             name: 'isActive',
             type: 'bool'
+          },
+          {
+            internalType: 'uint256',
+            name: 'listedAt',
+            type: 'uint256'
           }
         ],
         internalType: 'struct NFTExchange.Listing[]',
@@ -202,6 +226,11 @@ export const NFTExchange = [
         internalType: 'bool',
         name: 'isActive',
         type: 'bool'
+      },
+      {
+        internalType: 'uint256',
+        name: 'listedAt',
+        type: 'uint256'
       }
     ],
     stateMutability: 'view',
@@ -218,6 +247,24 @@ export const NFTExchange = [
       }
     ],
     stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_nftContract',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: '_tokenId',
+        type: 'uint256'
+      }
+    ],
+    name: 'removeNFT',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function'
   }
 ];

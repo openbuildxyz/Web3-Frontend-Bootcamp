@@ -5,4 +5,5 @@ export interface NFTItem {
   isActive: boolean;
   tokenUrl: string;
   seller: string;
+  listedAt: number;
 }
