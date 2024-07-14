@@ -1,0 +1,18 @@
+{
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.5",
+    "hardhat": "^2.22.6"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-ledger": "^1.0.3",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "ethers": "^6.13.1"
+  },
+  "scripts": {
+    "deploy-local": "npx hardhat ignition deploy ./ignition/modules/NFTMarketDeployment.js --network localhost",
+    "deploy": "npx hardhat ignition deploy ./ignition/modules/NFTMarketDeployment.js --network sepolia",
+    "listingNFT": "node run scripts/auto.js"
+  }
+}

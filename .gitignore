@@ -16,8 +16,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
-
+artifacts
+cache
 # environment variables
 .env
 .env.production
