@@ -32,6 +32,10 @@ https://docs.morphl2.io/docs/build-on-morph/code-examples/deploy-contract-on-mor
 ![图片3](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task8/members/coolberwin/task8/img/%E9%83%A8%E7%BD%B2%E5%90%88%E7%BA%A6.png?raw=true)
 
 
+## 注意
+- 如果合约有 import 其他合约，必须把他们写成一个flatten文件 
+- Optimization enabled 不需要打勾
+
 ## 结束
 
 ---
