@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "NFTExchange": {
+      "address": "0xdB3b3325AaB10167Ac11353e4CE41951Dd42623f",
+      "startBlock": 6241216
+    }
+  }
+}
