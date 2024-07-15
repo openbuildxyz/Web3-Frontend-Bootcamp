@@ -19,7 +19,7 @@ https://docs.morphl2.io/docs/build-on-morph/code-examples/deploy-contract-on-mor
 
 
 ### 合约地址
-| 文件名      | 地址 | 说明                 |
+| 文件名      | tx | 说明                 |
 |-------------|--------------|----------------------|
 | Counter.sol | [0x0447AD17D800CEF171e5F9B5FA4b0343F1CD5A78](https://explorer-holesky.morphl2.io/address/0x0447AD17D800CEF171e5F9B5FA4b0343F1CD5A78?tab=txs) |   |
 
