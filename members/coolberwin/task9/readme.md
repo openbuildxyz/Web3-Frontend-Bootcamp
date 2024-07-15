@@ -40,15 +40,15 @@ task9 任务：为NFTMarket创建一个The Graph子图
 ### 1. log 界面
 
 
-![图片1]()
+![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task9/members/coolberwin/task9/img/graph_nftmarket_log%E6%97%A5%E5%BF%97.png?raw=true)
 
 ### 2. playground界面
 
-![图片2]()
+![图片2](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task9/members/coolberwin/task9/img/graph_nftmarket_playground%E7%95%8C%E9%9D%A2.png?raw=true)
 
-### 3. playground界面
+### 3. deatil界面
 
-![图片3]()
+![图片3](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task9/members/coolberwin/task9/img/graph_nftmarket_detail%E7%95%8C%E9%9D%A2.png?raw=true)
 
 
 ## 结束
