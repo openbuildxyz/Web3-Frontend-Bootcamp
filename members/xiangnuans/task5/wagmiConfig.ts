@@ -12,14 +12,6 @@ let networkConfig;
 if (NETWORK === 'sepolia') {
   networkConfig = {
     ...sepolia,
-    // rpcUrls: {
-    //   default: {
-    //     http: ['https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f'],
-    //   },
-    //   public: {
-    //     http: ['https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f'],
-    //   },
-    // },
   };
 } else {
   networkConfig = {
@@ -53,10 +45,6 @@ export const wagmiConfig = createConfig({
   ],
   transports: {
     [sepolia.id]: http(`https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f`),
-    // [networkConfig.id]: networkConfig.name === 'Sepolia' ? http('https://sepolia.infura.io/v3/0cf3624435f04a659fe5ed4d1568160f') : http(networkConfig.rpcUrls?.default?.http?.[0]),
+    // [networkConfig.id]: http(networkConfig.rpcUrls?.default?.http?.[0]),
   },
-  // storage: createStorage({
-  //   storage: cookieStorage
-  // }),
-  // ssr: true,
 })

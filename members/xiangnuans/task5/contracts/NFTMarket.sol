@@ -48,7 +48,7 @@ contract NFTMarket {
         string tokenURI,
         bool isActive
     );
-
+    event Debug(string message); // 添加事件声明
     constructor(IERC20 _paymentToken) {
         paymentToken = IERC20(_paymentToken); // 初始化支付代币合约
     }
@@ -236,10 +236,12 @@ contract NFTMarket {
     }
 
     function buyNFT(address _nftContract, uint256 _tokenId) external {
+        emit Debug("buyNFT function called"); // Debug信息
         Listing storage listing = listings[_nftContract][_tokenId];
         require(listing.isActive, "NFT not for sale"); // 确保NFT在售
-
+        emit Debug("NFT is active");
         IERC721 nft = IERC721(_nftContract);
+        emit Debug("IERC721 initialized");
         require(
             paymentToken.transferFrom(
                 msg.sender,
@@ -248,8 +250,9 @@ contract NFTMarket {
             ),
             "Payment failed"
         ); // 确保支付成功
-
+        emit Debug("Payment successful");
         nft.safeTransferFrom(listing.seller, msg.sender, _tokenId); // 转移NFT
+        emit Debug("Transfer successful");
         listing.isActive = false; // 标记为已售
         listing.delistingTime = 0; // 标记为0
 

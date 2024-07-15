@@ -40,7 +40,7 @@ const NFTModal = ({ isOpen, onClose }: Props) => {
   const {
     data: mintHash,
     writeContractAsync: writeContractAsyncMinit,
-    isMinitPending,
+    isPending: isMinitPending,
   } = useWriteContract(); // 铸造
   const { data: hash, writeContractAsync, isPending } = useWriteContract(); // 授权
   const {

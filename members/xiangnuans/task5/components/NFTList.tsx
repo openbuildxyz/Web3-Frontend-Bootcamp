@@ -24,9 +24,9 @@ export default function NFTList() {
     abi: MarkContract.abi,
     address: MarketAddress,
     functionName: "getAllDelisted",
-    query: {
-      refetchInterval: 3000,
-    },
+    // query: {
+    //   refetchInterval: 3000,
+    // },
   });
   console.log("fetching delisted NFTs:", delistedResult, delistedResult?.data);
 
@@ -34,9 +34,9 @@ export default function NFTList() {
     abi: MarkContract.abi,
     address: MarketAddress,
     functionName: "getAllListings",
-    query: {
-      refetchInterval: 3000,
-    },
+    // query: {
+    //   refetchInterval: 30000,
+    // },
   });
 
   console.log("fetching listings:", listingsResult, listingsResult.data);

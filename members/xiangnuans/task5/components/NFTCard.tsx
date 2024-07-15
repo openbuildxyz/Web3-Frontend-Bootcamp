@@ -1,8 +1,7 @@
 import { MarketAddress, MyTokenAddress, hashUrl } from "@/scripts/config";
-import { useAccount, useReadContract, useWriteContract } from "wagmi";
+import { useAccount, useWriteContract } from "wagmi";
 
 import { Button } from "@nextui-org/react";
-import ERC20_ABI from "@/artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json";
 import MyToken from "@/artifacts/contracts/myToken.sol/MyToken.json";
 import NFTMarket from "@/artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 import React from "react";
@@ -58,7 +57,6 @@ const NFTCard = ({ listing, index, type }: Props) => {
 
   const approveTokens = async (price: any) => {
     try {
-      console.log("price = ", price);
       return await approveContractAsync({
         address: MyTokenAddress,
         functionName: "approve",
@@ -80,13 +78,20 @@ const NFTCard = ({ listing, index, type }: Props) => {
       await approveTokens(price);
       return await buyContractAsync({
         address: MarketAddress,
-        abi: NFTMarket.abi,
         functionName: "buyNFT",
-        args: [listing.nftContract, listing.tokenId],
+        args: [listing.nftContract, parseInt(listing.tokenId)],
+        abi: NFTMarket.abi,
       });
-    } catch (err) {
-      console.error("buyNFT error", err);
-      throw err;
+    } catch (error: any) {
+      console.error("buyNFT error", error);
+      if (error?.code === "INSUFFICIENT_FUNDS") {
+        console.error("Insufficient funds");
+      } else if (error?.code === "UNPREDICTABLE_GAS_LIMIT") {
+        console.error("Unpredictable gas limit", error);
+      } else {
+        console.error("Unknown error", error);
+      }
+      throw error;
     }
   };
 
