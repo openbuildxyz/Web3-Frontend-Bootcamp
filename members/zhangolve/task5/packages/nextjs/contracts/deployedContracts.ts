@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  11155111: {
     ERC20Token: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x3ff66940bb31999ECCf8617dBFE9DEB42269be63",
       abi: [
         {
           inputs: [
@@ -449,7 +449,7 @@ const deployedContracts = {
       },
     },
     ERC721Token: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0x69BAe672c5d8504005c08d90Fbf322a97CcFab8b",
       abi: [
         {
           inputs: [
@@ -1172,7 +1172,7 @@ const deployedContracts = {
       },
     },
     NFTMarket: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0x1bD89cE48bbE1DB41B6d36CFbaF166375891911b",
       abi: [
         {
           inputs: [
