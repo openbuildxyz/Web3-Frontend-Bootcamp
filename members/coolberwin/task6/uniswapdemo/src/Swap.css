@@ -1,0 +1,9 @@
+/* Swap.css */
+.custom-popover {
+    width: 100px; /* 设置弹出框的宽度 */
+  }
+  
+  .custom-popover .ant-input {
+    width: 80px; /* 设置输入框的宽度 */
+  }
+  
