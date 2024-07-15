@@ -1,15 +1,4 @@
-# Web3 前端训练营报名
-
-## 个人信息
-
-- Github ID: flexibility2
-
-- Wechat ID: wuxiaotian2020up
-
-- Openbuild Username: flexibility2
-
-- ERC20 钱包地址: 0xdc32e5e98027662Ca0Cd7cB3f906cAE52944b731
-
-### 个人介绍
-
-三年開發經驗，前端 angular，後端 jave, .net
+1. 连接钱包：用户可以通过 MetaMask 连接他们的钱包。
+2. 上架 NFT：用户可以输入 NFT 合约地址、Token ID 和价格（ERC20 代币），并将 NFT 上架到市场。
+3. 显示上架的 NFT：显示所有上架的 NFT，包括 NFT 的合约地址、Token ID、价格。
+4. 购买 NFT：用户可以选择一个上架的 NFT 并使用 ERC20 代币进行购买。
