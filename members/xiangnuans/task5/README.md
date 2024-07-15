@@ -15,12 +15,12 @@
 
 # 本地链
 # 上架
-![list](./assets/list.jpg)
+![list](./assets/list-nft.jpg)
 
 
 # 下架
-![delist](./assets/delist.jpg)
+![delist](./assets/del-nft.jpg)
 
 # 购买
-![buy](./assets/buy.jpg)
+![buy](./assets/buy-nft.jpg)
 
