@@ -1,0 +1,9 @@
+链接：
+https://explorer-holesky.morphl2.io/address/0xFaafDe09BeE0C0faB7f80dab9E0822906057b76F?tab=contract
+合约地址：
+
+0xFaafDe09BeE0C0faB7f80dab9E0822906057b76F
+交易hash：
+
+0xe6e2b893c8fb5e274a85f92aa24454da1a3f3491965552a880cc25d631cabad4
+

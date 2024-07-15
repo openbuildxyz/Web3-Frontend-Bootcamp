@@ -1,3 +1,6 @@
-[submodule "members/b-t-s-1/task3/lib/forge-std"]
-	path = members/b-t-s-1/task3/lib/forge-std
+[submodule "members/coolberwin/task3/nftMarket/lib/forge-std"]
+	path = members/coolberwin/task3/nftMarket/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "members/coolberwin/task3/nftMarket/lib/openzeppelin-contracts"]
+	path = members/coolberwin/task3/nftMarket/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
