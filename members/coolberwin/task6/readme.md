@@ -43,6 +43,7 @@ task6 任务：制作一个与uniswap交互的前端app
 - 增加自动设置 slipper (虽然不好看)
 - 删除多余 链 只保留 mainnet 和 base
 - 删除 多余代币 只保留 weth 和 usdc
+- 更改resource.js中 mainnet 和 base 的rpc 
 
 ## 关键截图
 
@@ -51,16 +52,18 @@ task6 任务：制作一个与uniswap交互的前端app
 ### 1. 主界面
 
 
-![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task9/members/coolberwin/task9/img/graph_nftmarket_log%E6%97%A5%E5%BF%97.png?raw=true)
+![图片1](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task6/members/coolberwin/task6/img/swap%E6%88%AA%E5%9B%BE1%20%E7%95%8C%E9%9D%A2.png?raw=true)
 
 ### 2. 自定义滑点
 
-![图片2](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task9/members/coolberwin/task9/img/graph_nftmarket_playground%E7%95%8C%E9%9D%A2.png?raw=true)
+![图片2](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task6/members/coolberwin/task6/img/swap%E6%88%AA%E5%9B%BE2%20%E8%87%AA%E5%AE%9A%E4%B9%89slippage.png?raw=true)
 
 ### 3. 交易approve
 
-![图片3](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task9/members/coolberwin/task9/img/graph_nftmarket_detail%E7%95%8C%E9%9D%A2.png?raw=true)
+![图片3](https://github.com/coolberwin/Web3-Frontend-Bootcamp/blob/task6/members/coolberwin/task6/img/swap%E6%88%AA%E5%9B%BE3%20approve.png?raw=true)
 
+
+由于 wallet 没有代币 就没有做流动性 相关内容
 
 ## 结束
 
