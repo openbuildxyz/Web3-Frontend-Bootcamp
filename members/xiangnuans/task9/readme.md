@@ -23,7 +23,7 @@
 - 提交NFTMarket合约地址
 - 提交在The Graph Sudio ( https://thegraph.com/studio/ ) 上部署的子图的链接以及截图
 
-NFTMarket合约地址: sepolia.etherscan.io/address/0xee9e3a49eca927933ef08c742ce2e0a89bedd419
+NFTMarket合约地址: sepolia.etherscan.io/address/0x610a95b0f300e69Df7ad987AE333E74B2BA42758
 在The Graph Sudio ( thegraph.com/studio ) 上部署的子图的链接: api.studio.thegraph.com/query/82579/openbuild-nftmarket/v0.0.1
 部署、查询、Log等截图：
 
