@@ -1,0 +1,37 @@
+# Web3 训练营 
+
+task8 在Morph Holesky上部署任意合约并在Morph浏览器上验证
+
+# 任务要求
+
+```
+在Morph Holesky上部署任意合约并在Morph浏览器上验证
+教程：
+https://docs.morphl2.io/docs/build-on-morph/code-examples/deploy-contract-on-morph
+提交要求：
+
+    提交合约的Morph浏览器链接
+    提交验证后的截图
+
+```
+
+## 相关信息
+
+
+### 合约地址
+| 文件名      | 地址 | 说明                 |
+|-------------|--------------|----------------------|
+| Counter.sol | [0x0447AD17D800CEF171e5F9B5FA4b0343F1CD5A78](https://explorer-holesky.morphl2.io/address/0x0447AD17D800CEF171e5F9B5FA4b0343F1CD5A78?tab=txs) |   |
+
+
+
+
+## 关键截图
+
+
+![图片3]()
+
+
+## 结束
+
+---
