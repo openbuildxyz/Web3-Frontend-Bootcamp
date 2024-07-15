@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "account:create": "node scripts/create-account.cjs",
+    "contract:send": "node scripts/contract-send.cjs",
+    "contract:call": "node scripts/contract-call.cjs",
+    "aspect:deploy": "npm run aspect:build && node scripts/aspect-deploy.cjs",
+    "aspect:build": "npm run asbuild:debug && npm run asbuild:release",
+    "aspect:gen": "aspect-tool generate -i ./build/contract -o ./aspect/contract",
+    "asbuild:debug": "asc aspect/index.ts --disable bulk-memory --optimize --debug --runtime stub --exportRuntime --exportStart __aspect_start__ --target debug",
+    "asbuild:release": "asc aspect/index.ts --disable bulk-memory --optimize --debug --runtime stub --exportRuntime --exportStart __aspect_start__ --target release",
+    "operation:call": "node scripts/operation.cjs --isCall true",
+    "operation:send": "node scripts/operation.cjs --isCall false",
+    "bound:aspect": "node scripts/get-bound-aspect.cjs",
+    "bound:account": "node scripts/get-bound-account.cjs",
+    "test": "node scripts/batch-test.cjs",
+    "contract:bind": "node scripts/bind.cjs",
+    "contract:unbind": "node scripts/unbind.cjs",
+    "contract:deploy": "node scripts/contract-deploy.cjs --name Counter",
+    "contract:build": "solc -o ./build/contract/ --via-ir --abi --storage-layout --bin ./contracts/*.sol --overwrite",
+    "build": "npm run contract:build && npm run aspect:gen && npm run aspect:build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@artela/aspect-libs": "^0.0.33",
+    "@artela/web3": "^1.9.22",
+    "@assemblyscript/loader": "^0.27.23",
+    "as-proto": "^1.3.0"
+  },
+  "devDependencies": {
+    "@artela/aspect-tool": "^0.0.57",
+    "as-proto-gen": "^1.3.0",
+    "assemblyscript": "^0.27.23",
+    "json-as": "^0.7.2",
+    "yargs": "^17.7.2"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  }
+}
