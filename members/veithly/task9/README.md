@@ -8,3 +8,4 @@ https://api.studio.thegraph.com/proxy/82957/nftmarket/version/latest/graphql?que
 
 ![Subgraph](./subgraph.png)
 ![Subgraph](./subgraph2.png)
+![Subgraph](./subgraph3.jpeg)
