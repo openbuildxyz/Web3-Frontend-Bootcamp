@@ -4,6 +4,6 @@
 
 ### 提交在 The Graph Sudio 上部署的子图的链接以及截图
 
-https://thegraph.com/studio/subgraph/nftmarket_test/playground
+https://api.studio.thegraph.com/query/83052/nftmarket_test/version/latest
 
-![子图](image.png)
+![子图](image1.png)
