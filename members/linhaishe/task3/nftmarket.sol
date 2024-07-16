@@ -101,11 +101,6 @@ contract Market is Ownable, ReentrancyGuard, IERC721Receiver {
             nftContract
         );
 
-        IERC20(acceptedTokenAddress).transferFrom(
-            msg.sender,
-            address(this),
-            price
-        );
         IERC721(nftContract).safeTransferFrom(
             msg.sender,
             address(this),
@@ -157,38 +152,35 @@ contract Market is Ownable, ReentrancyGuard, IERC721Receiver {
         );
     }
 
-    function buyItem(
-        uint256 itemId,
-        uint256 itemPrice,
-        address nftContract
-    ) public nonReentrant {
-        uint256 price = idToMarketItem[itemId].price;
-        uint256 tokenId = idToMarketItem[itemId].tokenId;
-        bool isUpForSale = idToMarketItem[itemId].isUpForSale;
-        require(itemPrice >= price, "Asking Price not satisfied!");
+    function buyItem(uint256 itemId) public nonReentrant {
+        MarketItem storage item = idToMarketItem[itemId];
+        uint256 price = item.price;
+        uint256 tokenId = item.tokenId;
+        bool isUpForSale = item.isUpForSale;
         require(isUpForSale == true, "NFT not for sale.");
 
-        address prevSeller = idToMarketItem[itemId].owner;
-        idToMarketItem[itemId].price = itemPrice;
-        idToMarketItem[itemId].owner = msg.sender;
-        idToMarketItem[itemId].seller = msg.sender;
-        idToMarketItem[itemId].isSold = true;
-        idToMarketItem[itemId].isUpForSale = false;
-        IERC721(nftContract).safeTransferFrom(prevSeller, msg.sender, tokenId);
-        IERC20(acceptedTokenAddress).transferFrom(
+        address prevOwner = item.owner;
+        address seller = item.seller;
+
+        item.owner = msg.sender;
+        item.seller = msg.sender;
+        item.isSold = true;
+        item.isUpForSale = false;
+
+        IERC721(item.nftContract).safeTransferFrom(
+            prevOwner,
             msg.sender,
-            prevSeller,
-            itemPrice
+            tokenId
         );
+        IERC20(acceptedTokenAddress).transferFrom(msg.sender, seller, price);
+
         _itemsSold.increment();
     }
 
-    // get item by itemId
     function getMarketItemById(
         uint256 marketItemId
     ) public view returns (MarketItem memory) {
-        MarketItem memory item = idToMarketItem[marketItemId];
-        return item;
+        return idToMarketItem[marketItemId];
     }
 
     function getUnsoldItems() public view returns (MarketItem[] memory) {
@@ -209,7 +201,6 @@ contract Market is Ownable, ReentrancyGuard, IERC721Receiver {
         return items;
     }
 
-    // 返回市场中所有的NFT信息
     function getAllMarketItems() public view returns (MarketItem[] memory) {
         uint256 itemCount = _itemIds.current();
         MarketItem[] memory items = new MarketItem[](itemCount);
