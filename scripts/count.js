@@ -100,10 +100,14 @@ function generateResult() {
       }
     });
 
+    const totalText = `共 ${mergedRecords.length + prRecords.length} 人提交`;
+
     if (prRecords.length > 0) {
-      segments.push(`已合并 ${mergedRecords.length} 人：\n`, ...mergedRecords, '\n', `未合并 ${prRecords.length} 人：\n`, ...prRecords);
+      segments.push(`${totalText}。\n`, `已合并 ${mergedRecords.length} 人：\n`, ...mergedRecords, '\n', `未合并 ${prRecords.length} 人：\n`, ...prRecords);
     } else if (mergedRecords.length > 0) {
-      segments.push(...mergedRecords);
+      segments.push(`${totalText}：\n`, ...mergedRecords);
+    } else {
+      segments.push(`${totalText}。`)
     }
 
     taskSections.push(...segments);

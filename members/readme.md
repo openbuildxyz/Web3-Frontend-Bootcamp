@@ -262,6 +262,8 @@
 
 ### task1
 
+共 192 人提交。
+
 已合并 179 人：
 
 - [0x4E33](0x4E33/task1)
@@ -462,6 +464,8 @@
 - [wureny](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/526)
 ### task2
 
+共 175 人提交。
+
 已合并 145 人：
 
 - [0x4E33](0x4E33/task2)
@@ -645,6 +649,8 @@
 - [ziicu2019](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/892)
 ### task3
 
+共 83 人提交。
+
 已合并 59 人：
 
 - [321llljjjfff123](321llljjjfff123/task3)
@@ -736,6 +742,8 @@
 - [zhtkeepup](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/748)
 ### task4
 
+共 45 人提交。
+
 已合并 0 人：
 
 
@@ -789,6 +797,8 @@
 - [zpjayyy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/701)
 ### task5
 
+共 36 人提交。
+
 已合并 1 人：
 
 - [Y2511525406](Y2511525406/task5)
@@ -833,6 +843,8 @@
 - [zpjayyy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1190)
 ### task6
 
+共 29 人提交。
+
 已合并 0 人：
 
 
@@ -869,6 +881,8 @@
 - [zhangloveyan](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1111)
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1148)
 ### task7
+
+共 44 人提交。
 
 已合并 36 人：
 
@@ -922,6 +936,8 @@
 - [flexibility2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1317)
 ### task8
 
+共 45 人提交。
+
 已合并 44 人：
 
 - [321llljjjfff123](321llljjjfff123/task8)
@@ -974,6 +990,8 @@
 
 - [coolberwin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1301)
 ### task9
+
+共 34 人提交。
 
 已合并 29 人：
 
