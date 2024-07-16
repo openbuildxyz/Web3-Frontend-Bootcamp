@@ -260,9 +260,11 @@
 
 ## 按任务统计
 
+
 ### task1
 
-共 192 人提交。
+<details>
+<summary>共 192 人提交。</summary>
 
 已合并 179 人：
 
@@ -446,7 +448,6 @@
 - [zpjayyy](zpjayyy/task1)
 - [zzworker](zzworker/task1)
 
-
 未合并 13 人：
 
 - [Dr-yellow](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1260)
@@ -462,9 +463,13 @@
 - [shaun17](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/495)
 - [wanna-wl](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/235)
 - [wureny](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/526)
+
+</details>
+
 ### task2
 
-共 175 人提交。
+<details>
+<summary>共 175 人提交。</summary>
 
 已合并 145 人：
 
@@ -614,7 +619,6 @@
 - [zpjayyy](zpjayyy/task2)
 - [zzworker](zzworker/task2)
 
-
 未合并 30 人：
 
 - [604137978](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/709)
@@ -647,9 +651,13 @@
 - [xiaodingmao](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/627)
 - [xiaowu55](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/910)
 - [ziicu2019](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/892)
+
+</details>
+
 ### task3
 
-共 83 人提交。
+<details>
+<summary>共 83 人提交。</summary>
 
 已合并 59 人：
 
@@ -713,7 +721,6 @@
 - [zpjayyy](zpjayyy/task3)
 - [zzworker](zzworker/task3)
 
-
 未合并 24 人：
 
 - [964674798](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/804)
@@ -740,12 +747,15 @@
 - [wormchenli](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/784)
 - [zhengjunxiang](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/801)
 - [zhtkeepup](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/748)
+
+</details>
+
 ### task4
 
-共 45 人提交。
+<details>
+<summary>共 45 人提交。</summary>
 
 已合并 0 人：
-
 
 
 未合并 45 人：
@@ -795,14 +805,17 @@
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1045)
 - [zhengjunxiang](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1009)
 - [zpjayyy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/701)
+
+</details>
+
 ### task5
 
-共 36 人提交。
+<details>
+<summary>共 36 人提交。</summary>
 
 已合并 1 人：
 
 - [Y2511525406](Y2511525406/task5)
-
 
 未合并 35 人：
 
@@ -841,12 +854,15 @@
 - [zhangloveyan](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1192)
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1144)
 - [zpjayyy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1190)
+
+</details>
+
 ### task6
 
-共 29 人提交。
+<details>
+<summary>共 29 人提交。</summary>
 
 已合并 0 人：
-
 
 
 未合并 29 人：
@@ -880,9 +896,13 @@
 - [ymiool](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1183)
 - [zhangloveyan](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1111)
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1148)
+
+</details>
+
 ### task7
 
-共 44 人提交。
+<details>
+<summary>共 44 人提交。</summary>
 
 已合并 36 人：
 
@@ -923,7 +943,6 @@
 - [zhangolve](zhangolve/task7)
 - [zhouBoom](zhouBoom/task7)
 
-
 未合并 8 人：
 
 - [0x4E33](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/902)
@@ -934,9 +953,13 @@
 - [choizhang](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1272)
 - [coolberwin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1325)
 - [flexibility2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1317)
+
+</details>
+
 ### task8
 
-共 45 人提交。
+<details>
+<summary>共 45 人提交。</summary>
 
 已合并 44 人：
 
@@ -985,13 +1008,16 @@
 - [zhangolve](zhangolve/task8)
 - [zhouBoom](zhouBoom/task8)
 
-
 未合并 1 人：
 
 - [coolberwin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1301)
+
+</details>
+
 ### task9
 
-共 34 人提交。
+<details>
+<summary>共 34 人提交。</summary>
 
 已合并 29 人：
 
@@ -1025,7 +1051,6 @@
 - [zer0fire](zer0fire/task9)
 - [zhangloveyan](zhangloveyan/task9)
 
-
 未合并 5 人：
 
 - [DeJeune](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1320)
@@ -1033,3 +1058,5 @@
 - [threshermagnus484159](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1243)
 - [veithly](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1297)
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1296)
+
+</details>

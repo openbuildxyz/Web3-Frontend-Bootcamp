@@ -80,7 +80,7 @@ function generateResult() {
 
   taskSeq.forEach((_, i) => {
     const taskName = `task${i + 1}`;
-    const segments = [`### ${taskName}\n`];
+    const segments = [`\n### ${taskName}\n`];
     const mergedRecords = [];
     const prRecords = [];
 
@@ -103,9 +103,9 @@ function generateResult() {
     const totalText = `共 ${mergedRecords.length + prRecords.length} 人提交`;
 
     if (prRecords.length > 0) {
-      segments.push(`${totalText}。\n`, `已合并 ${mergedRecords.length} 人：\n`, ...mergedRecords, '\n', `未合并 ${prRecords.length} 人：\n`, ...prRecords);
+      segments.push('<details>', `<summary>${totalText}。</summary>\n`, `已合并 ${mergedRecords.length} 人：\n`, ...mergedRecords, `\n未合并 ${prRecords.length} 人：\n`, ...prRecords, '\n</details>');
     } else if (mergedRecords.length > 0) {
-      segments.push(`${totalText}：\n`, ...mergedRecords);
+      segments.push('<details>', `${totalText}：\n`, ...mergedRecords, '\n</details>');
     } else {
       segments.push(`${totalText}。`)
     }
