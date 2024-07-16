@@ -9,3 +9,4 @@ https://api.studio.thegraph.com/query/83285/nftmarket/v0.0.1
 ### 部署截图
 ![](./2.jpg)
 ![](./1.jpg)
+![](./3.jpg)
