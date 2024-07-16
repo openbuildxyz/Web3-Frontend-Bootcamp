@@ -1,0 +1,37 @@
+[
+  {
+    "ticker": "USDT",
+    "img": "https://cryptologos.cc/logos/tether-usdt-logo.png",
+    "name": "Tether",
+    "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+    "decimals": 6
+  },
+  {
+    "ticker": "USDC",
+    "img": "https://cryptologos.cc/logos/usd-coin-usdc-logo.png",
+    "name": "USD Coin",
+    "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+    "decimals": 6
+  },
+  {
+    "ticker": "WLD",
+    "img": "https://cryptologos.cc/logos/worldcoin-wld-logo.png",
+    "name": "Worldcoin",
+    "address": "0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1",
+    "decimals": 18
+  },
+  {
+    "ticker": "WLD",
+    "img": "https://cryptologos.cc/logos/worldcoin-wld-logo.png",
+    "name": "Worldcoin",
+    "address": "0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1",
+    "decimals": 18
+  },
+  {
+    "ticker": "OP",
+    "img": "https://assets.coingecko.com/coins/images/25244/small/Optimism.png?1696524385",
+    "name": "Optimism",
+    "address": "0x4200000000000000000000000000000000000042",
+    "decimals": 18
+  }
+]
