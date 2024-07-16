@@ -9,7 +9,4 @@
 * ERC20 钱包地址: 0xE7533703Ca1C9aaE93E7db8F427dE018dbd09653
 
 ### 个人介绍
-
-## 任务提交
-task1: [React ToDo list](https://github.com/lsPrivateGit/react-todo-list)
-task2: [Blockchain_Basic.md]
+- 区块链技术爱好者、前端开发、后端开发、React、Vue、Nextjs、Solidity、Web3、区块链、以太坊。
