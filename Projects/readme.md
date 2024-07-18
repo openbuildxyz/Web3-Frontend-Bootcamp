@@ -11,7 +11,7 @@
 3. Clone the copy of the Forked repository to your device;
 
    ```
-   git clone https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/Web3-Frontend-Bootcamp.git
+   git clone https://github.com/openbuildxyz/Web3-Frontend-Bootcamp.git
    ```
 
 4. Arrange the files on your own device: First, create a personal project folder (take the name of your corresponding project) under the division folder, and place the files to be submitted in the personal folder.
