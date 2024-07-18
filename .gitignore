@@ -10,6 +10,9 @@ dist/
 
 # dependencies
 node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
 
 # logs
 npm-debug.log*
@@ -18,10 +21,15 @@ yarn-error.log*
 pnpm-debug.log*
 artifacts
 cache
+
 # environment variables
 .env
+.env.local
 .env.production
 
 # macOS-specific files
 .DS_Store
 ._*
+
+.knosys/caches
+.obpmc/data

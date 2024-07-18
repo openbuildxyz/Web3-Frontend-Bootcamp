@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: sepolia
+    source:
+      address: "0x610a95b0f300e69Df7ad987AE333E74B2BA42758"
+      abi: Contract
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NFTBought
+        - NFTListed
+        - NFTStatusChanged
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: NFTBought(indexed address,indexed uint256,address,uint256)
+          handler: handleNFTBought
+        - event: NFTListed(indexed address,indexed uint256,address,uint256)
+          handler: handleNFTListed
+        - event: NFTStatusChanged(indexed address,indexed uint256,address,bool)
+          handler: handleNFTStatusChanged
+      file: ./src/contract.ts

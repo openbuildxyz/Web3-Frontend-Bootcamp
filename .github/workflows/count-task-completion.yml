@@ -9,7 +9,7 @@ on:
   #   paths:
   #     - members/*/**
   workflow_dispatch:
-  
+
 jobs:
   count:
     # if: github.event.pull_request.merged == true
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 14.15.3
       - name: Count task completion
-        run: node scripts/count.js
+        run: npm run pmc count:student && node scripts/count.js
       - name: Commit changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

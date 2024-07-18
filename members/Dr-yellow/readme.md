@@ -2,8 +2,8 @@
 
 ## 个人信息
 
-* GitHub ID:**175544420**
-* OpenBuild Username:Dr.Yellow
+* GitHub ID:**Dr-yellow**
+* OpenBuild Username:bond
 * ERC20 钱包地址: (首次如果没有，学习完毕钱包在填写)
 
 ### 个人介绍
