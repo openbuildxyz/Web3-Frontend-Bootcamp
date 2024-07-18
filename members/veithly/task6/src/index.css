@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f2f5 !important;
+  background: #f0f2f5;
+  background: linear-gradient(
+    180deg,
+    rgba(240, 242, 245, 1) 28%,
+    rgba(255, 255, 255, 1) 75%
+  );
+  color: #333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.ant-input {
+  background-color: #ffffff !important;
+  color: #333 !important;
+  border: 1px solid #d9d9d9 !important;
+  height: 96px !important;
+  margin-bottom: 5px;
+  font-size: 35px;
+  border-radius: 12px !important;
+}
+
+.ant-input::placeholder {
+  color: #bfbfbf !important;
+}
+
+.ant-popover-arrow {
+  visibility: hidden;
+}
+
+.ant-popover-title {
+  color: #333 !important;
+}
+
+.ant-popover-inner-content {
+  color: #333 !important;
+}
+
+.ant-popover-inner {
+  min-width: 260px !important;
+  min-height: 140px !important;
+  border: 1px solid #f0f0f0;
+  background-color: #ffffff !important;
+}
+
+.ant-radio-group {
+  margin-top: 10px;
+}
+
+.ant-radio-button-wrapper {
+  background-color: #ffffff !important;
+  color: #333 !important;
+  font-weight: 500;
+  border-color: #d9d9d9 !important;
+}
+
+.ant-radio-button-wrapper-checked {
+  border-color: #1890ff !important;
+  background-color: #e6f7ff !important;
+}
+
+.ant-radio-button-wrapper-checked::before {
+  background-color: #1890ff !important;
+}
+
+.ant-modal-content {
+  background-color: #ffffff !important;
+  color: #333 !important;
+  padding: 0px !important;
+}
+
+.ant-modal {
+  border: 1px solid #f0f0f0;
+  width: 400px !important;
+  border-radius: 10px;
+}
+
+.ant-modal-header {
+  background-color: #ffffff !important;
+}
+
+.ant-modal-title {
+  color: #333 !important;
+  padding-top: 17px !important;
+  margin-left: 20px !important;
+}
+
+.ant-modal-close-icon {
+  color: #bfbfbf !important;
+  transition: 0.3s;
+}
+
+.ant-modal-close-icon:hover {
+  color: #333 !important;
+}
