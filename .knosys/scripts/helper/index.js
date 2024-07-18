@@ -1,1 +1,1 @@
-module.exports = { ...require('./knosys') };
+module.exports = { ...require('./knosys'), ...require('./obpmc') };

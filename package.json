@@ -3,11 +3,12 @@
   "private": true,
   "devDependencies": {
     "@knosys/sdk": "^0.0.3",
+    "@ntks/toolbox": "^0.0.6",
     "dotenv": "^16.4.5",
     "ksio": "^0.0.3",
     "octokit": "^4.0.2"
   },
   "scripts": {
-    "count": "node .knosys/scripts count"
+    "pmc": "node .knosys/scripts pmc"
   }
 }
