@@ -1,0 +1,13 @@
+{
+  "name": "@openbuild/web3-frontend-bootcamp",
+  "private": true,
+  "devDependencies": {
+    "@knosys/sdk": "^0.0.3",
+    "dotenv": "^16.4.5",
+    "ksio": "^0.0.3",
+    "octokit": "^4.0.2"
+  },
+  "scripts": {
+    "count": "node .knosys/scripts count"
+  }
+}
