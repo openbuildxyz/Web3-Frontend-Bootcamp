@@ -1,5 +1,6 @@
 const { isPlainObject, isFunction } = require('@ntks/toolbox');
 
+const { ensureDirExists, resolvePmcDataPath } = require('../../helper');
 const { countStudents, countPrs, countReviewers, countTasks } = require('./count');
 
 const executorMap = {
@@ -31,6 +32,7 @@ module.exports = {
     const executor = resolveExecutor(subCmd);
 
     if (isFunction(executor)) {
+      ensureDirExists(resolvePmcDataPath());
       executor.apply(null, args);
     }
   },
