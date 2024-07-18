@@ -1,28 +1,10 @@
 #!/usr/bin/env node
 
 const { resolve: resolvePath, join: joinPath } = require('path');
-const { readdirSync, statSync, existsSync, writeFileSync } = require('fs');
+const { readData, saveData } = require('@knosys/sdk');
 
-const REPO_ROOT = resolvePath(__dirname, '..');
-const MEMBER_ROOT = joinPath(REPO_ROOT, 'members');
-const EXCLUDED_MEMBERS = ['github_id'/*, 'Beavnvvv'*/];
-
-const studentMap = {};
-const studentSeq = [];
-
-function isDirNameValid(dirName) {
-  return !dirName.startsWith('.') && !EXCLUDED_MEMBERS.includes(dirName);
-}
-
-function isRegistered(dirPath) {
-  return existsSync(joinPath(dirPath, 'readme.md')) || existsSync(joinPath(dirPath, 'README.md'));
-}
-
-function resolveTask(memberDirPath, taskNum) {
-  const taskDirName = `task${taskNum}`;
-
-  return { name: taskDirName, completed: existsSync(joinPath(memberDirPath, taskDirName)) };
-}
+const rootPath = resolvePath(__dirname, '../');
+const { people: studentMap, sequence: studentSeq } = readData(joinPath(rootPath, '.obpmc', 'data', 'students.json'));
 
 function resolveCompletedEmoji(checked) {
   return checked ? '🟢' : '🔴';
@@ -59,7 +41,7 @@ function resolveSortedSequence() {
   return [].concat(students.map(({ id }) => id), unregisteredStudents);
 }
 
-function generateResult() {
+function generateSummaryTable() {
   const rows = resolveSortedSequence().map((id, idx) => {
     const student = studentMap[id];
     const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed }) => resolveCompletedEmoji(completed)));
@@ -67,29 +49,18 @@ function generateResult() {
     return `| ${idx + 1} | ${cols.join(' | ')} |`;
   });
 
-  return `# 学员信息
-
-报名与完成情况统计如下：
-
-| 序号 | 学员 | 报名 | task1 | task2 | task3 | task4 | task5 | task6 | task7 | task8 | task9 |
+  return `| 序号 | 学员 | 报名 | [task1](#task1) | [task2](#task2) | [task3](#task3) | [task4](#task4) | [task5](#task5) | [task6](#task6) | [task7](#task7) | [task8](#task8) | [task9](#task9) |
 | ---: | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 ${rows.join('\n')}`;
 }
 
-readdirSync(MEMBER_ROOT).forEach(dirName => {
-  const dirPath = joinPath(MEMBER_ROOT, dirName);
+function generateResult() {
+  return `# 学员信息
 
-  if (!isDirNameValid(dirName) || !statSync(dirPath).isDirectory()) {
-    return;
-  }
+报名与完成情况统计如下：
 
-  studentMap[dirName] = {
-    id: dirName,
-    registered: isRegistered(dirPath),
-    tasks: Array.from(new Array(9)).map((_, i) => resolveTask(dirPath, i + 1)),
-  };
+${generateSummaryTable()}
+`;
+}
 
-  studentSeq.push(dirName);
-});
-
-writeFileSync(joinPath(MEMBER_ROOT, 'readme.md'), generateResult());
+saveData(joinPath(rootPath, 'members', 'readme.md'), generateResult());
