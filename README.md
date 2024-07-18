@@ -112,12 +112,12 @@
 
 | 任务                                         | 名称         | 奖励金额      | 说明                     |
 |:-------------------------------------------|------------|:----------:|:-----------------------|
-| [Task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    ￥18     | 开发一个待办事项应用            |
-| [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    ￥18     | 区块链基础小测 |
-| [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    ￥28     | 编写并部署一个NFTMarket的合约      |
-| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    ￥28     | 使用ethers.js和wagmi与NFTMarket合约交互         |
-| [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    ￥38     | 开发一个完整的NFTMarket的Dapp         |
-| [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    ￥38     | 完成SDK学习，制作一个与uniswap交互的前端app    |
+| [Task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    2.5U     | 开发一个待办事项应用            |
+| [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    2.5U     | 区块链基础小测 |
+| [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    4U     | 编写并部署一个NFTMarket的合约      |
+| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    4U     | 使用ethers.js和wagmi与NFTMarket合约交互         |
+| [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    5U     | 开发一个完整的NFTMarket的Dapp         |
+| [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    5U    | 完成SDK学习，制作一个与uniswap交互的前端app    |
 | [Task 7](task/07_EVM++_Demo.md)          | web3小工具实践 |  50U（Token) | 跟随[教程](https://fanatical-krypton-122.notion.site/OpenBuild-Frontend-Bootcamp-5e62657ab5774786b1901bfd862e8e9a?pvs=4)学习EVM++，实现一个限流器demo   |
 | [Task 8](task/08_Hello_Morph.md)          | Hello Morph |    10U     |  在Morph Holesky上部署任意合约并在Morph浏览器上验证   |
 | [Extension(拓展)](task/09_Hello_TheGraph.md)          | Hello TheGraph |    10U     |  为NFTMarket创建一个The Graph子图   |
