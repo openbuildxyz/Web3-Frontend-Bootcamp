@@ -2,7 +2,7 @@
 
 ## Submission Process
 
-1. Enter the official [GitHub](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/Projects/readme.md) - `Web3-Frontend-Bootcamp` repository of the hackathon.
+1. Enter the official [GitHub](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/blob/main/Projects/readme.md) - `Web3-Frontend-Bootcamp` repository of the hackathon.
 
 2. Select "**Fork**" to copy the official repository to your personal GitHub repository;
 
