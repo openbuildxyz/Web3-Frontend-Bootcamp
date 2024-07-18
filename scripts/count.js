@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 
 const { resolve: resolvePath, join: joinPath } = require('path');
+const { plus } = require('@ntks/toolbox');
 const { readData, saveData } = require('@knosys/sdk');
 
 const rootPath = resolvePath(__dirname, '../');
 const { people: studentMap, sequence: studentSeq } = readData(joinPath(rootPath, '.obpmc', 'data', 'students.json'));
+
+const taskRewards = [2.5, 2.5, 4, 4, 5, 5, -1, 10, 10];
 
 function resolveCompletedEmoji(checked) {
   return checked ? '🟢' : '🔴';
@@ -45,19 +48,28 @@ function generateSummaryTable() {
   const rows = resolveSortedSequence().map((id, idx) => {
     const student = studentMap[id];
     const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed }) => resolveCompletedEmoji(completed)));
+    const rewards = student.tasks.reduce((total, task, idx) => {
+      const reward = taskRewards[idx];
 
-    return `| ${idx + 1} | ${cols.join(' | ')} |`;
+      if (student.registered && task.completed && reward > 0) {
+        return plus(total, reward);
+      }
+
+      return total;
+    }, 0);
+
+    return `| ${idx + 1} | ${cols.join(' | ')} | ${rewards} |`;
   });
 
-  return `| 序号 | 学员 | 报名 | [task1](#task1) | [task2](#task2) | [task3](#task3) | [task4](#task4) | [task5](#task5) | [task6](#task6) | [task7](#task7) | [task8](#task8) | [task9](#task9) |
-| ---: | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+  return `| 序号 | 学员 | 报名 | task1 | task2 | task3 | task4 | task5 | task6 | task7 | task8 | task9 | 奖励（U） |
+| ---: | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
 ${rows.join('\n')}`;
 }
 
 function generateResult() {
   return `# 学员信息
 
-报名与完成情况统计如下：
+报名与完成情况统计如下面表格所示，其中「奖励」的计算**不包含 task7 的，因其由 Artela 发放**，详见[奖励规则](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp#%E5%A5%96%E5%8A%B1%E6%98%8E%E7%BB%86-%E8%AF%B7%E4%BB%94%E7%BB%86%E9%98%85%E8%AF%BB%E8%A6%81%E6%B1%82)。
 
 ${generateSummaryTable()}
 `;
