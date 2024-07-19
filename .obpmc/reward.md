@@ -29,7 +29,7 @@
 | 23 | 🔴 `CodingGeoff` | 0 | 0 |
 | 24 | 🟢 `Creativelf` | 5 | 5 |
 | 25 | 🟢 `DawnBlackA` | 15 | 15 |
-| 26 | 🟢 `DeJeune` | 16.5 | 30.5 |
+| 26 | 🟢 `DeJeune` | 26.5 | 30.5 |
 | 27 | 🟢 `Debbl` | 9 | 18 |
 | 28 | 🟢 `Dr-yellow` | 5 | 5 |
 | 29 | 🟢 `Draculabo` | 19 | 23 |
