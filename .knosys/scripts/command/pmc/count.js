@@ -1,6 +1,7 @@
 const { join: joinPath } = require('path');
 const { readdirSync, statSync, existsSync } = require('fs');
 const { execSync } = require('child_process');
+const { plus } = require('@ntks/toolbox');
 const { resolveRootPath, resolvePmcRootPath, resolvePmcDataPath, readData, saveData } = require('../../helper');
 
 const repoRoot = resolveRootPath();
@@ -9,6 +10,7 @@ const pmcDataRoot = resolvePmcDataPath();
 const cachedAllPrsFilePath = joinPath(pmcDataRoot, 'prs-all.yml');
 // const cachedAllPrsFilePath = joinPath(pmcDataRoot, 'prs-all.json');
 const cachedMergedPrsFilePath = joinPath(pmcDataRoot, 'prs-merged.yml');
+const cachedOpenPrsFilePath = joinPath(pmcDataRoot, 'prs-open.json');
 const cachedStudentsFilePath = joinPath(pmcDataRoot, 'students.json');
 
 const EXCLUDED_MEMBERS = ['github_id'/*, 'Beavnvvv'*/];
@@ -187,7 +189,7 @@ function countOpenTaskPrs() {
     }
   });
 
-  saveData(joinPath(pmcDataRoot, 'prs-open.json'), openPrMaps);
+  saveData(cachedOpenPrsFilePath, openPrMaps);
 }
 
 async function countPrs(state = 'merged', token = process.env.PMC_GITHUB_TOKEN) {
@@ -238,7 +240,7 @@ function countReviewers() {
 }
 
 function countTasks() {
-  const openPrMaps = readData(joinPath(pmcDataRoot, 'prs-open.json'));
+  const openPrMaps = readData(cachedOpenPrsFilePath);
   const { people: studentMap, sequence: studentSeq } = readData(cachedStudentsFilePath);
   const taskSections = [];
 
@@ -286,4 +288,68 @@ function countTasks() {
   saveData(joinPath(resolvePmcRootPath(), 'task.md'), `# 任务提交情况\n\n点击三角箭头查看详情。\n${taskSections.join('\n')}\n`);
 }
 
-module.exports = { countStudents, countPrs, countReviewers, countTasks };
+function resolveStudentNotMergedPrMap() {
+  return Object.entries(readData(cachedOpenPrsFilePath)).reduce((p, [taskNum, prs]) => {
+    prs.forEach(({ user }) => {
+      if (!p[user]) {
+        p[user] = {};
+      }
+
+      p[user][taskNum] = true;
+    });
+
+    return p;
+  }, {});
+}
+
+function countRewards() {
+  const notMergedMap = resolveStudentNotMergedPrMap();
+  const { people, sequence } = readData(cachedStudentsFilePath);
+  const { task: { rewards: taskRewards } } = readData(joinPath(pmcDataRoot, 'metadata.json'));
+
+  const rows = sequence.map((username, uidx) => {
+    const student = people[username];
+
+    let mergedReward = 0;
+    let notMergedReward = 0;
+
+    if (student.registered) {
+      student.tasks.forEach((task, idx) => {
+        const reward = taskRewards[idx];
+
+        if (reward <= 0) {
+          return;
+        }
+
+        if (task.completed) {
+          mergedReward = plus(mergedReward, reward);
+        } else if (notMergedMap[username] && notMergedMap[username][task.name]) {
+          notMergedReward = plus(notMergedReward, reward);
+        }
+      });
+    }
+
+    const totalReward = plus(mergedReward, notMergedReward);
+
+    let usernameMdStr = `\`${username}\``;
+
+    if (totalReward > 0) {
+      usernameMdStr = `🟢 ${usernameMdStr}`;
+    } else {
+      usernameMdStr = `🔴 ${usernameMdStr}`;
+    }
+
+    return `| ${uidx + 1} | ${usernameMdStr} | ${mergedReward} | ${totalReward} |`
+  });
+
+  saveData(joinPath(resolvePmcRootPath(), 'reward.md'), `# 任务奖励
+
+学员名前面有「🔴」代表无奖励。
+
+| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+${rows.join('\n')}
+`);
+}
+
+module.exports = { countStudents, countPrs, countReviewers, countTasks, countRewards };

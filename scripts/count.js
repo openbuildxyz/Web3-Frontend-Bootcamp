@@ -5,9 +5,9 @@ const { plus } = require('@ntks/toolbox');
 const { readData, saveData } = require('@knosys/sdk');
 
 const rootPath = resolvePath(__dirname, '../');
-const { people: studentMap, sequence: studentSeq } = readData(joinPath(rootPath, '.obpmc', 'data', 'students.json'));
-
-const taskRewards = [2.5, 2.5, 4, 4, 5, 5, -1, 10, 10];
+const pmcDataPath = joinPath(rootPath, '.obpmc', 'data');
+const { people: studentMap, sequence: studentSeq } = readData(joinPath(pmcDataPath, 'students.json'));
+const { task: { rewards: taskRewards } } = readData(joinPath(pmcDataPath, 'metadata.json'));
 
 function resolveCompletedEmoji(checked) {
   return checked ? '🟢' : '🔴';

@@ -1,7 +1,7 @@
 const { isPlainObject, isFunction } = require('@ntks/toolbox');
 
 const { ensureDirExists, resolvePmcDataPath } = require('../../helper');
-const { countStudents, countPrs, countReviewers, countTasks } = require('./count');
+const { countStudents, countPrs, countReviewers, countTasks, countRewards } = require('./count');
 
 const executorMap = {
   count: {
@@ -9,6 +9,7 @@ const executorMap = {
     pr: countPrs,
     reviewer: countReviewers,
     task: countTasks,
+    reward: countRewards,
   },
 };
 

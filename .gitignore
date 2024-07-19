@@ -32,4 +32,5 @@ cache
 ._*
 
 .knosys/caches
-.obpmc/data
+.obpmc/data/*
+!.obpmc/data/metadata.*
