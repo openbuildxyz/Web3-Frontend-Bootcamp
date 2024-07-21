@@ -3,9 +3,10 @@ import { useMemo, useState } from "react";
 import { useAccount, useWriteContract } from "wagmi";
 import { useAsyncFn } from "react-use";
 import { toast } from "react-toastify";
-import { pinataConfigs, contractInfo } from "../utils/const";
+import { contractInfo } from "../utils/const";
 import { waitForTransactionReceipt } from "wagmi/actions";
 import { wagmiConfig } from "../main";
+import { pinataUtils } from "../utils/pinataUtils";
 
 export function MintPage() {
   const { address } = useAccount();
@@ -24,52 +25,13 @@ export function MintPage() {
     if (!isButtonEnable || !selectFile || !address || !desc) return;
     try {
       // pin image
-      const formData = new FormData();
-      formData.append("file", selectFile);
-      const metadata = JSON.stringify({
-        name: selectFile.name,
-      });
-      formData.append("pinataMetadata", metadata);
-      const options = JSON.stringify({
-        cidVersion: 0,
-      });
-      formData.append("pinataOptions", options);
-      const res = await fetch(
-        "https://api.pinata.cloud/pinning/pinFileToIPFS",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${pinataConfigs.jwtToken}`,
-          },
-          body: formData,
-        }
-      );
-      const imgUrl = `${pinataConfigs.gateway}${(await res.json()).IpfsHash}`;
-
+      const imgUrl = await pinataUtils.pinFile(selectFile);
       // pin metadata
-      const data = JSON.stringify({
-        pinataContent: {
-          name,
-          description: desc,
-          image: imgUrl,
-        },
-        pinataMetadata: {
-          name: "metadata.json",
-        },
+      const tokenUri = await pinataUtils.pinJson({
+        name,
+        description: desc,
+        image: imgUrl,
       });
-      const nftMetaDataRes = await fetch(
-        "https://api.pinata.cloud/pinning/pinJSONToIPFS",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${pinataConfigs.jwtToken}`,
-          },
-          body: data,
-        }
-      );
-      const nftMetadataLink = (await nftMetaDataRes.json()).IpfsHash;
-      const tokenUri = `${pinataConfigs.gateway}${nftMetadataLink}`;
 
       // 调用合约执行mint
       const txHash = await writeContractAsync({
@@ -111,9 +73,8 @@ export function MintPage() {
           <a
             href="https://testnets.opensea.io/collection/hexinft-2?tab=items"
             target="_blank"
-            className="underline text-primaryColor"
           >
-            OpenSea
+            <img src="/opensea-logo.svg" className="w-7 -ml-2" />
           </a>
         </div>
         <div className="flex items-center gap-x-4 ">

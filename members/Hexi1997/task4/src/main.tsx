@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { WagmiProvider, http } from "wagmi";
+import { WagmiProvider, webSocket } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { sepolia } from "wagmi/chains";
 import { RainbowKitProvider, getDefaultConfig } from "@rainbow-me/rainbowkit";
@@ -10,15 +10,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "@rainbow-me/rainbowkit/styles.css";
 import "./index.css";
+import { rainbowKitConfig } from "./utils/const.ts";
 
 export const wagmiConfig = getDefaultConfig({
   appName: "Hexi NFT Market",
-  projectId: "44eaa28daa81ab702a29f983bfe55279",
+  // wallet connect project id
+  projectId: rainbowKitConfig.projectId,
   chains: [sepolia],
   transports: {
-    [sepolia.id]: http(
-      "https://eth-sepolia.g.alchemy.com/v2/4pHUwuXEo8nuTLQqS9E5qSTXx_EpROQQ"
-    ),
+    [sepolia.id]: webSocket(rainbowKitConfig.websocketUrl),
   },
 });
 
