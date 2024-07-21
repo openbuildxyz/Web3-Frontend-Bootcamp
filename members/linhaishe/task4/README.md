@@ -1,5 +1,12 @@
 # nftmarketdemo
 
+| Type   | Address                                    | Link |
+| ------ | ------------------------------------------ | ---- |
+| Erc20  | 0x8CCfD025196418Cf57185006cA73b8b2a9dcFfb4 |      |
+| Nft721 | 0x9850Af3343491657B03381170590B86EB61Bcd9E |      |
+| Market | 0x0aBbA428764f57c8bCC07C92A4eEbe3e78Df3735 |      |
+| Owner  | 0xb4C3DF96E621174B4ADED06b91fb2EbEC33891EA |      |
+
 ## build local contract
 
 获取 hardhat 测试账号,build environment
