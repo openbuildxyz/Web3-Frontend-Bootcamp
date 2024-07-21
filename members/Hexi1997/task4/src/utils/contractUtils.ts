@@ -108,4 +108,36 @@ class NFTContractUtils {
   }
 }
 
+class FTContractUtils {
+  private _contract: Contract | null = null;
+  private _ins: FTContractUtils | null = null;
+
+  constructor() {
+    if (this._ins) {
+      return;
+    }
+    this._ins = this;
+    this._contract = new Contract(
+      contractInfo.Erc20Token.address,
+      contractInfo.Erc20Token.abi,
+      provider
+    );
+  }
+
+  get contract() {
+    return this._contract!;
+  }
+
+  async getAddressBalance(address: string) {
+    const data = await readContract(wagmiConfig, {
+      address: contractInfo.Erc20Token.address,
+      abi: contractInfo.Erc20Token.abi,
+      functionName: "balanceOf",
+      args: [address as `0x${string}`],
+    });
+    return ethers.formatEther(data);
+  }
+}
+
 export const nftContractUtils = new NFTContractUtils();
+export const ftContractUtils = new FTContractUtils();

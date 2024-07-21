@@ -35,7 +35,7 @@ export function AppLayout() {
             </ul>
           </nav>
         </div>
-        <ConnectButton />
+        <ConnectButton showBalance={false} />
       </header>
       <main>
         <Outlet />
