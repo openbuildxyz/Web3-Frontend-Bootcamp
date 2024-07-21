@@ -1,12 +1,11 @@
-.create-form-wrap {
+.listing-form-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // gap: 40px;
 
-  .create-form-input-wrap {
-    width: 50%;
+  .listing-form-input-wrap {
+    width: 0%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -20,32 +19,20 @@
       height: 20px;
       border-radius: 3px;
       color: #333;
-    }
-
-    input[type='file'] {
-      border: 1px solid gray;
-      border-radius: 3px;
-      width: 145px;
-      cursor: pointer;
-    }
-
-    .create-nft-img {
       width: 200px;
-      height: 200px;
-      border: 1px solid lightgray;
-      border-radius: 6px;
     }
 
     .nft-action-btn {
-      width: 100px;
-      height: 30px;
+      width: 300px;
+      height: 50px;
       border-radius: 6px;
       text-align: center;
       font-size: 15px;
-      line-height: 30px;
+      line-height: 50px;
       color: #fff;
       background-color: rgb(68, 77, 240);
       cursor: pointer;
+      font-weight: 900;
     }
   }
 }

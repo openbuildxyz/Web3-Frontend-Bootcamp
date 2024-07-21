@@ -1,22 +1,25 @@
 import React from 'react';
-import './index.scss';
-import { hexToDecimal, timestampToLocalTime } from '../../utils';
+import {
+  hexToDecimal,
+  timestampToLocalTime,
+  convertHexToDecimal,
+} from '../../utils';
 
-function ItemCard({
-  item,
-  actionFunc,
-  buttonText,
-  ownerAddress,
-  personTitle,
-  isSell,
-}) {
-  console.log('item', item);
-  const tokenId = hexToDecimal(item?.id?.tokenId);
+import './index.scss';
+
+function ItemCard({ item, actionFunc, buttonText, ownerAddress, personTitle }) {
+  const tokenId = hexToDecimal(item?.id?.tokenId || item?.tokenId?._hex || 0);
+  const listingTime = convertHexToDecimal({
+    _hex: item?.listingTimestamp?._hex,
+  });
 
   return (
     <div className='item-wrap'>
       <img
-        src='https://images.freeimages.com/image/previews/477/sweet-flat-candy-png-5690113.png'
+        src={
+          item?.metadata?.image ||
+          'https://images.freeimages.com/image/previews/477/sweet-flat-candy-png-5690113.png'
+        }
         className='nft-img'
       />
       <div className='user-info-wraps'>
@@ -38,7 +41,7 @@ function ItemCard({
       <div className='item-card-price-info-wrap'>
         <div className='item-card-price-info'>
           <div className='item-card-price-info-price'>
-            {item?.metadata?.price || 0}
+            {hexToDecimal(item?.price?._hex) || 0}
           </div>
           <div className='item-card-price-info-title'>Price</div>
         </div>
@@ -46,13 +49,23 @@ function ItemCard({
           <div className='item-card-price-info-price'>{tokenId}</div>
           <div className='item-card-price-info-title'>tokenId</div>
         </div>
-        <div className='action-btn' onClick={actionFunc}>
+        <div className='action-btn' onClick={() => actionFunc(item)}>
           {buttonText}
         </div>
       </div>
+      {item?.nftContract && (
+        <div className='item-card-nft-address'>
+          NFTAddr: {item?.nftContract}
+        </div>
+      )}
       {item?.metadata?.createTime && (
         <div className='item-card-create-time'>
-          {timestampToLocalTime(item?.metadata?.createTime)}
+          Create: {timestampToLocalTime(item?.metadata?.createTime)}
+        </div>
+      )}
+      {item?.listingTimestamp && (
+        <div className='item-card-create-time'>
+          Listing: {timestampToLocalTime(listingTime * 1000)}
         </div>
       )}
     </div>

@@ -45,8 +45,8 @@ const Create = ({ nft, setIsLoading }: any) => {
 
   const mintNFT = async () => {
     try {
-      if (!price || !name || !description) {
-        alert('不能为空');
+      if (!image || !price || !name || !description) {
+        alert('所有数据不能为空');
         return;
       }
 
@@ -59,8 +59,8 @@ const Create = ({ nft, setIsLoading }: any) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          // pinataContent: { image, price, name, description },
           pinataContent: {
+            image,
             price,
             name,
             description,
@@ -92,12 +92,11 @@ const Create = ({ nft, setIsLoading }: any) => {
 
   return (
     <div className='create-form-wrap'>
+      <div>这个创建页面简单的做一个nft的创建，用于处理图片等信息的上传。</div>
+      <div>仅针对nft owner 展示</div>
       <div className='create-form-input-wrap'>
-        {/* <input type='file' name='file' onChange={uploadToIPFS} /> */}
-        {/* <img
-          src='https://cdn-icons-png.flaticon.com/512/12068/12068350.png'
-          className='create-nft-img'
-        /> */}
+        <input type='file' name='file' onChange={uploadToIPFS} />
+        {image && <img src={image} className='create-nft-img' />}
         <input
           onChange={(e) => setName(e.target.value)}
           type='text'

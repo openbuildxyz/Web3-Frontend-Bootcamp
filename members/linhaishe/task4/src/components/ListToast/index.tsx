@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 import './index.scss';
 
-function ListToast({ isShow, setIsShow, onConfirm }) {
+function ListToast({ isShow, setIsShow, onConfirm, isUpForSale }) {
   const [price, setPrice] = useState<any>(null);
+
   return (
     <>
       {isShow && (
         <div className='toast-wrap'>
           <div className='toast-form-wrap'>
-            <div className='toast-form-title'>List NFT for Sale</div>
-            <div className='toast-form-desc'>
-              This will list NFT for sale, you can cancel anytime.
+            <div className='toast-form-title'>
+              {!isUpForSale ? 'List NFT for Sale' : 'unlisting NFT'}
             </div>
+            {
+              <div className='toast-form-desc'>
+                {isUpForSale
+                  ? 'Are you sure to unlist item?'
+                  : 'This will list NFT for sale, you can cancel anytime.'}
+              </div>
+            }
             <div className='toast-form-input-wrap'>
-              <input
-                type='number'
-                placeholder='price (erc20)'
-                className='toast-form-input'
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
-              />
+              {!isUpForSale && (
+                <input
+                  type='number'
+                  placeholder='price (erc20)'
+                  className='toast-form-input'
+                  onChange={(e) => setPrice(e.target.value)}
+                  value={price}
+                />
+              )}
               <div
                 className='toast-form-input-btn'
                 onClick={() => onConfirm(price)}

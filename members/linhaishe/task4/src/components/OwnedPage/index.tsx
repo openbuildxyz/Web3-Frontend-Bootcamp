@@ -1,46 +1,60 @@
 import React, { useState } from 'react';
 import ItemCard from '../ItemCard';
-import { BigNumber } from 'ethers';
 import ListToast from '../ListToast';
-import { hexToDecimal } from '../../utils';
+import { BigNumber, ethers } from 'ethers';
+import { getContractAbi } from '../../utils';
 
 import './index.scss';
 
 export default function OwnedPage({
-  userNftLists,
-  nft,
   marketplace,
-  erc20Contract,
   setIsLoading,
   address,
+  marketNftLists,
+  erc20Contract,
 }: any) {
   const [isShow, setIsShow] = useState(false);
-  const [currentTokenId, setCurrentTokenId] = useState<string | null>(null);
+  const [currentItem, setCurrentItem] = useState<any>({});
+  const [itemId, setItemId] = useState<any>({});
+  const ownedItems =
+    marketNftLists?.filter(
+      (item) => item?.seller?.toLowerCase() === address?.toLowerCase()
+    ) || [];
+  console.log('ownedItems', ownedItems);
 
-  const listingNFT = async (listingPrice) => {
+  const onList = async (listingPrice) => {
     try {
       setIsLoading(true);
 
-      const isApprovalForAll = await nft.isApprovedForAll(
+      const contractAbi = await getContractAbi(currentItem.nftContract);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const nftContract = new ethers.Contract(
+        currentItem.nftContract,
+        contractAbi,
+        signer
+      );
+
+      const isApprovalForAll = await nftContract?.isApprovedForAll(
+        address,
+        marketplace.address
+      );
+
+      const allowance = await erc20Contract?.allowance(
         address,
         marketplace.address
       );
 
       if (!isApprovalForAll) {
         // set approval for all to market through nft contract
-        const approvalTransaction = await nft.setApprovalForAll(
+        const approvalTransaction = await nftContract?.setApprovalForAll(
           marketplace.address,
           true
         );
         await approvalTransaction.wait();
       }
 
-      const allowance = await erc20Contract.allowance(
-        address,
-        marketplace.address
-      );
-
-      if (BigNumber.from(allowance._hex).toString() < listingPrice) {
+      if (BigNumber.from(allowance).lt(BigNumber.from(listingPrice))) {
         const approve = await erc20Contract.approve(
           marketplace.address,
           listingPrice
@@ -49,50 +63,56 @@ export default function OwnedPage({
         await approve.wait();
       }
 
-      let itemInfo;
-      // 检查市场里是否已经有这个NFT, 如果没创建的话是不窜爱 iteminfo的，这样就拿不到itemId
-      itemInfo = await marketplace.getMarketItemByTokenId(currentTokenId);
-
-      if (!itemInfo?.isExist) {
-        const addItemToMarket = await marketplace.addItemToMarket(
-          currentTokenId,
-          listingPrice
-        );
-        await addItemToMarket.wait();
-        itemInfo = await marketplace.getMarketItemByTokenId(currentTokenId);
+      if (currentItem.isSold) {
+        const reList = await marketplace.relistAfterBuy(itemId, listingPrice);
+        await reList.wait();
+        return;
       }
 
       const createSale = await marketplace.createSale(
-        itemInfo?.itemId,
+        currentItem.itemId,
         true,
         listingPrice
       );
       await createSale.wait();
     } catch (error) {
-      alert(error);
+      console.log('error', error);
     } finally {
+      location.reload();
+      setIsLoading(false);
+    }
+  };
+
+  const onUnlist = async () => {
+    try {
+      setIsLoading(true);
+      const unlistTransaction = await marketplace.unlistNFT(itemId);
+      await unlistTransaction.wait();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
       location.reload();
     }
   };
 
+  const onClick = (itemInfo) => {
+    setCurrentItem(itemInfo);
+    setIsShow(true);
+    setItemId(itemInfo?.itemId);
+  };
+
   return (
     <>
-      {userNftLists?.length > 0 ? (
+      {ownedItems?.length > 0 ? (
         <div className='item-list-wrap'>
-          {userNftLists?.map((v, i) => {
-            if (v?.contract?.address !== nft.address.toLowerCase()) {
-              return null;
-            }
-
+          {ownedItems?.map((v, i) => {
             return (
               <div key={i}>
                 <ItemCard
                   item={v}
-                  actionFunc={() => {
-                    setIsShow(true);
-                    setCurrentTokenId(hexToDecimal(v?.id?.tokenId));
-                  }}
-                  buttonText={'Sell'}
+                  actionFunc={onClick}
+                  buttonText={v.isUpForSale ? 'unList' : 'List'}
                   ownerAddress={address}
                   personTitle={'Owner'}
                 />
@@ -103,7 +123,12 @@ export default function OwnedPage({
       ) : (
         <div>nothing here ...</div>
       )}
-      <ListToast isShow={isShow} setIsShow={setIsShow} onConfirm={listingNFT} />
+      <ListToast
+        isShow={isShow}
+        setIsShow={setIsShow}
+        onConfirm={currentItem?.isUpForSale ? onUnlist : onList}
+        isUpForSale={currentItem?.isUpForSale}
+      />
     </>
   );
 }

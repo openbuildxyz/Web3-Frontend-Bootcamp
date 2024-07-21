@@ -1,13 +1,36 @@
 # nftmarketdemo
 
-Erc20: 0x0078f766CCa2876da1F43cC6743b32F5f577C0c8
+## build local contract
 
-Nft721: 0x7b4a0AF79B11d65ff6a21450E053Fd73D3a9107e
+获取 hardhat 测试账号,build environment
 
-Market: 0xf517Cb406127554B1668d25016B5A5bc65C92314
+`npx hardhat node`
 
-Owner: 0xd7fC917C41d27667343F22379d34E96974047Ae2
+deploy the contract on local
 
-listing item: 0x2d0b4fd78bfe868fe9843d32cdc188186e6e5e9e9c23b0a1c8eb9a6f9e72b03e
+`npx hardhat run src/backend/scripts/deploy.js --network localhost`
 
-buy item: 0x8e5c5ec1daecf17f4e76e412c3d13e6937b5eb8ee0d5cc88b085cc89f1cf0212
+问题记录
+
+1.走 deploy 的时候，编译报错，`Uncaught TypeError: ethers.getSigner is not a function`
+
+- 先确认安装了 etherjs
+- `hardhat.config` 文件，引入 `require('@nomiclabs/hardhat-waffle')`;
+
+2. TypeError: Cannot read properties of undefined (reading 'JsonRpcProvider')
+   https://ethereum.stackexchange.com/questions/144451/typeerror-cannot-read-properties-of-undefined-reading-jsonrpcprovider
+   降低 etherjs version
+
+`npx hardhat console --network localhost `
+
+is an interactive js environment for interacting with our contract and blockchain
+
+![](https://s2.loli.net/2024/06/24/PSW9sKYeGALxRgU.png)
+
+// in terminal
+`const contract1 = await ethers.getContractAt("cUSDT","0xdc64a140aa3e981100a9beca4e685f962f0cf6c9");`
+`console.log(contract1)`
+
+// in terminal
+`const name = await contract1.name()`
+`name`
