@@ -84,7 +84,6 @@ const Create = ({ nft, setIsLoading }: any) => {
       setPrice('');
       setImage('');
     } catch (error) {
-      alert(error);
       console.log('error', error);
     } finally {
       setIsLoading(false);
@@ -93,6 +92,8 @@ const Create = ({ nft, setIsLoading }: any) => {
 
   return (
     <div className='create-form-wrap'>
+      <div>这个创建页面简单的做一个nft的创建，用于处理图片等信息的上传。</div>
+      <div>仅针对nft owner 展示</div>
       <div className='create-form-input-wrap'>
         <input type='file' name='file' onChange={uploadToIPFS} />
         {image && <img src={image} className='create-nft-img' />}

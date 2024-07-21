@@ -26,3 +26,4 @@ dist-ssr
 src/backend/artifacts
 src/backend/cache
 cache
+.env

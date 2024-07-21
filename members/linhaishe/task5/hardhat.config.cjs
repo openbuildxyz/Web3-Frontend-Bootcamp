@@ -3,7 +3,7 @@
 require('@nomiclabs/hardhat-waffle');
 
 module.exports = {
-  solidity: '0.8.24',
+  solidity: '0.8.4',
   local: {
     url: 'http://localhost:8545',
   },

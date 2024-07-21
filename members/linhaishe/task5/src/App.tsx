@@ -1,19 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useAccount } from 'wagmi';
-import { BigNumber, ethers } from 'ethers';
+import { ethers } from 'ethers';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MarketAbi from './backend/contractsData/Market.json';
 import MarketAddress from './backend/contractsData/Market-address.json';
 import NFTMAbi from './backend/contractsData/NFTM.json';
 import NFTMAddress from './backend/contractsData/NFTM-address.json';
-import SadMonkeyAbi from './backend/contractsData/SadMonkey.json';
-import SadMonkeyAddress from './backend/contractsData/SadMonkey-address.json';
-import { getNfts } from './utils';
+import ZeroEggAbi from './backend/contractsData/ZeroEgg.json';
+import ZeroEggAddress from './backend/contractsData/ZeroEgg-address.json';
+import {
+  getAllNFTMetadata,
+  getNftandTokenIdPair,
+  getNfts,
+  transformData,
+  mergeArraysByNFT,
+} from './utils';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Create from './components/Create';
 import OwnedPage from './components/OwnedPage';
 import Loading from './components/Loading';
+import ListingPage from './components/ListingPage';
 
 import './App.css';
 
@@ -22,57 +29,21 @@ function App() {
   const [nft, setNFT] = useState({});
   const [marketplace, setMarketplace] = useState<any>({});
   const [erc20Contract, setErc20Contract] = useState({});
-  const [marketNftLists, setMarketNftLists] = useState([]);
+  const [marketNftLists, setMarketNftLists] = useState<any>([]);
   const [userNftLists, setUserNftLists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  function transformData(dataFromContract, dataFromAlchemy) {
-    // 使用 map 方法遍历原始数组，并返回新的对象数组
-    const transformedArray = dataFromContract.map((item) => {
-      return {
-        itemId: item.itemId,
-        tokenId: item.tokenId,
-        seller: item.seller,
-        owner: item.owner,
-        price: item.price,
-        isSold: item.isSold,
-        isUpForSale: item.isUpForSale,
-        exists: item.exists,
-        listingTimestamp: item.listingTimestamp,
-        createdTimestamp: item.createdTimestamp,
-      };
-    });
-
-    // 使用 map 方法遍历 transformedArray，并将匹配的 oriData2 数据合并
-    const finalData = transformedArray.map((item1) => {
-      const matchedItem = dataFromAlchemy.find((item2) => {
-        return BigNumber.from(item1.tokenId._hex.toString()).eq(
-          item2?.id?.tokenId
-        );
-      });
-
-      if (matchedItem) {
-        return {
-          ...item1,
-          ...matchedItem,
-        };
-      } else {
-        return item1;
-      }
-    });
-    return finalData;
-  }
 
   const getNftLists = async (marketAddress, walletAddress) => {
     if (!marketAddress || !walletAddress) {
       return;
     }
-
     if (marketAddress) {
-      const res: any = await getNfts(marketAddress);
       const originalRes = await marketplace?.getAllMarketItems();
-      const results = transformData(originalRes, res?.ownedNfts);
-      setMarketNftLists(results);
+      const _originalRes = transformData(originalRes);
+      const idPair = getNftandTokenIdPair(originalRes);
+      const metadataList = await getAllNFTMetadata(idPair);
+      const mergeList = mergeArraysByNFT(metadataList, _originalRes);
+      setMarketNftLists(mergeList);
     }
 
     if (walletAddress) {
@@ -83,7 +54,6 @@ function App() {
 
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // Set signer
     const signer = provider.getSigner();
     const marketplace = new ethers.Contract(
       MarketAddress.address,
@@ -92,12 +62,13 @@ function App() {
     );
     const nft = new ethers.Contract(NFTMAddress.address, NFTMAbi.abi, signer);
     const erc20 = new ethers.Contract(
-      SadMonkeyAddress.address,
-      SadMonkeyAbi.abi,
+      ZeroEggAddress.address,
+      ZeroEggAbi.abi,
       signer
     );
+
     setMarketplace(marketplace);
-    setNFT(nft);
+    setNFT(nft); // set nft address only for create NFT
     setErc20Contract(erc20);
   }, []);
 
@@ -109,7 +80,7 @@ function App() {
     <BrowserRouter>
       <div className='App'>
         <>
-          <Nav />
+          <Nav address={address} />
         </>
         <div>
           <Routes>
@@ -118,22 +89,9 @@ function App() {
               element={
                 <Home
                   marketplace={marketplace}
-                  nft={nft}
                   erc20Contract={erc20Contract}
                   marketNftLists={marketNftLists}
-                  userNftLists={userNftLists}
                   address={address}
-                />
-              }
-            />
-            <Route
-              path='/create'
-              element={
-                <Create
-                  marketplace={marketplace}
-                  nft={nft}
-                  erc20Contract={erc20Contract}
-                  setIsLoading={setIsLoading}
                 />
               }
             />
@@ -141,15 +99,29 @@ function App() {
               path='/owned'
               element={
                 <OwnedPage
-                  marketplace={marketplace}
-                  erc20Contract={erc20Contract}
-                  nft={nft}
                   userNftLists={userNftLists}
+                  marketplace={marketplace}
+                  setIsLoading={setIsLoading}
                   marketNftLists={marketNftLists}
                   address={address}
-                  setIsLoading={setIsLoading}
+                  erc20Contract={erc20Contract}
                 />
               }
+            />
+            <Route
+              path='/listing'
+              element={
+                <ListingPage
+                  marketplace={marketplace}
+                  erc20Contract={erc20Contract}
+                  setIsLoading={setIsLoading}
+                  address={address}
+                />
+              }
+            />
+            <Route
+              path='/create'
+              element={<Create nft={nft} setIsLoading={setIsLoading} />}
             />
           </Routes>
         </div>
