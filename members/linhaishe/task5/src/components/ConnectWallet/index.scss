@@ -1,0 +1,21 @@
+.user-account-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  .user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  .addr {
+    width: 100px;
+    overflow: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
