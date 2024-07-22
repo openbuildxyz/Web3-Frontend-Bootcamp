@@ -2,8 +2,6 @@
 
 ## 连接钱包
 
-[0x9546Da8C91CFF054690431ffbEd9d96F0aD4eD58](https://sepolia.etherscan.io/address/0x9546Da8C91CFF054690431ffbEd9d96F0aD4eD58)
-
 ![](./imgs/connect_wallet.png)
 
 ## Mint NFT
