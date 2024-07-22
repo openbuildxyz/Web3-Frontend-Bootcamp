@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import { useMemo, useState } from "react";
-import { useAccount, useWriteContract } from "wagmi";
+import { useAccount } from "wagmi";
 import { useAsyncFn } from "react-use";
 import { toast } from "react-toastify";
 import { contractInfo } from "../utils/const";
-import { waitForTransactionReceipt } from "wagmi/actions";
+import { waitForTransactionReceipt, writeContract } from "wagmi/actions";
 import { wagmiConfig } from "../main";
 import { pinataUtils } from "../utils/pinataUtils";
 
@@ -13,8 +13,6 @@ export function MintPage() {
   const [selectFile, setSelectFile] = useState<File>();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-
-  const { writeContractAsync } = useWriteContract();
 
   const isButtonEnable = useMemo(
     () => !!address && !!name && !!desc && !!selectFile,
@@ -34,7 +32,7 @@ export function MintPage() {
       });
 
       // 调用合约执行mint
-      const txHash = await writeContractAsync({
+      const txHash = await writeContract(wagmiConfig, {
         address: contractInfo.Erc721Token.address,
         abi: contractInfo.Erc721Token.abi,
         functionName: "mintNFT",

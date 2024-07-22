@@ -1,6 +1,6 @@
 export const contractInfo = {
   Market: {
-    address: "0x19A04fDEE17ee651f096c3f82b27EFDFfBc852aE" as `0x${string}`,
+    address: "0xA0dce16b99916116219b169Df86357429A480659" as `0x${string}`,
     abi: [
       {
         inputs: [

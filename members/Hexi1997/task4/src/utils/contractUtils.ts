@@ -3,6 +3,7 @@ import { contractInfo, rainbowKitConfig } from "./const";
 import { readContract } from "wagmi/actions";
 import { wagmiConfig } from "../main";
 import { pinataConfigs } from "./pinataUtils";
+import { HexAddress } from "../types/global";
 
 const provider = new ethers.WebSocketProvider(rainbowKitConfig.websocketUrl);
 
@@ -11,11 +12,6 @@ export interface NFTItem {
   description: string;
   image: string;
   id: number;
-}
-
-export interface ListItem {
-  tokenId: number;
-  price: number;
 }
 class NFTContractUtils {
   private _contract: Contract | null = null;
@@ -139,5 +135,99 @@ class FTContractUtils {
   }
 }
 
+export type ListItem = {
+  seller: HexAddress;
+  nftContract: HexAddress;
+  tokenId: number;
+  price: number;
+  listId: number;
+} & NFTItem;
+class MarketContractUtils {
+  private _contract: Contract | null = null;
+  private _ins: MarketContractUtils | null = null;
+
+  constructor() {
+    if (this._ins) {
+      return;
+    }
+    this._ins = this;
+    this._contract = new Contract(
+      contractInfo.Market.address,
+      contractInfo.Market.abi,
+      provider
+    );
+  }
+
+  get contract() {
+    return this._contract!;
+  }
+
+  async getAllListings() {
+    if (!this._contract) return [];
+    return (
+      await readContract(wagmiConfig, {
+        address: contractInfo.Market.address,
+        abi: contractInfo.Market.abi,
+        functionName: "getAllListings",
+      })
+    )
+      .map((item, index) => {
+        const newTokenId = Number(item.tokenId);
+        const newPrice = Number(item.price) / 1e18;
+        const newItem = {
+          seller: item.seller,
+          nftContract: item.nftContract,
+          tokenId: newTokenId,
+          price: newPrice,
+          listId: index,
+        };
+        return newItem;
+      })
+      .filter(
+        (item) =>
+          item.seller !== "0x0000000000000000000000000000000000000000" &&
+          item.nftContract !== "0x0000000000000000000000000000000000000000"
+      );
+  }
+
+  async getAllListingNFTs() {
+    if (!this._contract) return [];
+    const allListings = await this.getAllListings();
+    return await Promise.all(
+      allListings.map((item) => {
+        return new Promise<NFTItem & ListItem>((resolve, reject) => {
+          nftContractUtils
+            .getTokenMetadata(item.tokenId)
+            .then((data) => {
+              resolve({ ...data, ...item });
+            })
+            .catch(reject);
+        });
+      })
+    );
+  }
+
+  async getSpecAddressAndNFTs(address: HexAddress, contract: HexAddress) {
+    if (!this._contract) return [];
+    const allListings = await this.getAllListings();
+    const listings = allListings.filter(
+      (item) => item.nftContract === contract && item.seller === address
+    );
+    return await Promise.all(
+      listings.map((item) => {
+        return new Promise<NFTItem & ListItem>((resolve, reject) => {
+          nftContractUtils
+            .getTokenMetadata(item.tokenId)
+            .then((data) => {
+              resolve({ ...data, ...item });
+            })
+            .catch(reject);
+        });
+      })
+    );
+  }
+}
+
 export const nftContractUtils = new NFTContractUtils();
 export const ftContractUtils = new FTContractUtils();
+export const marketContractUtils = new MarketContractUtils();
