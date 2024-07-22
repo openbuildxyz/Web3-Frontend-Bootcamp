@@ -4,6 +4,7 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "hardhat/console.sol";
 
 contract NFTMarket {
     struct Listing {
@@ -41,13 +42,18 @@ contract NFTMarket {
         uint256 tokenId,
         uint256 price
     ) public {
+        console.log(IERC721(nftContract).getApproved(tokenId), address(this));
         require(price > 0, "Price must be greater than zero");
         require(
             IERC721(nftContract).ownerOf(tokenId) == msg.sender,
             "Caller is not the owner of the NFT"
         );
         require(
-            IERC721(nftContract).getApproved(tokenId) == address(this),
+            IERC721(nftContract).getApproved(tokenId) == address(this) ||
+                IERC721(nftContract).isApprovedForAll(
+                    msg.sender,
+                    address(this)
+                ),
             "Market is not approved to transfer this NFT"
         );
 

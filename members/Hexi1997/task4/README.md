@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# Task 4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 连接钱包
 
-Currently, two official plugins are available:
+[0x9546Da8C91CFF054690431ffbEd9d96F0aD4eD58](https://sepolia.etherscan.io/address/0x9546Da8C91CFF054690431ffbEd9d96F0aD4eD58)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![](./imgs/connect_wallet.png)
 
-## Expanding the ESLint configuration
+## Mint NFT
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+[0x845e3b814c3d24bc815d3bcd0a353934d749e17c2bf975887a97e8c4f8fbb962](https://sepolia.etherscan.io/tx/0x845e3b814c3d24bc815d3bcd0a353934d749e17c2bf975887a97e8c4f8fbb962)
 
-- Configure the top-level `parserOptions` property like this:
+![](./imgs/mint_nft.png)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Profile
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![](./imgs/profile.png)
+
+## 上架 NFT
+
+[0x089123ce071bba00c5d2b3244fd33d1799723ca1f9d2038559a4320a7b2e8b6a](https://sepolia.etherscan.io/tx/0x089123ce071bba00c5d2b3244fd33d1799723ca1f9d2038559a4320a7b2e8b6a)
+
+![](./imgs/list.png)
+
+## 购买 NFT
+
+[0x29bcc770138ca4dce35e26c87afa0b16400dc44a8e2b2496c86802c45de9dacf](https://sepolia.etherscan.io/tx/0x29bcc770138ca4dce35e26c87afa0b16400dc44a8e2b2496c86802c45de9dacf)
+
+### approve
+
+![](./imgs/buy_approve.png)
+
+### confirm
+
+![](./imgs/buy_confirm.png)
+
+### result
+
+![](./imgs/buy_result.png)
+
+## 当前正在上架中的所有 NFT
+
+![](./imgs/home.png)
