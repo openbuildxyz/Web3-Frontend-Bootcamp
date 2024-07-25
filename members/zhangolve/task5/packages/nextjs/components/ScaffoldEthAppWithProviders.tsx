@@ -10,17 +10,21 @@ import { Footer } from "~~/components/Footer";
 import { Header } from "~~/components/Header";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
-import { useInitializeNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
+import { useInitializeNativeCurrencyPrice, useContractData } from "~~/hooks/scaffold-eth";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
+import Loading from "~~/components/Loading";
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   useInitializeNativeCurrencyPrice();
+  const { NFTMarketContractData, ERC20ContractData, ERC721ContractData } = useContractData();
 
+  const result = NFTMarketContractData && ERC20ContractData && ERC721ContractData ? children : <Loading/>;
+  console.log(NFTMarketContractData, ERC20ContractData, ERC721ContractData);
   return (
     <>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="relative flex flex-col flex-1">{children}</main>
+        <main className="relative flex flex-col flex-1">{result}</main>
         <Footer />
       </div>
       <Toaster />

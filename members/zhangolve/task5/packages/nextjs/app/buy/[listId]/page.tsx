@@ -5,8 +5,7 @@ import { formatUnits } from "viem";
 import { useNFT } from "~~/app/utils";
 import Loading from "~~/components/Loading";
 import Success from "~~/components/nft/Success";
-import { useDeployedContractInfo } from "~~/hooks/scaffold-eth";
-import { Contract } from "~~/utils/scaffold-eth/contract";
+import { useGlobalState } from "~~/services/store/store";
 
 type PageProps = {
   params: { listId: number };
@@ -14,14 +13,12 @@ type PageProps = {
 
 const BuyNFT = ({
   listId,
-  ERC20ContractData,
-  NFTMarketContractData,
-  ERC721ContractData,
 }: {
   listId: number;
-  ERC20ContractData: Contract<"ERC20Token">;
-  NFTMarketContractData: Contract<"NFTMarket">;
 }) => {
+  const NFTMarketContractData = useGlobalState(state => state.NFTMarketContractData);
+  const ERC20ContractData = useGlobalState(state => state.ERC20ContractData);
+  const ERC721ContractData = useGlobalState(state => state.ERC721ContractData);
   const [token, isFetching] = useNFT({
     contractAddress: NFTMarketContractData.address,
     abi: NFTMarketContractData.abi,
@@ -82,17 +79,10 @@ const BuyNFT = ({
 };
 
 const SellNFTPage = ({ params }: PageProps) => {
-  const { data: NFTMarketContractData } = useDeployedContractInfo("NFTMarket");
-  const { data: ERC20ContractData } = useDeployedContractInfo("ERC20Token");
-  const { data: ERC721ContractData } = useDeployedContractInfo("ERC721Token");
 
   const listId = params?.listId as number;
 
-  if (!NFTMarketContractData || !ERC20ContractData ||!ERC721ContractData) {
-    return <Loading />;
-  }
-
-  return <BuyNFT listId={listId} ERC20ContractData={ERC20ContractData} NFTMarketContractData={NFTMarketContractData} ERC721ContractData={ERC721ContractData}/>;
+  return <BuyNFT listId={listId} />;
 };
 
 export default SellNFTPage;

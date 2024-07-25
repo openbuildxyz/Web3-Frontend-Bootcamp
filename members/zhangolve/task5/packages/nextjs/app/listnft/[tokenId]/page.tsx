@@ -3,10 +3,8 @@
 import { useState } from "react";
 import useWriteMyContract from "../../hooks";
 import { parseEther } from "viem";
-import Loading from "~~/components/Loading";
 import Success from "~~/components/nft/Success";
-import { useDeployedContractInfo } from "~~/hooks/scaffold-eth";
-import { Contract } from "~~/utils/scaffold-eth/contract";
+import { useGlobalState } from "~~/services/store/store";
 
 type PageProps = {
   params: { tokenId: number };
@@ -14,13 +12,11 @@ type PageProps = {
 
 const ListNFT = ({
   tokenId,
-  deployedContractData,
-  NFTMarketContractData,
 }: {
   tokenId: number;
-  deployedContractData: Contract<"ERC721Token">;
-  NFTMarketContractData: Contract<"NFTMarket">;
 }) => {
+  const NFTMarketContractData = useGlobalState(state => state.NFTMarketContractData);
+  const deployedContractData = useGlobalState(state => state.ERC721ContractData);
   const [handleWrite, txResult] = useWriteMyContract({
     contractAddress: deployedContractData.address,
     abi: deployedContractData.abi,
@@ -82,19 +78,10 @@ const ListNFT = ({
 };
 
 const ListNFTPage = ({ params }: PageProps) => {
-  const { data: deployedContractData } = useDeployedContractInfo("ERC721Token");
-  const { data: NFTMarketContractData } = useDeployedContractInfo("NFTMarket");
   const tokenId = params?.tokenId as number;
-
-  if (!deployedContractData || !NFTMarketContractData) {
-    return <Loading />;
-  }
-
   return (
     <ListNFT
       tokenId={tokenId}
-      deployedContractData={deployedContractData}
-      NFTMarketContractData={NFTMarketContractData}
     />
   );
 };

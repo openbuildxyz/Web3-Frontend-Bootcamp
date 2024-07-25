@@ -77,6 +77,7 @@ contract NFTMarket is ReentrancyGuard, Ownable {
             listing.onShelf = true;
             listing.sold = false;
             listing.timestamp = block.timestamp; // Update timestamp
+            listing.price = price;
             if (!contains(sellerListings[msg.sender], uintExistingListingId)) {
                 sellerListings[msg.sender].push(uintExistingListingId);
             }

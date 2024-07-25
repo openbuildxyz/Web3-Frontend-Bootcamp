@@ -3,10 +3,13 @@
 import {useNFTs,useDelistNFT} from "./utils";
 import Loading from "~~/components/Loading";
 import TokenList from "~~/components/nft/TokenList";
-import { useDeployedContractInfo } from "~~/hooks/scaffold-eth";
-import { Contract } from "~~/utils/scaffold-eth/contract";
+import { useGlobalState } from "~~/services/store/store";
 
-const NFTs = ({ deployedNFTContractData, deployedNFTMarketContractData }: { deployedContractData: Contract<"ERC721Token">, deployedNFTMarketContractData: Contract<"NFTMarket"> }) => {
+
+const NFTs = () => {
+  const deployedNFTMarketContractData = useGlobalState(state => state.NFTMarketContractData);
+  const deployedNFTContractData = useGlobalState(state => state.ERC721ContractData);
+
   const tokens = useNFTs({
     contractAddress: deployedNFTMarketContractData.address,
     abi: deployedNFTMarketContractData.abi,
@@ -39,16 +42,9 @@ const NFTs = ({ deployedNFTContractData, deployedNFTMarketContractData }: { depl
 };
 
 const MyNFTsPage = () => {
-  const { data: deployedNFTContractData } = useDeployedContractInfo("ERC721Token");
-  const { data: deployedNFTMarketContractData } = useDeployedContractInfo("NFTMarket");
-
-  if (!deployedNFTContractData || !deployedNFTMarketContractData) {
-    return <Loading />;
-  }
-
   return (
     <div>
-      <NFTs deployedNFTContractData={deployedNFTContractData} deployedNFTMarketContractData={deployedNFTMarketContractData}/>
+      <NFTs />
     </div>
   );
 };

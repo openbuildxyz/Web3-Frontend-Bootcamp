@@ -3,10 +3,11 @@
 import useNFTs from "./utils";
 import Loading from "~~/components/Loading";
 import TokenList from "~~/components/nft/TokenList";
-import { useDeployedContractInfo } from "~~/hooks/scaffold-eth";
-import { Contract } from "~~/utils/scaffold-eth/contract";
+import { useGlobalState } from "~~/services/store/store";
 
-const NFTs = ({ deployedContractData }: { deployedContractData: Contract<"ERC721Token"> }) => {
+const NFTs = () => {
+  const deployedContractData = useGlobalState(state => state.ERC721ContractData);
+
   const tokens = useNFTs({
     contractAddress: deployedContractData.address,
     abi: deployedContractData.abi,
@@ -24,15 +25,10 @@ const NFTs = ({ deployedContractData }: { deployedContractData: Contract<"ERC721
 };
 
 const MyNFTsPage = () => {
-  const { data: deployedContractData } = useDeployedContractInfo("ERC721Token");
-
-  if (!deployedContractData) {
-    return <Loading />;
-  }
 
   return (
     <div>
-      <NFTs deployedContractData={deployedContractData} />
+      <NFTs />
     </div>
   );
 };
