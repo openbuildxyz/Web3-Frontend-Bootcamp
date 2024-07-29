@@ -14,7 +14,6 @@ const { task: { rewards: taskRewards, rewardDeadline } } = readData(joinPath(pmc
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.tz.setDefault('Asia/Shanghai');
 
 function resolveCompletedEmoji(checked) {
   return checked ? '🟢' : '🔴';
@@ -80,7 +79,7 @@ function generateResult() {
 
 - 未提交报名信息的；
 - 完成 task7 的，因其由 Artela 发放；
-- 超过有奖截止日期（${dayjs(rewardDeadline).format('YYYY-MM-DD HH:mm:ss')}）的。
+- 超过有奖截止日期（${dayjs(rewardDeadline).tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss')}）的。
 
 更多详见[奖励规则](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp#%E5%A5%96%E5%8A%B1%E6%98%8E%E7%BB%86-%E8%AF%B7%E4%BB%94%E7%BB%86%E9%98%85%E8%AF%BB%E8%A6%81%E6%B1%82)。
 

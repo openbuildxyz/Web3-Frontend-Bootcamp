@@ -24,7 +24,6 @@ const perPage = 100;
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.tz.setDefault('Asia/Shanghai');
 
 function isDirNameValid(dirName) {
   return !dirName.startsWith('.') && !EXCLUDED_MEMBERS.includes(dirName);
@@ -73,11 +72,11 @@ function resolveTask({ rewardDeadline, studentRewardPatches, readingModifiedTime
     }
 
     if (modifiedAt) {
-      task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
+      task.modifiedAt = dayjs(modifiedAt).tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss ZZ');
 
       console.log(`[KNOSYS_INFO] ${readingModifiedTimeBy} \`members/${memberDirName}/${taskDirName}\` modified at`, task.modifiedAt);
 
-      if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).isBefore(dayjs(rewardDeadline))) {
+      if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).tz('Asia/Shanghai').isBefore(dayjs(rewardDeadline).tz('Asia/Shanghai'))) {
         task.rewardable = true;
       }
     }
