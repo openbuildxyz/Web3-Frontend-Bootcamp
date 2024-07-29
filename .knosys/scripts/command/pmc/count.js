@@ -55,7 +55,7 @@ function resolveTask(taskMetadata, memberDirPath, memberDirName, taskNum) {
       const modifiedAt = execGit(`git log -1 --pretty=format:"%cd" -- ${paths[i]}`);
 
       if (modifiedAt) {
-        console.log(`[KNOSYS_INFO] \`${paths[i]}\` full info`, execGit(`git log -1" -- ${paths[i]}`);
+        console.log(`[KNOSYS_INFO] \`${paths[i]}\` full info`, execGit(`git log -1" -- ${paths[i]}`));
         
         task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
 
