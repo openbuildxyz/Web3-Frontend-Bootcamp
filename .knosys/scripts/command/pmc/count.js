@@ -52,12 +52,12 @@ function resolveTask(taskMetadata, memberDirPath, memberDirName, taskNum) {
     const paths = [`${targetPath}/readme.md`, `${targetPath}/README.md`, targetPath];
 
     for (let i = 0; i < paths.length; i++) {
-      const modifiedAt = execGit(`git log -1 --pretty=format:"%cd" -- ${paths[i]}`);
+      const modifiedAt = execGit(`git log -1 --follow --pretty=format:"%cd" -- ${paths[i]}`);
 
       if (modifiedAt) {
         task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
 
-        console.log(`[KNOSYS_INFO] \`${paths[i]}\` full message`, execGit(`git log -1 -- ${paths[i]}`));
+        // console.log(`[KNOSYS_INFO] \`${paths[i]}\` full message`, execGit(`git log -1 -- ${paths[i]}`));
         console.log(`[KNOSYS_INFO] \`${paths[i]}\` modified at`, modifiedAt, task.modifiedAt);
 
         if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).isBefore(dayjs(rewardDeadline))) {
