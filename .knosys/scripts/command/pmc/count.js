@@ -3,6 +3,8 @@ const { readdirSync, statSync, existsSync } = require('fs');
 const { execSync } = require('child_process');
 const { plus } = require('@ntks/toolbox');
 const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
 
 const { resolveRootPath, resolvePmcRootPath, resolvePmcDataPath, readData, saveData } = require('../../helper');
 
@@ -18,6 +20,10 @@ const cachedStudentsFilePath = joinPath(pmcDataRoot, 'students.json');
 const EXCLUDED_MEMBERS = ['github_id'/*, 'Beavnvvv'*/];
 
 const perPage = 100;
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault('Asia/Shanghai');
 
 function isDirNameValid(dirName) {
   return !dirName.startsWith('.') && !EXCLUDED_MEMBERS.includes(dirName);
@@ -50,6 +56,8 @@ function resolveTask(taskMetadata, memberDirPath, memberDirName, taskNum) {
 
       if (modifiedAt) {
         task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
+
+        console.log(`[KNOSYS_INFO] \`${paths[i]}\` modified at`, modifiedAt, task.modifiedAt);
 
         if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).isBefore(dayjs(rewardDeadline))) {
           task.rewardable = true;

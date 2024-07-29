@@ -4,11 +4,17 @@ const { resolve: resolvePath, join: joinPath } = require('path');
 const { plus } = require('@ntks/toolbox');
 const { readData, saveData } = require('@knosys/sdk');
 const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
 
 const rootPath = resolvePath(__dirname, '../');
 const pmcDataPath = joinPath(rootPath, '.obpmc', 'data');
 const { people: studentMap, sequence: studentSeq } = readData(joinPath(pmcDataPath, 'students.json'));
 const { task: { rewards: taskRewards, rewardDeadline } } = readData(joinPath(pmcDataPath, 'metadata.json'));
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault('Asia/Shanghai');
 
 function resolveCompletedEmoji(checked) {
   return checked ? '🟢' : '🔴';
