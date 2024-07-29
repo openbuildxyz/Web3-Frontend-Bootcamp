@@ -4,7 +4,7 @@
 
 - 未提交报名信息的；
 - 完成 task7 的，因其由 Artela 发放；
-- 超过有奖截止日期（2024-07-15 15:59:59）的。
+- 超过有奖截止日期（2024-07-15 23:59:59）的。
 
 更多详见[奖励规则](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp#%E5%A5%96%E5%8A%B1%E6%98%8E%E7%BB%86-%E8%AF%B7%E4%BB%94%E7%BB%86%E9%98%85%E8%AF%BB%E8%A6%81%E6%B1%82)。
 
