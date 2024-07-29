@@ -2,6 +2,8 @@ const { join: joinPath } = require('path');
 const { readdirSync, statSync, existsSync } = require('fs');
 const { execSync } = require('child_process');
 const { plus } = require('@ntks/toolbox');
+const dayjs = require('dayjs');
+
 const { resolveRootPath, resolvePmcRootPath, resolvePmcDataPath, readData, saveData } = require('../../helper');
 
 const repoRoot = resolveRootPath();
@@ -25,14 +27,45 @@ function isRegistered(dirPath) {
   return existsSync(joinPath(dirPath, 'readme.md')) || existsSync(joinPath(dirPath, 'README.md'));
 }
 
-function resolveTask(memberDirPath, taskNum) {
-  const taskDirName = `task${taskNum}`;
+function execGit(cmd) {
+  return execSync(cmd, { cwd: repoRoot, encoding: 'utf8' });
+}
 
-  return { name: taskDirName, completed: existsSync(joinPath(memberDirPath, taskDirName)) };
+function readTaskMetadata() {
+  return readData(joinPath(pmcDataRoot, 'metadata.json')).task;
+}
+
+function resolveTask(taskMetadata, memberDirPath, memberDirName, taskNum) {
+  const taskDirName = `task${taskNum}`;
+  const taskDirPath = joinPath(memberDirPath, taskDirName);
+  const task = { name: taskDirName, completed: existsSync(taskDirPath), rewardable: false };
+  const { rewardDeadline, studentRewardPatches } = taskMetadata;
+
+  if (task.completed) {
+    const targetPath = `members/${memberDirName}/${taskDirName}`;
+    const paths = [`${targetPath}/readme.md`, `${targetPath}/README.md`, targetPath];
+
+    for (let i = 0; i < paths.length; i++) {
+      const modifiedAt = execGit(`git log -1 --pretty=format:"%ad" -- ${paths[i]}`);
+
+      if (modifiedAt) {
+        task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
+
+        if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).isBefore(dayjs(rewardDeadline))) {
+          task.rewardable = true;
+        }
+
+        break;
+      }
+    }
+  }
+
+  return task;
 }
 
 function countStudents() {
   const MEMBER_ROOT = joinPath(repoRoot, 'members');
+  const taskMetadata = readTaskMetadata();
 
   const studentMap = {};
   const studentSeq = [];
@@ -47,17 +80,13 @@ function countStudents() {
     studentMap[dirName] = {
       id: dirName,
       registered: isRegistered(dirPath),
-      tasks: Array.from(new Array(9)).map((_, i) => resolveTask(dirPath, i + 1)),
+      tasks: Array.from(new Array(9)).map((_, i) => resolveTask(taskMetadata, dirPath, dirName, i + 1)),
     };
 
     studentSeq.push(dirName);
   });
 
   saveData(cachedStudentsFilePath, { people: studentMap, sequence: studentSeq });
-}
-
-function execGit(cmd) {
-  return execSync(cmd, { cwd: repoRoot, encoding: 'utf8' });
 }
 
 function resolveRepoBasic() {
@@ -305,7 +334,7 @@ function resolveStudentNotMergedPrMap() {
 function countRewards() {
   const notMergedMap = resolveStudentNotMergedPrMap();
   const { people, sequence } = readData(cachedStudentsFilePath);
-  const { task: { rewards: taskRewards } } = readData(joinPath(pmcDataRoot, 'metadata.json'));
+  const { rewards: taskRewards } = readTaskMetadata();
 
   const rows = sequence.map((username, uidx) => {
     const student = people[username];
