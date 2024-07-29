@@ -1,3 +1,4 @@
+const { type: getOsType } = require('os');
 const { join: joinPath } = require('path');
 const { readdirSync, statSync, existsSync } = require('fs');
 const { execSync } = require('child_process');
@@ -41,30 +42,43 @@ function readTaskMetadata() {
   return readData(joinPath(pmcDataRoot, 'metadata.json')).task;
 }
 
-function resolveTask(taskMetadata, memberDirPath, memberDirName, taskNum) {
+function resolveTask({ rewardDeadline, studentRewardPatches, readingModifiedTimeBy }, memberDirPath, memberDirName, taskNum) {
   const taskDirName = `task${taskNum}`;
   const taskDirPath = joinPath(memberDirPath, taskDirName);
   const task = { name: taskDirName, completed: existsSync(taskDirPath), rewardable: false };
-  const { rewardDeadline, studentRewardPatches } = taskMetadata;
 
   if (task.completed) {
-    const targetPath = `members/${memberDirName}/${taskDirName}`;
-    const paths = [`${targetPath}/readme.md`, `${targetPath}/README.md`, targetPath];
+    let modifiedAt;
 
-    for (let i = 0; i < paths.length; i++) {
-      const modifiedAt = execGit(`git log -1 --follow --pretty=format:"%cd" -- ${paths[i]}`);
+    if (readingModifiedTimeBy === 'git') {
+      const targetPath = `members/${memberDirName}/${taskDirName}`;
+      const paths = [`${targetPath}/readme.md`, `${targetPath}/README.md`, targetPath];
 
-      if (modifiedAt) {
-        task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
+      for (let i = 0; i < paths.length; i++) {
+        modifiedAt = execGit(`git log -1 --follow --pretty=format:"%cd" -- ${paths[i]}`);
 
-        // console.log(`[KNOSYS_INFO] \`${paths[i]}\` full message`, execGit(`git log -1 -- ${paths[i]}`));
-        console.log(`[KNOSYS_INFO] \`${paths[i]}\` modified at`, modifiedAt, task.modifiedAt);
-
-        if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).isBefore(dayjs(rewardDeadline))) {
-          task.rewardable = true;
+        if (modifiedAt) {
+          break;
         }
+      }
+    } else if (readingModifiedTimeBy === 'fs') {
+      const paths = [joinPath(taskDirPath, 'readme.md'), joinPath(taskDirPath, 'README.md'), taskDirPath];
 
-        break;
+      for (let i = 0; i < paths.length; i++) {
+        if (existsSync(paths[i])) {
+          modifiedAt = statSync(paths[i]).mtime;
+          break;
+        }
+      }
+    }
+
+    if (modifiedAt) {
+      task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
+
+      console.log(`[KNOSYS_INFO] ${readingModifiedTimeBy} \`members/${memberDirName}/${taskDirName}\` modified at`, task.modifiedAt);
+
+      if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).isBefore(dayjs(rewardDeadline))) {
+        task.rewardable = true;
       }
     }
   }
@@ -72,9 +86,9 @@ function resolveTask(taskMetadata, memberDirPath, memberDirName, taskNum) {
   return task;
 }
 
-function countStudents() {
+function countStudents(readingModifiedTimeBy = getOsType() === 'Linux' ? 'fs' : 'git') {
   const MEMBER_ROOT = joinPath(repoRoot, 'members');
-  const taskMetadata = readTaskMetadata();
+  const taskMetadata = { ...readTaskMetadata(), readingModifiedTimeBy };
 
   const studentMap = {};
   const studentSeq = [];
