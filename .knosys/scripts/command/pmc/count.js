@@ -52,7 +52,7 @@ function resolveTask(taskMetadata, memberDirPath, memberDirName, taskNum) {
     const paths = [`${targetPath}/readme.md`, `${targetPath}/README.md`, targetPath];
 
     for (let i = 0; i < paths.length; i++) {
-      const modifiedAt = execGit(`git log -1 --pretty=format:"%ad" -- ${paths[i]}`);
+      const modifiedAt = execGit(`git log -1 --pretty=format:"%cd" -- ${paths[i]}`);
 
       if (modifiedAt) {
         task.modifiedAt = dayjs(modifiedAt).format('YYYY-MM-DD HH:mm:ss ZZ');
