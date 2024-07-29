@@ -87,6 +87,8 @@ function resolveTask({ rewardDeadline, studentRewardPatches, readingModifiedTime
 }
 
 function countStudents(readingModifiedTimeBy = getOsType() === 'Linux' ? 'fs' : 'git') {
+  console.log(`[KNOSYS_INFO] current OS is:`, getOsType());
+
   const MEMBER_ROOT = joinPath(repoRoot, 'members');
   const taskMetadata = { ...readTaskMetadata(), readingModifiedTimeBy };
 
