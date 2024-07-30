@@ -133,8 +133,14 @@ function ToDoList() {
     if (todoList?.length) {
       setData(todoList);
     }
+    const handle = () => {
+      setData((value) => {
+        store2('todoList', value);
+      });
+    };
+    window.addEventListener('beforeunload', handle);
     return () => {
-      store2('todoList', todoList);
+      window.removeEventListener('beforeunload', handle);
     };
   }, []);
 
