@@ -15,8 +15,12 @@ const { task: { rewards: taskRewards, rewardDeadline } } = readData(joinPath(pmc
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-function resolveCompletedEmoji(checked) {
-  return checked ? '🟢' : '🔴';
+function resolveCompletedEmoji(checked, outdated) {
+  if (checked !== true) {
+    return '🔴';
+  }
+
+  return outdated === true ? '🔵' : '🟢';
 }
 
 function compareMembers(a, b) {
@@ -53,7 +57,7 @@ function resolveSortedSequence() {
 function generateSummaryTable() {
   const rows = resolveSortedSequence().map((id, idx) => {
     const student = studentMap[id];
-    const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed }) => resolveCompletedEmoji(completed)));
+    const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed, rewardable }) => resolveCompletedEmoji(completed, !rewardable)));
     const rewards = student.registered ? student.tasks.reduce((total, task, idx) => {
       const reward = taskRewards[idx];
 
@@ -82,6 +86,12 @@ function generateResult() {
 - 超过有奖截止日期（${dayjs(rewardDeadline).tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss')}）的。
 
 更多详见[奖励规则](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp#%E5%A5%96%E5%8A%B1%E6%98%8E%E7%BB%86-%E8%AF%B7%E4%BB%94%E7%BB%86%E9%98%85%E8%AF%BB%E8%A6%81%E6%B1%82)。
+
+任务完成状态说明：
+
+- 🔴——尚未提交或未合并 PR；
+- 🟢——截止日期内提交 PR 并被合并（有奖励）；
+- 🔵——超过截止日期提交 PR 并被合并（无奖励）。
 
 ${generateSummaryTable()}
 `;
