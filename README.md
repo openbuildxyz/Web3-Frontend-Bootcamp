@@ -52,6 +52,8 @@
 
 九、扩展工具篇：利用The Graph实现DAPP数据分析和数据可视化（[哔站](https://www.bilibili.com/video/BV1qS421R7bW)）
 
+十、黑客松：为期十天，期待你大放精彩！
+
 ## 参与方式
 
 **⚠️⚠️⚠️ 请先完整地看完这部分内容再开始操作！**
@@ -121,6 +123,7 @@
 | [Task 7](task/07_EVM++_Demo.md)          | web3小工具实践 |  50U（Token) | 跟随[教程](https://fanatical-krypton-122.notion.site/OpenBuild-Frontend-Bootcamp-5e62657ab5774786b1901bfd862e8e9a?pvs=4)学习EVM++，实现一个限流器demo   |
 | [Task 8](task/08_Hello_Morph.md)          | Hello Morph |    10U     |  在Morph Holesky上部署任意合约并在Morph浏览器上验证   |
 | [Extension(拓展)](task/09_Hello_TheGraph.md)          | Hello TheGraph |    10U     |  为NFTMarket创建一个The Graph子图   |
+| 黑客松       | 黑客松 |    1000U     |     |
 
 ## 参考资料
 
