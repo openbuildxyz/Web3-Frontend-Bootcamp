@@ -1,7 +1,12 @@
+const { type: getOsType } = require('os');
 const { join: joinPath } = require('path');
 const { readdirSync, statSync, existsSync } = require('fs');
 const { execSync } = require('child_process');
 const { plus } = require('@ntks/toolbox');
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+
 const { resolveRootPath, resolvePmcRootPath, resolvePmcDataPath, readData, saveData } = require('../../helper');
 
 const repoRoot = resolveRootPath();
@@ -17,6 +22,9 @@ const EXCLUDED_MEMBERS = ['github_id'/*, 'Beavnvvv'*/];
 
 const perPage = 100;
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 function isDirNameValid(dirName) {
   return !dirName.startsWith('.') && !EXCLUDED_MEMBERS.includes(dirName);
 }
@@ -25,14 +33,61 @@ function isRegistered(dirPath) {
   return existsSync(joinPath(dirPath, 'readme.md')) || existsSync(joinPath(dirPath, 'README.md'));
 }
 
-function resolveTask(memberDirPath, taskNum) {
-  const taskDirName = `task${taskNum}`;
-
-  return { name: taskDirName, completed: existsSync(joinPath(memberDirPath, taskDirName)) };
+function execGit(cmd) {
+  return execSync(cmd, { cwd: repoRoot, encoding: 'utf8' });
 }
 
-function countStudents() {
+function readTaskMetadata() {
+  return readData(joinPath(pmcDataRoot, 'metadata.json')).task;
+}
+
+function resolveTask({ rewardDeadline, studentRewardPatches, readingModifiedTimeBy }, memberDirPath, memberDirName, taskNum) {
+  const taskDirName = `task${taskNum}`;
+  const taskDirPath = joinPath(memberDirPath, taskDirName);
+  const task = { name: taskDirName, completed: existsSync(taskDirPath), rewardable: false };
+
+  if (task.completed) {
+    let modifiedAt;
+
+    if (readingModifiedTimeBy === 'git') {
+      const targetPath = `members/${memberDirName}/${taskDirName}`;
+      const paths = [`${targetPath}/readme.md`, `${targetPath}/README.md`, targetPath];
+
+      for (let i = 0; i < paths.length; i++) {
+        modifiedAt = execGit(`git log -1 --follow --pretty=format:"%cd" -- ${paths[i]}`);
+
+        if (modifiedAt) {
+          break;
+        }
+      }
+    } else if (readingModifiedTimeBy === 'fs') {
+      const paths = [joinPath(taskDirPath, 'readme.md'), joinPath(taskDirPath, 'README.md'), taskDirPath];
+
+      for (let i = 0; i < paths.length; i++) {
+        if (existsSync(paths[i])) {
+          modifiedAt = statSync(paths[i]).mtime;
+          break;
+        }
+      }
+    }
+
+    if (modifiedAt) {
+      task.modifiedAt = dayjs(modifiedAt).tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss ZZ');
+
+      console.log(`[KNOSYS_INFO] ${readingModifiedTimeBy} \`members/${memberDirName}/${taskDirName}\` modified at`, task.modifiedAt);
+
+      if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).tz('Asia/Shanghai').isBefore(dayjs(rewardDeadline).tz('Asia/Shanghai'))) {
+        task.rewardable = true;
+      }
+    }
+  }
+
+  return task;
+}
+
+function countStudents(readingModifiedTimeBy = getOsType() === 'Linux' ? 'fs' : 'git') {
   const MEMBER_ROOT = joinPath(repoRoot, 'members');
+  const taskMetadata = { ...readTaskMetadata(), readingModifiedTimeBy };
 
   const studentMap = {};
   const studentSeq = [];
@@ -47,17 +102,13 @@ function countStudents() {
     studentMap[dirName] = {
       id: dirName,
       registered: isRegistered(dirPath),
-      tasks: Array.from(new Array(9)).map((_, i) => resolveTask(dirPath, i + 1)),
+      tasks: Array.from(new Array(9)).map((_, i) => resolveTask(taskMetadata, dirPath, dirName, i + 1)),
     };
 
     studentSeq.push(dirName);
   });
 
   saveData(cachedStudentsFilePath, { people: studentMap, sequence: studentSeq });
-}
-
-function execGit(cmd) {
-  return execSync(cmd, { cwd: repoRoot, encoding: 'utf8' });
 }
 
 function resolveRepoBasic() {
@@ -305,7 +356,7 @@ function resolveStudentNotMergedPrMap() {
 function countRewards() {
   const notMergedMap = resolveStudentNotMergedPrMap();
   const { people, sequence } = readData(cachedStudentsFilePath);
-  const { task: { rewards: taskRewards } } = readData(joinPath(pmcDataRoot, 'metadata.json'));
+  const { rewards: taskRewards } = readTaskMetadata();
 
   const rows = sequence.map((username, uidx) => {
     const student = people[username];
