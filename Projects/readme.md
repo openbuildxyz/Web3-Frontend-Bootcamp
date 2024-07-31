@@ -22,6 +22,11 @@
 5. **Blockchain Technologies that Make the World a Better Place**
 
    The poor, the hungry, those without access to clean water, utilizing carbon credits to combat climate change... Blockchain is not just about cryptocurrency and technology, it's also about using its unique trust settings to bring more changes to people's lives. Courageously inspire us with your unique solutions and make our world a better place!
+# 💰Bonus
+
+* First Prize： 500u
+* Second prize： 300u 
+* Third prize： 200u 
 # Project Submission Guidelines
 
 ## Submission Process
