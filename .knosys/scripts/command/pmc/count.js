@@ -243,7 +243,7 @@ function countOpenTaskPrs() {
   saveData(cachedOpenPrsFilePath, openPrMaps);
 }
 
-async function countPrs(state = 'merged', token = process.env.PMC_GITHUB_TOKEN) {
+async function countPrs(state = 'merged', token = process.env.OPENBUILD_PMC_GITHUB_TOKEN) {
   if (state === 'all') {
     return countAllPrs(token);
   }
@@ -353,12 +353,12 @@ function resolveStudentNotMergedPrMap() {
   }, {});
 }
 
-function countRewards() {
+function resolveStudentRewards() {
   const notMergedMap = resolveStudentNotMergedPrMap();
   const { people, sequence } = readData(cachedStudentsFilePath);
   const { rewards: taskRewards } = readTaskMetadata();
 
-  const rows = sequence.map((username, uidx) => {
+  return sequence.map(username => {
     const student = people[username];
 
     let mergedReward = 0;
@@ -373,33 +373,87 @@ function countRewards() {
         }
 
         if (task.completed) {
-          mergedReward = plus(mergedReward, reward);
+          if (task.rewardable) {
+            mergedReward = plus(mergedReward, reward);
+          }
         } else if (notMergedMap[username] && notMergedMap[username][task.name]) {
           notMergedReward = plus(notMergedReward, reward);
         }
       });
     }
 
-    const totalReward = plus(mergedReward, notMergedReward);
-
-    let usernameMdStr = `\`${username}\``;
-
-    if (totalReward > 0) {
-      usernameMdStr = `🟢 ${usernameMdStr}`;
-    } else {
-      usernameMdStr = `🔴 ${usernameMdStr}`;
+    return {
+      username,
+      merged: mergedReward,
+      total: plus(mergedReward, notMergedReward),
     }
-
-    return `| ${uidx + 1} | ${usernameMdStr} | ${mergedReward} | ${totalReward} |`
   });
+}
+
+function resolveGroupedStudentRewards(rewards, groupByMerged = false) {
+  const sortByKey = groupByMerged === true ? 'merged' : 'total';
+  const totalAmount = readTaskMetadata().rewards.filter(amount => amount > 0).reduce((p, c) => plus(p, c), 0);
+  const result = { all: [], part: [], none: [] };
+
+  rewards.slice().sort((a, b) => a[sortByKey] > b[sortByKey] ? -1 : 1).forEach(r => {
+    const amount = r[sortByKey];
+
+    if (amount === totalAmount) {
+      result.all.push(r);
+    } else if (amount > 0) {
+      result.part.push(r);
+    } else {
+      result.none.push(r);
+    }
+  });
+
+  return result;
+}
+
+function generateRewardTable(rewards) {
+  const rows = rewards.map((reward, uidx) => {
+    let usernameMdStr = `\`${reward.username}\``;
+
+    return `| ${uidx + 1} | ${usernameMdStr} | ${reward.merged} | ${reward.total} |`;
+  });
+
+  return `| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+${rows.join('\n')}`;
+}
+
+function generateGroupedRewardSections(groupedRewards, text) {
+  return `## 按已${text} PR 计算
+
+### 全部${text}且有奖励
+
+共 ${groupedRewards.all.length} 人：
+
+${generateRewardTable(groupedRewards.all)}
+
+### 部分${text}且有奖励
+
+共 ${groupedRewards.part.length} 人：
+
+${generateRewardTable(groupedRewards.part)}
+
+### 无奖励
+
+共 ${groupedRewards.none.length} 人：
+
+${generateRewardTable(groupedRewards.none)}`
+}
+
+function countRewards() {
+  const studentRewards = resolveStudentRewards();
 
   saveData(joinPath(resolvePmcRootPath(), 'reward.md'), `# 任务奖励
 
-学员名前面有「🔴」代表无奖励。
+共 ${studentRewards.length} 人。
 
-| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
-| ---: | --- | ---: | ---: |
-${rows.join('\n')}
+${generateGroupedRewardSections(resolveGroupedStudentRewards(studentRewards), '提交')}
+
+${generateGroupedRewardSections(resolveGroupedStudentRewards(studentRewards, true), '合并')}
 `);
 }
 

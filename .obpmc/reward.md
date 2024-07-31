@@ -1,260 +1,564 @@
 # 任务奖励
 
-学员名前面有「🔴」代表无奖励。
+共 257 人。
+
+## 按已提交 PR 计算
+
+### 全部提交且有奖励
+
+共 24 人：
 
 | 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
 | ---: | --- | ---: | ---: |
-| 1 | 🟢 `0x4E33` | 5 | 5 |
-| 2 | 🔴 `0xhutou` | 0 | 0 |
-| 3 | 🟢 `0xorz` | 5 | 5 |
-| 4 | 🟢 `1473303013` | 5 | 5 |
-| 5 | 🟢 `1959035201` | 5 | 5 |
-| 6 | 🟢 `321llljjjfff123` | 19 | 19 |
-| 7 | 🔴 `404ll` | 0 | 0 |
-| 8 | 🟢 `604137978` | 2.5 | 5 |
-| 9 | 🟢 `858536121` | 5 | 5 |
-| 10 | 🟢 `964674798` | 5 | 9 |
-| 11 | 🟢 `AceLeeWinnie` | 2.5 | 2.5 |
-| 12 | 🔴 `AhDEV-free` | 0 | 0 |
-| 13 | 🔴 `AlexL0ng` | 0 | 0 |
-| 14 | 🔴 `Alexzhuangyao` | 0 | 0 |
-| 15 | 🟢 `Arthas0v0` | 5 | 5 |
-| 16 | 🟢 `Aseisman` | 29 | 43 |
-| 17 | 🔴 `BBK912` | 0 | 0 |
-| 18 | 🔴 `Beavnvvv` | 0 | 0 |
-| 19 | 🟢 `BerylYanjie` | 2.5 | 5 |
-| 20 | 🟢 `Caseyz` | 2.5 | 5 |
-| 21 | 🟢 `Chen-Lun-Hao` | 29 | 43 |
-| 22 | 🟢 `CipherYin` | 5 | 5 |
-| 23 | 🔴 `CodingGeoff` | 0 | 0 |
-| 24 | 🟢 `Creativelf` | 5 | 5 |
-| 25 | 🟢 `DawnBlackA` | 15 | 15 |
-| 26 | 🟢 `DeJeune` | 26.5 | 30.5 |
-| 27 | 🟢 `Debbl` | 9 | 18 |
-| 28 | 🟢 `Dr-yellow` | 5 | 5 |
-| 29 | 🟢 `Draculabo` | 19 | 23 |
-| 30 | 🟢 `DukeDeng` | 2.5 | 5 |
-| 31 | 🔴 `Eric-Cart` | 0 | 0 |
-| 32 | 🔴 `Fang-Lansheng` | 0 | 0 |
-| 33 | 🟢 `FrankChencc` | 5 | 5 |
-| 34 | 🔴 `GGbond-Romeo` | 0 | 0 |
-| 35 | 🔴 `GeeekerK` | 0 | 0 |
-| 36 | 🟢 `Georgiafab` | 29 | 43 |
-| 37 | 🟢 `HaisenCx` | 5 | 5 |
-| 38 | 🔴 `HealerOS` | 0 | 0 |
-| 39 | 🟢 `Hexi1997` | 9 | 9 |
-| 40 | 🔴 `HoseaLyu` | 0 | 0 |
-| 41 | 🟢 `ImSingee` | 5 | 13 |
-| 42 | 🟢 `JackCat1221` | 5 | 5 |
-| 43 | 🟢 `JasonStu` | 2.5 | 9 |
-| 44 | 🟢 `JessieChen5` | 5 | 5 |
-| 45 | 🟢 `Joejo` | 2.5 | 5 |
-| 46 | 🟢 `Josh-hub01` | 5 | 5 |
-| 47 | 🔴 `Justin-Xiang` | 0 | 0 |
-| 48 | 🟢 `K-tang-mkv` | 15 | 15 |
-| 49 | 🟢 `KarasuShin` | 2.5 | 2.5 |
-| 50 | 🟢 `KeyHMX` | 5 | 5 |
-| 51 | 🔴 `LeonXDH` | 0 | 0 |
-| 52 | 🟢 `LittleMoreInteresting` | 9 | 23 |
-| 53 | 🟢 `Lym599593` | 9 | 9 |
-| 54 | 🟢 `LyricaQiang` | 2.5 | 18 |
-| 55 | 🟢 `Mika-Lahtinen` | 15 | 19 |
-| 56 | 🔴 `Minamogood` | 0 | 0 |
-| 57 | 🔴 `Mira-mei` | 0 | 0 |
-| 58 | 🔴 `MistoryChen` | 0 | 0 |
-| 59 | 🟢 `NorthernDream` | 5 | 5 |
-| 60 | 🔴 `Pithos23` | 0 | 0 |
-| 61 | 🟢 `Raincal` | 2.5 | 2.5 |
-| 62 | 🟢 `STAJJJ` | 5 | 5 |
-| 63 | 🟢 `Secret1007` | 9 | 9 |
-| 64 | 🟢 `Shuning0312` | 5 | 5 |
-| 65 | 🔴 `ShuxunoO` | 0 | 0 |
-| 66 | 🟢 `Sifotd` | 5 | 5 |
-| 67 | 🔴 `Stackingrule` | 0 | 0 |
-| 68 | 🟢 `TLwen114514` | 5 | 5 |
-| 69 | 🟢 `TomatoDroid` | 29 | 43 |
-| 70 | 🔴 `TrueTechLabs` | 0 | 0 |
-| 71 | 🟢 `Tsuizen` | 9 | 18 |
-| 72 | 🟢 `WAIYIN-tech` | 9 | 9 |
-| 73 | 🟢 `WangEn` | 5 | 5 |
-| 74 | 🟢 `Winson-030` | 2.5 | 2.5 |
-| 75 | 🟢 `WonderfulWan8` | 5 | 9 |
-| 76 | 🟢 `Wujerry` | 29 | 43 |
-| 77 | 🟢 `Wzy-source` | 5 | 5 |
-| 78 | 🟢 `XiaoMo-Donald` | 2.5 | 2.5 |
-| 79 | 🟢 `Y2511525406` | 10 | 18 |
-| 80 | 🟢 `YagamiNewLight` | 2.5 | 2.5 |
-| 81 | 🟢 `Yahohohohohoho` | 9 | 9 |
-| 82 | 🟢 `Yaqioooong` | 2.5 | 5 |
-| 83 | 🟢 `Yolandatsai` | 0 | 2.5 |
-| 84 | 🟢 `Yolo-00` | 5 | 5 |
-| 85 | 🟢 `Yunfei1982` | 5 | 5 |
-| 86 | 🔴 `Zintoki` | 0 | 0 |
-| 87 | 🟢 `a6b017` | 5 | 13 |
-| 88 | 🔴 `aSpecialFatPanda` | 0 | 0 |
-| 89 | 🟢 `aiyoudiao` | 5 | 5 |
-| 90 | 🟢 `aliyan404` | 29 | 43 |
-| 91 | 🟢 `anderfib` | 29 | 29 |
-| 92 | 🔴 `azyliu` | 0 | 0 |
-| 93 | 🟢 `b-t-s-1` | 9 | 9 |
-| 94 | 🟢 `bcma2333` | 2.5 | 9 |
-| 95 | 🟢 `bcyangxu` | 2.5 | 2.5 |
-| 96 | 🔴 `bdingtech` | 0 | 0 |
-| 97 | 🟢 `ben100118` | 5 | 5 |
-| 98 | 🟢 `billyma128` | 2.5 | 5 |
-| 99 | 🔴 `birdream` | 0 | 0 |
-| 100 | 🟢 `blackdogTT` | 5 | 5 |
-| 101 | 🟢 `bluehawana` | 0 | 2.5 |
-| 102 | 🟢 `bravehot` | 19 | 33 |
-| 103 | 🟢 `bytesloop` | 0 | 2.5 |
-| 104 | 🟢 `caesear` | 5 | 5 |
-| 105 | 🟢 `caocanx` | 5 | 5 |
-| 106 | 🟢 `carola-niu` | 29 | 43 |
-| 107 | 🟢 `ccchur` | 9 | 9 |
-| 108 | 🟢 `cdt3211` | 5 | 5 |
-| 109 | 🟢 `chanhohn` | 5 | 9 |
-| 110 | 🔴 `channely` | 0 | 0 |
-| 111 | 🟢 `charming-06` | 0 | 2.5 |
-| 112 | 🟢 `chefuny` | 5 | 5 |
-| 113 | 🟢 `chensid` | 2.5 | 2.5 |
-| 114 | 🟢 `choizhang` | 29 | 38 |
-| 115 | 🟢 `coconal` | 29 | 29 |
-| 116 | 🔴 `code342` | 0 | 0 |
-| 117 | 🟢 `coderprepares` | 5 | 13 |
-| 118 | 🟢 `coolberwin` | 29 | 43 |
-| 119 | 🟢 `dark-Qy` | 2.5 | 2.5 |
-| 120 | 🔴 `dethan3` | 0 | 0 |
-| 121 | 🟢 `dirtmelon` | 5 | 5 |
-| 122 | 🟢 `dockershe` | 5 | 9 |
-| 123 | 🟢 `dongyuanwai` | 0 | 2.5 |
-| 124 | 🔴 `douglas-ou` | 0 | 0 |
-| 125 | 🟢 `dreamahouse` | 5 | 9 |
-| 126 | 🟢 `elliotxin` | 2.5 | 2.5 |
-| 127 | 🟢 `flatcc` | 5 | 5 |
-| 128 | 🟢 `flexibility2` | 29 | 43 |
-| 129 | 🟢 `flytam` | 29 | 43 |
-| 130 | 🟢 `fyh2001` | 2.5 | 2.5 |
-| 131 | 🟢 `gamble369` | 5 | 5 |
-| 132 | 🟢 `gnls666` | 0 | 5 |
-| 133 | 🟢 `gunksd` | 10 | 12.5 |
-| 134 | 🟢 `haobarry` | 2.5 | 2.5 |
-| 135 | 🔴 `hbrls` | 0 | 0 |
-| 136 | 🟢 `hu-qi` | 5 | 9 |
-| 137 | 🟢 `huangkuaikuai` | 5 | 5 |
-| 138 | 🟢 `humbornjo` | 9 | 23 |
-| 139 | 🟢 `hundren` | 5 | 5 |
-| 140 | 🟢 `huzhengen` | 29 | 43 |
-| 141 | 🟢 `hwwang2` | 29 | 43 |
-| 142 | 🟢 `isLiuyinghao` | 9 | 9 |
-| 143 | 🟢 `jamie-ji` | 5 | 5 |
-| 144 | 🟢 `jeff09-28` | 5 | 5 |
-| 145 | 🟢 `jeffierw` | 5 | 5 |
-| 146 | 🟢 `jerikchan` | 2.5 | 2.5 |
-| 147 | 🟢 `jerryq1` | 2.5 | 2.5 |
-| 148 | 🟢 `jiantao88` | 5 | 9 |
-| 149 | 🟢 `joy-joy-joy-joy-joy-joy-joy` | 29 | 43 |
-| 150 | 🟢 `kakuro9` | 5 | 5 |
-| 151 | 🔴 `kangvcar` | 0 | 0 |
-| 152 | 🔴 `kepplow` | 0 | 0 |
-| 153 | 🟢 `keyding` | 29 | 43 |
-| 154 | 🟢 `kiwi6185` | 5 | 5 |
-| 155 | 🟢 `knit-zhang` | 29 | 29 |
-| 156 | 🟢 `leon-kay` | 5 | 5 |
-| 157 | 🟢 `limitcool` | 2.5 | 2.5 |
-| 158 | 🟢 `limsenkeat` | 9 | 13 |
-| 159 | 🟢 `linghuccc` | 29 | 29 |
-| 160 | 🟢 `linhaishe` | 9 | 18 |
-| 161 | 🟢 `lispking` | 29 | 43 |
-| 162 | 🔴 `litie2023` | 0 | 0 |
-| 163 | 🟢 `littleLane` | 5 | 5 |
-| 164 | 🟢 `liudafengshu` | 29 | 38 |
-| 165 | 🟢 `liulvcheng` | 2.5 | 5 |
-| 166 | 🔴 `liuzizi0505` | 0 | 0 |
-| 167 | 🟢 `lixb-v` | 5 | 5 |
-| 168 | 🟢 `liyincode` | 5 | 5 |
-| 169 | 🔴 `lsPrivateGit` | 0 | 0 |
-| 170 | 🟢 `luAmy` | 0 | 5 |
-| 171 | 🟢 `lulu546` | 5 | 5 |
-| 172 | 🟢 `luyaoLee` | 2.5 | 5 |
-| 173 | 🔴 `lzq2013asd` | 0 | 0 |
-| 174 | 🔴 `memory713` | 0 | 0 |
-| 175 | 🟢 `mercury-zy` | 2.5 | 9 |
-| 176 | 🔴 `miawithcode` | 0 | 0 |
-| 177 | 🟢 `monnaliya` | 5 | 5 |
-| 178 | 🟢 `mosida` | 5 | 5 |
-| 179 | 🟢 `mundane799699` | 2.5 | 5 |
-| 180 | 🟢 `muuyao` | 5 | 5 |
-| 181 | 🟢 `newTap` | 4 | 4 |
-| 182 | 🟢 `newraina` | 2.5 | 2.5 |
-| 183 | 🟢 `no5no6` | 2.5 | 2.5 |
-| 184 | 🔴 `nolank128` | 0 | 0 |
-| 185 | 🟢 `ourai` | 29 | 43 |
-| 186 | 🟢 `peewee92` | 0 | 2.5 |
-| 187 | 🔴 `pol117` | 0 | 0 |
-| 188 | 🟢 `polariscx` | 5 | 5 |
-| 189 | 🟢 `posuihushui` | 9 | 9 |
-| 190 | 🔴 `princejia` | 0 | 0 |
-| 191 | 🟢 `qiaopengjun5162` | 19 | 19 |
-| 192 | 🟢 `qimalan` | 0 | 5 |
-| 193 | 🟢 `qq1456680570` | 2.5 | 2.5 |
-| 194 | 🟢 `ranxi2001` | 0 | 5 |
-| 195 | 🔴 `reetyo` | 0 | 0 |
-| 196 | 🔴 `renfengyi` | 0 | 0 |
-| 197 | 🟢 `rzexin` | 5 | 5 |
-| 198 | 🔴 `sajakx` | 0 | 0 |
-| 199 | 🟢 `saltand` | 2.5 | 5 |
-| 200 | 🟢 `saveole` | 5 | 5 |
-| 201 | 🟢 `serencc` | 29 | 43 |
-| 202 | 🟢 `shaun17` | 0 | 2.5 |
-| 203 | 🟢 `sheldon-xc` | 29 | 43 |
-| 204 | 🟢 `shuhaoLIN` | 5 | 5 |
-| 205 | 🟢 `smallbonelu` | 5 | 5 |
-| 206 | 🟢 `soldcoin` | 2.5 | 6.5 |
-| 207 | 🔴 `strong-to` | 0 | 0 |
-| 208 | 🟢 `sunnydreamer` | 9 | 9 |
-| 209 | 🟢 `sunshanpeng` | 5 | 5 |
-| 210 | 🟢 `terry-hjj` | 5 | 5 |
-| 211 | 🟢 `threshermagnus484159` | 25 | 38 |
-| 212 | 🟢 `tiantianwork` | 2.5 | 2.5 |
-| 213 | 🟢 `toleleYJL` | 2.5 | 5 |
-| 214 | 🟢 `tristonchai` | 2.5 | 5 |
-| 215 | 🔴 `upupnoah` | 0 | 0 |
-| 216 | 🟢 `veithly` | 29 | 43 |
-| 217 | 🟢 `vv1133` | 29 | 43 |
-| 218 | 🟢 `w626w` | 2.5 | 2.5 |
-| 219 | 🟢 `wanna-wl` | 0 | 2.5 |
-| 220 | 🟢 `warku123` | 19 | 19 |
-| 221 | 🟢 `wdonsong` | 6.5 | 9 |
-| 222 | 🟢 `wiirhan` | 5 | 5 |
-| 223 | 🟢 `windyund` | 5 | 5 |
-| 224 | 🔴 `wjq990112` | 0 | 0 |
-| 225 | 🟢 `wmjchf` | 5 | 5 |
-| 226 | 🟢 `wormchenli` | 5 | 9 |
-| 227 | 🟢 `wureny` | 0 | 2.5 |
-| 228 | 🟢 `www759` | 9 | 18 |
-| 229 | 🟢 `xhwoaini` | 19 | 19 |
-| 230 | 🟢 `xiangergou` | 2.5 | 2.5 |
-| 231 | 🟢 `xiangnuans` | 29 | 43 |
-| 232 | 🟢 `xiaodingmao` | 2.5 | 5 |
-| 233 | 🟢 `xiaowu55` | 2.5 | 5 |
-| 234 | 🟢 `xqcheese` | 5 | 5 |
-| 235 | 🟢 `ymiool` | 29 | 43 |
-| 236 | 🟢 `ymjrcc` | 29 | 38 |
-| 237 | 🟢 `yodhcn` | 2.5 | 2.5 |
-| 238 | 🟢 `yougongjiang` | 5 | 5 |
-| 239 | 🔴 `yywhyting` | 0 | 0 |
-| 240 | 🟢 `zcy1024` | 5 | 5 |
-| 241 | 🟢 `zer0fire` | 29 | 29 |
-| 242 | 🟢 `zhangloveyan` | 29 | 43 |
-| 243 | 🟢 `zhangmo8` | 5 | 5 |
-| 244 | 🟢 `zhangolve` | 29 | 43 |
-| 245 | 🔴 `zhengbangbo` | 0 | 0 |
-| 246 | 🟢 `zhengjunxiang` | 5 | 13 |
-| 247 | 🔴 `zhong-shanfu` | 0 | 0 |
-| 248 | 🟢 `zhouBoom` | 19 | 19 |
-| 249 | 🟢 `zhtkeepup` | 5 | 9 |
-| 250 | 🟢 `zhuoqinyue` | 2.5 | 2.5 |
-| 251 | 🟢 `ziicu2019` | 2.5 | 5 |
-| 252 | 🔴 `zipingw` | 0 | 0 |
-| 253 | 🟢 `zpjayyy` | 9 | 18 |
-| 254 | 🟢 `zzworker` | 9 | 9 |
+| 1 | `Aseisman` | 29 | 43 |
+| 2 | `Chen-Lun-Hao` | 29 | 43 |
+| 3 | `Georgiafab` | 29 | 43 |
+| 4 | `TomatoDroid` | 29 | 43 |
+| 5 | `Wujerry` | 29 | 43 |
+| 6 | `aliyan404` | 29 | 43 |
+| 7 | `carola-niu` | 29 | 43 |
+| 8 | `coolberwin` | 29 | 43 |
+| 9 | `flexibility2` | 29 | 43 |
+| 10 | `flytam` | 29 | 43 |
+| 11 | `huzhengen` | 29 | 43 |
+| 12 | `hwwang2` | 29 | 43 |
+| 13 | `joy-joy-joy-joy-joy-joy-joy` | 29 | 43 |
+| 14 | `keyding` | 29 | 43 |
+| 15 | `lispking` | 29 | 43 |
+| 16 | `ourai` | 29 | 43 |
+| 17 | `serencc` | 29 | 43 |
+| 18 | `sheldon-xc` | 29 | 43 |
+| 19 | `veithly` | 29 | 43 |
+| 20 | `vv1133` | 29 | 43 |
+| 21 | `xiangnuans` | 29 | 43 |
+| 22 | `ymiool` | 29 | 43 |
+| 23 | `zhangloveyan` | 29 | 43 |
+| 24 | `zhangolve` | 29 | 43 |
+
+### 部分提交且有奖励
+
+共 176 人：
+
+| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+| 1 | `choizhang` | 29 | 38 |
+| 2 | `liudafengshu` | 29 | 38 |
+| 3 | `threshermagnus484159` | 25 | 38 |
+| 4 | `ymjrcc` | 29 | 38 |
+| 5 | `bravehot` | 19 | 33 |
+| 6 | `DeJeune` | 26.5 | 30.5 |
+| 7 | `anderfib` | 29 | 29 |
+| 8 | `coconal` | 29 | 29 |
+| 9 | `knit-zhang` | 29 | 29 |
+| 10 | `linghuccc` | 29 | 29 |
+| 11 | `zer0fire` | 29 | 29 |
+| 12 | `Draculabo` | 19 | 23 |
+| 13 | `LittleMoreInteresting` | 9 | 23 |
+| 14 | `humbornjo` | 9 | 23 |
+| 15 | `321llljjjfff123` | 19 | 19 |
+| 16 | `Mika-Lahtinen` | 15 | 19 |
+| 17 | `qiaopengjun5162` | 19 | 19 |
+| 18 | `warku123` | 19 | 19 |
+| 19 | `xhwoaini` | 19 | 19 |
+| 20 | `zhouBoom` | 19 | 19 |
+| 21 | `Debbl` | 9 | 18 |
+| 22 | `LyricaQiang` | 2.5 | 18 |
+| 23 | `Tsuizen` | 9 | 18 |
+| 24 | `Y2511525406` | 10 | 18 |
+| 25 | `linhaishe` | 9 | 18 |
+| 26 | `www759` | 9 | 18 |
+| 27 | `zpjayyy` | 9 | 18 |
+| 28 | `DawnBlackA` | 15 | 15 |
+| 29 | `K-tang-mkv` | 15 | 15 |
+| 30 | `ImSingee` | 5 | 13 |
+| 31 | `a6b017` | 5 | 13 |
+| 32 | `coderprepares` | 5 | 13 |
+| 33 | `limsenkeat` | 9 | 13 |
+| 34 | `zhengjunxiang` | 5 | 13 |
+| 35 | `gunksd` | 10 | 12.5 |
+| 36 | `964674798` | 5 | 9 |
+| 37 | `Hexi1997` | 9 | 9 |
+| 38 | `JasonStu` | 2.5 | 9 |
+| 39 | `Lym599593` | 9 | 9 |
+| 40 | `Secret1007` | 9 | 9 |
+| 41 | `WAIYIN-tech` | 9 | 9 |
+| 42 | `WonderfulWan8` | 5 | 9 |
+| 43 | `Yahohohohohoho` | 9 | 9 |
+| 44 | `b-t-s-1` | 9 | 9 |
+| 45 | `bcma2333` | 2.5 | 9 |
+| 46 | `ccchur` | 9 | 9 |
+| 47 | `chanhohn` | 5 | 9 |
+| 48 | `dockershe` | 5 | 9 |
+| 49 | `dreamahouse` | 5 | 9 |
+| 50 | `hu-qi` | 5 | 9 |
+| 51 | `isLiuyinghao` | 9 | 9 |
+| 52 | `jiantao88` | 5 | 9 |
+| 53 | `mercury-zy` | 2.5 | 9 |
+| 54 | `posuihushui` | 9 | 9 |
+| 55 | `sunnydreamer` | 9 | 9 |
+| 56 | `wdonsong` | 6.5 | 9 |
+| 57 | `wormchenli` | 5 | 9 |
+| 58 | `zhtkeepup` | 5 | 9 |
+| 59 | `zzworker` | 9 | 9 |
+| 60 | `soldcoin` | 2.5 | 6.5 |
+| 61 | `0x4E33` | 5 | 5 |
+| 62 | `0xorz` | 5 | 5 |
+| 63 | `1473303013` | 5 | 5 |
+| 64 | `1959035201` | 5 | 5 |
+| 65 | `604137978` | 2.5 | 5 |
+| 66 | `858536121` | 5 | 5 |
+| 67 | `Arthas0v0` | 5 | 5 |
+| 68 | `BerylYanjie` | 2.5 | 5 |
+| 69 | `Caseyz` | 2.5 | 5 |
+| 70 | `CipherYin` | 5 | 5 |
+| 71 | `Creativelf` | 5 | 5 |
+| 72 | `Dr-yellow` | 5 | 5 |
+| 73 | `DukeDeng` | 2.5 | 5 |
+| 74 | `FrankChencc` | 5 | 5 |
+| 75 | `HaisenCx` | 5 | 5 |
+| 76 | `JackCat1221` | 5 | 5 |
+| 77 | `JessieChen5` | 5 | 5 |
+| 78 | `Joejo` | 2.5 | 5 |
+| 79 | `Josh-hub01` | 5 | 5 |
+| 80 | `KeyHMX` | 5 | 5 |
+| 81 | `NorthernDream` | 5 | 5 |
+| 82 | `STAJJJ` | 5 | 5 |
+| 83 | `Shuning0312` | 5 | 5 |
+| 84 | `Sifotd` | 5 | 5 |
+| 85 | `TLwen114514` | 5 | 5 |
+| 86 | `WangEn` | 5 | 5 |
+| 87 | `Wzy-source` | 5 | 5 |
+| 88 | `Yaqioooong` | 2.5 | 5 |
+| 89 | `Yolo-00` | 5 | 5 |
+| 90 | `Yunfei1982` | 5 | 5 |
+| 91 | `aiyoudiao` | 5 | 5 |
+| 92 | `ben100118` | 5 | 5 |
+| 93 | `billyma128` | 2.5 | 5 |
+| 94 | `blackdogTT` | 5 | 5 |
+| 95 | `caesear` | 5 | 5 |
+| 96 | `caocanx` | 5 | 5 |
+| 97 | `cdt3211` | 5 | 5 |
+| 98 | `chefuny` | 5 | 5 |
+| 99 | `dirtmelon` | 5 | 5 |
+| 100 | `flatcc` | 5 | 5 |
+| 101 | `gamble369` | 5 | 5 |
+| 102 | `gnls666` | 0 | 5 |
+| 103 | `huangkuaikuai` | 5 | 5 |
+| 104 | `hundren` | 5 | 5 |
+| 105 | `jamie-ji` | 5 | 5 |
+| 106 | `jeff09-28` | 5 | 5 |
+| 107 | `jeffierw` | 5 | 5 |
+| 108 | `kakuro9` | 5 | 5 |
+| 109 | `kiwi6185` | 5 | 5 |
+| 110 | `leon-kay` | 5 | 5 |
+| 111 | `littleLane` | 5 | 5 |
+| 112 | `liulvcheng` | 2.5 | 5 |
+| 113 | `lixb-v` | 5 | 5 |
+| 114 | `liyincode` | 5 | 5 |
+| 115 | `luAmy` | 0 | 5 |
+| 116 | `lulu546` | 5 | 5 |
+| 117 | `luyaoLee` | 2.5 | 5 |
+| 118 | `monnaliya` | 5 | 5 |
+| 119 | `mosida` | 5 | 5 |
+| 120 | `mundane799699` | 2.5 | 5 |
+| 121 | `muuyao` | 5 | 5 |
+| 122 | `polariscx` | 5 | 5 |
+| 123 | `qimalan` | 0 | 5 |
+| 124 | `ranxi2001` | 0 | 5 |
+| 125 | `rzexin` | 5 | 5 |
+| 126 | `saltand` | 2.5 | 5 |
+| 127 | `saveole` | 5 | 5 |
+| 128 | `shuhaoLIN` | 5 | 5 |
+| 129 | `smallbonelu` | 5 | 5 |
+| 130 | `sunshanpeng` | 5 | 5 |
+| 131 | `terry-hjj` | 5 | 5 |
+| 132 | `toleleYJL` | 2.5 | 5 |
+| 133 | `tristonchai` | 2.5 | 5 |
+| 134 | `wiirhan` | 5 | 5 |
+| 135 | `windyund` | 5 | 5 |
+| 136 | `wmjchf` | 5 | 5 |
+| 137 | `xiaodingmao` | 2.5 | 5 |
+| 138 | `xiaowu55` | 2.5 | 5 |
+| 139 | `xqcheese` | 5 | 5 |
+| 140 | `yougongjiang` | 5 | 5 |
+| 141 | `zcy1024` | 5 | 5 |
+| 142 | `zhangmo8` | 5 | 5 |
+| 143 | `ziicu2019` | 2.5 | 5 |
+| 144 | `newTap` | 4 | 4 |
+| 145 | `AceLeeWinnie` | 2.5 | 2.5 |
+| 146 | `KarasuShin` | 2.5 | 2.5 |
+| 147 | `Raincal` | 2.5 | 2.5 |
+| 148 | `Winson-030` | 2.5 | 2.5 |
+| 149 | `XiaoMo-Donald` | 2.5 | 2.5 |
+| 150 | `YagamiNewLight` | 2.5 | 2.5 |
+| 151 | `Yolandatsai` | 0 | 2.5 |
+| 152 | `bcyangxu` | 2.5 | 2.5 |
+| 153 | `bluehawana` | 0 | 2.5 |
+| 154 | `bytesloop` | 0 | 2.5 |
+| 155 | `charming-06` | 0 | 2.5 |
+| 156 | `chensid` | 2.5 | 2.5 |
+| 157 | `dark-Qy` | 2.5 | 2.5 |
+| 158 | `dongyuanwai` | 0 | 2.5 |
+| 159 | `elliotxin` | 2.5 | 2.5 |
+| 160 | `fyh2001` | 2.5 | 2.5 |
+| 161 | `haobarry` | 2.5 | 2.5 |
+| 162 | `jerikchan` | 2.5 | 2.5 |
+| 163 | `jerryq1` | 2.5 | 2.5 |
+| 164 | `limitcool` | 2.5 | 2.5 |
+| 165 | `newraina` | 2.5 | 2.5 |
+| 166 | `no5no6` | 2.5 | 2.5 |
+| 167 | `peewee92` | 0 | 2.5 |
+| 168 | `qq1456680570` | 2.5 | 2.5 |
+| 169 | `shaun17` | 0 | 2.5 |
+| 170 | `tiantianwork` | 2.5 | 2.5 |
+| 171 | `w626w` | 2.5 | 2.5 |
+| 172 | `wanna-wl` | 0 | 2.5 |
+| 173 | `wureny` | 0 | 2.5 |
+| 174 | `xiangergou` | 2.5 | 2.5 |
+| 175 | `yodhcn` | 2.5 | 2.5 |
+| 176 | `zhuoqinyue` | 2.5 | 2.5 |
+
+### 无奖励
+
+共 57 人：
+
+| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+| 1 | `0xhutou` | 0 | 0 |
+| 2 | `0xsuxin` | 0 | 0 |
+| 3 | `404ll` | 0 | 0 |
+| 4 | `AhDEV-free` | 0 | 0 |
+| 5 | `AlexL0ng` | 0 | 0 |
+| 6 | `Alexzhuangyao` | 0 | 0 |
+| 7 | `BBK912` | 0 | 0 |
+| 8 | `Beavnvvv` | 0 | 0 |
+| 9 | `CodingGeoff` | 0 | 0 |
+| 10 | `Eric-Cart` | 0 | 0 |
+| 11 | `Fang-Lansheng` | 0 | 0 |
+| 12 | `GGbond-Romeo` | 0 | 0 |
+| 13 | `GeeekerK` | 0 | 0 |
+| 14 | `HealerOS` | 0 | 0 |
+| 15 | `HoseaLyu` | 0 | 0 |
+| 16 | `Justin-Xiang` | 0 | 0 |
+| 17 | `LeonXDH` | 0 | 0 |
+| 18 | `LotusLu777` | 0 | 0 |
+| 19 | `Minamogood` | 0 | 0 |
+| 20 | `Mira-mei` | 0 | 0 |
+| 21 | `MistoryChen` | 0 | 0 |
+| 22 | `Pithos23` | 0 | 0 |
+| 23 | `ShuxunoO` | 0 | 0 |
+| 24 | `Stackingrule` | 0 | 0 |
+| 25 | `TrueTechLabs` | 0 | 0 |
+| 26 | `Zintoki` | 0 | 0 |
+| 27 | `aSpecialFatPanda` | 0 | 0 |
+| 28 | `azyliu` | 0 | 0 |
+| 29 | `bdingtech` | 0 | 0 |
+| 30 | `birdream` | 0 | 0 |
+| 31 | `channely` | 0 | 0 |
+| 32 | `code342` | 0 | 0 |
+| 33 | `dethan3` | 0 | 0 |
+| 34 | `douglas-ou` | 0 | 0 |
+| 35 | `fragrans-maotou` | 0 | 0 |
+| 36 | `hbrls` | 0 | 0 |
+| 37 | `kangvcar` | 0 | 0 |
+| 38 | `kepplow` | 0 | 0 |
+| 39 | `litie2023` | 0 | 0 |
+| 40 | `liuzizi0505` | 0 | 0 |
+| 41 | `lsPrivateGit` | 0 | 0 |
+| 42 | `lzq2013asd` | 0 | 0 |
+| 43 | `memory713` | 0 | 0 |
+| 44 | `miawithcode` | 0 | 0 |
+| 45 | `nolank128` | 0 | 0 |
+| 46 | `pol117` | 0 | 0 |
+| 47 | `princejia` | 0 | 0 |
+| 48 | `reetyo` | 0 | 0 |
+| 49 | `renfengyi` | 0 | 0 |
+| 50 | `sajakx` | 0 | 0 |
+| 51 | `strong-to` | 0 | 0 |
+| 52 | `upupnoah` | 0 | 0 |
+| 53 | `wjq990112` | 0 | 0 |
+| 54 | `yywhyting` | 0 | 0 |
+| 55 | `zhengbangbo` | 0 | 0 |
+| 56 | `zhong-shanfu` | 0 | 0 |
+| 57 | `zipingw` | 0 | 0 |
+
+## 按已合并 PR 计算
+
+### 全部合并且有奖励
+
+共 0 人：
+
+| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+
+
+### 部分合并且有奖励
+
+共 187 人：
+
+| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+| 1 | `Aseisman` | 29 | 43 |
+| 2 | `Chen-Lun-Hao` | 29 | 43 |
+| 3 | `Georgiafab` | 29 | 43 |
+| 4 | `TomatoDroid` | 29 | 43 |
+| 5 | `Wujerry` | 29 | 43 |
+| 6 | `aliyan404` | 29 | 43 |
+| 7 | `anderfib` | 29 | 29 |
+| 8 | `carola-niu` | 29 | 43 |
+| 9 | `choizhang` | 29 | 38 |
+| 10 | `coconal` | 29 | 29 |
+| 11 | `coolberwin` | 29 | 43 |
+| 12 | `flexibility2` | 29 | 43 |
+| 13 | `flytam` | 29 | 43 |
+| 14 | `huzhengen` | 29 | 43 |
+| 15 | `hwwang2` | 29 | 43 |
+| 16 | `joy-joy-joy-joy-joy-joy-joy` | 29 | 43 |
+| 17 | `keyding` | 29 | 43 |
+| 18 | `knit-zhang` | 29 | 29 |
+| 19 | `linghuccc` | 29 | 29 |
+| 20 | `lispking` | 29 | 43 |
+| 21 | `liudafengshu` | 29 | 38 |
+| 22 | `ourai` | 29 | 43 |
+| 23 | `serencc` | 29 | 43 |
+| 24 | `sheldon-xc` | 29 | 43 |
+| 25 | `veithly` | 29 | 43 |
+| 26 | `vv1133` | 29 | 43 |
+| 27 | `xiangnuans` | 29 | 43 |
+| 28 | `ymiool` | 29 | 43 |
+| 29 | `ymjrcc` | 29 | 38 |
+| 30 | `zer0fire` | 29 | 29 |
+| 31 | `zhangloveyan` | 29 | 43 |
+| 32 | `zhangolve` | 29 | 43 |
+| 33 | `DeJeune` | 26.5 | 30.5 |
+| 34 | `threshermagnus484159` | 25 | 38 |
+| 35 | `321llljjjfff123` | 19 | 19 |
+| 36 | `Draculabo` | 19 | 23 |
+| 37 | `bravehot` | 19 | 33 |
+| 38 | `qiaopengjun5162` | 19 | 19 |
+| 39 | `warku123` | 19 | 19 |
+| 40 | `xhwoaini` | 19 | 19 |
+| 41 | `zhouBoom` | 19 | 19 |
+| 42 | `DawnBlackA` | 15 | 15 |
+| 43 | `K-tang-mkv` | 15 | 15 |
+| 44 | `Mika-Lahtinen` | 15 | 19 |
+| 45 | `Y2511525406` | 10 | 18 |
+| 46 | `gunksd` | 10 | 12.5 |
+| 47 | `Debbl` | 9 | 18 |
+| 48 | `Hexi1997` | 9 | 9 |
+| 49 | `LittleMoreInteresting` | 9 | 23 |
+| 50 | `Lym599593` | 9 | 9 |
+| 51 | `Secret1007` | 9 | 9 |
+| 52 | `Tsuizen` | 9 | 18 |
+| 53 | `WAIYIN-tech` | 9 | 9 |
+| 54 | `Yahohohohohoho` | 9 | 9 |
+| 55 | `b-t-s-1` | 9 | 9 |
+| 56 | `ccchur` | 9 | 9 |
+| 57 | `humbornjo` | 9 | 23 |
+| 58 | `isLiuyinghao` | 9 | 9 |
+| 59 | `limsenkeat` | 9 | 13 |
+| 60 | `linhaishe` | 9 | 18 |
+| 61 | `posuihushui` | 9 | 9 |
+| 62 | `sunnydreamer` | 9 | 9 |
+| 63 | `www759` | 9 | 18 |
+| 64 | `zpjayyy` | 9 | 18 |
+| 65 | `zzworker` | 9 | 9 |
+| 66 | `wdonsong` | 6.5 | 9 |
+| 67 | `0x4E33` | 5 | 5 |
+| 68 | `0xorz` | 5 | 5 |
+| 69 | `1473303013` | 5 | 5 |
+| 70 | `1959035201` | 5 | 5 |
+| 71 | `858536121` | 5 | 5 |
+| 72 | `964674798` | 5 | 9 |
+| 73 | `Arthas0v0` | 5 | 5 |
+| 74 | `CipherYin` | 5 | 5 |
+| 75 | `Creativelf` | 5 | 5 |
+| 76 | `Dr-yellow` | 5 | 5 |
+| 77 | `FrankChencc` | 5 | 5 |
+| 78 | `HaisenCx` | 5 | 5 |
+| 79 | `ImSingee` | 5 | 13 |
+| 80 | `JackCat1221` | 5 | 5 |
+| 81 | `JessieChen5` | 5 | 5 |
+| 82 | `Josh-hub01` | 5 | 5 |
+| 83 | `KeyHMX` | 5 | 5 |
+| 84 | `NorthernDream` | 5 | 5 |
+| 85 | `STAJJJ` | 5 | 5 |
+| 86 | `Shuning0312` | 5 | 5 |
+| 87 | `Sifotd` | 5 | 5 |
+| 88 | `TLwen114514` | 5 | 5 |
+| 89 | `WangEn` | 5 | 5 |
+| 90 | `WonderfulWan8` | 5 | 9 |
+| 91 | `Wzy-source` | 5 | 5 |
+| 92 | `Yolo-00` | 5 | 5 |
+| 93 | `Yunfei1982` | 5 | 5 |
+| 94 | `a6b017` | 5 | 13 |
+| 95 | `aiyoudiao` | 5 | 5 |
+| 96 | `ben100118` | 5 | 5 |
+| 97 | `blackdogTT` | 5 | 5 |
+| 98 | `caesear` | 5 | 5 |
+| 99 | `caocanx` | 5 | 5 |
+| 100 | `cdt3211` | 5 | 5 |
+| 101 | `chanhohn` | 5 | 9 |
+| 102 | `chefuny` | 5 | 5 |
+| 103 | `coderprepares` | 5 | 13 |
+| 104 | `dirtmelon` | 5 | 5 |
+| 105 | `dockershe` | 5 | 9 |
+| 106 | `dreamahouse` | 5 | 9 |
+| 107 | `flatcc` | 5 | 5 |
+| 108 | `gamble369` | 5 | 5 |
+| 109 | `hu-qi` | 5 | 9 |
+| 110 | `huangkuaikuai` | 5 | 5 |
+| 111 | `hundren` | 5 | 5 |
+| 112 | `jamie-ji` | 5 | 5 |
+| 113 | `jeff09-28` | 5 | 5 |
+| 114 | `jeffierw` | 5 | 5 |
+| 115 | `jiantao88` | 5 | 9 |
+| 116 | `kakuro9` | 5 | 5 |
+| 117 | `kiwi6185` | 5 | 5 |
+| 118 | `leon-kay` | 5 | 5 |
+| 119 | `littleLane` | 5 | 5 |
+| 120 | `lixb-v` | 5 | 5 |
+| 121 | `liyincode` | 5 | 5 |
+| 122 | `lulu546` | 5 | 5 |
+| 123 | `monnaliya` | 5 | 5 |
+| 124 | `mosida` | 5 | 5 |
+| 125 | `muuyao` | 5 | 5 |
+| 126 | `polariscx` | 5 | 5 |
+| 127 | `rzexin` | 5 | 5 |
+| 128 | `saveole` | 5 | 5 |
+| 129 | `shuhaoLIN` | 5 | 5 |
+| 130 | `smallbonelu` | 5 | 5 |
+| 131 | `sunshanpeng` | 5 | 5 |
+| 132 | `terry-hjj` | 5 | 5 |
+| 133 | `wiirhan` | 5 | 5 |
+| 134 | `windyund` | 5 | 5 |
+| 135 | `wmjchf` | 5 | 5 |
+| 136 | `wormchenli` | 5 | 9 |
+| 137 | `xqcheese` | 5 | 5 |
+| 138 | `yougongjiang` | 5 | 5 |
+| 139 | `zcy1024` | 5 | 5 |
+| 140 | `zhangmo8` | 5 | 5 |
+| 141 | `zhengjunxiang` | 5 | 13 |
+| 142 | `zhtkeepup` | 5 | 9 |
+| 143 | `newTap` | 4 | 4 |
+| 144 | `604137978` | 2.5 | 5 |
+| 145 | `AceLeeWinnie` | 2.5 | 2.5 |
+| 146 | `BerylYanjie` | 2.5 | 5 |
+| 147 | `Caseyz` | 2.5 | 5 |
+| 148 | `DukeDeng` | 2.5 | 5 |
+| 149 | `JasonStu` | 2.5 | 9 |
+| 150 | `Joejo` | 2.5 | 5 |
+| 151 | `KarasuShin` | 2.5 | 2.5 |
+| 152 | `LyricaQiang` | 2.5 | 18 |
+| 153 | `Raincal` | 2.5 | 2.5 |
+| 154 | `Winson-030` | 2.5 | 2.5 |
+| 155 | `XiaoMo-Donald` | 2.5 | 2.5 |
+| 156 | `YagamiNewLight` | 2.5 | 2.5 |
+| 157 | `Yaqioooong` | 2.5 | 5 |
+| 158 | `bcma2333` | 2.5 | 9 |
+| 159 | `bcyangxu` | 2.5 | 2.5 |
+| 160 | `billyma128` | 2.5 | 5 |
+| 161 | `chensid` | 2.5 | 2.5 |
+| 162 | `dark-Qy` | 2.5 | 2.5 |
+| 163 | `elliotxin` | 2.5 | 2.5 |
+| 164 | `fyh2001` | 2.5 | 2.5 |
+| 165 | `haobarry` | 2.5 | 2.5 |
+| 166 | `jerikchan` | 2.5 | 2.5 |
+| 167 | `jerryq1` | 2.5 | 2.5 |
+| 168 | `limitcool` | 2.5 | 2.5 |
+| 169 | `liulvcheng` | 2.5 | 5 |
+| 170 | `luyaoLee` | 2.5 | 5 |
+| 171 | `mercury-zy` | 2.5 | 9 |
+| 172 | `mundane799699` | 2.5 | 5 |
+| 173 | `newraina` | 2.5 | 2.5 |
+| 174 | `no5no6` | 2.5 | 2.5 |
+| 175 | `qq1456680570` | 2.5 | 2.5 |
+| 176 | `saltand` | 2.5 | 5 |
+| 177 | `soldcoin` | 2.5 | 6.5 |
+| 178 | `tiantianwork` | 2.5 | 2.5 |
+| 179 | `toleleYJL` | 2.5 | 5 |
+| 180 | `tristonchai` | 2.5 | 5 |
+| 181 | `w626w` | 2.5 | 2.5 |
+| 182 | `xiangergou` | 2.5 | 2.5 |
+| 183 | `xiaodingmao` | 2.5 | 5 |
+| 184 | `xiaowu55` | 2.5 | 5 |
+| 185 | `yodhcn` | 2.5 | 2.5 |
+| 186 | `zhuoqinyue` | 2.5 | 2.5 |
+| 187 | `ziicu2019` | 2.5 | 5 |
+
+### 无奖励
+
+共 70 人：
+
+| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+| 1 | `0xhutou` | 0 | 0 |
+| 2 | `0xsuxin` | 0 | 0 |
+| 3 | `404ll` | 0 | 0 |
+| 4 | `AhDEV-free` | 0 | 0 |
+| 5 | `AlexL0ng` | 0 | 0 |
+| 6 | `Alexzhuangyao` | 0 | 0 |
+| 7 | `BBK912` | 0 | 0 |
+| 8 | `Beavnvvv` | 0 | 0 |
+| 9 | `CodingGeoff` | 0 | 0 |
+| 10 | `Eric-Cart` | 0 | 0 |
+| 11 | `Fang-Lansheng` | 0 | 0 |
+| 12 | `GGbond-Romeo` | 0 | 0 |
+| 13 | `GeeekerK` | 0 | 0 |
+| 14 | `HealerOS` | 0 | 0 |
+| 15 | `HoseaLyu` | 0 | 0 |
+| 16 | `Justin-Xiang` | 0 | 0 |
+| 17 | `LeonXDH` | 0 | 0 |
+| 18 | `LotusLu777` | 0 | 0 |
+| 19 | `Minamogood` | 0 | 0 |
+| 20 | `Mira-mei` | 0 | 0 |
+| 21 | `MistoryChen` | 0 | 0 |
+| 22 | `Pithos23` | 0 | 0 |
+| 23 | `ShuxunoO` | 0 | 0 |
+| 24 | `Stackingrule` | 0 | 0 |
+| 25 | `TrueTechLabs` | 0 | 0 |
+| 26 | `Yolandatsai` | 0 | 2.5 |
+| 27 | `Zintoki` | 0 | 0 |
+| 28 | `aSpecialFatPanda` | 0 | 0 |
+| 29 | `azyliu` | 0 | 0 |
+| 30 | `bdingtech` | 0 | 0 |
+| 31 | `birdream` | 0 | 0 |
+| 32 | `bluehawana` | 0 | 2.5 |
+| 33 | `bytesloop` | 0 | 2.5 |
+| 34 | `channely` | 0 | 0 |
+| 35 | `charming-06` | 0 | 2.5 |
+| 36 | `code342` | 0 | 0 |
+| 37 | `dethan3` | 0 | 0 |
+| 38 | `dongyuanwai` | 0 | 2.5 |
+| 39 | `douglas-ou` | 0 | 0 |
+| 40 | `fragrans-maotou` | 0 | 0 |
+| 41 | `gnls666` | 0 | 5 |
+| 42 | `hbrls` | 0 | 0 |
+| 43 | `kangvcar` | 0 | 0 |
+| 44 | `kepplow` | 0 | 0 |
+| 45 | `litie2023` | 0 | 0 |
+| 46 | `liuzizi0505` | 0 | 0 |
+| 47 | `lsPrivateGit` | 0 | 0 |
+| 48 | `luAmy` | 0 | 5 |
+| 49 | `lzq2013asd` | 0 | 0 |
+| 50 | `memory713` | 0 | 0 |
+| 51 | `miawithcode` | 0 | 0 |
+| 52 | `nolank128` | 0 | 0 |
+| 53 | `peewee92` | 0 | 2.5 |
+| 54 | `pol117` | 0 | 0 |
+| 55 | `princejia` | 0 | 0 |
+| 56 | `qimalan` | 0 | 5 |
+| 57 | `ranxi2001` | 0 | 5 |
+| 58 | `reetyo` | 0 | 0 |
+| 59 | `renfengyi` | 0 | 0 |
+| 60 | `sajakx` | 0 | 0 |
+| 61 | `shaun17` | 0 | 2.5 |
+| 62 | `strong-to` | 0 | 0 |
+| 63 | `upupnoah` | 0 | 0 |
+| 64 | `wanna-wl` | 0 | 2.5 |
+| 65 | `wjq990112` | 0 | 0 |
+| 66 | `wureny` | 0 | 2.5 |
+| 67 | `yywhyting` | 0 | 0 |
+| 68 | `zhengbangbo` | 0 | 0 |
+| 69 | `zhong-shanfu` | 0 | 0 |
+| 70 | `zipingw` | 0 | 0 |

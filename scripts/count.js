@@ -26,7 +26,7 @@ function resolveCompletedEmoji(checked, outdated) {
 function compareMembers(a, b) {
   for (let i = 0; i < a.tasks.length; i++) {
     if (a.tasks[i].completed !== b.tasks[i].completed) {
-        return a.tasks[i].completed ? -1 : 1;
+      return a.tasks[i].completed ? -1 : 1;
     }
   }
 
