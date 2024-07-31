@@ -1,0 +1,23 @@
+[
+    {
+        "ticker": "USDC",
+        "img": "https://assets.coingecko.com/coins/images/6319/small/usdc.png",
+        "name": "USD Coin",
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "decimals": 6
+    },
+    {
+        "ticker": "DAI",
+        "img": "https://assets.coingecko.com/coins/images/9956/small/Badge_Dai.png",
+        "name": "Dai Stablecoin",
+        "address": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+        "decimals": 18
+    },
+    {
+        "ticker": "WETH",
+        "img": "https://assets.coingecko.com/coins/images/2518/small/weth.png",
+        "name": "Wrapped Ethereum",
+        "address": "0x4200000000000000000000000000000000000006",
+        "decimals": 18
+    }
+]
