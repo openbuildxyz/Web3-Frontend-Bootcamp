@@ -1,3 +1,27 @@
+# 🚀Tracks
+
+## For All Participants
+
+
+1. **DeFi for All**
+
+   DeFi, as the most mature application of blockchain, still has a long way to go to benefit the mainstream population. Here we encourage participants to contribute your outstanding DeFi solutions and provide a better financial system for humanity.
+
+2. **Innovative Infrastructure**
+
+   DID, ZKP, Oracle... all these bring another dimension of expansion to the blockchain ecosystem, and the ecosystem still craves more extensions. For example, in cross-chain messaging protocols, Oracle not only provides token prices but also more dynamic data.
+
+3. **NFTs, GameFi, and SocialFi**
+
+   For all creators, this is your world too! Blockchain thrives because of your work! Now we shouldn't stop; blockchain is a new technology stack for all fields, and you can build anything! Some ideas worth trying include NFT scanning tools, data analysis tools, games utilizing market NFTs, poker games on the blockchain, and more.
+
+4. **DAOs/Decentralized Communities**
+
+   Since the demand for governance in cryptocurrency has surged, the utility standards for DAOs have also risen. For our chaotic but eager-to-collaborate world, what is your solution to the problems of decentralized communities? Come provide your solutions to the public and make DAOs more applicable to a wider range of communities!
+
+5. **Blockchain Technologies that Make the World a Better Place**
+
+   The poor, the hungry, those without access to clean water, utilizing carbon credits to combat climate change... Blockchain is not just about cryptocurrency and technology, it's also about using its unique trust settings to bring more changes to people's lives. Courageously inspire us with your unique solutions and make our world a better place!
 # Project Submission Guidelines
 
 ## Submission Process
