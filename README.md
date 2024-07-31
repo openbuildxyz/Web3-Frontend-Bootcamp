@@ -68,7 +68,7 @@
 
 #### 前置操作
 
-先点击页面顶部右上角的「Fork」在自己空间中创建备份，随后将备份仓库 `git clone` 至本地，接下来的所有操作请在自己的仓库内完成。 
+先点击页面顶部右上角的「Fork」在自己空间中创建备份，随后将备份仓库 `git clone` 至本地，接下来的所有操作请在自己的仓库内完成。
 
 如果你不熟悉 Git 的操作，可以下载 [GitHub Desktop](https://desktop.github.com/)，使用 GUI 完成。
 
@@ -123,7 +123,7 @@
 | [Task 7](task/07_EVM++_Demo.md)          | web3小工具实践 |  50U（Token) | 跟随[教程](https://fanatical-krypton-122.notion.site/OpenBuild-Frontend-Bootcamp-5e62657ab5774786b1901bfd862e8e9a?pvs=4)学习EVM++，实现一个限流器demo   |
 | [Task 8](task/08_Hello_Morph.md)          | Hello Morph |    10U     |  在Morph Holesky上部署任意合约并在Morph浏览器上验证   |
 | [Task 9](task/09_Hello_TheGraph.md)          | Hello TheGraph |    10U     |  为NFTMarket创建一个The Graph子图   |
-| [Task 10](Projects/readme.md)    | 线上黑客松 |    1000U     |  构建你的web3项目   |
+| [Task 10](projects/readme.md)    | 线上黑客松 |    1000U     |  构建你的web3项目   |
 
 ## 参考资料
 

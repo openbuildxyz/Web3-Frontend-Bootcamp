@@ -1,7 +1,6 @@
-# 🚀Tracks
+## 🚀Tracks
 
-## For All Participants
-
+### For All Participants
 
 1. **DeFi for All**
 
@@ -22,16 +21,18 @@
 5. **Blockchain Technologies that Make the World a Better Place**
 
    The poor, the hungry, those without access to clean water, utilizing carbon credits to combat climate change... Blockchain is not just about cryptocurrency and technology, it's also about using its unique trust settings to bring more changes to people's lives. Courageously inspire us with your unique solutions and make our world a better place!
-# 💰Bonus
+
+## 💰Bonus
 
 * First Prize： 500u
-* Second prize： 300u 
-* Third prize： 200u 
-# Project Submission Guidelines
+* Second prize： 300u
+* Third prize： 200u
 
-## Submission Process
+## Project Submission Guidelines
 
-1. Enter the official [GitHub](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/blob/main/Projects/readme.md) - `Web3-Frontend-Bootcamp` repository of the hackathon.
+### Submission Process
+
+1. Enter the official [GitHub](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/blob/main/projects/readme.md) - `Web3-Frontend-Bootcamp` repository of the hackathon.
 
 2. Select "**Fork**" to copy the official repository to your personal GitHub repository;
 
