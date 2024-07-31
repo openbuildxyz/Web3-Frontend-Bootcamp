@@ -415,7 +415,9 @@ function generateRewardTable(rewards) {
     let usernameMdStr = `\`${reward.username}\``;
 
     if (reward.merged > 0 || reward.total > 0) {
-      usernameMdStr = `[${usernameMdStr}](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=${encodeURIComponent('is:pr+author:' + reward.username + '+is:closed')})`;
+      const qs = ['is:pr', `author:${reward.username}`, 'is:closed'].map(p => encodeURIComponent(p)).join('+');
+
+      usernameMdStr = `[${usernameMdStr}](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=${qs})`;
     }
 
     return `| ${uidx + 1} | ${usernameMdStr} | ${reward.merged} | ${reward.total} |`;
