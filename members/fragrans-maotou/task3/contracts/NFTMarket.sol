@@ -6,7 +6,6 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol"; //访问控制
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-
 contract NFTMarket is Ownable {
     struct Listing {
         uint256 tokenId;
@@ -30,8 +29,12 @@ contract NFTMarket is Ownable {
     IERC20 public paymentToken;
     IERC721 public nft721Token;
 
-    constructor(address _paymentToken, address _nft721Contract) Ownable(msg.sender) {
+    constructor( address _paymentToken ) Ownable(msg.sender) {
         paymentToken = IERC20(_paymentToken);
+    }
+
+    // 自由的设置ERC721合约地址，不在指定一个Address
+    function setNFT721Contract(address _nft721Contract) external onlyOwner {
         nft721Token = IERC721(_nft721Contract);
     }
 
@@ -41,10 +44,7 @@ contract NFTMarket is Ownable {
     uint256[] public listedTokenIds;
 
     // 上架NFT
-    function listNFT(
-        uint256 tokenId,
-        uint256 price
-    ) external {
+    function listNFT(uint256 tokenId, uint256 price) external {
         //检验price是否大于0
         require(price > 0, "price must gt than zero");
         // 访问控制
@@ -52,14 +52,16 @@ contract NFTMarket is Ownable {
             msg.sender == nft721Token.ownerOf(tokenId),
             "You must own the NFT"
         );
-         // 授权
-        require(nft721Token.getApproved(tokenId) == address(this) || nft721Token.isApprovedForAll(msg.sender, address(this)), "Contract not approved");
-
-
+        // 授权
+        require(
+            nft721Token.getApproved(tokenId) == address(this) ||
+                nft721Token.isApprovedForAll(msg.sender, address(this)),
+            "Contract not approved"
+        );
 
         // 上架NFT，从用户转到合约
         nft721Token.transferFrom(msg.sender, address(this), tokenId);
-        
+
         // 存一个全部的数据
         listings[tokenId] = Listing({
             tokenId: tokenId,
@@ -74,10 +76,8 @@ contract NFTMarket is Ownable {
     }
 
     // 购买NFT
-    function buyNFT(
-        uint256 tokenId
-    ) external payable {
-       Listing memory listing = listings[tokenId];
+    function buyNFT(uint256 tokenId) external payable {
+        Listing memory listing = listings[tokenId];
         require(listing.price > 0, "NFT is not listed");
 
         uint256 price = listing.price;
@@ -88,7 +88,10 @@ contract NFTMarket is Ownable {
         require(seller != address(0), "Invalid seller address");
 
         // Perform the payment transfer before removing the listing
-        require(paymentToken.transferFrom(msg.sender, seller, price), "Payment failed");
+        require(
+            paymentToken.transferFrom(msg.sender, seller, price),
+            "Payment failed"
+        );
 
         // Remove listing after successful payment
         _removeListing(tokenId);
@@ -119,7 +122,7 @@ contract NFTMarket is Ownable {
             allListings[i] = listings[tokenId];
         }
         return allListings;
-    } 
+    }
 
     function _removeListing(uint256 tokenId) internal {
         delete listings[tokenId];
