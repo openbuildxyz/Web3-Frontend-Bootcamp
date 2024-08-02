@@ -23,14 +23,19 @@ jobs:
         with:
           repository: ${{ env.REPO_NAME }}
           ref: ${{ env.REPO_BRANCH }}
+          fetch-depth: 0
           # token: ${{ secrets.GH_TOKEN }}
           persist-credentials: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 14.15.3
+      - name: Install npm dependencies
+        run: npm i
+      - name: Count students
+        run: npm run pmc count:student git
       - name: Count task completion
-        run: npm i && npm run pmc count:student && node scripts/count.js
+        run: node scripts/count.js
       - name: Commit changes
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
