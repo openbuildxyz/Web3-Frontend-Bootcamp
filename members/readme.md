@@ -155,7 +155,7 @@
 | 137 | [`zhangmo8`](zhangmo8) | 🟢 | 🟢 | 🟢 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 5 |
 | 138 | [`zhengjunxiang`](zhengjunxiang) | 🟢 | 🟢 | 🟢 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 5 |
 | 139 | [`zhtkeepup`](zhtkeepup) | 🟢 | 🟢 | 🟢 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 5 |
-| 140 | [`fragrans-maotou`](fragrans-maotou) | 🟢 | 🔵 | 🔴 | 🔵 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 0 |
+| 140 | [`fragrans-maotou`](fragrans-maotou) | 🟢 | 🔵 | 🔴 | 🔵 | 🔴 | 🔴 | 🔴 | 🔵 | 🔴 | 🔴 | 0 |
 | 141 | [`wdonsong`](wdonsong) | 🟢 | 🟢 | 🔴 | 🟢 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 6.5 |
 | 142 | [`BerylYanjie`](BerylYanjie) | 🟢 | 🟢 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🟢 | 🔴 | 🔴 | 2.5 |
 | 143 | [`newraina`](newraina) | 🟢 | 🟢 | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 🟢 | 🔴 | 🔴 | 2.5 |
