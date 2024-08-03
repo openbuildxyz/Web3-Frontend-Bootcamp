@@ -42,7 +42,7 @@ class Aspect implements IPostContractCallJP {
     const storagePrefix: string = `${constractAddress}-${from}`;
 
     // 获取当前时间
-    const blockTimeBytes = sys.hostApi.runtimeContext.get('block.header.number');
+    const blockTimeBytes = sys.hostApi.runtimeContext.get('block.header.timestamp');
     const blockTime = Protobuf.decode<UintData>(blockTimeBytes, UintData.decode).data;
 
     // 获取用户上次点击的时间
