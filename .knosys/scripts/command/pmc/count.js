@@ -1,7 +1,12 @@
+const { type: getOsType } = require('os');
 const { join: joinPath } = require('path');
 const { readdirSync, statSync, existsSync } = require('fs');
 const { execSync } = require('child_process');
 const { plus } = require('@ntks/toolbox');
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+
 const { resolveRootPath, resolvePmcRootPath, resolvePmcDataPath, readData, saveData } = require('../../helper');
 
 const repoRoot = resolveRootPath();
@@ -17,6 +22,9 @@ const EXCLUDED_MEMBERS = ['github_id'/*, 'Beavnvvv'*/];
 
 const perPage = 100;
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 function isDirNameValid(dirName) {
   return !dirName.startsWith('.') && !EXCLUDED_MEMBERS.includes(dirName);
 }
@@ -25,14 +33,61 @@ function isRegistered(dirPath) {
   return existsSync(joinPath(dirPath, 'readme.md')) || existsSync(joinPath(dirPath, 'README.md'));
 }
 
-function resolveTask(memberDirPath, taskNum) {
-  const taskDirName = `task${taskNum}`;
-
-  return { name: taskDirName, completed: existsSync(joinPath(memberDirPath, taskDirName)) };
+function execGit(cmd) {
+  return execSync(cmd, { cwd: repoRoot, encoding: 'utf8' });
 }
 
-function countStudents() {
+function readTaskMetadata() {
+  return readData(joinPath(pmcDataRoot, 'metadata.json')).task;
+}
+
+function resolveTask({ rewardDeadline, studentRewardPatches, readingModifiedTimeBy }, memberDirPath, memberDirName, taskNum) {
+  const taskDirName = `task${taskNum}`;
+  const taskDirPath = joinPath(memberDirPath, taskDirName);
+  const task = { name: taskDirName, completed: existsSync(taskDirPath), rewardable: false };
+
+  if (task.completed) {
+    let modifiedAt;
+
+    if (readingModifiedTimeBy === 'git') {
+      const targetPath = `members/${memberDirName}/${taskDirName}`;
+      const paths = [`${targetPath}/readme.md`, `${targetPath}/README.md`, targetPath];
+
+      for (let i = 0; i < paths.length; i++) {
+        modifiedAt = execGit(`git log -1 --follow --pretty=format:"%cd" -- ${paths[i]}`);
+
+        if (modifiedAt) {
+          break;
+        }
+      }
+    } else if (readingModifiedTimeBy === 'fs') {
+      const paths = [joinPath(taskDirPath, 'readme.md'), joinPath(taskDirPath, 'README.md'), taskDirPath];
+
+      for (let i = 0; i < paths.length; i++) {
+        if (existsSync(paths[i])) {
+          modifiedAt = statSync(paths[i]).mtime;
+          break;
+        }
+      }
+    }
+
+    if (modifiedAt) {
+      task.modifiedAt = dayjs(modifiedAt).tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss ZZ');
+
+      console.log(`[KNOSYS_INFO] ${readingModifiedTimeBy} \`members/${memberDirName}/${taskDirName}\` modified at`, task.modifiedAt);
+
+      if (studentRewardPatches[memberDirName] && studentRewardPatches[memberDirName][taskDirName] === true || dayjs(task.modifiedAt).tz('Asia/Shanghai').isBefore(dayjs(rewardDeadline).tz('Asia/Shanghai'))) {
+        task.rewardable = true;
+      }
+    }
+  }
+
+  return task;
+}
+
+function countStudents(readingModifiedTimeBy = getOsType() === 'Linux' ? 'fs' : 'git') {
   const MEMBER_ROOT = joinPath(repoRoot, 'members');
+  const taskMetadata = { ...readTaskMetadata(), readingModifiedTimeBy };
 
   const studentMap = {};
   const studentSeq = [];
@@ -47,17 +102,13 @@ function countStudents() {
     studentMap[dirName] = {
       id: dirName,
       registered: isRegistered(dirPath),
-      tasks: Array.from(new Array(9)).map((_, i) => resolveTask(dirPath, i + 1)),
+      tasks: Array.from(new Array(9)).map((_, i) => resolveTask(taskMetadata, dirPath, dirName, i + 1)),
     };
 
     studentSeq.push(dirName);
   });
 
   saveData(cachedStudentsFilePath, { people: studentMap, sequence: studentSeq });
-}
-
-function execGit(cmd) {
-  return execSync(cmd, { cwd: repoRoot, encoding: 'utf8' });
 }
 
 function resolveRepoBasic() {
@@ -192,7 +243,7 @@ function countOpenTaskPrs() {
   saveData(cachedOpenPrsFilePath, openPrMaps);
 }
 
-async function countPrs(state = 'merged', token = process.env.PMC_GITHUB_TOKEN) {
+async function countPrs(state = 'merged', token = process.env.OPENBUILD_PMC_GITHUB_TOKEN) {
   if (state === 'all') {
     return countAllPrs(token);
   }
@@ -302,12 +353,12 @@ function resolveStudentNotMergedPrMap() {
   }, {});
 }
 
-function countRewards() {
+function resolveStudentRewards() {
   const notMergedMap = resolveStudentNotMergedPrMap();
   const { people, sequence } = readData(cachedStudentsFilePath);
-  const { task: { rewards: taskRewards } } = readData(joinPath(pmcDataRoot, 'metadata.json'));
+  const { rewards: taskRewards } = readTaskMetadata();
 
-  const rows = sequence.map((username, uidx) => {
+  return sequence.map(username => {
     const student = people[username];
 
     let mergedReward = 0;
@@ -322,33 +373,93 @@ function countRewards() {
         }
 
         if (task.completed) {
-          mergedReward = plus(mergedReward, reward);
+          if (task.rewardable) {
+            mergedReward = plus(mergedReward, reward);
+          }
         } else if (notMergedMap[username] && notMergedMap[username][task.name]) {
           notMergedReward = plus(notMergedReward, reward);
         }
       });
     }
 
-    const totalReward = plus(mergedReward, notMergedReward);
+    return {
+      username,
+      merged: mergedReward,
+      total: plus(mergedReward, notMergedReward),
+    }
+  });
+}
 
-    let usernameMdStr = `\`${username}\``;
+function resolveGroupedStudentRewards(rewards, groupByMerged = false) {
+  const sortByKey = groupByMerged === true ? 'merged' : 'total';
+  const totalAmount = readTaskMetadata().rewards.filter(amount => amount > 0).reduce((p, c) => plus(p, c), 0);
+  const result = { all: [], part: [], none: [] };
 
-    if (totalReward > 0) {
-      usernameMdStr = `🟢 ${usernameMdStr}`;
+  rewards.slice().sort((a, b) => a[sortByKey] > b[sortByKey] ? -1 : 1).forEach(r => {
+    const amount = r[sortByKey];
+
+    if (amount === totalAmount) {
+      result.all.push(r);
+    } else if (amount > 0) {
+      result.part.push(r);
     } else {
-      usernameMdStr = `🔴 ${usernameMdStr}`;
+      result.none.push(r);
+    }
+  });
+
+  return result;
+}
+
+function generateRewardTable(rewards) {
+  const rows = rewards.map((reward, uidx) => {
+    let usernameMdStr = `\`${reward.username}\``;
+
+    if (reward.merged > 0 || reward.total > 0) {
+      const qs = ['is:pr', `author:${reward.username}`, 'is:closed'].map(p => encodeURIComponent(p)).join('+');
+
+      usernameMdStr = `[${usernameMdStr}](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=${qs})`;
     }
 
-    return `| ${uidx + 1} | ${usernameMdStr} | ${mergedReward} | ${totalReward} |`
+    return `| ${uidx + 1} | ${usernameMdStr} | ${reward.merged} | ${reward.total} |`;
   });
+
+  return `| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
+| ---: | --- | ---: | ---: |
+${rows.join('\n')}`;
+}
+
+function generateGroupedRewardSections(groupedRewards, text) {
+  return `## 按已${text} PR 计算
+
+### 全部${text}且有奖励
+
+共 ${groupedRewards.all.length} 人：
+
+${generateRewardTable(groupedRewards.all)}
+
+### 部分${text}且有奖励
+
+共 ${groupedRewards.part.length} 人：
+
+${generateRewardTable(groupedRewards.part)}
+
+### 无奖励
+
+共 ${groupedRewards.none.length} 人：
+
+${generateRewardTable(groupedRewards.none)}`
+}
+
+function countRewards() {
+  const studentRewards = resolveStudentRewards();
 
   saveData(joinPath(resolvePmcRootPath(), 'reward.md'), `# 任务奖励
 
-学员名前面有「🔴」代表无奖励。
+共 ${studentRewards.length} 人。
 
-| 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
-| ---: | --- | ---: | ---: |
-${rows.join('\n')}
+${generateGroupedRewardSections(resolveGroupedStudentRewards(studentRewards), '提交')}
+
+${generateGroupedRewardSections(resolveGroupedStudentRewards(studentRewards, true), '合并')}
 `);
 }
 
