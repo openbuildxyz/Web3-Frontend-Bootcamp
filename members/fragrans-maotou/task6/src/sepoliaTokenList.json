@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "USDC",
+    "img": "https://cdn.moralis.io/eth/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.png",
+    "name": "USD Coin",
+    "address": "0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8",
+    "decimals": 6
+  },
+  {
+    "ticker": "DAI",
+    "img": "https://cdn.moralis.io/eth/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+    "name": "Dai Stablecoin",
+    "address": "0xFF34B3d4Aee8ddCd6F9AFFFB6Fe49bD371b8a357",
+    "decimals": 18
+  },
+  {
+    "ticker": "LINK",
+    "img": "https://cdn.moralis.io/eth/0x514910771af9ca656af840dff83e8264ecf986ca.png",
+    "name": "Chainlink",
+    "address": "0x545e0082a80eF1383fe140934BDDC7D3897c196A",
+    "decimals": 18
+  },
+  {
+    "ticker": "USDT",
+    "img": "https://cdn.moralis.io/eth/0xdac17f958d2ee523a2206206994597c13d831ec7.png",
+    "name": "Tether USD",
+    "address": "0x7f11f79DEA8CE904ed0249a23930f2e59b43a385",
+    "decimals": 6
+  },
+  {
+    "ticker": "WETH",
+    "img": "https://cdn.moralis.io/eth/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png",
+    "name": "Wrapped Ethereum",
+    "address": "0x1ef5F52BdBe11Af2377C58ecC914A8c72Ea807cF",
+    "decimals": 18
+  },
+  {
+    "ticker": "WBTC",
+    "img": "https://cdn.moralis.io/eth/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599.png",
+    "name": "Wrapped Bitcoin",
+    "address": "0x21a51A2EF05c5d1e814cd9CEb35b570b789feE17",
+    "decimals": 8
+  }
+]
