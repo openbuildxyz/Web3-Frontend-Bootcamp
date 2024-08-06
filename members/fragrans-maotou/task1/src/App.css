@@ -1,0 +1,41 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.border{
+  border: 1px rgb(0, 0, 0) solid;
+  padding: 10px;
+  margin: 10px 5px 10px 0;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+.grid{
+  display: grid;
+}
+.grid-cols-1{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.gap-2{
+  gap: 0.5rem;
+}
+
+.line-through{
+  text-decoration: line-through;
+}
+
+.text-slate-500{
+  color: rgb(107, 114, 128);
+}
+
+.justify-between{
+  justify-content: space-between;
+}

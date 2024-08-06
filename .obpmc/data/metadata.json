@@ -1,0 +1,13 @@
+{
+  "task": {
+    "rewards": [2.5, 2.5, 4, 4, 5, 5, -1, 10, 10],
+    "rewardDeadline": "2024-07-15 23:59:59 +0800",
+    "studentRewardPatches": {
+      "coolberwin": { "task7": true, "task8": true },
+      "DeJeune": { "task9": true },
+      "linhaishe": { "task3": true },
+      "newTap": { "task3": true },
+      "zhangolve": { "task9": true }
+    }
+  }
+}
