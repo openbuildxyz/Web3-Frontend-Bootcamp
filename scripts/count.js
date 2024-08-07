@@ -71,6 +71,10 @@ ${rows.join('\n')}`;
 function generateResult() {
   return `# 学员信息
 
+感谢各位的积极参与，下面就一些信息进行公示——
+
+## 任务奖励
+
 报名与完成情况统计如下面表格所示，其中「奖励」的计算不包含：
 
 - 未提交报名信息的；
@@ -86,6 +90,16 @@ function generateResult() {
 - 🔵——超过截止日期提交 PR 并被合并（无奖励）。
 
 ${generateSummaryTable()}
+
+## 其他奖励
+
+| 学员 | 事项 | 奖励（U） |
+| --- | --- | ---: |
+| \`linghuccc\` | 笔记激励 | 100 |
+| \`lispking\` | 知识分享激励 | 20 |
+| \`ourai\` | 运营➕笔记激励 | 480 |
+| \`xiangnuans\` | 笔记激励 | 100 |
+| \`zhangloveyan\` | 笔记激励 | 100 |
 `;
 }
 
