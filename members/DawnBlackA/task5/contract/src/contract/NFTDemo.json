@@ -1,0 +1,11 @@
+{
+    "name": "NFTDemo #1",
+    "description": "TRY",
+    "image": "ipfs://QmcT3StTLdzRcSseSWUZMzJnyoPnZPqEhC7SCH93YGx7XC",
+    "attributes": [
+        {
+            "trait_type": "student",
+            "value": "UJS Blockchain"
+        }
+    ]
+}
