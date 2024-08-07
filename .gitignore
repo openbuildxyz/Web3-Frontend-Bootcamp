@@ -34,4 +34,5 @@ cache
 .knosys/caches
 .obpmc/data/*
 !.obpmc/data/metadata.*
+!.obpmc/data/unmerged.*
 !.obpmc/data/rewards.*

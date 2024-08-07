@@ -5,12 +5,13 @@
 ## task1
 
 <details>
-<summary>共 192 人提交。</summary>
+<summary>共 194 人提交。</summary>
 
-已合并 179 人：
+已合并 182 人：
 
 - [0x4E33](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/0x4E33/task1)
 - [0xorz](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/0xorz/task1)
+- [0xsuxin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/0xsuxin/task1)
 - [1473303013](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/1473303013/task1)
 - [1959035201](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/1959035201/task1)
 - [321llljjjfff123](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/321llljjjfff123/task1)
@@ -27,6 +28,7 @@
 - [Creativelf](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Creativelf/task1)
 - [DawnBlackA](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/DawnBlackA/task1)
 - [Debbl](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Debbl/task1)
+- [Dr-yellow](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Dr-yellow/task1)
 - [Draculabo](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Draculabo/task1)
 - [DukeDeng](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/DukeDeng/task1)
 - [FrankChencc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/FrankChencc/task1)
@@ -97,6 +99,7 @@
 - [flatcc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flatcc/task1)
 - [flexibility2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flexibility2/task1)
 - [flytam](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flytam/task1)
+- [fragrans-maotou](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/fragrans-maotou/task1)
 - [fyh2001](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/fyh2001/task1)
 - [gamble369](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/gamble369/task1)
 - [haobarry](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/haobarry/task1)
@@ -189,9 +192,8 @@
 - [zpjayyy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zpjayyy/task1)
 - [zzworker](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zzworker/task1)
 
-未合并 13 人：
+未合并 12 人：
 
-- [Dr-yellow](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1260)
 - [bytesloop](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/390)
 - [charming-06](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/825)
 - [dongyuanwai](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/710)
@@ -212,7 +214,7 @@
 <details>
 <summary>共 175 人提交。</summary>
 
-已合并 145 人：
+已合并 146 人：
 
 - [0x4E33](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/0x4E33/task2)
 - [0xorz](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/0xorz/task2)
@@ -229,6 +231,7 @@
 - [DawnBlackA](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/DawnBlackA/task2)
 - [DeJeune](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/DeJeune/task2)
 - [Debbl](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Debbl/task2)
+- [Dr-yellow](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Dr-yellow/task2)
 - [Draculabo](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Draculabo/task2)
 - [FrankChencc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/FrankChencc/task2)
 - [Georgiafab](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Georgiafab/task2)
@@ -360,12 +363,11 @@
 - [zpjayyy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zpjayyy/task2)
 - [zzworker](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zzworker/task2)
 
-未合并 30 人：
+未合并 29 人：
 
 - [604137978](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/709)
 - [BerylYanjie](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1269)
 - [Caseyz](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/553)
-- [Dr-yellow](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1261)
 - [DukeDeng](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/744)
 - [JasonStu](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/253)
 - [Joejo](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/523)
@@ -398,9 +400,9 @@
 ## task3
 
 <details>
-<summary>共 83 人提交。</summary>
+<summary>共 84 人提交。</summary>
 
-已合并 60 人：
+已合并 62 人：
 
 - [321llljjjfff123](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/321llljjjfff123/task3)
 - [Aseisman](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Aseisman/task3)
@@ -429,6 +431,7 @@
 - [coolberwin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/coolberwin/task3)
 - [flexibility2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flexibility2/task3)
 - [flytam](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flytam/task3)
+- [fragrans-maotou](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/fragrans-maotou/task3)
 - [humbornjo](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/humbornjo/task3)
 - [huzhengen](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/huzhengen/task3)
 - [hwwang2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/hwwang2/task3)
@@ -441,6 +444,7 @@
 - [linhaishe](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/linhaishe/task3)
 - [lispking](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/lispking/task3)
 - [liudafengshu](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/liudafengshu/task3)
+- [newTap](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/newTap/task3)
 - [ourai](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/ourai/task3)
 - [posuihushui](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/posuihushui/task3)
 - [qiaopengjun5162](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/qiaopengjun5162/task3)
@@ -463,7 +467,7 @@
 - [zpjayyy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zpjayyy/task3)
 - [zzworker](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zzworker/task3)
 
-未合并 23 人：
+未合并 22 人：
 
 - [964674798](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/804)
 - [ImSingee](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/984)
@@ -481,7 +485,6 @@
 - [hu-qi](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/925)
 - [jiantao88](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/582)
 - [mercury-zy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/890)
-- [newTap](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1223)
 - [sajakx](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1276)
 - [soldcoin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/769)
 - [threshermagnus484159](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1195)
@@ -637,19 +640,21 @@
 ## task7
 
 <details>
-<summary>共 44 人提交。</summary>
+<summary>共 48 人提交。</summary>
 
-已合并 40 人：
+已合并 45 人：
 
 - [1959035201](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/1959035201/task7)
 - [321llljjjfff123](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/321llljjjfff123/task7)
 - [Aseisman](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Aseisman/task7)
 - [BerylYanjie](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/BerylYanjie/task7)
 - [Chen-Lun-Hao](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Chen-Lun-Hao/task7)
+- [DeJeune](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/DeJeune/task7)
 - [Georgiafab](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Georgiafab/task7)
 - [LittleMoreInteresting](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/LittleMoreInteresting/task7)
 - [Mika-Lahtinen](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Mika-Lahtinen/task7)
 - [TomatoDroid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/TomatoDroid/task7)
+- [Tsuizen](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Tsuizen/task7)
 - [Wujerry](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Wujerry/task7)
 - [aliyan404](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/aliyan404/task7)
 - [anderfib](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/anderfib/task7)
@@ -659,16 +664,19 @@
 - [coolberwin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/coolberwin/task7)
 - [flexibility2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flexibility2/task7)
 - [flytam](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flytam/task7)
+- [fragrans-maotou](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/fragrans-maotou/task7)
 - [huzhengen](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/huzhengen/task7)
 - [hwwang2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/hwwang2/task7)
 - [joy-joy-joy-joy-joy-joy-joy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/joy-joy-joy-joy-joy-joy-joy/task7)
 - [keyding](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/keyding/task7)
 - [knit-zhang](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/knit-zhang/task7)
+- [limsenkeat](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/limsenkeat/task7)
 - [linghuccc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/linghuccc/task7)
 - [lispking](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/lispking/task7)
 - [liudafengshu](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/liudafengshu/task7)
 - [newraina](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/newraina/task7)
 - [ourai](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/ourai/task7)
+- [rzexin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/rzexin/task7)
 - [serencc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/serencc/task7)
 - [sheldon-xc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/sheldon-xc/task7)
 - [threshermagnus484159](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/threshermagnus484159/task7)
@@ -682,10 +690,9 @@
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zhangolve/task7)
 - [zhouBoom](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zhouBoom/task7)
 
-未合并 4 人：
+未合并 3 人：
 
 - [0x4E33](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/902)
-- [DeJeune](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1318)
 - [K-tang-mkv](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1104)
 - [Yaqioooong](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1314)
 
@@ -694,9 +701,7 @@
 ## task8
 
 <details>
-<summary>共 45 人提交。</summary>
-
-已合并 44 人：
+共 47 人提交：
 
 - [321llljjjfff123](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/321llljjjfff123/task8)
 - [Aseisman](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Aseisman/task8)
@@ -715,6 +720,7 @@
 - [carola-niu](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/carola-niu/task8)
 - [choizhang](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/choizhang/task8)
 - [coconal](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/coconal/task8)
+- [coolberwin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/coolberwin/task8)
 - [flexibility2](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flexibility2/task8)
 - [flytam](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/flytam/task8)
 - [gunksd](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/gunksd/task8)
@@ -723,10 +729,12 @@
 - [joy-joy-joy-joy-joy-joy-joy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/joy-joy-joy-joy-joy-joy-joy/task8)
 - [keyding](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/keyding/task8)
 - [knit-zhang](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/knit-zhang/task8)
+- [limsenkeat](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/limsenkeat/task8)
 - [linghuccc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/linghuccc/task8)
 - [lispking](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/lispking/task8)
 - [liudafengshu](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/liudafengshu/task8)
 - [ourai](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/ourai/task8)
+- [posuihushui](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/posuihushui/task8)
 - [qiaopengjun5162](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/qiaopengjun5162/task8)
 - [serencc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/serencc/task8)
 - [sheldon-xc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/sheldon-xc/task8)
@@ -743,21 +751,16 @@
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zhangolve/task8)
 - [zhouBoom](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zhouBoom/task8)
 
-未合并 1 人：
-
-- [coolberwin](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1301)
-
 </details>
 
 ## task9
 
 <details>
-<summary>共 34 人提交。</summary>
-
-已合并 33 人：
+共 35 人提交：
 
 - [Aseisman](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Aseisman/task9)
 - [Chen-Lun-Hao](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Chen-Lun-Hao/task9)
+- [DeJeune](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/DeJeune/task9)
 - [Georgiafab](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Georgiafab/task9)
 - [TomatoDroid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/TomatoDroid/task9)
 - [Wujerry](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/Wujerry/task9)
@@ -774,6 +777,7 @@
 - [joy-joy-joy-joy-joy-joy-joy](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/joy-joy-joy-joy-joy-joy-joy/task9)
 - [keyding](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/keyding/task9)
 - [knit-zhang](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/knit-zhang/task9)
+- [limsenkeat](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/limsenkeat/task9)
 - [linghuccc](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/linghuccc/task9)
 - [lispking](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/lispking/task9)
 - [liudafengshu](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/liudafengshu/task9)
@@ -789,9 +793,5 @@
 - [zer0fire](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zer0fire/task9)
 - [zhangloveyan](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zhangloveyan/task9)
 - [zhangolve](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/tree/main/members/zhangolve/task9)
-
-未合并 1 人：
-
-- [DeJeune](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pull/1320)
 
 </details>

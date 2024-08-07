@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const { resolve: resolvePath, join: joinPath } = require('path');
-const { plus } = require('@ntks/toolbox');
 const { readData, saveData } = require('@knosys/sdk');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
@@ -11,14 +10,15 @@ const rootPath = resolvePath(__dirname, '../');
 const pmcDataPath = joinPath(rootPath, '.obpmc', 'data');
 const { people: studentMap, sequence: studentSeq } = readData(joinPath(pmcDataPath, 'students.json'));
 const rewardMap = readData(joinPath(pmcDataPath, 'rewards.json'));
-const { task: { rewards: taskRewards, rewardDeadline } } = readData(joinPath(pmcDataPath, 'metadata.json'));
+const unmergedMap = readData(joinPath(pmcDataPath, 'unmerged.json'));
+const { task: { rewardDeadline } } = readData(joinPath(pmcDataPath, 'metadata.json'));
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-function resolveCompletedEmoji(checked, outdated) {
+function resolveCompletedEmoji(checked, unmerged, outdated) {
   if (checked !== true) {
-    return '🔴';
+    return unmerged ? '🟡' : '🔴';
   }
 
   return outdated === true ? '🔵' : '🟢';
@@ -58,7 +58,7 @@ function resolveSortedSequence() {
 function generateSummaryTable() {
   const rows = resolveSortedSequence().map((id, idx) => {
     const student = studentMap[id];
-    const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed, rewardable }) => resolveCompletedEmoji(completed, !rewardable)));
+    const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ name, completed, rewardable }) => resolveCompletedEmoji(completed, !!(unmergedMap[id] && unmergedMap[id][name]), !rewardable)));
 
     return `| ${idx + 1} | ${cols.join(' | ')} | ${rewardMap[id].total} |`;
   });
@@ -86,6 +86,7 @@ function generateResult() {
 任务完成状态说明：
 
 - 🔴——尚未提交或未合并 PR；
+- 🟡——截止日期内提交 PR 且未合并（有奖励）；
 - 🟢——截止日期内提交 PR 并被合并（有奖励）；
 - 🔵——超过截止日期提交 PR 并被合并（无奖励）。
 

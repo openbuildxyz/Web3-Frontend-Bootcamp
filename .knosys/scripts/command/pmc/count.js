@@ -290,6 +290,20 @@ function countReviewers() {
   saveData(joinPath(resolvePmcRootPath(), 'reviewer.md'), `${segments.join('\n')}\n`);
 }
 
+function resolveStudentNotMergedPrMap() {
+  return Object.entries(readData(cachedOpenPrsFilePath)).reduce((p, [taskNum, prs]) => {
+    prs.forEach(({ user }) => {
+      if (!p[user]) {
+        p[user] = {};
+      }
+
+      p[user][taskNum] = true;
+    });
+
+    return p;
+  }, {});
+}
+
 function countTasks() {
   const openPrMaps = readData(cachedOpenPrsFilePath);
   const { people: studentMap, sequence: studentSeq } = readData(cachedStudentsFilePath);
@@ -336,21 +350,8 @@ function countTasks() {
     taskSections.push(...segments);
   });
 
+  saveData(joinPath(pmcDataRoot, 'unmerged.json'), resolveStudentNotMergedPrMap());
   saveData(joinPath(resolvePmcRootPath(), 'task.md'), `# 任务提交情况\n\n点击三角箭头查看详情。\n${taskSections.join('\n')}\n`);
-}
-
-function resolveStudentNotMergedPrMap() {
-  return Object.entries(readData(cachedOpenPrsFilePath)).reduce((p, [taskNum, prs]) => {
-    prs.forEach(({ user }) => {
-      if (!p[user]) {
-        p[user] = {};
-      }
-
-      p[user][taskNum] = true;
-    });
-
-    return p;
-  }, {});
 }
 
 function resolveStudentRewards() {
