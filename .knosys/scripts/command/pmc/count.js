@@ -453,6 +453,7 @@ ${generateRewardTable(groupedRewards.none)}`
 function countRewards() {
   const studentRewards = resolveStudentRewards();
 
+  saveData(joinPath(pmcDataRoot, 'rewards.json'), studentRewards.reduce((p, { username, ...others }) => ({ ...p, [username]: others }), {}));
   saveData(joinPath(resolvePmcRootPath(), 'reward.md'), `# 任务奖励
 
 共 ${studentRewards.length} 人。

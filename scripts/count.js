@@ -10,6 +10,7 @@ const timezone = require('dayjs/plugin/timezone');
 const rootPath = resolvePath(__dirname, '../');
 const pmcDataPath = joinPath(rootPath, '.obpmc', 'data');
 const { people: studentMap, sequence: studentSeq } = readData(joinPath(pmcDataPath, 'students.json'));
+const rewardMap = readData(joinPath(pmcDataPath, 'rewards.json'));
 const { task: { rewards: taskRewards, rewardDeadline } } = readData(joinPath(pmcDataPath, 'metadata.json'));
 
 dayjs.extend(utc);
@@ -58,20 +59,11 @@ function generateSummaryTable() {
   const rows = resolveSortedSequence().map((id, idx) => {
     const student = studentMap[id];
     const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ completed, rewardable }) => resolveCompletedEmoji(completed, !rewardable)));
-    const rewards = student.registered ? student.tasks.reduce((total, task, idx) => {
-      const reward = taskRewards[idx];
 
-      if (task.rewardable && reward > 0) {
-        return plus(total, reward);
-      }
-
-      return total;
-    }, 0) : 0;
-
-    return `| ${idx + 1} | ${cols.join(' | ')} | ${rewards} |`;
+    return `| ${idx + 1} | ${cols.join(' | ')} | ${rewardMap[id].total} |`;
   });
 
-  return `| 序号 | 学员 | 报名 | task1 | task2 | task3 | task4 | task5 | task6 | task7 | task8 | task9 | 奖励（U） |
+  return `| 序号 | 学员 | 报名 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | 奖励（U） |
 | ---: | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
 ${rows.join('\n')}`;
 }
