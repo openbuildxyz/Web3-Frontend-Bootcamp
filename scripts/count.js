@@ -60,7 +60,7 @@ function generateSummaryTable() {
     const student = studentMap[id];
     const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ name, completed, rewardable }) => resolveCompletedEmoji(completed, !!(unmergedMap[id] && unmergedMap[id][name]), !rewardable)));
 
-    return `| ${idx + 1} | ${cols.join(' | ')} | ${rewardMap[id].total} |`;
+    return `| ${idx + 1} | ${cols.join(' | ')} | ${rewardMap[id] && rewardMap[id].total || 0} |`;
   });
 
   return `| 序号 | 学员 | 报名 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | 奖励 |
