@@ -10,7 +10,7 @@
 
 (首次如果没有，学习完毕钱包在填写)
 
-* ERC20 钱包地址: to be done
+* ERC20 钱包地址: 0x5ac7C9ED1AE286EDe007803F3332d28F070ecE17
 
 ### 个人介绍
 frontend developer, react user, vue user, nextjs beginner, web3 beginner.
