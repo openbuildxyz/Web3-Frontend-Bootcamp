@@ -2,6 +2,9 @@
 [https://github.com/Wujerry/Pet3](https://github.com/Wujerry/Pet3)
 A virtual pet chrome extension on Artela block chain
 
+# Demo
+[youtube](https://youtu.be/NlKCNjSdEXw)
+
 # Install
 1. Download from [Release page](https://github.com/Wujerry/Pet3/releases/) and drag it into Chrome.
 2. Open [Chrome Extension Page](chrome://extensions/) ``chrome://extensions/``.
