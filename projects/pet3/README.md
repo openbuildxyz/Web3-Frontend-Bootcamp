@@ -1,5 +1,5 @@
 # Pet3
-[https://github.com/Wujerry/Pet3](https://github.com/Wujerry/Pet3)
+Project: [https://github.com/Wujerry/Pet3](https://github.com/Wujerry/Pet3)
 A virtual pet chrome extension on Artela block chain
 
 # Demo
@@ -14,6 +14,7 @@ A virtual pet chrome extension on Artela block chain
 # How to play
 1. Mint your pet NFT
 2. Drag the pet
+3. Claim your score
 
 # Score
 There is a hidden lucky box that randomly generate on the screen, if the pet collides with it, you will get a random score
