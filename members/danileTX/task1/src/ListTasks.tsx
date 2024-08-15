@@ -20,7 +20,7 @@ export default function ListTasks(props: ListTasksProps) {
             <ul className="list-group align-items-center">
                 {props.tasksList.map((element) => {
                     return (
-                        <li className="list-group-item w-50">
+                        <li className="list-group-item w-50" key={element?.id}>
                             <div className="row justify-content-around">
                                 <div className="col-9">
                                     {element.strike ? <p className="vertical-center"><del>{element.text}</del></p> : <p className="vertical-center">{element.text}</p>}
