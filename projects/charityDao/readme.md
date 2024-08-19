@@ -1,25 +1,20 @@
-# Charity DAO
+# Rare Disease Charity DAO
 
-慈善 DAO
+罕见病慈善 DAO
 
 ## 项目概述
 
-一个支持多链的，为普通人 / 编程小白准备的，为了慈善目的而发行代币 / NFT 的 DAO 平台。
+一个支持多链的，为罕见病患者及其家庭，而发行代币 / NFT 进行募资的慈善 DAO 平台。
 
 ## 技术架构
 
 **前端：**
 
--   Vite
--   React + React Router
--   Wagmi
--   Rainbowkit
--   Typescript
+-   React + TypeScript + Vite + Rainbowkit + Wagmi
 
 **后端：**
 
--   Foundry
--   Solidity
+-   Foundry + Solidity
 
 ## 核心功能
 
@@ -71,9 +66,9 @@
 
 ## 项目链接
 
-| 链接条目 | 链接地址                                |
-| -------- | --------------------------------------- |
-| 介绍 PPT | <准备中>                                |
-| 源码仓库 | https://github.com/linghuccc/charityDao |
-| 演示视频 | <准备中>                                |
-| 在线体验 | <准备中>                                |
+| 链接条目 | 链接地址                                                             |
+| -------- | -------------------------------------------------------------------- |
+| 介绍 PPT | https://github.com/Ric-Li-C/Charity-DAO/public/charity_dao_demo.pptx |
+| 源码仓库 | https://github.com/Ric-Li-C/Charity-DAO                              |
+| 演示视频 | <准备中>                                                             |
+| 在线体验 | https://charity-dao-pearl.vercel.app                                 |
