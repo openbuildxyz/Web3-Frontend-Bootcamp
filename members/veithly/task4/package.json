@@ -1,0 +1,39 @@
+{
+  "name": "task4",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@nextui-org/react": "^2.4.2",
+    "@rainbow-me/rainbowkit": "^2.1.2",
+    "@tanstack/react-query": "^5.45.1",
+    "@wagmi/chains": "^1.8.0",
+    "@wagmi/core": "^2.11.5",
+    "adapters": "^1.0.0",
+    "alchemy-sdk": "^3.3.1",
+    "ethers": "^6.13.1",
+    "framer-motion": "^11.2.12",
+    "lucide-react": "^0.400.0",
+    "next": "14.2.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "viem": "2.x",
+    "wagmi": "^2.10.5"
+  },
+  "devDependencies": {
+    "@iconify/tailwind": "^1.1.1",
+    "@types/node": "^20",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.5.2"
+  }
+}
