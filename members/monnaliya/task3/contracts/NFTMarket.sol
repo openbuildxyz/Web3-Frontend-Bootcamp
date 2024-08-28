@@ -22,6 +22,7 @@ contract NFTMarket is Ownable {
     }
 
     function listNFT(address nftContract, uint256 tokenId, uint256 price) public {
+        require(price > 0, "Price must be greater than zero");
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
         listings[nftContract][tokenId] = Listing(msg.sender, price);
         emit NFTListed(nftContract, tokenId, price, msg.sender);
@@ -30,6 +31,7 @@ contract NFTMarket is Ownable {
     function buyNFT(address nftContract, uint256 tokenId) public {
         Listing memory listing = listings[nftContract][tokenId];
         require(listing.price > 0, "NFT not listed for sale");
+        require(listing.seller != msg.sender, "Buyer and seller cannot be the same");
         require(erc20Token.transferFrom(msg.sender, listing.seller, listing.price), "Payment failed");
 
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
