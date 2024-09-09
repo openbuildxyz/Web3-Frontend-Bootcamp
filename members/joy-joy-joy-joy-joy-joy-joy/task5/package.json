@@ -1,0 +1,25 @@
+{
+  "name": "connect-wallet-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5.0.0-beta.35",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "viem": "latest",
+    "wagmi": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.8"
+  }
+}
