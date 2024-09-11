@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import poster from './poster.jpg';
 
 export default function Home() {
