@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  ...(process.env.NODE_ENV === 'production' ? {
+    basePath: '/Web3-Frontend-Bootcamp',
+    output: 'export',
+  } : undefined),
   reactStrictMode: true,
 };
 
