@@ -74,15 +74,19 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-      - name: Change working directory
-        run: cd .knosys/sites/default
-      - name: Install dependencies
-        run: |
-          ls -al .
-          ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      # - name: Change working directory
+      #   run: cd .knosys/sites/default
+      # - name: Install dependencies
+      #   run: |
+      #     ls -al .
+      #     ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: |
+          # Change working directory
+          cd .knosys/sites/default
           ls -al .
+          # Install dependencies
+          ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
           ${{ steps.detect-package-manager.outputs.runner }} build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
