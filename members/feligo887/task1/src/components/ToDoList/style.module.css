@@ -1,0 +1,23 @@
+.to-do-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-right: 8px;
+    position: relative;
+}
+.to-do-item::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #666;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+.to-do-item.check::after {
+    width: 100%;
+}
