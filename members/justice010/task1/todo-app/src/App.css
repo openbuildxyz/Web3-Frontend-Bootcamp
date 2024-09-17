@@ -1,0 +1,77 @@
+/* App.css */
+/* App.css */
+
+/* Header 组件样式 */
+.header {
+  background-color: #4caf50; /* 绿色背景 */
+  color: white; /* 白色文字 */
+  padding: 20px; /* 内边距 */
+  text-align: center; /* 文本居中 */
+  border-radius: 8px; /* 圆角边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  font-family: "Arial", sans-serif; /* 字体 */
+}
+
+/* AddToDo 组件样式 */
+.add-todo {
+  background-color: #f9f9f9; /* 浅灰色背景 */
+  border: 1px solid #ddd; /* 边框颜色 */
+  border-radius: 8px; /* 圆角边框 */
+  padding: 15px; /* 内边距 */
+  display: flex; /* 使用弹性布局 */
+  gap: 10px; /* 元素间距 */
+  align-items: center; /* 垂直居中对齐 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+.add-todo input {
+  flex: 1; /* 输入框占用剩余空间 */
+  padding: 10px; /* 内边距 */
+  border: 1px solid #ddd; /* 边框颜色 */
+  border-radius: 4px; /* 圆角边框 */
+}
+
+.add-todo button {
+  background-color: #4caf50; /* 绿色背景 */
+  color: white; /* 白色文字 */
+  border: none; /* 去掉边框 */
+  border-radius: 4px; /* 圆角边框 */
+  padding: 10px 15px; /* 内边距 */
+  cursor: pointer; /* 鼠标指针变为手形 */
+  font-size: 1rem; /* 字体大小 */
+}
+
+.add-todo button:hover {
+  background-color: #45a049; /* 鼠标悬停时的背景颜色 */
+}
+
+/* ToDoItem 组件样式 */
+.todo-item {
+  background-color: #fff; /* 白色背景 */
+  border: 1px solid #ddd; /* 边框颜色 */
+  border-radius: 8px; /* 圆角边框 */
+  padding: 15px; /* 内边距 */
+  display: flex; /* 使用弹性布局 */
+  align-items: center; /* 垂直居中对齐 */
+  gap: 10px; /* 元素间距 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  margin-bottom: 10px; /* 下边距 */
+}
+
+.todo-item input[type="checkbox"] {
+  margin-right: 10px; /* 右边距 */
+}
+
+.todo-item button {
+  background-color: #f44336; /* 红色背景 */
+  color: white; /* 白色文字 */
+  border: none; /* 去掉边框 */
+  border-radius: 4px; /* 圆角边框 */
+  padding: 5px 10px; /* 内边距 */
+  cursor: pointer; /* 鼠标指针变为手形 */
+  font-size: 0.875rem; /* 字体大小 */
+}
+
+.todo-item button:hover {
+  background-color: #d32f2f; /* 鼠标悬停时的背景颜色 */
+}
