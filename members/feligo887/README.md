@@ -6,7 +6,7 @@
 
 * Openbuild Username: GHQysdV5
 
-* ERC20 钱包地址:
+* ERC20 钱包地址: （无）
 
 ### 个人介绍
 
