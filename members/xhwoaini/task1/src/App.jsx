@@ -1,4 +1,4 @@
-// src/App.jsx
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ToDoList from './components/ToDoList';
