@@ -3,7 +3,7 @@
 ## 个人信息
 
 * GitHub ID: BigBear-JS
-* OpenBuild Username: BigBear-JS
+* OpenBuild Username: BigBear
 * ERC20 钱包地址: (首次如果没有，学习完毕钱包在填写)
 
 ### 个人介绍
