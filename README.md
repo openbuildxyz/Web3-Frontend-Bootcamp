@@ -5,7 +5,7 @@
 
 ## Introduction
 
-本次「Web3前端训练营」由 W3F 和 OpenBuild 共同发起。Artela、Morph 共同主办，并获得 theGraph、Vara 和 Chainlink 生态支持。通过为期4周的系统课程和共同学习机制，帮助更多前端开发者丝滑进入Web3。与此同时，本次训练营将以实战为导向，一步步熟悉和掌握 Web3 前端代码开发。在4周的学习中，学员可以免费参与训练营，并可通过「学习绩点」得到最高 200U 的奖学金激励、Web3行业资源、和行业人脉等。
+本次「Web3前端训练营」由 W3F 和 OpenBuild 共同发起。Artela、Morph 共同主办，并获得 theGraph、Vara 和 Chainlink 生态支持。通过系统的课程和共同学习机制，帮助更多前端开发者丝滑进入Web3。与此同时，本训练营以实战为导向，一步步熟悉和掌握 Web3 前端代码开发。
 
 ### [Github Discussion](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/discussions) 使用方法
 
@@ -24,9 +24,7 @@
 
 🙌 免费学习 + 官方背书，资源丰富
 
-✅ 学习奖励 + 认证证书，边学边赚边提升竞争力
-
-💰 前端训练营总奖池超过20000元RMB
+✅ 认证证书，边学边提升竞争力
 
 ### ⭐ 学习大纲 ⭐
 
@@ -52,14 +50,12 @@
 
 九、扩展工具篇：利用The Graph实现DAPP数据分析和数据可视化（[哔站](https://www.bilibili.com/video/BV1qS421R7bW)）
 
-十、线上黑客松：为期十天（7.31-8.10），期待你大放精彩！
-
 ## 参与方式
 
 **⚠️⚠️⚠️ 请先完整地看完这部分内容再开始操作！**
 
-1. 进入【Web3 前端训练营招募】[官方链接](https://openbuild.xyz/learn/challenges/2036589711)进行报名
-2. 联系 **sqiuqiu999** 加入微信交流群
+1. 注册 [OpenBuild](https://openbuild.xyz) 账号；
+2. 联系 **fxxkol** 加入微信交流群；
 3. 参考「[活动报名](#活动报名)」提交 PR，完成报名。
 
 ### 任务提交
@@ -82,13 +78,13 @@
 
 每节课都有相应的实战任务，需要在 `members/[github_id]` 文件夹下按照 `task[n]` 的命名方式创建任务文件夹，如：`task1`、`task2`。
 
-任务代码必须全部开源公开，每个任务提交一次 PR，审核任务完成会把奖励打入 `members/[github_id]/readme.md` 提供的地址。
+任务代码必须全部开源公开，每个任务提交一次 PR。
 
 ### 提交规范
 
 每完成一个任务，在你自己的仓库 `commit` 之后提交一个 `pull request`，只可以修改你自己的文件，不可修改其他人的文件。
 
-**⚠️⚠️⚠️ 不符合规范的会加上「[invalid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Aopen+is%3Apr+label%3Ainvalid)」标签，请按要求提交你的 PR，否则可能影响奖励的计算！**
+**⚠️⚠️⚠️ 不符合规范的会加上「[invalid](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Aopen+is%3Apr+label%3Ainvalid)」标签，请按要求提交你的 PR！**
 
 #### PR 命名
 
@@ -110,20 +106,19 @@
 
 在功能分支完成对应任务后，发起 PR；切换到其他功能分支继续做任务，再发起 PR，如此往复。
 
-## 奖励明细 请仔细阅读要求
+## 任务说明 请仔细阅读要求
 
-| 任务                                         | 名称         | 奖励金额      | 说明                     |
-|:-------------------------------------------|------------|:----------:|:-----------------------|
-| [Task 1](task/01_React_To-Do-List.md)            | React To-Do-List |    2.5U     | 开发一个待办事项应用            |
-| [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic |    2.5U     | 区块链基础小测 |
-| [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract |    4U     | 编写并部署一个NFTMarket的合约      |
-| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components |    4U     | 使用ethers.js和wagmi与NFTMarket合约交互         |
-| [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp |    5U     | 开发一个完整的NFTMarket的Dapp         |
-| [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK |    5U    | 完成SDK学习，制作一个与uniswap交互的前端app    |
-| [Task 7](task/07_EVM++_Demo.md)          | web3小工具实践 |  50U（Token) | 跟随[教程](https://fanatical-krypton-122.notion.site/OpenBuild-Frontend-Bootcamp-5e62657ab5774786b1901bfd862e8e9a?pvs=4)学习EVM++，实现一个限流器demo   |
-| [Task 8](task/08_Hello_Morph.md)          | Hello Morph |    10U     |  在Morph Holesky上部署任意合约并在Morph浏览器上验证   |
-| [Task 9](task/09_Hello_TheGraph.md)          | Hello TheGraph |    10U     |  为NFTMarket创建一个The Graph子图   |
-| [Task 10](projects/readme.md)    | 线上黑客松 |    1000U     |  构建你的web3项目   |
+| 任务                                         | 名称         | 说明                     |
+|:-------------------------------------------|------------|:-----------------------|
+| [Task 1](task/01_React_To-Do-List.md)            | React To-Do-List | 开发一个待办事项应用            |
+| [Task 2](task/02_Blockchain_Basic.md)            | Blockchain Basic | 区块链基础小测 |
+| [Task 3](task/03_NFTMarket_Contract.md)              | NFTMarket Contract | 编写并部署一个NFTMarket的合约      |
+| [Task 4](task/04_NFTMarket_Component.md)             | NFTMarket Components | 使用ethers.js和wagmi与NFTMarket合约交互         |
+| [Task 5](task/05_NFTMarket_Dapp.md)             | NFTMarket Dapp  | 开发一个完整的NFTMarket的Dapp         |
+| [Task 6](task/06_Uniswap_SDK.md)          | Uniswap SDK | 完成SDK学习，制作一个与uniswap交互的前端app    |
+| [Task 7](task/07_EVM++_Demo.md)          | web3小工具实践 | 跟随[教程](https://fanatical-krypton-122.notion.site/OpenBuild-Frontend-Bootcamp-5e62657ab5774786b1901bfd862e8e9a?pvs=4)学习EVM++，实现一个限流器demo   |
+| [Task 8](task/08_Hello_Morph.md)          | Hello Morph |  在Morph Holesky上部署任意合约并在Morph浏览器上验证   |
+| [Task 9](task/09_Hello_TheGraph.md)          | Hello TheGraph |  为NFTMarket创建一个The Graph子图   |
 
 ## 参考资料
 
