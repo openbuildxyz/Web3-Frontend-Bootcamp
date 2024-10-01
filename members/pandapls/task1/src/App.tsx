@@ -15,7 +15,6 @@ function App() {
 
 	useEffect(() => {
 		const localTodos = sessionStorage.getItem('todos');
-		console.log(localTodos, 'localTodos');
 
 		if (localTodos) {
 			setTodos(JSON.parse(localTodos));
@@ -23,9 +22,7 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (todos.length > 0) {
-			sessionStorage.setItem('todos', JSON.stringify(todos));
-		}
+		sessionStorage.setItem('todos', JSON.stringify(todos));
 	}, [todos])
 
 	const addTodo = (text: string) => {
