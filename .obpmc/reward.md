@@ -1,6 +1,6 @@
 # 任务奖励
 
-共 257 人。
+共 258 人。
 
 ## 按已提交 PR 计算
 
@@ -220,7 +220,7 @@
 
 ### 无奖励
 
-共 57 人：
+共 58 人：
 
 | 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
 | ---: | --- | ---: | ---: |
@@ -256,31 +256,32 @@
 | 30 | `birdream` | 0 | 0 |
 | 31 | `channely` | 0 | 0 |
 | 32 | `code342` | 0 | 0 |
-| 33 | `dethan3` | 0 | 0 |
-| 34 | `douglas-ou` | 0 | 0 |
-| 35 | `fragrans-maotou` | 0 | 0 |
-| 36 | `hbrls` | 0 | 0 |
-| 37 | `kangvcar` | 0 | 0 |
-| 38 | `kepplow` | 0 | 0 |
-| 39 | `litie2023` | 0 | 0 |
-| 40 | `liuzizi0505` | 0 | 0 |
-| 41 | `lsPrivateGit` | 0 | 0 |
-| 42 | `lzq2013asd` | 0 | 0 |
-| 43 | `memory713` | 0 | 0 |
-| 44 | `miawithcode` | 0 | 0 |
-| 45 | `nolank128` | 0 | 0 |
-| 46 | `pol117` | 0 | 0 |
-| 47 | `princejia` | 0 | 0 |
-| 48 | `reetyo` | 0 | 0 |
-| 49 | `renfengyi` | 0 | 0 |
-| 50 | `sajakx` | 0 | 0 |
-| 51 | `strong-to` | 0 | 0 |
-| 52 | `upupnoah` | 0 | 0 |
-| 53 | `wjq990112` | 0 | 0 |
-| 54 | `yywhyting` | 0 | 0 |
-| 55 | `zhengbangbo` | 0 | 0 |
-| 56 | `zhong-shanfu` | 0 | 0 |
-| 57 | `zipingw` | 0 | 0 |
+| 33 | `danileTX` | 0 | 0 |
+| 34 | `dethan3` | 0 | 0 |
+| 35 | `douglas-ou` | 0 | 0 |
+| 36 | `fragrans-maotou` | 0 | 0 |
+| 37 | `hbrls` | 0 | 0 |
+| 38 | `kangvcar` | 0 | 0 |
+| 39 | `kepplow` | 0 | 0 |
+| 40 | `litie2023` | 0 | 0 |
+| 41 | `liuzizi0505` | 0 | 0 |
+| 42 | `lsPrivateGit` | 0 | 0 |
+| 43 | `lzq2013asd` | 0 | 0 |
+| 44 | `memory713` | 0 | 0 |
+| 45 | `miawithcode` | 0 | 0 |
+| 46 | `nolank128` | 0 | 0 |
+| 47 | `pol117` | 0 | 0 |
+| 48 | `princejia` | 0 | 0 |
+| 49 | `reetyo` | 0 | 0 |
+| 50 | `renfengyi` | 0 | 0 |
+| 51 | `sajakx` | 0 | 0 |
+| 52 | `strong-to` | 0 | 0 |
+| 53 | `upupnoah` | 0 | 0 |
+| 54 | `wjq990112` | 0 | 0 |
+| 55 | `yywhyting` | 0 | 0 |
+| 56 | `zhengbangbo` | 0 | 0 |
+| 57 | `zhong-shanfu` | 0 | 0 |
+| 58 | `zipingw` | 0 | 0 |
 
 ## 按已合并 PR 计算
 
@@ -488,7 +489,7 @@
 
 ### 无奖励
 
-共 70 人：
+共 71 人：
 
 | 序号 | 学员 | 已审核奖励（U） | 已提交奖励（U） |
 | ---: | --- | ---: | ---: |
@@ -528,37 +529,38 @@
 | 34 | `channely` | 0 | 0 |
 | 35 | [`charming-06`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Acharming-06+is%3Aclosed) | 0 | 2.5 |
 | 36 | `code342` | 0 | 0 |
-| 37 | `dethan3` | 0 | 0 |
-| 38 | [`dongyuanwai`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Adongyuanwai+is%3Aclosed) | 0 | 2.5 |
-| 39 | `douglas-ou` | 0 | 0 |
-| 40 | `fragrans-maotou` | 0 | 0 |
-| 41 | [`gnls666`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Agnls666+is%3Aclosed) | 0 | 5 |
-| 42 | `hbrls` | 0 | 0 |
-| 43 | `kangvcar` | 0 | 0 |
-| 44 | `kepplow` | 0 | 0 |
-| 45 | `litie2023` | 0 | 0 |
-| 46 | `liuzizi0505` | 0 | 0 |
-| 47 | `lsPrivateGit` | 0 | 0 |
-| 48 | [`luAmy`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3AluAmy+is%3Aclosed) | 0 | 5 |
-| 49 | `lzq2013asd` | 0 | 0 |
-| 50 | `memory713` | 0 | 0 |
-| 51 | `miawithcode` | 0 | 0 |
-| 52 | `nolank128` | 0 | 0 |
-| 53 | [`peewee92`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Apeewee92+is%3Aclosed) | 0 | 2.5 |
-| 54 | `pol117` | 0 | 0 |
-| 55 | `princejia` | 0 | 0 |
-| 56 | [`qimalan`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Aqimalan+is%3Aclosed) | 0 | 5 |
-| 57 | [`ranxi2001`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Aranxi2001+is%3Aclosed) | 0 | 5 |
-| 58 | `reetyo` | 0 | 0 |
-| 59 | `renfengyi` | 0 | 0 |
-| 60 | `sajakx` | 0 | 0 |
-| 61 | [`shaun17`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Ashaun17+is%3Aclosed) | 0 | 2.5 |
-| 62 | `strong-to` | 0 | 0 |
-| 63 | `upupnoah` | 0 | 0 |
-| 64 | [`wanna-wl`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Awanna-wl+is%3Aclosed) | 0 | 2.5 |
-| 65 | `wjq990112` | 0 | 0 |
-| 66 | [`wureny`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Awureny+is%3Aclosed) | 0 | 2.5 |
-| 67 | `yywhyting` | 0 | 0 |
-| 68 | `zhengbangbo` | 0 | 0 |
-| 69 | `zhong-shanfu` | 0 | 0 |
-| 70 | `zipingw` | 0 | 0 |
+| 37 | `danileTX` | 0 | 0 |
+| 38 | `dethan3` | 0 | 0 |
+| 39 | [`dongyuanwai`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Adongyuanwai+is%3Aclosed) | 0 | 2.5 |
+| 40 | `douglas-ou` | 0 | 0 |
+| 41 | `fragrans-maotou` | 0 | 0 |
+| 42 | [`gnls666`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Agnls666+is%3Aclosed) | 0 | 5 |
+| 43 | `hbrls` | 0 | 0 |
+| 44 | `kangvcar` | 0 | 0 |
+| 45 | `kepplow` | 0 | 0 |
+| 46 | `litie2023` | 0 | 0 |
+| 47 | `liuzizi0505` | 0 | 0 |
+| 48 | `lsPrivateGit` | 0 | 0 |
+| 49 | [`luAmy`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3AluAmy+is%3Aclosed) | 0 | 5 |
+| 50 | `lzq2013asd` | 0 | 0 |
+| 51 | `memory713` | 0 | 0 |
+| 52 | `miawithcode` | 0 | 0 |
+| 53 | `nolank128` | 0 | 0 |
+| 54 | [`peewee92`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Apeewee92+is%3Aclosed) | 0 | 2.5 |
+| 55 | `pol117` | 0 | 0 |
+| 56 | `princejia` | 0 | 0 |
+| 57 | [`qimalan`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Aqimalan+is%3Aclosed) | 0 | 5 |
+| 58 | [`ranxi2001`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Aranxi2001+is%3Aclosed) | 0 | 5 |
+| 59 | `reetyo` | 0 | 0 |
+| 60 | `renfengyi` | 0 | 0 |
+| 61 | `sajakx` | 0 | 0 |
+| 62 | [`shaun17`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Ashaun17+is%3Aclosed) | 0 | 2.5 |
+| 63 | `strong-to` | 0 | 0 |
+| 64 | `upupnoah` | 0 | 0 |
+| 65 | [`wanna-wl`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Awanna-wl+is%3Aclosed) | 0 | 2.5 |
+| 66 | `wjq990112` | 0 | 0 |
+| 67 | [`wureny`](https://github.com/openbuildxyz/Web3-Frontend-Bootcamp/pulls?q=is%3Apr+author%3Awureny+is%3Aclosed) | 0 | 2.5 |
+| 68 | `yywhyting` | 0 | 0 |
+| 69 | `zhengbangbo` | 0 | 0 |
+| 70 | `zhong-shanfu` | 0 | 0 |
+| 71 | `zipingw` | 0 | 0 |

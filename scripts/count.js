@@ -60,7 +60,7 @@ function generateSummaryTable() {
     const student = studentMap[id];
     const cols = [`[\`${id}\`](${id})`, resolveCompletedEmoji(student.registered)].concat(student.tasks.map(({ name, completed, rewardable }) => resolveCompletedEmoji(completed, !!(unmergedMap[id] && unmergedMap[id][name]), !rewardable)));
 
-    return `| ${idx + 1} | ${cols.join(' | ')} | ${rewardMap[id].total} |`;
+    return `| ${idx + 1} | ${cols.join(' | ')} | ${rewardMap[id] && rewardMap[id].total || 0} |`;
   });
 
   return `| 序号 | 学员 | 报名 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | 奖励 |
@@ -96,11 +96,15 @@ ${generateSummaryTable()}
 
 | 学员 | 事项 | 奖励（U） |
 | --- | --- | ---: |
-| \`linghuccc\` | 笔记激励 | 100 |
-| \`lispking\` | 知识分享激励 | 20 |
-| \`ourai\` | 运营➕笔记激励 | 480 |
-| \`xiangnuans\` | 笔记激励 | 100 |
-| \`zhangloveyan\` | 笔记激励 | 100 |
+| \`BBK\` | 前端训练营审核pr | 35 |
+| \`Georgiafab\` | 前端训练营审核pr | 27 |
+| \`linghuccc\` | 前端训练营审核pr+知识笔记 | 200 |
+| \`lispking\` | 知识笔记 | 20 |
+| \`ourai\` | 前端训练营运营支持+知识笔记 | 480 |
+| \`qiuqiu\` | 前端训练营审核pr | 50 |
+| \`xiangnuans\` | 知识笔记 | 100 |
+| \`zhanglinan\` | 前端训练营审核pr | 46 |
+| \`zhangloveyan\` | 知识笔记 | 100 |
 `;
 }
 
