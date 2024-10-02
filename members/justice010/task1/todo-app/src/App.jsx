@@ -1,6 +1,6 @@
 import "./App.css";
 import { Header } from "./Header";
-import { AddToDo } from "./AddTodo";
+import { AddToDo } from "./AddToDo";
 import { ToDoList } from "./ToDoList";
 import { useState, useEffect } from "react";
  
