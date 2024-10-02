@@ -10,6 +10,8 @@
     "octokit": "^4.0.2"
   },
   "scripts": {
-    "pmc": "node .knosys/scripts pmc"
+    "pmc": "node .knosys/scripts pmc",
+    "site": "node .knosys/scripts site",
+    "start": "npm run site start"
   }
 }
