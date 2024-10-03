@@ -1,0 +1,17 @@
+.addtodo {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+.addtodo input {
+    flex: 1;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+.addtodo button {
+    margin-left: 10px;
+    padding: 0 5px;
+    color: #fff;
+    background: #000;
+}
