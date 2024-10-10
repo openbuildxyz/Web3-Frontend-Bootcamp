@@ -6,7 +6,7 @@
 
 * Wechat ID: 13686561615
 
-* Openbuild Username: ming yuan
+* Openbuild Username: wcekrecB
 
 (首次如果没有，学习完毕钱包在填写)
 
