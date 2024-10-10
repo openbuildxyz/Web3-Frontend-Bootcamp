@@ -1,0 +1,30 @@
+.Swapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #fff;
+
+  &-swapButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    margin: -26px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  &-swapIcon {
+    font-size: 18px;
+    transform: rotate(90deg);
+  }
+
+  &-confirmButton {
+    width: 100%;
+  }
+}
