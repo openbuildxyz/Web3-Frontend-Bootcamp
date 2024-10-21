@@ -1,0 +1,6 @@
+export const contractAddress = {
+  tokenAddress: '0xD95FE3FB8e78fD0df6F1C7182C203022b3F0C08B',
+  nftAddress: '0x4A26e53f2EA5A69671EC3b1a5A126652fB7b9D67',
+  // marketAddressOld: '0xe427D7C4Ec2B9C7145B32776Aa6C5393EB7946f5',
+  marketAddress: '0x2D02CBEcB03cA09b376e923f4228ED872e920186',
+}
