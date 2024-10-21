@@ -4,7 +4,7 @@
 
 * GitHub ID: saltand
 * OpenBuild Username: saltand
-* ERC20 钱包地址: 0x6904466B70A6bf6A337297eDe9dE835DE7f00ADc
+* ERC20 钱包地址: 0xfd516ba35bb0BEe2aDb6B90bcB76391a46627D49
 
 ### 个人介绍
 
