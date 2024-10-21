@@ -1,0 +1,15 @@
+.NftCardFooter > div {
+  display: flex;
+}
+
+.NftCardFooter > div > span:first-of-type {
+  flex-shrink: 0;
+}
+
+.NftCardFooter > div > span:first-of-type::after {
+  content: "：";
+}
+
+.NftCardFooter > div > span:first-of-type + * {
+  flex-grow: 1;
+}
