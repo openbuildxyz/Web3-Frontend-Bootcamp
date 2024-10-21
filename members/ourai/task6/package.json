@@ -1,0 +1,42 @@
+{
+  "name": "@ourai/my-first-dex",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@ant-design/web3": "^1.15.1",
+    "@ant-design/web3-assets": "^1.9.0",
+    "@ant-design/web3-icons": "^1.7.0",
+    "@ant-design/web3-wagmi": "^2.7.0",
+    "@ntks/toolbox": "^0.0.6",
+    "@tanstack/react-query": "^5.49.2",
+    "@uniswap/sdk-core": "5.3.1",
+    "@uniswap/v2-sdk": "^4.4.1",
+    "@wagmi/core": "2.11.5",
+    "antd": "^5.18.3",
+    "axios": "^1.7.2",
+    "lodash.debounce": "^4.0.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "viem": "^2.16.4",
+    "wagmi": "^2.10.8"
+  },
+  "devDependencies": {
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "sass": "^1.77.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  },
+  "scripts": {
+    "start": "vite"
+  }
+}
