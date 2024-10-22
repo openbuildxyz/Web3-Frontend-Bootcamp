@@ -14,14 +14,14 @@ export default function Contract() {
             await mintNFT();
             alert("铸造成功!");
           }}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
+          className="bg-blue-500  px-4 py-2 rounded-md mt-4"
         >
           铸造NFT
         </button>
       </div>
       <div className="flex gap-4 text-gray-800 items-end">
         <div>
-          <label for="price" className="block text-sm font-medium leading-6 text-white">
+          <label for="price" className="block text-sm font-medium leading-6 ">
             上架的 NFT ID：
           </label>
           <div className="relative mt-2 rounded-md shadow-sm">
@@ -37,7 +37,7 @@ export default function Contract() {
           </div>
         </div>
         <div>
-          <label for="price" className="block text-sm font-medium leading-6 text-white">
+          <label for="price" className="block text-sm font-medium leading-6 ">
             上架价格：
           </label>
           <div className="relative mt-2 rounded-md shadow-sm">
@@ -54,7 +54,7 @@ export default function Contract() {
         </div>
         <div>
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
+            className="bg-blue-500  px-4 py-2 rounded-md mt-4"
             onClick={async () => {
               if (!tokenId) {
                 alert("请输入需要上架的 NFT ID");
