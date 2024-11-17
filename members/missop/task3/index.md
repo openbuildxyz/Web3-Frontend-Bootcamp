@@ -1,0 +1,6 @@
+#  作业
+由于Sepolia燃气费用太高，部署到了Avalanche Fuji
+
+上架：0x9a1741e45f8d38e420af23e6b585233fd02fe011ee6524125b3d78a5bfaa8aaa
+
+购买：0xb03a45c0f0fa911b1017a9b9176aab906746588f37b5dcce166f26761829ba26
