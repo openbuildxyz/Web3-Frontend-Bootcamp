@@ -1,0 +1,32 @@
+.nav-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  .home-title {
+    font-weight: 900;
+    font-size: 20px;
+  }
+
+  .route-wrap {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    .nav-title {
+      font-size: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .active {
+      color: rgb(68, 77, 240);
+    }
+  }
+}

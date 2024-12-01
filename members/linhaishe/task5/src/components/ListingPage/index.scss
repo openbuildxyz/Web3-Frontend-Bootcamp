@@ -1,0 +1,38 @@
+.listing-form-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .listing-form-input-wrap {
+    width: 0%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+
+    input[type='text'],
+    input[type='number'] {
+      background-color: #fff;
+      height: 20px;
+      border-radius: 3px;
+      color: #333;
+      width: 200px;
+    }
+
+    .nft-action-btn {
+      width: 300px;
+      height: 50px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 50px;
+      color: #fff;
+      background-color: rgb(68, 77, 240);
+      cursor: pointer;
+      font-weight: 900;
+    }
+  }
+}
