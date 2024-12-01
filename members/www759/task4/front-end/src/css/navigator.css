@@ -1,0 +1,92 @@
+/* 设置导航栏的整体样式 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa; /* 浅色背景 */
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #343a40; /* 深色文本 */
+    font-family: 'Arial', sans-serif;
+}
+
+/* 设置品牌名称的样式 */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40; /* 深色文本 */
+    flex: 1;
+}
+
+/* 设置导航链接的样式 */
+.navbar-links {
+    display: flex;
+    gap: 1.5rem; /* 调整间距 */
+    flex-grow: 2; /* 占据中间空间 */
+    justify-content: center;
+}
+
+.navbar-links a {
+    color: #5A20CB; /* 更醒目的颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    font-size: 1.2rem; /* 调整字体大小 */
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent; /* 增加下划线效果 */
+}
+
+.navbar-links a:hover {
+    color: #7A3AED; /* 悬停时的颜色 */
+    border-bottom: 2px solid #7A3AED; /* 悬停时的下划线 */
+}
+
+/* 设置钱包地址和连接按钮的样式 */
+.navbar-wallet {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem
+    /* flex: 1; 占据右侧剩余空间 */
+    /* justify-content: flex-end; */
+}
+
+.connect-button {
+    background-color: #007bff; 
+    color: white; 
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.connect-button:hover {
+    background-color: #0056b3; /* 悬停时的按钮背景色 */
+}
+
+.balance {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #343a40;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.address-display {
+    background-color: #e9ecef;
+    color: #495057;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 添加当前所在页面链接的样式 */
+.active-link {
+    font-weight: bold;
+    color: red; /* 激活时的颜色 */
+    border-bottom: 2px solid #7A3AED; /* 激活时的下划线 */
+}
