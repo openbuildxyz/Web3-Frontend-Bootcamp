@@ -1,0 +1,59 @@
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ListingIdCreated @entity(immutable: true) {
+  id: Bytes!
+  listingId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NFTDeListed @entity(immutable: true) {
+  id: Bytes!
+  seller: Bytes! # address
+  nftContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NFTListed @entity(immutable: true) {
+  id: Bytes!
+  seller: Bytes! # address
+  nftContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NFTPurchased @entity(immutable: true) {
+  id: Bytes!
+  buyer: Bytes! # address
+  nftContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
