@@ -1,0 +1,25 @@
+/* home.css */
+.collections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa; 
+    font-family: 'Arial', sans-serif;
+}
+
+.collection-button {
+    background-color: #007bff; 
+    color: white; 
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem; 
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.collection-button:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05);
+}
