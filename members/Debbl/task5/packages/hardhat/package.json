@@ -1,0 +1,21 @@
+{
+  "name": "hardhat-project",
+  "scripts": {
+    "dev": "hardhat node",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "viem": "^2.16.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^0.15.5",
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@types/chai": "^4.3.16",
+    "chai": "4",
+    "hardhat": "^2.22.5",
+    "typescript": "^5.5.2"
+  }
+}
