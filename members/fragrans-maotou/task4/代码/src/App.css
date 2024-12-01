@@ -1,0 +1,56 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+.flex{
+  display: flex;
+}
+.grid{
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+} 
+.grid-rows-4{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-rows-5{
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.grid-rows-6{
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.item-content{
+  justify-content: center;
+  align-items: center;
+}
+.self-center{
+  align-self: center;
+}
+.mr-8{
+  margin-right: 8rem;
+}
+.mb-1{
+  margin-bottom: 1rem;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.img{
+  width: 30px;
+  height: 30px;
+  display: block;
+}
