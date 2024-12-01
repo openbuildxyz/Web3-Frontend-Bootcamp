@@ -1,0 +1,24 @@
+[
+    {
+        "ticker": "WETH",
+        "img": null,
+        "name": "Wrapped Ether",
+        "address": "0xaf1462312f33f03023358fb9e1d0635f3b5c3b62",
+        "decimals": 18
+    },
+    {
+        "ticker": "USDC",
+        "img": null,
+        "name": "USDC",
+        "address": "0x1c7d4b196cb0c7b01d743fbc6116a902379c7238",
+        "decimals": 6
+    },
+    {
+        "ticker": "USDT",
+        "img": null,
+        "name": "Tether USD",
+        "address": "0xbdead2a70fe794d2f97b37efde497e68974a296d",
+        "decimals": 6
+    }
+]
+
