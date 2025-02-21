@@ -1,0 +1,16 @@
+[
+    {
+        "ticker": "WETH",
+        "img": "https://www.shareicon.net/data/256x256/2016/07/08/117397_eth_512x512.png",
+        "name": "Ethereum",
+        "address": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+        "decimals": 18
+    },
+    {
+        "ticker": "LINK",
+        "img": "https://cdn.moralis.io/eth/0x514910771af9ca656af840dff83e8264ecf986ca.png",
+        "name": "Chainlink",
+        "address": "0x779877A7B0D9E8603169DdbD7836e478b4624789",
+        "decimals": 18
+    }
+]
